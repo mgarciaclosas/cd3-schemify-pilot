@@ -1,0 +1,48 @@
+{
+  "$comment": "Ground truth for toy_invalid.json. No pattern-break case: this table has no identifier field with a pattern (the source sheet defines none). No skip-break/applicability-break: no if/then routing rules written (RSMOKE/RCIGSPD relationship noted but not enforced, see DECISIONS.md). No duplicate-row: validate.py fixtures checks rows independently, never array-level uniqueItems; verified separately.",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "row": 0,
+      "column": "RHEIGHT",
+      "kind": "wrong-type",
+      "value": "tall",
+      "reason": "must be an integer"
+    },
+    {
+      "row": 1,
+      "column": "RHTTYPE",
+      "kind": "unknown-level",
+      "value": 9,
+      "reason": "9 is not a declared code in the source's code list"
+    },
+    {
+      "row": 2,
+      "column": "RBMI",
+      "kind": "range-break",
+      "value": 200,
+      "reason": "above plausibility max 80"
+    },
+    {
+      "row": 3,
+      "column": "RSMOKE",
+      "kind": "invented-sentinel",
+      "value": -1,
+      "reason": "-1 (not_on_questionnaire) is not defined for RSMOKE in the source; it has no availability gap across versions"
+    },
+    {
+      "row": 4,
+      "column": "RMENARCH",
+      "kind": "missing-key",
+      "value": null,
+      "reason": "column omitted -- every property is required"
+    },
+    {
+      "row": 5,
+      "column": "RSHOESIZE",
+      "kind": "undeclared-column",
+      "value": 6,
+      "reason": "not in the source dictionary; rejected by unevaluatedProperties"
+    }
+  ]
+}

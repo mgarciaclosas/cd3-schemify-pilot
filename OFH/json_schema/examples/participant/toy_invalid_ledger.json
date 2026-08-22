@@ -1,0 +1,48 @@
+{
+  "$comment": "Ground truth for toy_invalid.json. No pattern-break case: PID has no pattern constraint (source gives no ID format). No skip-break/applicability-break: no if/then routing rules in this table. No duplicate-row: validate.py fixtures checks rows independently, never array-level uniqueItems; verified separately.",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "row": 0,
+      "column": "REGISTRATION_YEAR",
+      "kind": "wrong-type",
+      "value": "twenty-twenty-five",
+      "reason": "must be an integer"
+    },
+    {
+      "row": 1,
+      "column": "DEMOG_SEX_1_1",
+      "kind": "unknown-level",
+      "value": 9,
+      "reason": "9 is not a declared code in the source coding table"
+    },
+    {
+      "row": 2,
+      "column": "BIRTH_YEAR",
+      "kind": "range-break",
+      "value": 1800,
+      "reason": "below plausibility min 1920"
+    },
+    {
+      "row": 3,
+      "column": "BLOOD_SAMPLE",
+      "kind": "invented-sentinel",
+      "value": -3,
+      "reason": "-3 (prefer_not_to_answer) is not defined for BLOOD_SAMPLE in the source; it only defines 0/1"
+    },
+    {
+      "row": 4,
+      "column": "DEMOG_GENDER_1_1",
+      "kind": "missing-key",
+      "value": null,
+      "reason": "column omitted -- every property is required"
+    },
+    {
+      "row": 5,
+      "column": "HEIGHT_CM",
+      "kind": "undeclared-column",
+      "value": 170,
+      "reason": "not in the source dictionary; rejected by unevaluatedProperties"
+    }
+  ]
+}

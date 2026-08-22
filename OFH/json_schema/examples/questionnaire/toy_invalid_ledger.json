@@ -1,0 +1,55 @@
+{
+  "$comment": "Ground truth for questionnaire/toy_invalid.json. No skip-break/applicability-break: no if/then routing rules written for this table. No duplicate-row: validate.py fixtures checks rows independently, never array-level uniqueItems; verified separately.",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "row": 0,
+      "column": "DEMOG_HEIGHT_1_1",
+      "kind": "wrong-type",
+      "value": "tall",
+      "reason": "must be a number"
+    },
+    {
+      "row": 1,
+      "column": "EDU_COMP_AGE_1_1",
+      "kind": "unknown-level",
+      "value": 999,
+      "reason": "999 is not a declared code in the source's coding table"
+    },
+    {
+      "row": 2,
+      "column": "DEMOG_HEIGHT_1_1",
+      "kind": "range-break",
+      "value": 999,
+      "reason": "above plausibility max 300"
+    },
+    {
+      "row": 3,
+      "column": "SKIP_PHQ9_GAD7_1_1",
+      "kind": "invented-sentinel",
+      "value": -999,
+      "reason": "-999 (suppressed) is not defined for SKIP_PHQ9_GAD7_1_1 in the source; it only defines 0/1"
+    },
+    {
+      "row": 4,
+      "column": "DEMOG_WEIGHT_1_1",
+      "kind": "missing-key",
+      "value": null,
+      "reason": "column omitted -- every property is required"
+    },
+    {
+      "row": 5,
+      "column": "SHOE_SIZE",
+      "kind": "undeclared-column",
+      "value": 8,
+      "reason": "not in the source dictionary; rejected by unevaluatedProperties"
+    },
+    {
+      "row": 6,
+      "column": "SUBMISSION_DATE",
+      "kind": "pattern-break",
+      "value": "15/01/2026",
+      "reason": "must match ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$ (assumed ISO 8601)"
+    }
+  ]
+}
