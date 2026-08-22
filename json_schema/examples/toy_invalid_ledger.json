@@ -1,0 +1,62 @@
+{
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column. No duplicate-row case: validate.py fixtures checks each row independently against the item schema, never the array-level uniqueItems constraint, so a duplicate pair can't be exercised this way. uniqueItems is verified separately via 'validate.py data' against a two-identical-row file (confirmed working, caught with keyword=uniqueItems) -- see DECISIONS.md. No applicability-break case: the R0_GPdk/R0_GP conditional has only a skip half by design -- see DECISIONS.md for why an applicability rule would over-constrain (R0_GP has no dedicated structural-NA sentinel distinct from generic missingness).",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "row": 0,
+      "column": "R0_LeftEducAge",
+      "kind": "wrong-type",
+      "value": "sixteen",
+      "reason": "age must be an integer or the missing_numeric sentinel, not a string"
+    },
+    {
+      "row": 1,
+      "column": "R0_EthnGroup",
+      "kind": "unknown-level",
+      "value": 99,
+      "reason": "99 is not a declared code in BaselineMetadata.xlsx for this question"
+    },
+    {
+      "row": 2,
+      "column": "R0_LeftEducAge",
+      "kind": "range-break",
+      "value": 150,
+      "reason": "above plausibility max 100"
+    },
+    {
+      "row": 3,
+      "column": "R0_AddrChanged",
+      "kind": "invented-sentinel",
+      "value": -1,
+      "reason": "-1 is not a code this source defines; the package's sentinel is -999"
+    },
+    {
+      "row": 4,
+      "column": "StudyID",
+      "kind": "pattern-break",
+      "value": "12A456",
+      "reason": "must match ^[0-9]{6}$ -- six digits only"
+    },
+    {
+      "row": 5,
+      "column": "R0_GP",
+      "kind": "skip-break",
+      "value": "Dr. C. Okafor",
+      "reason": "R0_GPdk=1 (don't know) but a real GP name is present (must be the MISSING sentinel)"
+    },
+    {
+      "row": 6,
+      "column": "R0_Postcode",
+      "kind": "missing-key",
+      "value": null,
+      "reason": "column omitted -- missingness must be in-band (missing_string), never an absent key"
+    },
+    {
+      "row": 7,
+      "column": "R0_ShoeSize",
+      "kind": "undeclared-column",
+      "value": 8,
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
+    }
+  ]
+}

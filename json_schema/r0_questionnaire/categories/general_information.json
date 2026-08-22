@@ -1,0 +1,738 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/gs-r0-pilot/r0_questionnaire/categories/general_information.json",
+  "title": "R0_QUESTIONNAIRE — General Information",
+  "description": "Contact details, demographics, and identifying information collected at baseline.",
+  "type": "object",
+  "x-variable-group": "general_information",
+  "properties": {
+    "StudyID": {
+      "title": "Study identifier",
+      "type": "string",
+      "pattern": "^[0-9]{6}$",
+      "x-role": "primary key"
+    },
+    "R0_Surname": {
+      "title": "Participant's surname",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'What is your surname?'"
+    },
+    "R0_FirstName": {
+      "title": "Participant's first name",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'What is/are your first name(s)?'"
+    },
+    "R0_OtherName": {
+      "title": "Any other names, such as maiden name, given by the participant",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'Any other surnames (e.g., maiden name)?'"
+    },
+    "R0_AddressLineOne": {
+      "title": "Line 1 of the participant's address",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'If yes, please give your new address Home Address. address line 1'"
+    },
+    "R0_AddressLineTwo": {
+      "title": "Line 2 of the participant's address",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'address line 2'"
+    },
+    "R0_AddressLineThree": {
+      "title": "Line 3 of the participant's address",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'address line 3'"
+    },
+    "R0_AddressLineFour": {
+      "title": "Line 4 of the participant's address",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'address line 4'"
+    },
+    "R0_Postcode": {
+      "title": "The postcode of the participant",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'Postcode'"
+    },
+    "R0_PhoneOne": {
+      "title": "The first given phone number of the participant",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'Contact telephone number 1'"
+    },
+    "R0_ExtOne": {
+      "title": "The extension for the first given phone number of the participant",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'Contact telephone number 1 extension'"
+    },
+    "R0_PhoneTwo": {
+      "title": "The second given phone number of the participant",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'Contact telephone number 2'"
+    },
+    "R0_ExtTwo": {
+      "title": "The extension for the second given phone number of the participant",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'Contact telephone number 2 extension'"
+    },
+    "R0_Email": {
+      "title": "The email address given by the participant",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'E-mail address'"
+    },
+    "R0_GP": {
+      "title": "Name of the participant's GP",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'Name of your GP'",
+      "x-universe": "All participants; paired with R0_GPdk, ticked when the participant does not know their GP's name."
+    },
+    "R0_GPtown": {
+      "title": "Name of the town of the participant's GP",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'Town of your GP practice'"
+    },
+    "R0_NHSnum": {
+      "title": "Participant's NHS number",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'What is your NHS number? (10 digit number on your GP registration card)'"
+    },
+    "R0_CurOcup": {
+      "title": "If participant is not currently working, their former usual occupation",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'If you are not currently working, former usual occupation'"
+    },
+    "R0_MaritalStatusOther": {
+      "title": "Other marital status explanation",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'Other Marital status'"
+    },
+    "R0_PartnerOccup": {
+      "title": "If married or cohabiting, the current or former usual occupation of the partner of the participant",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'If married or cohabiting, what is your husband’s/partner’s current or former usual occupation?'"
+    },
+    "R0_EthnGroupSelfDesc": {
+      "title": "Participant considers themselves another self described ethnicity",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_string"
+        }
+      ],
+      "$comment": "Source question: 'If none of the ethnic group displayed, how would you describe yourself?'"
+    },
+    "R0_GPdk": {
+      "title": "Does not know GP's name",
+      "oneOf": [
+        {
+          "$ref": "../../common/defs.json#/$defs/dont_know",
+          "const": 1
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-universe": "All participants; companion flag to R0_GP, per BaselineMetadata.xlsx AnswerID=3.",
+      "$comment": "Source question: \"Don't know the GP name\""
+    },
+    "R0_LeftEducAge": {
+      "title": "Age left full-time education (years)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'How old were you when you left full-time education(if you are not currently a student)?'. Upper bound 100 is a plausibility bound the source does not state -- agent-decided."
+    },
+    "R0_AddrChanged": {
+      "title": "Has the participant moved addresses since filling out the last questionnaire?",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "More than one option chose"
+        },
+        {
+          "const": 1,
+          "title": "Yes, address changed"
+        },
+        {
+          "const": 2,
+          "title": "No, address not changed"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'Has your home address changed from the one at which we mailed you?'"
+    },
+    "R0_DayEvnOne": {
+      "title": "When can the participant be contacted on telephone number 1?",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "More than one option chosen"
+        },
+        {
+          "const": 1,
+          "title": "Day"
+        },
+        {
+          "const": 2,
+          "title": "Evening"
+        },
+        {
+          "const": 3,
+          "title": "Either time of day"
+        },
+        {
+          "const": 4,
+          "title": "Day and either"
+        },
+        {
+          "const": 5,
+          "title": "Evening and either"
+        },
+        {
+          "const": 6,
+          "title": "Day, evening, or either"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'when can you be contacted on telephone number 1?'"
+    },
+    "R0_DayEvnTwo": {
+      "title": "When can the participant be contacted on telephone number 2?",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "More than one option chosen"
+        },
+        {
+          "const": 1,
+          "title": "Day"
+        },
+        {
+          "const": 2,
+          "title": "Evening"
+        },
+        {
+          "const": 3,
+          "title": "Either time of day"
+        },
+        {
+          "const": 4,
+          "title": "Day and either"
+        },
+        {
+          "const": 5,
+          "title": "Evening and either"
+        },
+        {
+          "const": 6,
+          "title": "Day, evening, or either"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'when can you be contacted on telephone number 2?'"
+    },
+    "R0_EmailYN": {
+      "title": "If the participant be happy to be contacted by email in the future",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "More than one option chosen"
+        },
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "const": 2,
+          "title": "No"
+        },
+        {
+          "const": 3,
+          "title": "No email"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'Would you be happy to be contacted by email in the future?'"
+    },
+    "R0_Occupation": {
+      "title": "Current occupation type of the participant",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "Occupation - more than one option chosen"
+        },
+        {
+          "const": 1,
+          "title": "Paid or self-employed job"
+        },
+        {
+          "const": 2,
+          "title": "Housewife"
+        },
+        {
+          "const": 3,
+          "title": "Student"
+        },
+        {
+          "const": 4,
+          "title": "Unemployed"
+        },
+        {
+          "const": 5,
+          "title": "Retired"
+        },
+        {
+          "const": 6,
+          "title": "Other job"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'What is your current occupation?'"
+    },
+    "R0_MaritalStatus": {
+      "title": "Current marital status",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "More than one option chosen"
+        },
+        {
+          "const": 1,
+          "title": "Single, never married"
+        },
+        {
+          "const": 2,
+          "title": "Married"
+        },
+        {
+          "const": 3,
+          "title": "Separated/divorced"
+        },
+        {
+          "const": 4,
+          "title": "Cohabiting"
+        },
+        {
+          "const": 5,
+          "title": "Widowed"
+        },
+        {
+          "const": 6,
+          "title": "Other"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'What is your current marital status?'"
+    },
+    "R0_EthnGroup": {
+      "title": "Single choice question about which ethnic group the participant belongs to",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "More than one option chosen"
+        },
+        {
+          "const": 1,
+          "title": "White"
+        },
+        {
+          "const": 2,
+          "title": "Indian"
+        },
+        {
+          "const": 3,
+          "title": "Jewish-Ashkenazi"
+        },
+        {
+          "const": 4,
+          "title": "Black-Caribbean"
+        },
+        {
+          "const": 5,
+          "title": "Pakistani"
+        },
+        {
+          "const": 6,
+          "title": "Jewish-Sephardi"
+        },
+        {
+          "const": 7,
+          "title": "Black-African"
+        },
+        {
+          "const": 8,
+          "title": "Bangladeshi"
+        },
+        {
+          "const": 9,
+          "title": "None of these"
+        },
+        {
+          "const": 10,
+          "title": "Black-Other"
+        },
+        {
+          "const": 11,
+          "title": "Chinese"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? (single choice)'"
+    },
+    "R0_EthnGroupWhite": {
+      "title": "Participant considers themselves White, from the UK or not",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "White"
+        },
+        {
+          "const": 12,
+          "title": "UK Ancestry"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - White'"
+    },
+    "R0_EthnGroupIndian": {
+      "title": "Participant considers themselves Indian",
+      "oneOf": [
+        {
+          "const": 2,
+          "title": "Indian"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - Indian'"
+    },
+    "R0_EthnGroupJAshk": {
+      "title": "Participant considers themselves Jewish, Ashkenazi or other",
+      "oneOf": [
+        {
+          "const": 3,
+          "title": "Jewish-Ashkenazi"
+        },
+        {
+          "const": 15,
+          "title": "Jewish (other or not specified)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - Jewish-Ashkenazi'"
+    },
+    "R0_EthnGroupBlkCarib": {
+      "title": "Participant considers themselves Black-Caribbean",
+      "oneOf": [
+        {
+          "const": 4,
+          "title": "Black-Caribbean"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - Black-Caribbean'"
+    },
+    "R0_EthnGroupPakistani": {
+      "title": "Participant considers themselves Pakistani",
+      "oneOf": [
+        {
+          "const": 5,
+          "title": "Pakistani"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - Pakistani'"
+    },
+    "R0_EthnGroupJSeph": {
+      "title": "Participant considers themselves Jewish-Sephardi",
+      "oneOf": [
+        {
+          "const": 6,
+          "title": "Jewish-Sephardi"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - Jewish-Sephardi'"
+    },
+    "R0_EthnGroupBlkAfr": {
+      "title": "Participant considers themselves Black-African",
+      "oneOf": [
+        {
+          "const": 7,
+          "title": "Black-African"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - Black-African'"
+    },
+    "R0_EthnGroupBngldsh": {
+      "title": "Participant considers themselves Bangladeshi",
+      "oneOf": [
+        {
+          "const": 8,
+          "title": "Bangladeshi"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - Bangladeshi'"
+    },
+    "R0_EthnGroupNone": {
+      "title": "Participant considers themselves none of these ethnicities",
+      "oneOf": [
+        {
+          "const": 9,
+          "title": "None of these"
+        },
+        {
+          "const": 13,
+          "title": "None of these - white and non-white"
+        },
+        {
+          "const": 14,
+          "title": "None of these - non-white (other)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - None of these'"
+    },
+    "R0_EthnGroupBlkOther": {
+      "title": "Participant considers themselves Black-Other",
+      "oneOf": [
+        {
+          "const": 10,
+          "title": "Black-Other"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - Black-Other'"
+    },
+    "R0_EthnGroupChinese": {
+      "title": "Participant considers themselves Chinese",
+      "oneOf": [
+        {
+          "const": 11,
+          "title": "Chinese"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "$comment": "Source question: 'To which ethnic group do you consider you belong? - Chinese'"
+    }
+  },
+  "required": [
+    "StudyID",
+    "R0_Surname",
+    "R0_FirstName",
+    "R0_OtherName",
+    "R0_AddressLineOne",
+    "R0_AddressLineTwo",
+    "R0_AddressLineThree",
+    "R0_AddressLineFour",
+    "R0_Postcode",
+    "R0_PhoneOne",
+    "R0_ExtOne",
+    "R0_PhoneTwo",
+    "R0_ExtTwo",
+    "R0_Email",
+    "R0_GP",
+    "R0_GPtown",
+    "R0_NHSnum",
+    "R0_CurOcup",
+    "R0_MaritalStatusOther",
+    "R0_PartnerOccup",
+    "R0_EthnGroupSelfDesc",
+    "R0_GPdk",
+    "R0_LeftEducAge",
+    "R0_AddrChanged",
+    "R0_DayEvnOne",
+    "R0_DayEvnTwo",
+    "R0_EmailYN",
+    "R0_Occupation",
+    "R0_MaritalStatus",
+    "R0_EthnGroup",
+    "R0_EthnGroupWhite",
+    "R0_EthnGroupIndian",
+    "R0_EthnGroupJAshk",
+    "R0_EthnGroupBlkCarib",
+    "R0_EthnGroupPakistani",
+    "R0_EthnGroupJSeph",
+    "R0_EthnGroupBlkAfr",
+    "R0_EthnGroupBngldsh",
+    "R0_EthnGroupNone",
+    "R0_EthnGroupBlkOther",
+    "R0_EthnGroupChinese"
+  ]
+}
