@@ -1,61 +1,61 @@
 variable,table,category,status,source,notes
-TCode,derived_variables,identity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_Ethnicity,derived_variables,ethnicity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AshkenaziAncestry,derived_variables,ethnicity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_Height20,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_Weight20,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_BMI20,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_Height,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_Weight,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_BMI,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_HighestWeight,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_HighestWeightAge,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_WaistCircum,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_HipCircum,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_WaistHipRatio,derived_variables,body_size,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeMenarche,derived_variables,menarche,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_OralContraceptiveStatus,derived_variables,contraceptive_use,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeStartedOC,derived_variables,contraceptive_use,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeLastUsedOC,derived_variables,contraceptive_use,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_OCLength,derived_variables,contraceptive_use,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_PregAt20,derived_variables,pregnancy_parity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_PregAtEntry,derived_variables,pregnancy_parity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_Parous,derived_variables,pregnancy_parity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_Parity,derived_variables,pregnancy_parity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeFFTP,derived_variables,pregnancy_parity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeLFTP,derived_variables,pregnancy_parity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_BreastfeedingDuration,derived_variables,pregnancy_parity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_Breastfed,derived_variables,pregnancy_parity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_BBD,derived_variables,breast_disease,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_DiabetesStatus,derived_variables,diabetes,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeDiabetes,derived_variables,diabetes,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_DiabetesInsulin,derived_variables,diabetes,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_Menopause,derived_variables,menopause_hrt,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeMenopause,derived_variables,menopause_hrt,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_MenopauseReason,derived_variables,menopause_hrt,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_HRTStatus,derived_variables,menopause_hrt,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_HRTStartAge,derived_variables,menopause_hrt,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_HRTStopAge,derived_variables,menopause_hrt,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_HRTDuration,derived_variables,menopause_hrt,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AlcoholStatus,derived_variables,alcohol,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeStartedDrinking,derived_variables,alcohol,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeStoppedDrinking,derived_variables,alcohol,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AlcoholUnitsPerWeek,derived_variables,alcohol,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_SmokingStatus,derived_variables,smoking_diet_activity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeStartedSmoking,derived_variables,smoking_diet_activity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_AgeStoppedSmoking,derived_variables,smoking_diet_activity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_CigsPerDay,derived_variables,smoking_diet_activity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_PackYears,derived_variables,smoking_diet_activity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_PhysicalActivity,derived_variables,smoking_diet_activity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_GreenVegDailyServings,derived_variables,smoking_diet_activity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FruitDailyServings,derived_variables,smoking_diet_activity,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistCancer,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistCancerNum,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistBC,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistBCNum,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistOV,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistOVNum,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistColo,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistColoNum,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistProst,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
-R0_FamHistProstNum,derived_variables,family_history,converted,Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/DerivedVariables_Schema.json,
+TCode,,identification,converted,DerivedVariables_Schema.json,"primary key candidate; 8-char pseudo-anon id, x-primaryKey in source"
+R0_Ethnicity,,demographics,converted,DerivedVariables_Schema.json,enum 1/2/3/4/9/null
+R0_AshkenaziAncestry,,demographics,converted,DerivedVariables_Schema.json,binary enum 0/1/null
+R0_PregAt20,,reproductive_hormonal,converted,DerivedVariables_Schema.json,enum 0/1/9999/null; 9999=NA
+R0_Height20,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number(0,320)"
+R0_Weight20,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number(0,500)"
+R0_BMI20,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number(0,165); calculated"
+R0_PregAtEntry,,reproductive_hormonal,converted,DerivedVariables_Schema.json,enum 0/1/null
+R0_Height,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/number(0,320); no 9999 branch here"
+R0_Weight,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/number(0,500); no 9999 branch here"
+R0_BMI,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number(0,165); calculated"
+R0_HighestWeight,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/number(0,700); no 9999 branch"
+R0_HighestWeightAge,,anthropometric,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_WaistCircum,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/number(0,350)"
+R0_HipCircum,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/number(0,350)"
+R0_WaistHipRatio,,anthropometric,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number(0,10); calculated"
+R0_AgeMenarche,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"oneOf null/integer(0,100)"
+R0_OralContraceptiveStatus,,reproductive_hormonal,converted,DerivedVariables_Schema.json,enum 0/1/2/null
+R0_AgeStartedOC,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number(0,120)"
+R0_AgeLastUsedOC,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number(0,120)"
+R0_OCLength,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number[0,120)"
+R0_Parous,,reproductive_hormonal,converted,DerivedVariables_Schema.json,enum -1/0/1/9/null
+R0_Parity,,reproductive_hormonal,converted,DerivedVariables_Schema.json,oneOf null/integer>=0
+R0_AgeFFTP,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number(0,120)"
+R0_AgeLFTP,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number(0,120)"
+R0_BreastfeedingDuration,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"oneOf null/9999-NA/number[0,1300)"
+R0_Breastfed,,reproductive_hormonal,converted,DerivedVariables_Schema.json,enum 0/1/9999/null
+R0_BBD,,medical_history,converted,DerivedVariables_Schema.json,enum 0/1/null
+R0_DiabetesStatus,,medical_history,converted,DerivedVariables_Schema.json,enum 0/1/null
+R0_AgeDiabetes,,medical_history,converted,DerivedVariables_Schema.json,"integer/null, minimum 0; retained only if R0_DiabetesStatus=1 per x-description"
+R0_DiabetesInsulin,,medical_history,converted,DerivedVariables_Schema.json,enum 0/1/null
+R0_Menopause,,reproductive_hormonal,converted,DerivedVariables_Schema.json,enum 1/2/3/4/9/null
+R0_AgeMenopause,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_MenopauseReason,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"enum 1-19/null, 19 levels"
+R0_HRTStatus,,reproductive_hormonal,converted,DerivedVariables_Schema.json,enum 0/1/2/null
+R0_HRTStartAge,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_HRTStopAge,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_HRTDuration,,reproductive_hormonal,converted,DerivedVariables_Schema.json,"number/null, minimum 0; calculated from HRTStartAge/StopAge"
+R0_AlcoholStatus,,behavioral,converted,DerivedVariables_Schema.json,enum 0/1/2/null
+R0_AgeStartedDrinking,,behavioral,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_AgeStoppedDrinking,,behavioral,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_AlcoholUnitsPerWeek,,behavioral,converted,DerivedVariables_Schema.json,"number/null, minimum 0"
+R0_SmokingStatus,,behavioral,converted,DerivedVariables_Schema.json,enum 0/1/2/null
+R0_AgeStartedSmoking,,behavioral,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_AgeStoppedSmoking,,behavioral,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_CigsPerDay,,behavioral,converted,DerivedVariables_Schema.json,"number/null, minimum 0"
+R0_PackYears,,behavioral,converted,DerivedVariables_Schema.json,"number/null, minimum 0; calculated"
+R0_PhysicalActivity,,behavioral,converted,DerivedVariables_Schema.json,"number/null, minimum 0; MET-hours/week, long x-description with per-domain formula"
+R0_GreenVegDailyServings,,behavioral,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_FruitDailyServings,,behavioral,converted,DerivedVariables_Schema.json,"integer/null, minimum 0"
+R0_FamHistCancer,,family_history,converted,DerivedVariables_Schema.json,"enum 0/1/null; x-derivedFrom points to legacy SAS scripts, not other schema fields"
+R0_FamHistCancerNum,,family_history,converted,DerivedVariables_Schema.json,"integer/null, minimum 0; legacy SAS derivation"
+R0_FamHistBC,,family_history,converted,DerivedVariables_Schema.json,enum 0/1/null; legacy SAS derivation
+R0_FamHistBCNum,,family_history,converted,DerivedVariables_Schema.json,"integer/null, minimum 0; legacy SAS derivation"
+R0_FamHistOV,,family_history,converted,DerivedVariables_Schema.json,enum 0/1/null; legacy SAS derivation
+R0_FamHistOVNum,,family_history,converted,DerivedVariables_Schema.json,"integer/null, minimum 0; legacy SAS derivation"
+R0_FamHistColo,,family_history,converted,DerivedVariables_Schema.json,enum 0/1/null; legacy SAS derivation
+R0_FamHistColoNum,,family_history,converted,DerivedVariables_Schema.json,"integer/null, minimum 0; legacy SAS derivation"
+R0_FamHistProst,,family_history,converted,DerivedVariables_Schema.json,enum 0/1/null; legacy SAS derivation
+R0_FamHistProstNum,,family_history,converted,DerivedVariables_Schema.json,"integer/null, minimum 0; legacy SAS derivation"

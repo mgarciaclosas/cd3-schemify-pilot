@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-bgs-pilot/derived_variables/categories/medical_history.json",
+  "title": "DERIVED_VARIABLES — Medical History",
+  "description": "Benign breast disease and diabetes history derived from the baseline questionnaire.",
+  "type": "object",
+  "x-variable-group": "medical_history",
+  "properties": {
+    "R0_BBD": {
+      "title": "History of benign breast disease.",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No"
+        },
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Set to 1 if any of the following are present in the BreastDisease section: (a) the direct question on benign breast disease/abnormality is answered 'Yes' (R0_BBD_Abnormality=1); (b) at least one episode is recorded with a type (R0_BBD_Type) or a coded procedure (R0_BBD_ProcedureType); (c) any 'extra' procedure flags indicate biopsy, part/lump removed, whole breast removed, both breasts removed, or other (R0_BBD_Biopsy/Lump/Mastec/BothRem/Other = 1); (d) 'further' or 'more than 4' boxes are ticked (R0_BBD_Further=1 or R0_BBD_MoreThan4=1). Set to 0 if the direct question is 'No' (R0_BBD_Abnormality=2) and no other evidence is present. Otherwise, null.",
+      "$comment": "Former name: brbendis."
+    },
+    "R0_DiabetesStatus": {
+      "title": "Diabetes diagnosis status at baseline.",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No"
+        },
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Questionnaire self-report of doctor diagnosis prior to R0.",
+      "$comment": "Former name: illnessdiabetes. Triggers R004 (D029)."
+    },
+    "R0_AgeDiabetes": {
+      "title": "Age at diabetes diagnosis (years).",
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Taken directly from questionnaire variable, otherwise unknown (only retained if R0_DiabetesStatus=1).",
+      "$comment": "Former name: illnessdiabetesage. Rule R004 applies: -999 unless R0_DiabetesStatus = 1 (D029)."
+    },
+    "R0_DiabetesInsulin": {
+      "title": "Whether diabetes was treated with insulin at baseline.",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No"
+        },
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Taken directly from questionnaire variable, otherwise unknown.",
+      "$comment": "Former name: illnessdiabetesinsulin."
+    }
+  },
+  "required": [
+    "R0_BBD",
+    "R0_DiabetesStatus",
+    "R0_AgeDiabetes",
+    "R0_DiabetesInsulin"
+  ]
+}

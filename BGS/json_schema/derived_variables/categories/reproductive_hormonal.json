@@ -1,0 +1,472 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-bgs-pilot/derived_variables/categories/reproductive_hormonal.json",
+  "title": "DERIVED_VARIABLES — Reproductive/Hormonal",
+  "description": "Pregnancy, menarche, oral contraceptive use, births and breastfeeding, menopause and menopausal hormone treatment derived from the baseline questionnaire.",
+  "type": "object",
+  "x-variable-group": "reproductive_hormonal",
+  "properties": {
+    "R0_PregAt20": {
+      "title": "Whether the participant was pregnant at any point while 20 years old.",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No"
+        },
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Derived on the shifted timeline using mailing DOB (shifted) and pregnancy episodes. Compute the age-20 window as [DOB+20y, DOB+21y). For each pregnancy episode, form an interval [end - duration, end] where end = R0_PregnancyEndDate (shifted). Duration comes from R0_Preg_DurationWks when present; if missing and outcome indicates a term pregnancy (e.g., live birth / stillbirth categories), assume 40 weeks; otherwise skip the episode. If any episode overlaps the age-20 window, set 1. If AgeEntry < 20, set 9999 (NA). If R0_CurrentPreg == 1 and AgeEntry == 20, set 1. Value is 9999 (NA) if participant was not yet 20 at baseline.",
+      "$comment": "Triggers R001 (D022). 9999 (source: participant not yet 20 at baseline) is not itself tied to a rule."
+    },
+    "R0_PregAtEntry": {
+      "title": "Flag whether the participant was pregnant at baseline.",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No"
+        },
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Using questionnaire question R0_CurrentPreg to flag if participant was pregnant at baseline.",
+      "$comment": "Triggers R002 (D023). Dictionary defect: the derivation notebook copies R0_CurrentPreg unchanged (0 = more than one option chosen, 1 = Yes, 2 = No, 3 = Not sure; default 2), but this schema declares 0 = No, 1 = Yes, so delivered data may carry 2 or 3 (D037)."
+    },
+    "R0_AgeMenarche": {
+      "title": "Age at first period (menarche), in whole years.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 100
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Logic: (1) If Ever had periods = No (R0_EverHadPeriods=2), set null. (2) Otherwise use the reported first-period age (R0_FirstPeriodAge).",
+      "$comment": "Former name: menarcheage."
+    },
+    "R0_OralContraceptiveStatus": {
+      "title": "Whether the participant was using oral contraceptives at baseline.",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "Never"
+        },
+        {
+          "const": 1,
+          "title": "Former"
+        },
+        {
+          "const": 2,
+          "title": "Current"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Derived from pill episodes and age at entry. CURRENT (2) if any ContracepPill episode covers age at entry (StartAge ≤ AgeEntry ≤ StopAge) or if CurrentUse=1 on any episode; FORMER (1) if any prior use but no episode covers entry; NEVER (0) if no pill use. Null if insufficient info.",
+      "$comment": "Former name: ocstatus."
+    },
+    "R0_AgeStartedOC": {
+      "title": "Age first used oral contraceptives.",
+      "anyOf": [
+        {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 120
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Earliest start age across ContracepPill episodes. Null if never used or no valid start ages.",
+      "$comment": "Former name: oc1age. 9999 has no stated trigger in the source, so no rule is attached (D016)."
+    },
+    "R0_AgeLastUsedOC": {
+      "title": "Age last used oral contraceptives.",
+      "anyOf": [
+        {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 120
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "For former users, latest stop age across ContracepPill episodes that end on/before entry; for current, take age at entry, or never, null.",
+      "$comment": "Former name: ocLage. 9999 has no stated trigger in the source, so no rule is attached (D016)."
+    },
+    "R0_OCLength": {
+      "title": "Total duration of oral contraceptive use (years).",
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 120
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Merge overlapping ContracepPill episodes; sum (min(StopAge, AgeEntry) - StartAge) across merged spans, floor negatives at 0; treat ongoing episodes (missing StopAge or CurrentUse=1) as ending at AgeEntry. Round to 1 dp. Null if insufficient info; 0 if never used.",
+      "$comment": "Former name: oclength. 9999 has no stated trigger in the source, so no rule is attached (D016)."
+    },
+    "R0_Parous": {
+      "title": "Parity status at baseline.",
+      "oneOf": [
+        {
+          "const": -1,
+          "title": "Never pregnant"
+        },
+        {
+          "const": 0,
+          "title": "Nulliparous (ever pregnant but no live birth before entry)"
+        },
+        {
+          "const": 1,
+          "title": "Parous (at least one pregnancy with a live birth before entry)"
+        },
+        {
+          "const": 9,
+          "title": "Ever pregnant but parity unknown (e.g. only pregnancies with unknown outcome or incomplete episode data)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Using questionnaire responses (R0_EverPregnant and R0_TotalPregnancies) and the pregnancy episodes table: (1) Parous (1) if any pregnancy has a live-birth outcome (e.g. singleton live, multiple with ≥1 liveborn; outcome codes 1, 2, 3, 5, 10). (2) Nulliparous (0) if there is evidence of pregnancies but no live-birth outcomes and no pregnancies with unknown outcome (14). (3) Never pregnant (-1) if questionnaire data indicate no pregnancies and there are no pregnancy episodes. (4) Ever pregnant, parity unknown (9) if there is evidence of pregnancies but no live-birth outcomes and at least one pregnancy with unknown outcome or if the pregnancy table is empty but the questionnaire suggests pregnancies. Null if pregnancy information is entirely missing or internally inconsistent.",
+      "$comment": "Former name: pregparous. Codes -1 and 9 are substantive levels, not sentinels. Triggers R003 (D024)."
+    },
+    "R0_Parity": {
+      "title": "Number of live-birth pregnancies at baseline.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Count of pregnancies with a live-birth outcome (each pregnancy counts once; multiple births still count as 1 pregnancy). Excludes miscarriages, terminations, ectopic, stillbirth, molar, and unknown outcomes.",
+      "$comment": "Former name: pregparitycnt."
+    },
+    "R0_AgeFFTP": {
+      "title": "Age at first full term pregnancy (years).",
+      "anyOf": [
+        {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 120
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Computed from the participant's DOB and the earliest pregnancy end date among live-birth pregnancies: whole years at the date of that birth (subtract 1 if the birthday in that calendar year had not yet occurred). 9999 (NA) if no live-birth pregnancies or dates.",
+      "$comment": "Former name: preg1birthage. Skip rule R003 applies; the source also gives 9999 for missing dates, so no applicability half (D024)."
+    },
+    "R0_AgeLFTP": {
+      "title": "Age at last full term pregnancy (years).",
+      "anyOf": [
+        {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 120
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Same calculation as age at first birth, but using the latest pregnancy end date among live-birth pregnancies. 9999 (NA) if no live-birth pregnancies or dates.",
+      "$comment": "Former name: pregLbirthage. Skip rule R003 applies; the source also gives 9999 for missing dates, so no applicability half (D024)."
+    },
+    "R0_BreastfeedingDuration": {
+      "title": "Total weeks of breastfeeding across live-birth pregnancies.",
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 1300
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Sum breastfeeding duration reported per live-birth pregnancy (weeks). 9999 (NA) non-live-birth pregnancies. Null if no breastfeeding information is available.",
+      "$comment": "Former name: pregbfwks. Rule R003 applies (skip and applicability, D024)."
+    },
+    "R0_Breastfed": {
+      "title": "Whether the participant has ever breastfed.",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No"
+        },
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Set to 1 if the summed breastfeeding duration across live-birth pregnancies is > 0 months; 0 if explicitly reported as 0 weeks across all live-birth pregnancies; null if there is no breastfeeding information: 9999 (NA) if never a live-birth.",
+      "$comment": "Former name: pregbf. Rule R003 applies (skip and applicability, D024)."
+    },
+    "R0_Menopause": {
+      "title": "Menopausal status at baseline.",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Postmenopausal"
+        },
+        {
+          "const": 2,
+          "title": "Premenopausal"
+        },
+        {
+          "const": 3,
+          "title": "Assumed postmenopausal"
+        },
+        {
+          "const": 4,
+          "title": "Assumed premenopausal"
+        },
+        {
+          "const": 9,
+          "title": "Never had periods"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Variable uses questionnaire variable.",
+      "$comment": "Former name: R1menopause. Level 9 is a substantive level, not a sentinel."
+    },
+    "R0_AgeMenopause": {
+      "title": "Age at menopause (years).",
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Uses questionnaire variable as best answer, or if no answer available, variable takes into account reported operations, cancer treatments, HRT and OC use. Assumed age 51 years when menopause is masked by hysterectomy or HRT use.",
+      "$comment": "Former name: age_menopause."
+    },
+    "R0_MenopauseReason": {
+      "title": "Reason periods stopped.",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Natural"
+        },
+        {
+          "const": 2,
+          "title": "Surgery (bilateral oophorectomy)"
+        },
+        {
+          "const": 3,
+          "title": "Surgery (hysterectomy only)"
+        },
+        {
+          "const": 4,
+          "title": "Surgery (type not known)"
+        },
+        {
+          "const": 5,
+          "title": "Chemotherapy, radiotherapy, or other cancer treatment"
+        },
+        {
+          "const": 6,
+          "title": "Does not know reason for stopping"
+        },
+        {
+          "const": 7,
+          "title": "Other reported reason"
+        },
+        {
+          "const": 8,
+          "title": "Not known: on hormones"
+        },
+        {
+          "const": 9,
+          "title": "Not known: on HRT"
+        },
+        {
+          "const": 10,
+          "title": "Not known: stress"
+        },
+        {
+          "const": 11,
+          "title": "Premenopausal: breastfeeding or pregnant"
+        },
+        {
+          "const": 12,
+          "title": "Perimenopausal"
+        },
+        {
+          "const": 13,
+          "title": "Natural menopause while on HRT or OC"
+        },
+        {
+          "const": 14,
+          "title": "Eating disorder or low weight"
+        },
+        {
+          "const": 15,
+          "title": "Illness"
+        },
+        {
+          "const": 16,
+          "title": "Premenopausal"
+        },
+        {
+          "const": 17,
+          "title": "Status not known"
+        },
+        {
+          "const": 18,
+          "title": "Surgery, but not oophorectomy or hysterectomy"
+        },
+        {
+          "const": 19,
+          "title": "Never had periods"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Uses questionnaire variable. If no other information given then answer unknown.",
+      "$comment": "Former name: menopause_reason."
+    },
+    "R0_HRTStatus": {
+      "title": "Menopausal hormone treatment status at baseline.",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "Never"
+        },
+        {
+          "const": 1,
+          "title": "Former"
+        },
+        {
+          "const": 2,
+          "title": "Current"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "From HRT episode array: any prior but stopped = Former; active at R0 (stop missing or after EntryDate) = Current; none = Never.",
+      "$comment": "Former name: hrtstatus."
+    },
+    "R0_HRTStartAge": {
+      "title": "Age started menopausal hormone treatment.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Earliest HRT start across episodes as given in the questionnaire.",
+      "$comment": "Former name: hrt1age."
+    },
+    "R0_HRTStopAge": {
+      "title": "Age stopped menopausal hormone treatment.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Latest HRT stop across episodes as given in the questionnaire.",
+      "$comment": "Former name: hrtlage."
+    },
+    "R0_HRTDuration": {
+      "title": "Total duration of menopausal hormone treatment (years).",
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/missing_numeric"
+        }
+      ],
+      "x-derivation": "Sum merged HRT episodes (stop - start)/365.25. If overlapping, does not duplicate overlapping time. Only includes periods before recruitment, not estimating open ended times occurring during entry date.",
+      "$comment": "Former name: hrtlength."
+    }
+  },
+  "required": [
+    "R0_PregAt20",
+    "R0_PregAtEntry",
+    "R0_AgeMenarche",
+    "R0_OralContraceptiveStatus",
+    "R0_AgeStartedOC",
+    "R0_AgeLastUsedOC",
+    "R0_OCLength",
+    "R0_Parous",
+    "R0_Parity",
+    "R0_AgeFFTP",
+    "R0_AgeLFTP",
+    "R0_BreastfeedingDuration",
+    "R0_Breastfed",
+    "R0_Menopause",
+    "R0_AgeMenopause",
+    "R0_MenopauseReason",
+    "R0_HRTStatus",
+    "R0_HRTStartAge",
+    "R0_HRTStopAge",
+    "R0_HRTDuration"
+  ],
+  "$comment": "Soft checks: R0_Parity should be 0 when R0_Parous is -1 or 0; R0_AgeFFTP should not exceed R0_AgeLFTP; R0_AgeStartedOC should not exceed R0_AgeLastUsedOC; R0_HRTStartAge should not exceed R0_HRTStopAge; R0_OCLength and R0_HRTDuration should be consistent with their start and stop ages (D026)."
+}
