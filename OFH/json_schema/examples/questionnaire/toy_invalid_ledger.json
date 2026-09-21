@@ -1,55 +1,2518 @@
 {
-  "$comment": "Ground truth for questionnaire/toy_invalid.json. No skip-break/applicability-break: no if/then routing rules written for this table. No duplicate-row: validate.py fixtures checks rows independently, never array-level uniqueItems; verified separately.",
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column. Every rule id R001-R012, R013-R038, R039-R092, R096-R098 and R099-R104 and R121-R139, R140-R155 and R156-R173 (the reproductive history rules are all sex-gated across tables, D011) has its skip and applicability breaks (R002 and R004 are one-directional 'routing' rules whose skip half is R001's and R003's, so they carry a routing-break each).",
   "rowIndexBase": 0,
   "violations": [
     {
       "row": 0,
       "column": "DEMOG_HEIGHT_1_1",
-      "kind": "wrong-type",
-      "value": "tall",
-      "reason": "must be a number"
+      "kind": "skip-break",
+      "reason": "R001: unit -1 (did not know) but a height was recorded (must be -998)"
     },
     {
       "row": 1,
-      "column": "EDU_COMP_AGE_1_1",
-      "kind": "unknown-level",
-      "value": 999,
-      "reason": "999 is not a declared code in the source's coding table"
+      "column": "DEMOG_HEIGHT_1_1",
+      "kind": "skip-break",
+      "reason": "R001: unit -3 (prefer not to provide) but a height was recorded (must be -998)"
     },
     {
       "row": 2,
       "column": "DEMOG_HEIGHT_1_1",
-      "kind": "range-break",
-      "value": 999,
-      "reason": "above plausibility max 300"
+      "kind": "applicability-break",
+      "reason": "R001: entered in the first unit but the height is the not-shown code"
     },
     {
       "row": 3,
-      "column": "SKIP_PHQ9_GAD7_1_1",
-      "kind": "invented-sentinel",
-      "value": -999,
-      "reason": "-999 (suppressed) is not defined for SKIP_PHQ9_GAD7_1_1 in the source; it only defines 0/1"
+      "column": "DEMOG_HEIGHT_1_1",
+      "kind": "routing-break",
+      "reason": "R002: entered in the second unit but the height is the not-shown code"
     },
     {
       "row": 4,
       "column": "DEMOG_WEIGHT_1_1",
-      "kind": "missing-key",
-      "value": null,
-      "reason": "column omitted -- every property is required"
+      "kind": "skip-break",
+      "reason": "R003: unit -1 (did not know) but a weight was recorded (must be -998)"
     },
     {
       "row": 5,
-      "column": "SHOE_SIZE",
-      "kind": "undeclared-column",
-      "value": 8,
-      "reason": "not in the source dictionary; rejected by unevaluatedProperties"
+      "column": "DEMOG_WEIGHT_1_1",
+      "kind": "skip-break",
+      "reason": "R003: unit -3 (prefer not to provide) but a weight was recorded (must be -998)"
     },
     {
       "row": 6,
+      "column": "DEMOG_WEIGHT_1_1",
+      "kind": "applicability-break",
+      "reason": "R003: entered in the first unit but the weight is the not-shown code"
+    },
+    {
+      "row": 7,
+      "column": "DEMOG_WEIGHT_1_1",
+      "kind": "routing-break",
+      "reason": "R004: entered in the second unit but the weight is the not-shown code"
+    },
+    {
+      "row": 8,
+      "column": "DEMOG_RELATSH_MARR_CURR_1_1",
+      "kind": "skip-break",
+      "reason": "R005: status outside [2, 4] but DEMOG_RELATSH_MARR_CURR_1_1 answered (must be -998)"
+    },
+    {
+      "row": 9,
+      "column": "DEMOG_RELATSH_MARR_CURR_1_1",
+      "kind": "applicability-break",
+      "reason": "R005: status in [2, 4] but DEMOG_RELATSH_MARR_CURR_1_1 is the not-shown code"
+    },
+    {
+      "row": 10,
+      "column": "DEMOG_RELATSH_CIVIL_CURR_1_1",
+      "kind": "skip-break",
+      "reason": "R006: status outside [3, 5] but DEMOG_RELATSH_CIVIL_CURR_1_1 answered (must be -998)"
+    },
+    {
+      "row": 11,
+      "column": "DEMOG_RELATSH_CIVIL_CURR_1_1",
+      "kind": "applicability-break",
+      "reason": "R006: status in [3, 5] but DEMOG_RELATSH_CIVIL_CURR_1_1 is the not-shown code"
+    },
+    {
+      "row": 12,
+      "column": "DEMOG_RELATSH_MARR_PREV_1_1",
+      "kind": "skip-break",
+      "reason": "R007: status outside [6, 8] but DEMOG_RELATSH_MARR_PREV_1_1 answered (must be -998)"
+    },
+    {
+      "row": 13,
+      "column": "DEMOG_RELATSH_MARR_PREV_1_1",
+      "kind": "applicability-break",
+      "reason": "R007: status in [6, 8] but DEMOG_RELATSH_MARR_PREV_1_1 is the not-shown code"
+    },
+    {
+      "row": 14,
+      "column": "DEMOG_RELATSH_CIVIL_PREV_1_1",
+      "kind": "skip-break",
+      "reason": "R008: status outside [7, 9] but DEMOG_RELATSH_CIVIL_PREV_1_1 answered (must be -998)"
+    },
+    {
+      "row": 15,
+      "column": "DEMOG_RELATSH_CIVIL_PREV_1_1",
+      "kind": "applicability-break",
+      "reason": "R008: status in [7, 9] but DEMOG_RELATSH_CIVIL_PREV_1_1 is the not-shown code"
+    },
+    {
+      "row": 16,
+      "column": "HOUSING_TENURE_1_1",
+      "kind": "skip-break",
+      "reason": "R009: sheltered accommodation but tenure answered (must be -998)"
+    },
+    {
+      "row": 17,
+      "column": "HOUSING_TENURE_1_1",
+      "kind": "skip-break",
+      "reason": "R009: care home but tenure answered (must be -998)"
+    },
+    {
+      "row": 18,
+      "column": "HOUSING_TENURE_1_1",
+      "kind": "applicability-break",
+      "reason": "R009: asked accommodation type but tenure is the not-shown code"
+    },
+    {
+      "row": 19,
+      "column": "HOUSING_PEOPLE_RELATE_1_M",
+      "kind": "skip-break",
+      "reason": "R010: household of one but relationships answered (must be [-998])"
+    },
+    {
+      "row": 20,
+      "column": "HOUSING_PEOPLE_RELATE_1_M",
+      "kind": "applicability-break",
+      "reason": "R010: household of two but relationships are the not-shown array"
+    },
+    {
+      "row": 21,
+      "column": "HOUSING_PEOPLE_RELATE_1_M",
+      "kind": "applicability-break",
+      "reason": "R010: household size unknown but relationships are the not-shown array"
+    },
+    {
+      "row": 22,
+      "column": "DEMOG_LANGUAGE_1_1",
+      "kind": "wrong-type",
+      "reason": "language code given as a string"
+    },
+    {
+      "row": 23,
+      "column": "DEMOG_LANGUAGE_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown"
+    },
+    {
+      "row": 24,
+      "column": "HOUSING_TYPE_1_1",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared code"
+    },
+    {
+      "row": 25,
+      "column": "DEMOG_TRANSGENDER_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-1 is not a code this variable defines"
+    },
+    {
+      "row": 26,
+      "column": "HOUSING_PEOPLE_1_1",
+      "kind": "wrong-type",
+      "reason": "a person count must be an integer"
+    },
+    {
+      "row": 27,
+      "column": "HOUSING_PEOPLE_RELATE_1_M",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared relationship code"
+    },
+    {
+      "row": 28,
+      "column": "HOUSING_VEHICLES_1_1",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 29,
+      "column": "SHOE_SIZE",
+      "kind": "undeclared-column",
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
+    },
+    {
+      "row": 30,
+      "column": "ID",
+      "kind": "wrong-type",
+      "reason": "the response identifier must be a string"
+    },
+    {
+      "row": 31,
       "column": "SUBMISSION_DATE",
-      "kind": "pattern-break",
-      "value": "15/01/2026",
-      "reason": "must match ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$ (assumed ISO 8601)"
+      "kind": "wrong-type",
+      "reason": "the submission date must be a string"
+    },
+    {
+      "row": 32,
+      "column": "QUESTIONNAIRE_VERSION",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 33,
+      "column": "PID",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 34,
+      "column": "WORK_YRS_1_1",
+      "kind": "skip-break",
+      "reason": "R011: only 'retired' selected but years in job answered (must be -998)"
+    },
+    {
+      "row": 35,
+      "column": "WORK_TRANSPORT_1_M",
+      "kind": "skip-break",
+      "reason": "R011: only 'unable to work' selected but transport answered (must be [-998])"
+    },
+    {
+      "row": 36,
+      "column": "WORK_SHIFTS_1_1",
+      "kind": "skip-break",
+      "reason": "R011: only 'student' selected but the shifts question answered (must be -998)"
+    },
+    {
+      "row": 37,
+      "column": "WORK_YRS_1_1",
+      "kind": "applicability-break",
+      "reason": "R011: in paid employment but years in job is the not-shown code"
+    },
+    {
+      "row": 38,
+      "column": "WORK_TRANSPORT_1_M",
+      "kind": "applicability-break",
+      "reason": "R011: looking after home selected but transport is the not-shown array"
+    },
+    {
+      "row": 39,
+      "column": "WORK_MANUAL_LABOUR_1_1",
+      "kind": "applicability-break",
+      "reason": "R011: unpaid work selected but manual labour is the not-shown code"
+    },
+    {
+      "row": 40,
+      "column": "WORK_NIGHTS_1_1",
+      "kind": "skip-break",
+      "reason": "R012: never or rarely works shifts but night shifts answered (must be -998)"
+    },
+    {
+      "row": 41,
+      "column": "WORK_NIGHTS_1_1",
+      "kind": "skip-break",
+      "reason": "R012: outside the work-status group but night shifts answered (must be -998)"
+    },
+    {
+      "row": 42,
+      "column": "WORK_NIGHTS_1_1",
+      "kind": "applicability-break",
+      "reason": "R012: works shifts sometimes but night shifts is the not-shown code"
+    },
+    {
+      "row": 43,
+      "column": "EDU_COMP_AGE_2_1",
+      "kind": "wrong-type",
+      "reason": "age given as a string"
+    },
+    {
+      "row": 44,
+      "column": "WORK_MANUAL_LABOUR_1_1",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared code"
+    },
+    {
+      "row": 45,
+      "column": "HOUSING_INCOME_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown"
+    },
+    {
+      "row": 46,
+      "column": "EDU_QUAL_1_M",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared qualification code"
+    },
+    {
+      "row": 47,
+      "column": "EDU_QUAL_1_M",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown"
+    },
+    {
+      "row": 48,
+      "column": "WORK_WK_HRS_1_1",
+      "kind": "wrong-type",
+      "reason": "weekly hours must be an integer"
+    },
+    {
+      "row": 49,
+      "column": "HOUSING_INCOME_1_1",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 50,
+      "column": "SMOKE_TOBACCO_AGE_1_1",
+      "kind": "skip-break",
+      "reason": "R019: never used cigarettes but the age first smoked is answered (must be -998)"
+    },
+    {
+      "row": 51,
+      "column": "SMOKE_100_TIMES_2_1",
+      "kind": "skip-break",
+      "reason": "R019: never used cigarettes but the occasions question is answered (must be -998)"
+    },
+    {
+      "row": 52,
+      "column": "SMOKE_TOBACCO_AGE_1_1",
+      "kind": "applicability-break",
+      "reason": "R019: has used cigarettes but the age first smoked is the not-shown code"
+    },
+    {
+      "row": 53,
+      "column": "SMOKE_100_TIMES_2_1",
+      "kind": "applicability-break",
+      "reason": "R019: has used cigarettes but the occasions answer is the not-shown code"
+    },
+    {
+      "row": 54,
+      "column": "SMOKE_VAPE_USE_2_1",
+      "kind": "skip-break",
+      "reason": "R020: never used an electronic device but the first-use situation is answered (must be -998)"
+    },
+    {
+      "row": 55,
+      "column": "SMOKE_VAPE_AGE_2_1",
+      "kind": "skip-break",
+      "reason": "R020: never used an electronic device but the age first vaped is answered (must be -998)"
+    },
+    {
+      "row": 56,
+      "column": "SMOKE_VAPE_AGE_2_1",
+      "kind": "applicability-break",
+      "reason": "R020: has used an electronic device but the age first vaped is the not-shown code"
+    },
+    {
+      "row": 57,
+      "column": "SMOKE_VAPE_USE_2_1",
+      "kind": "applicability-break",
+      "reason": "R020: has used an electronic device but the first-use situation is the not-shown code"
+    },
+    {
+      "row": 58,
+      "column": "SMOKE_REG_1_M",
+      "kind": "skip-break",
+      "reason": "R021: has used none of the products but regular use is answered (must be [-998])"
+    },
+    {
+      "row": 59,
+      "column": "SMOKE_REG_1_M",
+      "kind": "applicability-break",
+      "reason": "R021: has used a product but regular use is the not-shown array"
+    },
+    {
+      "row": 60,
+      "column": "SMOKE_REG_1_M",
+      "kind": "applicability-break",
+      "reason": "R021: preferred not to say but regular use is the not-shown array"
+    },
+    {
+      "row": 61,
+      "column": "SMOKE_EXPOSURE_HRS_1_1",
+      "kind": "skip-break",
+      "reason": "R032: never around smoke but the hours answer is given (must be -998)"
+    },
+    {
+      "row": 62,
+      "column": "SMOKE_EXPOSURE_HRS_1_1",
+      "kind": "applicability-break",
+      "reason": "R032: around smoke every day but the hours answer is the not-shown code"
+    },
+    {
+      "row": 63,
+      "column": "SMOKE_REG_TYPE_2_1",
+      "kind": "skip-break",
+      "reason": "R022: used none of the products but the main cigarette type is answered (must be -998)"
+    },
+    {
+      "row": 64,
+      "column": "SMOKE_REG_TYPE_2_1",
+      "kind": "applicability-break",
+      "reason": "R022: regular cigarette smoker but the main cigarette type is the not-shown code"
+    },
+    {
+      "row": 65,
+      "column": "SMOKE_PREV_REG_2_1",
+      "kind": "skip-break",
+      "reason": "R023: smokes every day but the previously-smoked question is answered (must be -998)"
+    },
+    {
+      "row": 66,
+      "column": "SMOKE_PREV_REG_2_1",
+      "kind": "applicability-break",
+      "reason": "R023: smokes some days or rarely but the previously-smoked question is the not-shown code"
+    },
+    {
+      "row": 67,
+      "column": "SMOKE_AVG_2_1",
+      "kind": "skip-break",
+      "reason": "R024: never smoked most days but the average per day is answered (must be -998)"
+    },
+    {
+      "row": 68,
+      "column": "SMOKE_AVG_2_1",
+      "kind": "applicability-break",
+      "reason": "R024: smoked most days but the average per day is the not-shown code"
+    },
+    {
+      "row": 69,
+      "column": "SMOKE_REG_DAY_2_1",
+      "kind": "skip-break",
+      "reason": "R025: does not smoke every day but cigarettes per day is answered (must be -998)"
+    },
+    {
+      "row": 70,
+      "column": "SMOKE_REG_DAY_2_1",
+      "kind": "applicability-break",
+      "reason": "R025: smokes every day but cigarettes per day is the not-shown code"
+    },
+    {
+      "row": 71,
+      "column": "SMOKE_CHG_2_1",
+      "kind": "skip-break",
+      "reason": "R026: preferred not to say if they smoke but the 10-year comparison is answered (must be -998)"
+    },
+    {
+      "row": 72,
+      "column": "SMOKE_CHG_2_1",
+      "kind": "applicability-break",
+      "reason": "R026: has smoking to compare but the 10-year comparison is the not-shown code"
+    },
+    {
+      "row": 73,
+      "column": "SMOKE_CHG_REDUCE_REASON_2_M",
+      "kind": "skip-break",
+      "reason": "R027: does not smoke less but reasons for reducing are answered (must be [-998])"
+    },
+    {
+      "row": 74,
+      "column": "SMOKE_CHG_REDUCE_REASON_2_M",
+      "kind": "applicability-break",
+      "reason": "R027: smokes less but reasons for reducing are the not-shown array"
+    },
+    {
+      "row": 75,
+      "column": "SMOKE_CHG_REDUCE_ABST_REASON_1_M",
+      "kind": "skip-break",
+      "reason": "R028: never stopped for more than 6 months but the reason is answered (must be [-998])"
+    },
+    {
+      "row": 76,
+      "column": "SMOKE_CHG_REDUCE_ABST_REASON_1_M",
+      "kind": "applicability-break",
+      "reason": "R028: stopped for more than 6 months but the reason is the not-shown array"
+    },
+    {
+      "row": 77,
+      "column": "SMOKE_CHG_ABST_2_1",
+      "kind": "skip-break",
+      "reason": "R029: smokes less but the stopped-for-6-months question is answered (must be -998)"
+    },
+    {
+      "row": 78,
+      "column": "SMOKE_CHG_ABST_2_1",
+      "kind": "applicability-break",
+      "reason": "R029: smokes the same or more but the stopped-for-6-months question is the not-shown code"
+    },
+    {
+      "row": 79,
+      "column": "SMOKE_CHG_ABST_REASON_1_M",
+      "kind": "skip-break",
+      "reason": "R030: never stopped for more than 6 months but the reason is answered (must be [-998])"
+    },
+    {
+      "row": 80,
+      "column": "SMOKE_CHG_ABST_REASON_1_M",
+      "kind": "applicability-break",
+      "reason": "R030: stopped for more than 6 months but the reason is the not-shown array"
+    },
+    {
+      "row": 81,
+      "column": "SMOKE_VAPE_AVG_2_1",
+      "kind": "skip-break",
+      "reason": "R031: has not regularly used an electronic device but how often they vape is answered (must be -998)"
+    },
+    {
+      "row": 82,
+      "column": "SMOKE_VAPE_AVG_2_1",
+      "kind": "applicability-break",
+      "reason": "R031: has regularly used an electronic device but how often they vape is the not-shown code"
+    },
+    {
+      "row": 83,
+      "column": "SMOKE_STATUS_2_1",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared code"
+    },
+    {
+      "row": 84,
+      "column": "SMOKE_AVG_2_1",
+      "kind": "wrong-type",
+      "reason": "cigarettes per day must be an integer"
+    },
+    {
+      "row": 85,
+      "column": "SMOKE_STATUS_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-4 is not a code this variable defines"
+    },
+    {
+      "row": 86,
+      "column": "SMOKE_TOBACCO_TYPE_1_M",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared tobacco product code"
+    },
+    {
+      "row": 87,
+      "column": "SMOKE_HOUSE_1_1",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 88,
+      "column": "ACTIVITY_WALK_MINS_2_1",
+      "kind": "skip-break",
+      "reason": "R013: unable to walk but minutes walked is answered (must be -998)"
+    },
+    {
+      "row": 89,
+      "column": "ACTIVITY_STAIRS_1_1",
+      "kind": "skip-break",
+      "reason": "R013: unable to walk but the stairs question is answered (must be -998)"
+    },
+    {
+      "row": 90,
+      "column": "ACTIVITY_WALK_PACE_1_1",
+      "kind": "applicability-break",
+      "reason": "R013: walks 3 days but walking pace is the not-shown code"
+    },
+    {
+      "row": 91,
+      "column": "ACTIVITY_WALK_MINS_2_1",
+      "kind": "applicability-break",
+      "reason": "R013: did not know the number of days but minutes walked is the not-shown code"
+    },
+    {
+      "row": 92,
+      "column": "ACTIVITY_STAIRS_1_1",
+      "kind": "applicability-break",
+      "reason": "R013: preferred not to answer the days but the stairs question is the not-shown code"
+    },
+    {
+      "row": 93,
+      "column": "ACTIVITY_TYPE_WALK_1_1",
+      "kind": "skip-break",
+      "reason": "R014: no activity in the last 4 weeks but how often (walking for pleasure) is answered (must be -998)"
+    },
+    {
+      "row": 94,
+      "column": "ACTIVITY_TYPE_WALK_DUR_1_1",
+      "kind": "skip-break",
+      "reason": "R014: preferred not to say but how long (walking for pleasure) is answered (must be -998)"
+    },
+    {
+      "row": 95,
+      "column": "ACTIVITY_TYPE_WALK_1_1",
+      "kind": "applicability-break",
+      "reason": "R014: did walking for pleasure but how often is the not-shown code"
+    },
+    {
+      "row": 96,
+      "column": "ACTIVITY_TYPE_WALK_DUR_1_1",
+      "kind": "applicability-break",
+      "reason": "R014: did walking for pleasure but how long is the not-shown code"
+    },
+    {
+      "row": 97,
+      "column": "ACTIVITY_TYPE_EXERCISE_1_1",
+      "kind": "skip-break",
+      "reason": "R015: no activity in the last 4 weeks but how often (other exercises) is answered (must be -998)"
+    },
+    {
+      "row": 98,
+      "column": "ACTIVITY_TYPE_EXERCISE_DUR_1_1",
+      "kind": "skip-break",
+      "reason": "R015: preferred not to say but how long (other exercises) is answered (must be -998)"
+    },
+    {
+      "row": 99,
+      "column": "ACTIVITY_TYPE_EXERCISE_1_1",
+      "kind": "applicability-break",
+      "reason": "R015: did other exercises but how often is the not-shown code"
+    },
+    {
+      "row": 100,
+      "column": "ACTIVITY_TYPE_EXERCISE_DUR_1_1",
+      "kind": "applicability-break",
+      "reason": "R015: did other exercises but how long is the not-shown code"
+    },
+    {
+      "row": 101,
+      "column": "ACTIVITY_TYPE_STREN_1_1",
+      "kind": "skip-break",
+      "reason": "R016: no activity in the last 4 weeks but how often (strenuous sports) is answered (must be -998)"
+    },
+    {
+      "row": 102,
+      "column": "ACTIVITY_TYPE_STREN_DUR_1_1",
+      "kind": "skip-break",
+      "reason": "R016: preferred not to say but how long (strenuous sports) is answered (must be -998)"
+    },
+    {
+      "row": 103,
+      "column": "ACTIVITY_TYPE_STREN_1_1",
+      "kind": "applicability-break",
+      "reason": "R016: did strenuous sports but how often is the not-shown code"
+    },
+    {
+      "row": 104,
+      "column": "ACTIVITY_TYPE_STREN_DUR_1_1",
+      "kind": "applicability-break",
+      "reason": "R016: did strenuous sports but how long is the not-shown code"
+    },
+    {
+      "row": 105,
+      "column": "ACTIVITY_TYPE_DIY_LIGHT_1_1",
+      "kind": "skip-break",
+      "reason": "R017: no activity in the last 4 weeks but how often (light DIY) is answered (must be -998)"
+    },
+    {
+      "row": 106,
+      "column": "ACTIVITY_TYPE_DIY_LIGHT_DUR_1_1",
+      "kind": "skip-break",
+      "reason": "R017: preferred not to say but how long (light DIY) is answered (must be -998)"
+    },
+    {
+      "row": 107,
+      "column": "ACTIVITY_TYPE_DIY_LIGHT_1_1",
+      "kind": "applicability-break",
+      "reason": "R017: did light DIY but how often is the not-shown code"
+    },
+    {
+      "row": 108,
+      "column": "ACTIVITY_TYPE_DIY_LIGHT_DUR_1_1",
+      "kind": "applicability-break",
+      "reason": "R017: did light DIY but how long is the not-shown code"
+    },
+    {
+      "row": 109,
+      "column": "ACTIVITY_TYPE_DIY_HEAVY_1_1",
+      "kind": "skip-break",
+      "reason": "R018: no activity in the last 4 weeks but how often (heavy DIY) is answered (must be -998)"
+    },
+    {
+      "row": 110,
+      "column": "ACTIVITY_TYPE_DIY_HEAVY_DUR_1_1",
+      "kind": "skip-break",
+      "reason": "R018: preferred not to say but how long (heavy DIY) is answered (must be -998)"
+    },
+    {
+      "row": 111,
+      "column": "ACTIVITY_TYPE_DIY_HEAVY_1_1",
+      "kind": "applicability-break",
+      "reason": "R018: did heavy DIY but how often is the not-shown code"
+    },
+    {
+      "row": 112,
+      "column": "ACTIVITY_TYPE_DIY_HEAVY_DUR_1_1",
+      "kind": "applicability-break",
+      "reason": "R018: did heavy DIY but how long is the not-shown code"
+    },
+    {
+      "row": 113,
+      "column": "ACTIVITY_STAIRS_1_1",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared code"
+    },
+    {
+      "row": 114,
+      "column": "ACTIVITY_MOD_DAYS_2_1",
+      "kind": "wrong-type",
+      "reason": "days per week must be an integer"
+    },
+    {
+      "row": 115,
+      "column": "ACTIVITY_WALK_DAYS_2_1",
+      "kind": "range-break",
+      "reason": "8 days is outside the 0-7 range the logic file gives"
+    },
+    {
+      "row": 116,
+      "column": "ACTIVITY_TYPE_DIY_HEAVY_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-2 is not a code this variable defines",
+      "value": -2
+    },
+    {
+      "row": 117,
+      "column": "ACTIVITY_TYPE_1_M",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared activity code"
+    },
+    {
+      "row": 118,
+      "column": "ACTIVITY_TRANSPORT_1_M",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 119,
+      "column": "ALCOHOL_PREV_1_1",
+      "kind": "skip-break",
+      "reason": "R033: drinks daily but the previously-drank question is answered (must be -998)"
+    },
+    {
+      "row": 120,
+      "column": "ALCOHOL_PREV_1_1",
+      "kind": "applicability-break",
+      "reason": "R033: never drinks but the previously-drank question is the not-shown code"
+    },
+    {
+      "row": 121,
+      "column": "ALCOHOL_BEER_MTH_2_1",
+      "kind": "skip-break",
+      "reason": "R034: drinks daily but the monthly beer amount is answered (must be -998)"
+    },
+    {
+      "row": 122,
+      "column": "ALCOHOL_OTHER_MTH_2_1",
+      "kind": "skip-break",
+      "reason": "R034: never drinks but the monthly other-drinks amount is answered (must be -998)"
+    },
+    {
+      "row": 123,
+      "column": "ALCOHOL_WINE_RED_MTH_2_1",
+      "kind": "applicability-break",
+      "reason": "R034: drinks monthly but the monthly red wine amount is the not-shown code"
+    },
+    {
+      "row": 124,
+      "column": "ALCOHOL_SPIRITS_MTH_2_1",
+      "kind": "applicability-break",
+      "reason": "R034: drinks on special occasions but the monthly spirits amount is the not-shown code"
+    },
+    {
+      "row": 125,
+      "column": "ALCOHOL_BEER_WK_1_1",
+      "kind": "skip-break",
+      "reason": "R035: drinks monthly but the weekly beer amount is answered (must be -998)"
+    },
+    {
+      "row": 126,
+      "column": "ALCOHOL_WINE_FORT_WK_1_1",
+      "kind": "skip-break",
+      "reason": "R035: preferred not to say but the weekly fortified wine amount is answered (must be -998)"
+    },
+    {
+      "row": 127,
+      "column": "ALCOHOL_SPIRITS_WK_1_1",
+      "kind": "applicability-break",
+      "reason": "R035: drinks daily but the weekly spirits amount is the not-shown code"
+    },
+    {
+      "row": 128,
+      "column": "ALCOHOL_OTHER_WK_1_1",
+      "kind": "applicability-break",
+      "reason": "R035: drinks once or twice a week but the weekly other-drinks amount is the not-shown code"
+    },
+    {
+      "row": 129,
+      "column": "ALCOHOL_FOOD_1_1",
+      "kind": "skip-break",
+      "reason": "R036: never drinks but the with-meals question is answered (must be -998)"
+    },
+    {
+      "row": 130,
+      "column": "ALCOHOL_CHG_1_1",
+      "kind": "skip-break",
+      "reason": "R036: preferred not to say but the 10-year comparison is answered (must be -998)"
+    },
+    {
+      "row": 131,
+      "column": "ALCOHOL_FOOD_1_1",
+      "kind": "applicability-break",
+      "reason": "R036: drinks but the with-meals question is the not-shown code"
+    },
+    {
+      "row": 132,
+      "column": "ALCOHOL_CHG_1_1",
+      "kind": "applicability-break",
+      "reason": "R036: drinks but the 10-year comparison is the not-shown code"
+    },
+    {
+      "row": 133,
+      "column": "ALCOHOL_CHG_REDUCE_REASON_2_M",
+      "kind": "skip-break",
+      "reason": "R037: does not drink less but reasons for reducing are answered (must be [-998])"
+    },
+    {
+      "row": 134,
+      "column": "ALCOHOL_CHG_REDUCE_REASON_2_M",
+      "kind": "skip-break",
+      "reason": "R037: never drinks but reasons for reducing are answered (must be [-998])"
+    },
+    {
+      "row": 135,
+      "column": "ALCOHOL_CHG_REDUCE_REASON_2_M",
+      "kind": "applicability-break",
+      "reason": "R037: drinks less nowadays but reasons for reducing are the not-shown array"
+    },
+    {
+      "row": 136,
+      "column": "ALCOHOL_CHG_ABST_REASON_2_M",
+      "kind": "skip-break",
+      "reason": "R038: never drinks and did not previously drink but reasons for stopping are answered (must be [-998])"
+    },
+    {
+      "row": 137,
+      "column": "ALCOHOL_CHG_ABST_REASON_2_M",
+      "kind": "skip-break",
+      "reason": "R038: still drinks but reasons for stopping are answered (must be [-998])"
+    },
+    {
+      "row": 138,
+      "column": "ALCOHOL_CHG_ABST_REASON_2_M",
+      "kind": "applicability-break",
+      "reason": "R038: stopped drinking but reasons for stopping are the not-shown array"
+    },
+    {
+      "row": 139,
+      "column": "ALCOHOL_FOOD_1_1",
+      "kind": "unknown-level",
+      "reason": "5 is not a declared code"
+    },
+    {
+      "row": 140,
+      "column": "ALCOHOL_BEER_WK_1_1",
+      "kind": "wrong-type",
+      "reason": "pints per week must be an integer"
+    },
+    {
+      "row": 141,
+      "column": "ALCOHOL_CURR_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-1 is not a code this variable defines"
+    },
+    {
+      "row": 142,
+      "column": "ALCOHOL_CHG_REDUCE_REASON_2_M",
+      "kind": "unknown-level",
+      "reason": "99 is not a declared reason code",
+      "value": [
+        99
+      ]
+    },
+    {
+      "row": 143,
+      "column": "ALCOHOL_SPIRITS_MTH_1_1",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 144,
+      "column": "SLEEP_CHRONOTYPE_1_1",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared code"
+    },
+    {
+      "row": 145,
+      "column": "SLEEP_NAPPING_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-1 is not a code this variable defines"
+    },
+    {
+      "row": 146,
+      "column": "LIFESTYLE_DRIVE_HRS_1_1",
+      "kind": "wrong-type",
+      "reason": "hours must be an integer"
+    },
+    {
+      "row": 147,
+      "column": "SLEEP_HRS_1_1",
+      "kind": "wrong-type",
+      "reason": "hours of sleep must be an integer"
+    },
+    {
+      "row": 148,
+      "column": "LIFESTYLE_SOCIAL_REC_1_M",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared group code"
+    },
+    {
+      "row": 149,
+      "column": "LIFESTYLE_SOCIAL_REC_1_M",
+      "kind": "duplicate-item",
+      "reason": "the same option cannot be selected twice"
+    },
+    {
+      "row": 150,
+      "column": "SLEEP_WAKING_1_1",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 151,
+      "column": "SLEEP_HRS_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 152,
+      "column": "LIFESTYLE_DRIVE_HRS_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 153,
+      "column": "LIFESTYLE_SOCIAL_REC_1_M",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 154,
+      "column": "IMMIGRATE_UK_YR_1_1",
+      "kind": "skip-break",
+      "reason": "R039: IMMIGRATE_UK_YR_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 155,
+      "column": "IMMIGRATE_UK_YR_1_1",
+      "kind": "applicability-break",
+      "reason": "R039: IMMIGRATE_UK_YR_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 156,
+      "column": "FATHER_AGE_1_1",
+      "kind": "skip-break",
+      "reason": "R040: FATHER_AGE_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 157,
+      "column": "FATHER_AGE_1_1",
+      "kind": "applicability-break",
+      "reason": "R040: FATHER_AGE_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 158,
+      "column": "FATHER_AGE_DECEASED_1_1",
+      "kind": "skip-break",
+      "reason": "R041: FATHER_AGE_DECEASED_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 159,
+      "column": "FATHER_AGE_DECEASED_1_1",
+      "kind": "applicability-break",
+      "reason": "R041: FATHER_AGE_DECEASED_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 160,
+      "column": "FATHER_DIAG_AUTO_1_M",
+      "kind": "skip-break",
+      "reason": "R042: FATHER_DIAG_AUTO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 161,
+      "column": "FATHER_DIAG_AUTO_1_M",
+      "kind": "applicability-break",
+      "reason": "R042: FATHER_DIAG_AUTO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 162,
+      "column": "FATHER_DIAG_ANAEMIA_1_M",
+      "kind": "skip-break",
+      "reason": "R043: FATHER_DIAG_ANAEMIA_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 163,
+      "column": "FATHER_DIAG_ANAEMIA_1_M",
+      "kind": "applicability-break",
+      "reason": "R043: FATHER_DIAG_ANAEMIA_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 164,
+      "column": "FATHER_DIAG_CANCER_1_M",
+      "kind": "skip-break",
+      "reason": "R044: FATHER_DIAG_CANCER_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 165,
+      "column": "FATHER_DIAG_CANCER_1_M",
+      "kind": "applicability-break",
+      "reason": "R044: FATHER_DIAG_CANCER_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 166,
+      "column": "FATHER_DIAG_GASTRO_1_M",
+      "kind": "skip-break",
+      "reason": "R046: FATHER_DIAG_GASTRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 167,
+      "column": "FATHER_DIAG_GASTRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R046: FATHER_DIAG_GASTRO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 168,
+      "column": "FATHER_DIAG_ENDOCR_1_M",
+      "kind": "skip-break",
+      "reason": "R047: FATHER_DIAG_ENDOCR_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 169,
+      "column": "FATHER_DIAG_ENDOCR_1_M",
+      "kind": "applicability-break",
+      "reason": "R047: FATHER_DIAG_ENDOCR_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 170,
+      "column": "FATHER_DIAG_OPTHAL_1_M",
+      "kind": "skip-break",
+      "reason": "R048: FATHER_DIAG_OPTHAL_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 171,
+      "column": "FATHER_DIAG_OPTHAL_1_M",
+      "kind": "applicability-break",
+      "reason": "R048: FATHER_DIAG_OPTHAL_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 172,
+      "column": "FATHER_DIAG_OSTEO_1_M",
+      "kind": "skip-break",
+      "reason": "R049: FATHER_DIAG_OSTEO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 173,
+      "column": "FATHER_DIAG_OSTEO_1_M",
+      "kind": "applicability-break",
+      "reason": "R049: FATHER_DIAG_OSTEO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 174,
+      "column": "FATHER_DIAG_CVD_1_M",
+      "kind": "skip-break",
+      "reason": "R050: FATHER_DIAG_CVD_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 175,
+      "column": "FATHER_DIAG_CVD_1_M",
+      "kind": "applicability-break",
+      "reason": "R050: FATHER_DIAG_CVD_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 176,
+      "column": "FATHER_DIAG_UROL_1_M",
+      "kind": "skip-break",
+      "reason": "R051: FATHER_DIAG_UROL_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 177,
+      "column": "FATHER_DIAG_UROL_1_M",
+      "kind": "applicability-break",
+      "reason": "R051: FATHER_DIAG_UROL_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 178,
+      "column": "FATHER_DIAG_RESP_1_M",
+      "kind": "skip-break",
+      "reason": "R052: FATHER_DIAG_RESP_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 179,
+      "column": "FATHER_DIAG_RESP_1_M",
+      "kind": "applicability-break",
+      "reason": "R052: FATHER_DIAG_RESP_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 180,
+      "column": "FATHER_DIAG_PSYCH_1_M",
+      "kind": "skip-break",
+      "reason": "R053: FATHER_DIAG_PSYCH_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 181,
+      "column": "FATHER_DIAG_PSYCH_1_M",
+      "kind": "applicability-break",
+      "reason": "R053: FATHER_DIAG_PSYCH_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 182,
+      "column": "FATHER_DIAG_NEURO_DEV_1_M",
+      "kind": "skip-break",
+      "reason": "R057: FATHER_DIAG_NEURO_DEV_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 183,
+      "column": "FATHER_DIAG_NEURO_DEV_1_M",
+      "kind": "applicability-break",
+      "reason": "R057: FATHER_DIAG_NEURO_DEV_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 184,
+      "column": "FATHER_DIAG_NEURO_1_M",
+      "kind": "skip-break",
+      "reason": "R058: FATHER_DIAG_NEURO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 185,
+      "column": "FATHER_DIAG_NEURO_1_M",
+      "kind": "applicability-break",
+      "reason": "R058: FATHER_DIAG_NEURO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 186,
+      "column": "FATHER_DIAG_REPRO_1_M",
+      "kind": "skip-break",
+      "reason": "R059: FATHER_DIAG_REPRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 187,
+      "column": "FATHER_DIAG_REPRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R059: FATHER_DIAG_REPRO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 188,
+      "column": "FATHER_DIAG_CANCER_SKIN_1_M",
+      "kind": "skip-break",
+      "reason": "R045: FATHER_DIAG_CANCER_SKIN_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 189,
+      "column": "FATHER_DIAG_CANCER_SKIN_1_M",
+      "kind": "applicability-break",
+      "reason": "R045: FATHER_DIAG_CANCER_SKIN_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 190,
+      "column": "FATHER_DIAG_PSYCH_ANX_1_M",
+      "kind": "skip-break",
+      "reason": "R054: FATHER_DIAG_PSYCH_ANX_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 191,
+      "column": "FATHER_DIAG_PSYCH_ANX_1_M",
+      "kind": "applicability-break",
+      "reason": "R054: FATHER_DIAG_PSYCH_ANX_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 192,
+      "column": "FATHER_DIAG_PSYCH_DEPR_1_M",
+      "kind": "skip-break",
+      "reason": "R055: FATHER_DIAG_PSYCH_DEPR_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 193,
+      "column": "FATHER_DIAG_PSYCH_DEPR_1_M",
+      "kind": "applicability-break",
+      "reason": "R055: FATHER_DIAG_PSYCH_DEPR_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 194,
+      "column": "FATHER_DIAG_PSYCH_EAT_1_M",
+      "kind": "skip-break",
+      "reason": "R056: FATHER_DIAG_PSYCH_EAT_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 195,
+      "column": "FATHER_DIAG_PSYCH_EAT_1_M",
+      "kind": "applicability-break",
+      "reason": "R056: FATHER_DIAG_PSYCH_EAT_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 196,
+      "column": "MOTHER_AGE_1_1",
+      "kind": "skip-break",
+      "reason": "R060: MOTHER_AGE_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 197,
+      "column": "MOTHER_AGE_1_1",
+      "kind": "applicability-break",
+      "reason": "R060: MOTHER_AGE_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 198,
+      "column": "MOTHER_AGE_DECEASED_1_1",
+      "kind": "skip-break",
+      "reason": "R061: MOTHER_AGE_DECEASED_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 199,
+      "column": "MOTHER_AGE_DECEASED_1_1",
+      "kind": "applicability-break",
+      "reason": "R061: MOTHER_AGE_DECEASED_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 200,
+      "column": "MOTHER_DIAG_AUTO_1_M",
+      "kind": "skip-break",
+      "reason": "R062: MOTHER_DIAG_AUTO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 201,
+      "column": "MOTHER_DIAG_AUTO_1_M",
+      "kind": "applicability-break",
+      "reason": "R062: MOTHER_DIAG_AUTO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 202,
+      "column": "MOTHER_DIAG_ANAEMIA_1_M",
+      "kind": "skip-break",
+      "reason": "R063: MOTHER_DIAG_ANAEMIA_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 203,
+      "column": "MOTHER_DIAG_ANAEMIA_1_M",
+      "kind": "applicability-break",
+      "reason": "R063: MOTHER_DIAG_ANAEMIA_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 204,
+      "column": "MOTHER_DIAG_CANCER_1_M",
+      "kind": "skip-break",
+      "reason": "R064: MOTHER_DIAG_CANCER_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 205,
+      "column": "MOTHER_DIAG_CANCER_1_M",
+      "kind": "applicability-break",
+      "reason": "R064: MOTHER_DIAG_CANCER_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 206,
+      "column": "MOTHER_DIAG_GASTRO_1_M",
+      "kind": "skip-break",
+      "reason": "R066: MOTHER_DIAG_GASTRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 207,
+      "column": "MOTHER_DIAG_GASTRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R066: MOTHER_DIAG_GASTRO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 208,
+      "column": "MOTHER_DIAG_ENDOCR_1_M",
+      "kind": "skip-break",
+      "reason": "R067: MOTHER_DIAG_ENDOCR_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 209,
+      "column": "MOTHER_DIAG_ENDOCR_1_M",
+      "kind": "applicability-break",
+      "reason": "R067: MOTHER_DIAG_ENDOCR_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 210,
+      "column": "MOTHER_DIAG_OPTHAL_1_M",
+      "kind": "skip-break",
+      "reason": "R068: MOTHER_DIAG_OPTHAL_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 211,
+      "column": "MOTHER_DIAG_OPTHAL_1_M",
+      "kind": "applicability-break",
+      "reason": "R068: MOTHER_DIAG_OPTHAL_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 212,
+      "column": "MOTHER_DIAG_OSTEO_1_M",
+      "kind": "skip-break",
+      "reason": "R069: MOTHER_DIAG_OSTEO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 213,
+      "column": "MOTHER_DIAG_OSTEO_1_M",
+      "kind": "applicability-break",
+      "reason": "R069: MOTHER_DIAG_OSTEO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 214,
+      "column": "MOTHER_DIAG_CVD_1_M",
+      "kind": "skip-break",
+      "reason": "R070: MOTHER_DIAG_CVD_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 215,
+      "column": "MOTHER_DIAG_CVD_1_M",
+      "kind": "applicability-break",
+      "reason": "R070: MOTHER_DIAG_CVD_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 216,
+      "column": "MOTHER_DIAG_UROL_1_M",
+      "kind": "skip-break",
+      "reason": "R071: MOTHER_DIAG_UROL_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 217,
+      "column": "MOTHER_DIAG_UROL_1_M",
+      "kind": "applicability-break",
+      "reason": "R071: MOTHER_DIAG_UROL_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 218,
+      "column": "MOTHER_DIAG_RESP_1_M",
+      "kind": "skip-break",
+      "reason": "R072: MOTHER_DIAG_RESP_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 219,
+      "column": "MOTHER_DIAG_RESP_1_M",
+      "kind": "applicability-break",
+      "reason": "R072: MOTHER_DIAG_RESP_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 220,
+      "column": "MOTHER_DIAG_PSYCH_1_M",
+      "kind": "skip-break",
+      "reason": "R073: MOTHER_DIAG_PSYCH_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 221,
+      "column": "MOTHER_DIAG_PSYCH_1_M",
+      "kind": "applicability-break",
+      "reason": "R073: MOTHER_DIAG_PSYCH_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 222,
+      "column": "MOTHER_DIAG_NEURO_DEV_1_M",
+      "kind": "skip-break",
+      "reason": "R077: MOTHER_DIAG_NEURO_DEV_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 223,
+      "column": "MOTHER_DIAG_NEURO_DEV_1_M",
+      "kind": "applicability-break",
+      "reason": "R077: MOTHER_DIAG_NEURO_DEV_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 224,
+      "column": "MOTHER_DIAG_NEURO_1_M",
+      "kind": "skip-break",
+      "reason": "R078: MOTHER_DIAG_NEURO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 225,
+      "column": "MOTHER_DIAG_NEURO_1_M",
+      "kind": "applicability-break",
+      "reason": "R078: MOTHER_DIAG_NEURO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 226,
+      "column": "MOTHER_DIAG_REPRO_1_M",
+      "kind": "skip-break",
+      "reason": "R079: MOTHER_DIAG_REPRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 227,
+      "column": "MOTHER_DIAG_REPRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R079: MOTHER_DIAG_REPRO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 228,
+      "column": "MOTHER_DIAG_CANCER_SKIN_1_M",
+      "kind": "skip-break",
+      "reason": "R065: MOTHER_DIAG_CANCER_SKIN_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 229,
+      "column": "MOTHER_DIAG_CANCER_SKIN_1_M",
+      "kind": "applicability-break",
+      "reason": "R065: MOTHER_DIAG_CANCER_SKIN_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 230,
+      "column": "MOTHER_DIAG_PSYCH_ANX_1_M",
+      "kind": "skip-break",
+      "reason": "R074: MOTHER_DIAG_PSYCH_ANX_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 231,
+      "column": "MOTHER_DIAG_PSYCH_ANX_1_M",
+      "kind": "applicability-break",
+      "reason": "R074: MOTHER_DIAG_PSYCH_ANX_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 232,
+      "column": "MOTHER_DIAG_PSYCH_DEPR_1_M",
+      "kind": "skip-break",
+      "reason": "R075: MOTHER_DIAG_PSYCH_DEPR_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 233,
+      "column": "MOTHER_DIAG_PSYCH_DEPR_1_M",
+      "kind": "applicability-break",
+      "reason": "R075: MOTHER_DIAG_PSYCH_DEPR_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 234,
+      "column": "MOTHER_DIAG_PSYCH_EAT_1_M",
+      "kind": "skip-break",
+      "reason": "R076: MOTHER_DIAG_PSYCH_EAT_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 235,
+      "column": "MOTHER_DIAG_PSYCH_EAT_1_M",
+      "kind": "applicability-break",
+      "reason": "R076: MOTHER_DIAG_PSYCH_EAT_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 236,
+      "column": "SIBLING_DIAG_A_2_M",
+      "kind": "skip-break",
+      "reason": "R080: SIBLING_DIAG_A_2_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 237,
+      "column": "SIBLING_DIAG_A_2_M",
+      "kind": "applicability-break",
+      "reason": "R080: SIBLING_DIAG_A_2_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 238,
+      "column": "SIBLING_DIAG_AUTO_1_M",
+      "kind": "skip-break",
+      "reason": "R081: SIBLING_DIAG_AUTO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 239,
+      "column": "SIBLING_DIAG_AUTO_1_M",
+      "kind": "applicability-break",
+      "reason": "R081: SIBLING_DIAG_AUTO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 240,
+      "column": "SIBLING_DIAG_ANAEMIA_1_M",
+      "kind": "skip-break",
+      "reason": "R082: SIBLING_DIAG_ANAEMIA_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 241,
+      "column": "SIBLING_DIAG_ANAEMIA_1_M",
+      "kind": "applicability-break",
+      "reason": "R082: SIBLING_DIAG_ANAEMIA_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 242,
+      "column": "SIBLING_DIAG_CANCER_1_M",
+      "kind": "skip-break",
+      "reason": "R083: SIBLING_DIAG_CANCER_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 243,
+      "column": "SIBLING_DIAG_CANCER_1_M",
+      "kind": "applicability-break",
+      "reason": "R083: SIBLING_DIAG_CANCER_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 244,
+      "column": "SIBLING_DIAG_GASTRO_1_M",
+      "kind": "skip-break",
+      "reason": "R085: SIBLING_DIAG_GASTRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 245,
+      "column": "SIBLING_DIAG_GASTRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R085: SIBLING_DIAG_GASTRO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 246,
+      "column": "SIBLING_DIAG_ENDOCR_1_M",
+      "kind": "skip-break",
+      "reason": "R086: SIBLING_DIAG_ENDOCR_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 247,
+      "column": "SIBLING_DIAG_ENDOCR_1_M",
+      "kind": "applicability-break",
+      "reason": "R086: SIBLING_DIAG_ENDOCR_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 248,
+      "column": "SIBLING_DIAG_OPTHAL_1_M",
+      "kind": "skip-break",
+      "reason": "R087: SIBLING_DIAG_OPTHAL_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 249,
+      "column": "SIBLING_DIAG_OPTHAL_1_M",
+      "kind": "applicability-break",
+      "reason": "R087: SIBLING_DIAG_OPTHAL_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 250,
+      "column": "SIBLING_DIAG_OSTEO_1_M",
+      "kind": "skip-break",
+      "reason": "R088: SIBLING_DIAG_OSTEO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 251,
+      "column": "SIBLING_DIAG_OSTEO_1_M",
+      "kind": "applicability-break",
+      "reason": "R088: SIBLING_DIAG_OSTEO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 252,
+      "column": "SIBLING_DIAG_CVD_1_M",
+      "kind": "skip-break",
+      "reason": "R089: SIBLING_DIAG_CVD_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 253,
+      "column": "SIBLING_DIAG_CVD_1_M",
+      "kind": "applicability-break",
+      "reason": "R089: SIBLING_DIAG_CVD_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 254,
+      "column": "SIBLING_DIAG_UROL_1_M",
+      "kind": "skip-break",
+      "reason": "R090: SIBLING_DIAG_UROL_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 255,
+      "column": "SIBLING_DIAG_UROL_1_M",
+      "kind": "applicability-break",
+      "reason": "R090: SIBLING_DIAG_UROL_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 256,
+      "column": "SIBLING_DIAG_RESP_1_M",
+      "kind": "skip-break",
+      "reason": "R091: SIBLING_DIAG_RESP_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 257,
+      "column": "SIBLING_DIAG_RESP_1_M",
+      "kind": "applicability-break",
+      "reason": "R091: SIBLING_DIAG_RESP_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 258,
+      "column": "SIBLING_DIAG_PSYCH_1_M",
+      "kind": "skip-break",
+      "reason": "R092: SIBLING_DIAG_PSYCH_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 259,
+      "column": "SIBLING_DIAG_PSYCH_1_M",
+      "kind": "applicability-break",
+      "reason": "R092: SIBLING_DIAG_PSYCH_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 260,
+      "column": "SIBLING_DIAG_NEURO_DEV_1_M",
+      "kind": "skip-break",
+      "reason": "R096: SIBLING_DIAG_NEURO_DEV_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 261,
+      "column": "SIBLING_DIAG_NEURO_DEV_1_M",
+      "kind": "applicability-break",
+      "reason": "R096: SIBLING_DIAG_NEURO_DEV_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 262,
+      "column": "SIBLING_DIAG_NEURO_1_M",
+      "kind": "skip-break",
+      "reason": "R097: SIBLING_DIAG_NEURO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 263,
+      "column": "SIBLING_DIAG_NEURO_1_M",
+      "kind": "applicability-break",
+      "reason": "R097: SIBLING_DIAG_NEURO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 264,
+      "column": "SIBLING_DIAG_REPRO_1_M",
+      "kind": "skip-break",
+      "reason": "R098: SIBLING_DIAG_REPRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 265,
+      "column": "SIBLING_DIAG_REPRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R098: SIBLING_DIAG_REPRO_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 266,
+      "column": "SIBLING_DIAG_CANCER_SKIN_1_M",
+      "kind": "skip-break",
+      "reason": "R084: SIBLING_DIAG_CANCER_SKIN_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 267,
+      "column": "SIBLING_DIAG_CANCER_SKIN_1_M",
+      "kind": "applicability-break",
+      "reason": "R084: SIBLING_DIAG_CANCER_SKIN_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 268,
+      "column": "ADOPTION_STATUS_1_1",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared code"
+    },
+    {
+      "row": 269,
+      "column": "ADOPTION_STATUS_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 270,
+      "column": "FATHER_ALIVE_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 271,
+      "column": "SIBLING_NUM_BROTHERS_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 272,
+      "column": "BIRTH_PLACE_1_1",
+      "kind": "wrong-type",
+      "reason": "the birthplace code must be an integer"
+    },
+    {
+      "row": 273,
+      "column": "FATHER_DIAG_CANCER_1_M",
+      "kind": "unknown-level",
+      "reason": "99 is not a declared cancer code"
+    },
+    {
+      "row": 274,
+      "column": "MOTHER_AGE_1_1",
+      "kind": "wrong-type",
+      "reason": "an age must be an integer"
+    },
+    {
+      "row": 275,
+      "column": "MOTHER_ALIVE_1_1",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 276,
+      "column": "HEALTH_STATUS_DISABILITY_SUPPORT_1_M",
+      "kind": "skip-break",
+      "reason": "R099: HEALTH_STATUS_DISABILITY_SUPPORT_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 277,
+      "column": "HEALTH_STATUS_DISABILITY_SUPPORT_1_M",
+      "kind": "applicability-break",
+      "reason": "R099: HEALTH_STATUS_DISABILITY_SUPPORT_1_M is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 278,
+      "column": "HEALTH_RESP_SHORT_1_1",
+      "kind": "skip-break",
+      "reason": "R100: HEALTH_RESP_SHORT_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 279,
+      "column": "HEALTH_RESP_SHORT_1_1",
+      "kind": "applicability-break",
+      "reason": "R100: HEALTH_RESP_SHORT_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 280,
+      "column": "HEALTH_PAIN_LEG_1_1",
+      "kind": "skip-break",
+      "reason": "R100: HEALTH_PAIN_LEG_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 281,
+      "column": "HEALTH_PAIN_LEG_1_1",
+      "kind": "applicability-break",
+      "reason": "R100: HEALTH_PAIN_LEG_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 282,
+      "column": "HEALTH_PAIN_CHEST_WALK_1_1",
+      "kind": "skip-break",
+      "reason": "R101: HEALTH_PAIN_CHEST_WALK_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 283,
+      "column": "HEALTH_PAIN_CHEST_WALK_1_1",
+      "kind": "applicability-break",
+      "reason": "R101: HEALTH_PAIN_CHEST_WALK_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 284,
+      "column": "HEALTH_PAIN_CHEST_WALK_UPHILL_1_1",
+      "kind": "skip-break",
+      "reason": "R102: HEALTH_PAIN_CHEST_WALK_UPHILL_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 285,
+      "column": "HEALTH_PAIN_CHEST_WALK_UPHILL_1_1",
+      "kind": "applicability-break",
+      "reason": "R102: HEALTH_PAIN_CHEST_WALK_UPHILL_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 286,
+      "column": "HEALTH_PAIN_CHEST_SUBSIDE_1_1",
+      "kind": "skip-break",
+      "reason": "R103: HEALTH_PAIN_CHEST_SUBSIDE_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 287,
+      "column": "HEALTH_PAIN_CHEST_SUBSIDE_1_1",
+      "kind": "applicability-break",
+      "reason": "R103: HEALTH_PAIN_CHEST_SUBSIDE_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 288,
+      "column": "HEALTH_CHECK_COLORECTAL_YRS_1_1",
+      "kind": "skip-break",
+      "reason": "R104: HEALTH_CHECK_COLORECTAL_YRS_1_1 is answered where the source's condition is not met (must be -998)"
+    },
+    {
+      "row": 289,
+      "column": "HEALTH_CHECK_COLORECTAL_YRS_1_1",
+      "kind": "applicability-break",
+      "reason": "R104: HEALTH_CHECK_COLORECTAL_YRS_1_1 is the not-shown code where the source's condition is met"
+    },
+    {
+      "row": 290,
+      "column": "HEALTH_PAIN_CHEST_SUBSIDE_1_1",
+      "kind": "skip-break",
+      "reason": "R103: no pain uphill after No on the flat but the go-away-standing question is answered (must be -998)"
+    },
+    {
+      "row": 291,
+      "column": "HEALTH_PAIN_CHEST_SUBSIDE_1_1",
+      "kind": "skip-break",
+      "reason": "R103: unable to walk on the flat but the go-away-standing question is answered (must be -998)"
+    },
+    {
+      "row": 292,
+      "column": "HEALTH_STATUS_CURR_1_1",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared code"
+    },
+    {
+      "row": 293,
+      "column": "HEALTH_STATUS_CURR_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 294,
+      "column": "HEALTH_FALLS_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 295,
+      "column": "HEALTH_COVID_1_1",
+      "kind": "wrong-type",
+      "reason": "the COVID-19 answer must be an integer"
+    },
+    {
+      "row": 296,
+      "column": "HEALTH_DENTAL_1_M",
+      "kind": "unknown-level",
+      "reason": "99 is not a declared dental code"
+    },
+    {
+      "row": 297,
+      "column": "HEALTH_CHECK_COLORECTAL_YRS_1_1",
+      "kind": "wrong-type",
+      "reason": "years ago must be an integer"
+    },
+    {
+      "row": 298,
+      "column": "HEALTH_WEIGHT_CHG_1_1",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 299,
+      "column": "MEDICAT_AUTO_1_M",
+      "kind": "skip-break",
+      "reason": "R140: MEDICAT_AUTO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 300,
+      "column": "MEDICAT_AUTO_1_M",
+      "kind": "applicability-break",
+      "reason": "R140: MEDICAT_AUTO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 301,
+      "column": "MEDICAT_OSTEO_1_M",
+      "kind": "skip-break",
+      "reason": "R141: MEDICAT_OSTEO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 302,
+      "column": "MEDICAT_OSTEO_1_M",
+      "kind": "applicability-break",
+      "reason": "R141: MEDICAT_OSTEO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 303,
+      "column": "MEDICAT_CANCER_1_M",
+      "kind": "skip-break",
+      "reason": "R142: MEDICAT_CANCER_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 304,
+      "column": "MEDICAT_CANCER_1_M",
+      "kind": "applicability-break",
+      "reason": "R142: MEDICAT_CANCER_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 305,
+      "column": "MEDICAT_DIAB_1_M",
+      "kind": "skip-break",
+      "reason": "R143: MEDICAT_DIAB_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 306,
+      "column": "MEDICAT_DIAB_1_M",
+      "kind": "applicability-break",
+      "reason": "R143: MEDICAT_DIAB_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 307,
+      "column": "MEDICAT_GASTRO_1_M",
+      "kind": "skip-break",
+      "reason": "R144: MEDICAT_GASTRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 308,
+      "column": "MEDICAT_GASTRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R144: MEDICAT_GASTRO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 309,
+      "column": "MEDICAT_ENDOCR_1_M",
+      "kind": "skip-break",
+      "reason": "R145: MEDICAT_ENDOCR_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 310,
+      "column": "MEDICAT_ENDOCR_1_M",
+      "kind": "applicability-break",
+      "reason": "R145: MEDICAT_ENDOCR_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 311,
+      "column": "MEDICAT_CVD_1_M",
+      "kind": "skip-break",
+      "reason": "R146: MEDICAT_CVD_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 312,
+      "column": "MEDICAT_CVD_1_M",
+      "kind": "applicability-break",
+      "reason": "R146: MEDICAT_CVD_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 313,
+      "column": "MEDICAT_RESP_1_M",
+      "kind": "skip-break",
+      "reason": "R147: MEDICAT_RESP_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 314,
+      "column": "MEDICAT_RESP_1_M",
+      "kind": "applicability-break",
+      "reason": "R147: MEDICAT_RESP_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 315,
+      "column": "MEDICAT_PSYCH_1_M",
+      "kind": "skip-break",
+      "reason": "R148: MEDICAT_PSYCH_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 316,
+      "column": "MEDICAT_PSYCH_1_M",
+      "kind": "applicability-break",
+      "reason": "R148: MEDICAT_PSYCH_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 317,
+      "column": "MEDICAT_NEURO_1_M",
+      "kind": "skip-break",
+      "reason": "R151: MEDICAT_NEURO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 318,
+      "column": "MEDICAT_NEURO_1_M",
+      "kind": "applicability-break",
+      "reason": "R151: MEDICAT_NEURO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 319,
+      "column": "MEDICAT_PAIN_1_M",
+      "kind": "skip-break",
+      "reason": "R152: MEDICAT_PAIN_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 320,
+      "column": "MEDICAT_PAIN_1_M",
+      "kind": "applicability-break",
+      "reason": "R152: MEDICAT_PAIN_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 321,
+      "column": "MEDICAT_REPRO_1_M",
+      "kind": "skip-break",
+      "reason": "R153: MEDICAT_REPRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 322,
+      "column": "MEDICAT_REPRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R153: MEDICAT_REPRO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 323,
+      "column": "MEDICAT_SUPPL_1_M",
+      "kind": "skip-break",
+      "reason": "R155: MEDICAT_SUPPL_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 324,
+      "column": "MEDICAT_SUPPL_1_M",
+      "kind": "applicability-break",
+      "reason": "R155: MEDICAT_SUPPL_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 325,
+      "column": "MEDICAT_PSYCH_ANTIDEPR_1_M",
+      "kind": "skip-break",
+      "reason": "R149: MEDICAT_PSYCH_ANTIDEPR_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 326,
+      "column": "MEDICAT_PSYCH_ANTIDEPR_1_M",
+      "kind": "applicability-break",
+      "reason": "R149: MEDICAT_PSYCH_ANTIDEPR_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 327,
+      "column": "MEDICAT_PSYCH_ANTIPSYCH_1_M",
+      "kind": "skip-break",
+      "reason": "R150: MEDICAT_PSYCH_ANTIPSYCH_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 328,
+      "column": "MEDICAT_PSYCH_ANTIPSYCH_1_M",
+      "kind": "applicability-break",
+      "reason": "R150: MEDICAT_PSYCH_ANTIPSYCH_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 329,
+      "column": "MEDICAT_REPRO_CONTRACEPT_1_M",
+      "kind": "skip-break",
+      "reason": "R154: MEDICAT_REPRO_CONTRACEPT_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 330,
+      "column": "MEDICAT_REPRO_CONTRACEPT_1_M",
+      "kind": "applicability-break",
+      "reason": "R154: MEDICAT_REPRO_CONTRACEPT_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 331,
+      "column": "MEDICAT_1_M",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 332,
+      "column": "MEDICAT_1_M",
+      "kind": "unknown-level",
+      "reason": "99 is not a declared reason code"
+    },
+    {
+      "row": 333,
+      "column": "MEDICAT_CVD_1_M",
+      "kind": "unknown-level",
+      "reason": "99 is not a declared code"
+    },
+    {
+      "row": 334,
+      "column": "MEDICAT_1_M",
+      "kind": "wrong-type",
+      "reason": "a multi-select must be an array"
+    },
+    {
+      "row": 335,
+      "column": "MEDICAT_A_1_M",
+      "kind": "duplicate-item",
+      "reason": "the same option cannot be selected twice"
+    },
+    {
+      "row": 336,
+      "column": "MEDICAT_SUPPL_1_M",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 337,
+      "column": "DIAG_AUTO_1_M",
+      "kind": "skip-break",
+      "reason": "R121: DIAG_AUTO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 338,
+      "column": "DIAG_AUTO_1_M",
+      "kind": "applicability-break",
+      "reason": "R121: DIAG_AUTO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 339,
+      "column": "DIAG_ANAEMIA_1_M",
+      "kind": "skip-break",
+      "reason": "R122: DIAG_ANAEMIA_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 340,
+      "column": "DIAG_ANAEMIA_1_M",
+      "kind": "applicability-break",
+      "reason": "R122: DIAG_ANAEMIA_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 341,
+      "column": "DIAG_CANCER_1_M",
+      "kind": "skip-break",
+      "reason": "R123: DIAG_CANCER_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 342,
+      "column": "DIAG_CANCER_1_M",
+      "kind": "applicability-break",
+      "reason": "R123: DIAG_CANCER_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 343,
+      "column": "DIAG_OB_1_M",
+      "kind": "skip-break",
+      "reason": "R125: DIAG_OB_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 344,
+      "column": "DIAG_OB_1_M",
+      "kind": "applicability-break",
+      "reason": "R125: DIAG_OB_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 345,
+      "column": "DIAG_GASTRO_1_M",
+      "kind": "skip-break",
+      "reason": "R126: DIAG_GASTRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 346,
+      "column": "DIAG_GASTRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R126: DIAG_GASTRO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 347,
+      "column": "DIAG_ENDOCR_1_M",
+      "kind": "skip-break",
+      "reason": "R127: DIAG_ENDOCR_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 348,
+      "column": "DIAG_ENDOCR_1_M",
+      "kind": "applicability-break",
+      "reason": "R127: DIAG_ENDOCR_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 349,
+      "column": "DIAG_OPTHAL_1_M",
+      "kind": "skip-break",
+      "reason": "R128: DIAG_OPTHAL_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 350,
+      "column": "DIAG_OPTHAL_1_M",
+      "kind": "applicability-break",
+      "reason": "R128: DIAG_OPTHAL_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 351,
+      "column": "DIAG_OSTEO_1_M",
+      "kind": "skip-break",
+      "reason": "R129: DIAG_OSTEO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 352,
+      "column": "DIAG_OSTEO_1_M",
+      "kind": "applicability-break",
+      "reason": "R129: DIAG_OSTEO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 353,
+      "column": "DIAG_CVD_1_M",
+      "kind": "skip-break",
+      "reason": "R130: DIAG_CVD_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 354,
+      "column": "DIAG_CVD_1_M",
+      "kind": "applicability-break",
+      "reason": "R130: DIAG_CVD_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 355,
+      "column": "DIAG_UROL_1_M",
+      "kind": "skip-break",
+      "reason": "R131: DIAG_UROL_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 356,
+      "column": "DIAG_UROL_1_M",
+      "kind": "applicability-break",
+      "reason": "R131: DIAG_UROL_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 357,
+      "column": "DIAG_RESP_1_M",
+      "kind": "skip-break",
+      "reason": "R132: DIAG_RESP_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 358,
+      "column": "DIAG_RESP_1_M",
+      "kind": "applicability-break",
+      "reason": "R132: DIAG_RESP_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 359,
+      "column": "DIAG_PSYCH_1_M",
+      "kind": "skip-break",
+      "reason": "R133: DIAG_PSYCH_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 360,
+      "column": "DIAG_PSYCH_1_M",
+      "kind": "applicability-break",
+      "reason": "R133: DIAG_PSYCH_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 361,
+      "column": "DIAG_NEURO_DEV_1_M",
+      "kind": "skip-break",
+      "reason": "R137: DIAG_NEURO_DEV_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 362,
+      "column": "DIAG_NEURO_DEV_1_M",
+      "kind": "applicability-break",
+      "reason": "R137: DIAG_NEURO_DEV_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 363,
+      "column": "DIAG_NEURO_1_M",
+      "kind": "skip-break",
+      "reason": "R138: DIAG_NEURO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 364,
+      "column": "DIAG_NEURO_1_M",
+      "kind": "applicability-break",
+      "reason": "R138: DIAG_NEURO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 365,
+      "column": "DIAG_REPRO_1_M",
+      "kind": "skip-break",
+      "reason": "R139: DIAG_REPRO_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 366,
+      "column": "DIAG_REPRO_1_M",
+      "kind": "applicability-break",
+      "reason": "R139: DIAG_REPRO_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 367,
+      "column": "DIAG_CANCER_SKIN_1_M",
+      "kind": "skip-break",
+      "reason": "R124: DIAG_CANCER_SKIN_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 368,
+      "column": "DIAG_CANCER_SKIN_1_M",
+      "kind": "applicability-break",
+      "reason": "R124: DIAG_CANCER_SKIN_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 369,
+      "column": "DIAG_PSYCH_ANX_1_M",
+      "kind": "skip-break",
+      "reason": "R134: DIAG_PSYCH_ANX_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 370,
+      "column": "DIAG_PSYCH_ANX_1_M",
+      "kind": "applicability-break",
+      "reason": "R134: DIAG_PSYCH_ANX_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 371,
+      "column": "DIAG_PSYCH_DEPR_1_M",
+      "kind": "skip-break",
+      "reason": "R135: DIAG_PSYCH_DEPR_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 372,
+      "column": "DIAG_PSYCH_DEPR_1_M",
+      "kind": "applicability-break",
+      "reason": "R135: DIAG_PSYCH_DEPR_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 373,
+      "column": "DIAG_PSYCH_EAT_1_M",
+      "kind": "skip-break",
+      "reason": "R136: DIAG_PSYCH_EAT_1_M is answered where the source's condition is not met (must be [-998])"
+    },
+    {
+      "row": 374,
+      "column": "DIAG_PSYCH_EAT_1_M",
+      "kind": "applicability-break",
+      "reason": "R136: DIAG_PSYCH_EAT_1_M is the not-shown array where the source's condition is met"
+    },
+    {
+      "row": 375,
+      "column": "DIAG_2_M",
+      "kind": "unknown-level",
+      "reason": "99 is not a declared condition group"
+    },
+    {
+      "row": 376,
+      "column": "DIAG_CVD_1_M",
+      "kind": "unknown-level",
+      "reason": "99 is not a declared code"
+    },
+    {
+      "row": 377,
+      "column": "DIAG_2_M",
+      "kind": "wrong-type",
+      "reason": "a multi-select must be an array"
+    },
+    {
+      "row": 378,
+      "column": "DIAG_1_M",
+      "kind": "duplicate-item",
+      "reason": "the same option cannot be selected twice"
+    },
+    {
+      "row": 379,
+      "column": "DIAG_UROL_1_M",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 380,
+      "column": "SKIP_PHQ9_GAD7_1_1",
+      "kind": "unknown-level",
+      "reason": "9 is not a declared code"
+    },
+    {
+      "row": 381,
+      "column": "SKIP_PHQ9_GAD7_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the question is always shown and has no other version"
+    },
+    {
+      "row": 382,
+      "column": "GYN_HYST_1_1",
+      "kind": "unknown-level",
+      "reason": "2 is not a declared code"
+    },
+    {
+      "row": 383,
+      "column": "GYN_MENSTR_CYCLE_DAYS_2_1",
+      "kind": "wrong-type",
+      "reason": "days must be an integer"
+    },
+    {
+      "row": 384,
+      "column": "GYN_HRT_FIRST_TRT_AGE_1_1",
+      "kind": "wrong-type",
+      "reason": "an age must be an integer"
+    },
+    {
+      "row": 385,
+      "column": "GYN_CONTRACEPT_METHODS_1_M",
+      "kind": "unknown-level",
+      "reason": "99 is not a declared contraception code"
+    },
+    {
+      "row": 386,
+      "column": "GYN_CONTRACEPT_METHODS_1_M",
+      "kind": "duplicate-item",
+      "reason": "the same option cannot be selected twice"
+    },
+    {
+      "row": 387,
+      "column": "CHILDREN_BIRTHED_NUM_1_1",
+      "kind": "wrong-type",
+      "reason": "a number of children must be an integer"
+    },
+    {
+      "row": 388,
+      "column": "SKIP_PHQ9_GAD7_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-3 is not a code this variable defines"
+    },
+    {
+      "row": 389,
+      "column": "GYN_OOPH_1_1",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 390,
+      "column": "PHQ9_ITEM1_INTEREST_1_1",
+      "kind": "routing-break",
+      "reason": "R156: skipped the PHQ-9 and GAD-7 questions but PHQ9_ITEM1_INTEREST_1_1 is not -3"
+    },
+    {
+      "row": 391,
+      "column": "PHQ9_ITEM2_DOWN_1_1",
+      "kind": "routing-break",
+      "reason": "R157: skipped the PHQ-9 and GAD-7 questions but PHQ9_ITEM2_DOWN_1_1 is not -3"
+    },
+    {
+      "row": 392,
+      "column": "PHQ9_ITEM3_SLEEP_1_1",
+      "kind": "routing-break",
+      "reason": "R158: skipped the PHQ-9 and GAD-7 questions but PHQ9_ITEM3_SLEEP_1_1 is not -3"
+    },
+    {
+      "row": 393,
+      "column": "PHQ9_ITEM4_ENERGY_1_1",
+      "kind": "routing-break",
+      "reason": "R159: skipped the PHQ-9 and GAD-7 questions but PHQ9_ITEM4_ENERGY_1_1 is not -3"
+    },
+    {
+      "row": 394,
+      "column": "PHQ9_ITEM5_APPETITE_1_1",
+      "kind": "routing-break",
+      "reason": "R160: skipped the PHQ-9 and GAD-7 questions but PHQ9_ITEM5_APPETITE_1_1 is not -3"
+    },
+    {
+      "row": 395,
+      "column": "PHQ9_ITEM6_BAD_1_1",
+      "kind": "routing-break",
+      "reason": "R161: skipped the PHQ-9 and GAD-7 questions but PHQ9_ITEM6_BAD_1_1 is not -3"
+    },
+    {
+      "row": 396,
+      "column": "PHQ9_ITEM7_CONCENTR_1_1",
+      "kind": "routing-break",
+      "reason": "R162: skipped the PHQ-9 and GAD-7 questions but PHQ9_ITEM7_CONCENTR_1_1 is not -3"
+    },
+    {
+      "row": 397,
+      "column": "PHQ9_ITEM8_MOVEMENT_1_1",
+      "kind": "routing-break",
+      "reason": "R163: skipped the PHQ-9 and GAD-7 questions but PHQ9_ITEM8_MOVEMENT_1_1 is not -3"
+    },
+    {
+      "row": 398,
+      "column": "PHQ9_ITEM9_HARM_1_1",
+      "kind": "routing-break",
+      "reason": "R164: skipped the PHQ-9 and GAD-7 questions but PHQ9_ITEM9_HARM_1_1 is not -3"
+    },
+    {
+      "row": 399,
+      "column": "GAD7_ITEM1_ANX_1_1",
+      "kind": "routing-break",
+      "reason": "R166: skipped the PHQ-9 and GAD-7 questions but GAD7_ITEM1_ANX_1_1 is not -3"
+    },
+    {
+      "row": 400,
+      "column": "GAD7_ITEM2_WORRY_CONTROL_1_1",
+      "kind": "routing-break",
+      "reason": "R167: skipped the PHQ-9 and GAD-7 questions but GAD7_ITEM2_WORRY_CONTROL_1_1 is not -3"
+    },
+    {
+      "row": 401,
+      "column": "GAD7_ITEM3_WORRY_AMOUNT_1_1",
+      "kind": "routing-break",
+      "reason": "R168: skipped the PHQ-9 and GAD-7 questions but GAD7_ITEM3_WORRY_AMOUNT_1_1 is not -3"
+    },
+    {
+      "row": 402,
+      "column": "GAD7_ITEM4_RELAX_1_1",
+      "kind": "routing-break",
+      "reason": "R169: skipped the PHQ-9 and GAD-7 questions but GAD7_ITEM4_RELAX_1_1 is not -3"
+    },
+    {
+      "row": 403,
+      "column": "GAD7_ITEM5_RESTLESS_1_1",
+      "kind": "routing-break",
+      "reason": "R170: skipped the PHQ-9 and GAD-7 questions but GAD7_ITEM5_RESTLESS_1_1 is not -3"
+    },
+    {
+      "row": 404,
+      "column": "GAD7_ITEM6_ANNOYED_1_1",
+      "kind": "routing-break",
+      "reason": "R171: skipped the PHQ-9 and GAD-7 questions but GAD7_ITEM6_ANNOYED_1_1 is not -3"
+    },
+    {
+      "row": 405,
+      "column": "GAD7_ITEM7_AFRAID_1_1",
+      "kind": "routing-break",
+      "reason": "R172: skipped the PHQ-9 and GAD-7 questions but GAD7_ITEM7_AFRAID_1_1 is not -3"
+    },
+    {
+      "row": 406,
+      "column": "PHQ9_IMPAIR_1_1",
+      "kind": "skip-break",
+      "reason": "R165: skipped the questionnaires but the impairment question is answered (must be -998)"
+    },
+    {
+      "row": 407,
+      "column": "PHQ9_IMPAIR_1_1",
+      "kind": "skip-break",
+      "reason": "R165: every item is Not at all, do not know or prefer not to answer but the impairment question is answered (must be -998)"
+    },
+    {
+      "row": 408,
+      "column": "PHQ9_IMPAIR_1_1",
+      "kind": "applicability-break",
+      "reason": "R165: an item is above Not at all but the impairment question is the not-shown code"
+    },
+    {
+      "row": 409,
+      "column": "GAD7_IMPAIR_1_1",
+      "kind": "skip-break",
+      "reason": "R173: skipped the questionnaires but the impairment question is answered (must be -998)"
+    },
+    {
+      "row": 410,
+      "column": "GAD7_IMPAIR_1_1",
+      "kind": "skip-break",
+      "reason": "R173: every item is Not at all, do not know or prefer not to answer but the impairment question is answered (must be -998)"
+    },
+    {
+      "row": 411,
+      "column": "GAD7_IMPAIR_1_1",
+      "kind": "applicability-break",
+      "reason": "R173: an item is above Not at all but the impairment question is the not-shown code"
+    },
+    {
+      "row": 412,
+      "column": "SKIP_PHQ9_GAD7_1_1",
+      "kind": "unknown-level",
+      "reason": "2 is not a declared code"
+    },
+    {
+      "row": 413,
+      "column": "PHQ9_ITEM1_INTEREST_1_1",
+      "kind": "unknown-level",
+      "reason": "5 is not a declared code"
+    },
+    {
+      "row": 414,
+      "column": "PHQ9_ITEM2_DOWN_1_1",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not allowed where the item is always answered"
+    },
+    {
+      "row": 415,
+      "column": "GAD7_ITEM1_ANX_1_1",
+      "kind": "wrong-type",
+      "reason": "an item answer must be an integer"
+    },
+    {
+      "row": 416,
+      "column": "PHQ9_IMPAIR_1_1",
+      "kind": "unknown-level",
+      "reason": "4 is not a declared code"
+    },
+    {
+      "row": 417,
+      "column": "GAD7_ITEM7_AFRAID_1_1",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
     }
   ]
 }

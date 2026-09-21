@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/nhse_eng_canreg_treat/categories/nhse_eng_canreg_treat.json",
+  "title": "Linked health records data — Cancer data by treatment event (from 1 January 1995)",
+  "description": "Cancer data by treatment event at a given tumour from 1 January 1995.",
+  "type": "object",
+  "x-variable-group": "nhse_eng_canreg_treat",
+  "properties": {
+    "CHEMO_ALL_DRUGS": {
+      "title": "Chemotherapy drug name",
+      "type": "string"
+    },
+    "CT_FLAG": {
+      "title": "Flag to indicate chemotherapy treatment",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No recorded chemotherapy"
+        },
+        {
+          "const": 1,
+          "title": "Had chemotherapy"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "EVENTCODE": {
+      "title": "Type of event code and description",
+      "anyOf": [
+        {
+          "const": "01a",
+          "title": "Surgery - curative"
+        },
+        {
+          "const": "01b",
+          "title": "Surgery - not curative"
+        },
+        {
+          "const": "01c",
+          "title": "Surgery - investigative"
+        },
+        {
+          "const": "01z",
+          "title": "Surgery - type unknown"
+        },
+        {
+          "const": "02",
+          "title": "Cytotoxic Chemotherapy"
+        },
+        {
+          "const": "03",
+          "title": "Hormone Therapy"
+        },
+        {
+          "const": "04",
+          "title": "Chemoradiotherapy"
+        },
+        {
+          "const": "05",
+          "title": "RT–Teletherapy"
+        },
+        {
+          "const": "06",
+          "title": "RT–Brachytherapy"
+        },
+        {
+          "const": "07",
+          "title": "Specialist Palliative Care"
+        },
+        {
+          "const": "08",
+          "title": "Active Monitoring"
+        },
+        {
+          "const": "09",
+          "title": "Non-Specialist Palliative Care"
+        },
+        {
+          "const": "14",
+          "title": "Anti Cancer Drug Regimen (other)"
+        },
+        {
+          "const": "15",
+          "title": "Immunotherapy"
+        },
+        {
+          "const": "19",
+          "title": "Radioisotope Therapy"
+        },
+        {
+          "const": "22",
+          "title": "Radiosurgery"
+        },
+        {
+          "const": "97",
+          "title": "Other Treatment"
+        },
+        {
+          "const": "98",
+          "title": "All treatment declined"
+        },
+        {
+          "const": "99",
+          "title": "Treatment unknown"
+        },
+        {
+          "const": "CTX",
+          "title": "CT–Other"
+        },
+        {
+          "const": "IM",
+          "title": "Imaging"
+        },
+        {
+          "const": "RTX",
+          "title": "RT-Other/NK"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "EVENTDATE": {
+      "title": "Date the event took place",
+      "type": "string"
+    },
+    "EVENTDESC": {
+      "title": "Type of event code and description",
+      "type": "string"
+    },
+    "IMAGINGCODE_NICIP": {
+      "title": "Imaging code (internal coding system) and description of imaging",
+      "type": "string"
+    },
+    "IMAGINGCODE_SNOMEDCT": {
+      "title": "Imaging code (internal coding system) and description of imaging",
+      "type": "string"
+    },
+    "IMAGINGDESC": {
+      "title": "Imaging code (internal coding system) and description of imaging",
+      "type": "string"
+    },
+    "IMAGINGSITE": {
+      "title": "Site on body where imaging occurred",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "LESIONSIZE": {
+      "title": "Size in millimetres of the diameter of a lesion (histology)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "OPCS4_CODE": {
+      "title": "Operations, procedures and interventions (OPCS-4) code and name",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPCS4_NAME": {
+      "title": "Operations, procedures and interventions (OPCS-4) code and name",
+      "type": "string"
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "PSEUDONYMISED_EVENTID": {
+      "title": "Pseudonymised Event ID",
+      "type": "string"
+    },
+    "PSEUDONYMISED_TUMOURID": {
+      "title": "Pseudonymised tumour ID",
+      "type": "string"
+    },
+    "RADIOCODE": {
+      "title": "Radiotherapy code and description",
+      "oneOf": [
+        {
+          "const": "1",
+          "title": "External Beam"
+        },
+        {
+          "const": "2",
+          "title": "Intracavity or Interstitial"
+        },
+        {
+          "const": "3",
+          "title": "1 + 2"
+        },
+        {
+          "const": "4",
+          "title": "Radioactive Isotopes"
+        },
+        {
+          "const": "5",
+          "title": "1 + 4"
+        },
+        {
+          "const": "8",
+          "title": "Other"
+        },
+        {
+          "const": "B",
+          "title": "Brachytherapy"
+        },
+        {
+          "const": "X",
+          "title": "Unknown / Inapplicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "RADIODESC": {
+      "title": "Radiotherapy code and description",
+      "type": "string"
+    },
+    "ROW_ID": {
+      "title": "OFH generated local key",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "RT_FLAG": {
+      "title": "Flag to indicate radiotherapy treatment",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No recorded radiotherapy"
+        },
+        {
+          "const": 1,
+          "title": "Had radiotherapy"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "SG_FLAG": {
+      "title": "Flag to indicate surgery",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No recorded surgery"
+        },
+        {
+          "const": 1,
+          "title": "Had surgery to remove primary tumour"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "SIX_MONTHS_AFTER_FLAG": {
+      "title": "Treatment six months from date of diagnosis - check flag",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No"
+        },
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "WITHIN_SIX_MONTHS_FLAG": {
+      "title": "Treatment within 6 months of diagnosis - check flag",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "No"
+        },
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    }
+  },
+  "required": [
+    "CHEMO_ALL_DRUGS",
+    "CT_FLAG",
+    "EVENTCODE",
+    "EVENTDATE",
+    "EVENTDESC",
+    "IMAGINGCODE_NICIP",
+    "IMAGINGCODE_SNOMEDCT",
+    "IMAGINGDESC",
+    "IMAGINGSITE",
+    "LESIONSIZE",
+    "OPCS4_CODE",
+    "OPCS4_NAME",
+    "PID",
+    "PSEUDONYMISED_EVENTID",
+    "PSEUDONYMISED_TUMOURID",
+    "RADIOCODE",
+    "RADIODESC",
+    "ROW_ID",
+    "RT_FLAG",
+    "SG_FLAG",
+    "SIX_MONTHS_AFTER_FLAG",
+    "WITHIN_SIX_MONTHS_FLAG"
+  ]
+}

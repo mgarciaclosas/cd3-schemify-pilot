@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/country_region/country_region.schema.json",
+  "title": "Our Future Health — Participant geographies data — Country and region",
+  "description": "Array of Our Future Health participant geography records. One element is one participant: their country and region at the time of registration.",
+  "$comment": "Standard JSON Schema cannot enforce that ID is unique across rows, or that every PID exists in the participant table (D090).",
+  "type": "array",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "title": "Country and region record",
+    "allOf": [
+      {
+        "$ref": "categories/country_region.json"
+      }
+    ],
+    "unevaluatedProperties": false
+  }
+}

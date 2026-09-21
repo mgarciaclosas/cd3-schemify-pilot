@@ -1,0 +1,339 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/poct_lipid_profile/categories/poct_lipid_profile.json",
+  "title": "POCT lipid profile data — POCT lipid profile",
+  "description": "Point-of-care lipid data: cholesterol, HDL, triglycerides and derived values from up to two sets of readings.",
+  "type": "object",
+  "x-variable-group": "poct_lipid_profile",
+  "properties": {
+    "ID": {
+      "title": "Row ID",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "APPOINTMENT_VERSION": {
+      "title": "Appointment Version",
+      "type": "string",
+      "$comment": "The source lists no values or format for this string, so none is asserted."
+    },
+    "APPOINTMENT_DATETIME": {
+      "title": "Appointment Date and Time.",
+      "description": "Time is rounded to the nearest hour.",
+      "type": "string",
+      "$comment": "The dictionary type is datetime but states no delivered string format, so no pattern is asserted (D043)."
+    },
+    "FIRST_READING_SKIPPED": {
+      "title": "Skipped the first set of POCT lipid measurements",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "not skipped"
+        },
+        {
+          "const": 1,
+          "title": "skipped"
+        }
+      ]
+    },
+    "FIRST_READING_SKIPPED_REASON": {
+      "title": "Reason for skipping the first set of POCT lipid measurements",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "other reason"
+        },
+        {
+          "const": 2,
+          "title": "participant refused"
+        },
+        {
+          "const": 3,
+          "title": "machine failure"
+        },
+        {
+          "const": 4,
+          "title": "insufficient materials"
+        },
+        {
+          "const": 5,
+          "title": "insufficient specimen"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "TC_FIRST_READING": {
+      "title": "First reading for Total Cholesterol (TC) in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HDL_FIRST_READING": {
+      "title": "First reading for High-Density Lipoprotein (HDL) cholesterol in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "TG_FIRST_READING": {
+      "title": "First reading for Triglycerides (TG) in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "LDL_FIRST_READING": {
+      "title": "Low-Density Lipoprotein (LDL) cholesterol derived from the first set of POCT lipid measurements in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "x-role": "derived measure",
+      "x-derivation": "Derived from the first set of POCT lipid measurements; the source gives no formula.",
+      "$comment": "The derived value is not checked against its inputs (D095). The source states no range, so none is asserted (D024)."
+    },
+    "NONHDL_FIRST_READING": {
+      "title": "Non-High-Density Lipoprotein (non-HDL) cholesterol derived from the first set of POCT lipid measurements in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "x-role": "derived measure",
+      "x-derivation": "Derived from the first set of POCT lipid measurements; the source gives no formula.",
+      "$comment": "The derived value is not checked against its inputs (D095). The source states no range, so none is asserted (D024)."
+    },
+    "TC_HDL_RATIO_FIRST_READING": {
+      "title": "Total cholesterol (TC) to High-Density Lipoprotein (HDL) cholesterol ratio derived from the first set of POCT lipid measurements",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-role": "derived measure",
+      "x-derivation": "Derived from the first set of POCT lipid measurements; the source gives no formula.",
+      "$comment": "The derived value is not checked against its inputs (D095). The source states no range, so none is asserted (D024)."
+    },
+    "SECOND_READING_SKIPPED": {
+      "title": "Skipped the second set of POCT lipid measurements.",
+      "description": "Only participants with abnormal readings to the first measurements are offered a second measurement.",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "not skipped"
+        },
+        {
+          "const": 1,
+          "title": "skipped"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "-998 for a participant who was not offered a second set (D094)."
+    },
+    "TC_SECOND_READING": {
+      "title": "Second reading for Total Cholesterol (TC) in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HDL_SECOND_READING": {
+      "title": "Second reading for High-Density Lipoprotein (HDL) cholesterol in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "TG_SECOND_READING": {
+      "title": "Second reading for Triglycerides (TG) in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "LDL_SECOND_READING": {
+      "title": "Low-Density Lipoprotein (LDL) cholesterol derived from the second set of POCT lipid measurements in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "x-role": "derived measure",
+      "x-derivation": "Derived from the second set of POCT lipid measurements; the source gives no formula.",
+      "$comment": "The derived value is not checked against its inputs (D095). The source states no range, so none is asserted (D024)."
+    },
+    "NONHDL_SECOND_READING": {
+      "title": "Non-High-Density Lipoprotein (non-HDL) cholesterol derived from the second set of POCT lipid measurements in millimoles per liter (mmol/L)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmol/L",
+      "x-role": "derived measure",
+      "x-derivation": "Derived from the second set of POCT lipid measurements; the source gives no formula.",
+      "$comment": "The derived value is not checked against its inputs (D095). The source states no range, so none is asserted (D024)."
+    },
+    "TC_HDL_RATIO_SECOND_READING": {
+      "title": "Total cholesterol (TC) to High-Density Lipoprotein (HDL) cholesterol ratio derived from the second set of POCT lipid measurements",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-role": "derived measure",
+      "x-derivation": "Derived from the second set of POCT lipid measurements; the source gives no formula.",
+      "$comment": "The derived value is not checked against its inputs (D095). The source states no range, so none is asserted (D024)."
+    }
+  },
+  "required": [
+    "ID",
+    "PID",
+    "APPOINTMENT_VERSION",
+    "APPOINTMENT_DATETIME",
+    "FIRST_READING_SKIPPED",
+    "FIRST_READING_SKIPPED_REASON",
+    "TC_FIRST_READING",
+    "HDL_FIRST_READING",
+    "TG_FIRST_READING",
+    "LDL_FIRST_READING",
+    "NONHDL_FIRST_READING",
+    "TC_HDL_RATIO_FIRST_READING",
+    "SECOND_READING_SKIPPED",
+    "TC_SECOND_READING",
+    "HDL_SECOND_READING",
+    "TG_SECOND_READING",
+    "LDL_SECOND_READING",
+    "NONHDL_SECOND_READING",
+    "TC_HDL_RATIO_SECOND_READING"
+  ]
+}

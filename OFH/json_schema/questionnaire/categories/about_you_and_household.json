@@ -1,0 +1,864 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/questionnaire/categories/about_you_and_household.json",
+  "title": "Questionnaire data — About you and your household",
+  "description": "Section 1 of the baseline questionnaire: identity, relationships, height and weight, and housing.",
+  "type": "object",
+  "x-variable-group": "about_you_and_household",
+  "properties": {
+    "DEMOG_HEIGHT_1_1": {
+      "title": "What is your height?",
+      "description": "Shown if ([DEMOG_HEIGHT_ENTER_UNIT_1_1] = 1) or ([DEMOG_HEIGHT_ENTER_UNIT_1_1] = 2)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_shown"
+        }
+      ],
+      "x-unit": "cm",
+      "x-universe": "Participants who entered their height in feet and inches or in centimetres.",
+      "$comment": "The source lists no codes and states no range, so none is asserted (D024). Stored in cm whichever unit the participant chose to enter (D032)."
+    },
+    "DEMOG_HEIGHT_ENTER_UNIT_1_1": {
+      "title": "How would you prefer to enter your height?",
+      "description": "We are now going to ask you to tell us how tall you are. (Introduction to the question in the questionnaire logic file.)",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Feet and inches"
+        },
+        {
+          "const": 2,
+          "title": "Centimeters"
+        },
+        {
+          "const": -1,
+          "title": "Do not know my height"
+        },
+        {
+          "const": -3,
+          "title": "Prefer not to provide my height"
+        }
+      ]
+    },
+    "DEMOG_LANGUAGE_1_1": {
+      "title": "What is your main language?",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "English"
+        },
+        {
+          "const": 2,
+          "title": "Welsh"
+        },
+        {
+          "const": 3,
+          "title": "(Scottish) Gaelic"
+        },
+        {
+          "const": 4,
+          "title": "Punjabi"
+        },
+        {
+          "const": 5,
+          "title": "Gujarati"
+        },
+        {
+          "const": 6,
+          "title": "Bengali"
+        },
+        {
+          "const": 7,
+          "title": "Urdu"
+        },
+        {
+          "const": 8,
+          "title": "Hindi"
+        },
+        {
+          "const": 9,
+          "title": "Cantonese"
+        },
+        {
+          "const": 10,
+          "title": "Mandarin"
+        },
+        {
+          "const": 11,
+          "title": "Polish"
+        },
+        {
+          "const": 12,
+          "title": "Arabic"
+        },
+        {
+          "const": 13,
+          "title": "Other (Including British Sign Language)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        }
+      ]
+    },
+    "DEMOG_RELATSH_CIVIL_CURR_1_1": {
+      "title": "Who is your registered civil partnership to?",
+      "description": "Shown if ([DEMOG_RELATSH_STATUS_2_1] ONE of [3, 5])",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Someone of the opposite gender"
+        },
+        {
+          "const": 2,
+          "title": "Someone of the same gender"
+        },
+        {
+          "const": 3,
+          "title": "Other"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_shown"
+        }
+      ],
+      "x-universe": "Participants in a registered civil partnership (status 3) or separated from one (status 5)."
+    },
+    "DEMOG_RELATSH_CIVIL_PREV_1_1": {
+      "title": "Who was your registered civil partnership to?",
+      "description": "Shown if ([DEMOG_RELATSH_STATUS_2_1] ONE of [7, 9])",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Someone of the opposite gender"
+        },
+        {
+          "const": 2,
+          "title": "Someone of the same gender"
+        },
+        {
+          "const": 3,
+          "title": "Other"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_shown"
+        }
+      ],
+      "x-universe": "Participants formerly in a civil partnership now legally dissolved (status 7) or a surviving partner (status 9)."
+    },
+    "DEMOG_RELATSH_MARR_CURR_1_1": {
+      "title": "Who is your legal marriage to?",
+      "description": "Shown if ([DEMOG_RELATSH_STATUS_2_1] ONE of [2, 4])",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Someone of the opposite gender"
+        },
+        {
+          "const": 2,
+          "title": "Someone of the same gender"
+        },
+        {
+          "const": 3,
+          "title": "Other"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_shown"
+        }
+      ],
+      "x-universe": "Participants who are married (status 2) or separated but still legally married (status 4)."
+    },
+    "DEMOG_RELATSH_MARR_PREV_1_1": {
+      "title": "Who was your legal marriage to?",
+      "description": "Shown if ([DEMOG_RELATSH_STATUS_2_1] ONE of [6, 8])",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Someone of the opposite gender"
+        },
+        {
+          "const": 2,
+          "title": "Someone of the same gender"
+        },
+        {
+          "const": 3,
+          "title": "Other"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_shown"
+        }
+      ],
+      "x-universe": "Participants who are divorced (status 6) or widowed (status 8)."
+    },
+    "DEMOG_RELATSH_STATUS_1_1": {
+      "title": "What is your marital status?",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Single, that is never married"
+        },
+        {
+          "const": 2,
+          "title": "Married and living with your husband/wife"
+        },
+        {
+          "const": 6,
+          "title": "A Civil Partner in a legally-recognised Civil Partnership"
+        },
+        {
+          "const": 3,
+          "title": "Married and separated from your husband/wife"
+        },
+        {
+          "const": 4,
+          "title": "Divorced"
+        },
+        {
+          "const": 5,
+          "title": "Widowed or widower"
+        },
+        {
+          "const": 7,
+          "title": "Other"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_shown"
+        }
+      ],
+      "$comment": "Question version 1 (D029); the version 2 question is DEMOG_RELATSH_STATUS_2_1. -998 for participants who answered the version 2 question instead (D034)."
+    },
+    "DEMOG_RELATSH_STATUS_2_1": {
+      "title": "What is your current legal marital or registered civil partnership status?",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Never married and never registered a civil partnership"
+        },
+        {
+          "const": 2,
+          "title": "Married"
+        },
+        {
+          "const": 3,
+          "title": "In a registered civil partnership"
+        },
+        {
+          "const": 4,
+          "title": "Separated, but still legally married"
+        },
+        {
+          "const": 5,
+          "title": "Separated, but still legally in a civil partnership"
+        },
+        {
+          "const": 6,
+          "title": "Divorced"
+        },
+        {
+          "const": 7,
+          "title": "Formerly in a civil partnership which is now legally dissolved"
+        },
+        {
+          "const": 8,
+          "title": "Widowed"
+        },
+        {
+          "const": 9,
+          "title": "Surviving partner for a registered civil partnership"
+        },
+        {
+          "const": 10,
+          "title": "Other"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_shown"
+        }
+      ],
+      "$comment": "Question version 2 (D029); the version 1 question is DEMOG_RELATSH_STATUS_1_1. -998 for participants who answered the version 1 question instead (D034)."
+    },
+    "DEMOG_SEXUAL_ORIENTATION_1_1": {
+      "title": "Which of the following best describes your sexual orientation?",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Straight/heterosexual"
+        },
+        {
+          "const": 2,
+          "title": "Gay or lesbian"
+        },
+        {
+          "const": 3,
+          "title": "Bisexual"
+        },
+        {
+          "const": 4,
+          "title": "Asexual"
+        },
+        {
+          "const": 5,
+          "title": "Pansexual"
+        },
+        {
+          "const": 6,
+          "title": "Other sexual orientation not listed"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        }
+      ]
+    },
+    "DEMOG_TRANSGENDER_1_1": {
+      "title": "Do you identify as trans or do you have a trans history?",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Yes"
+        },
+        {
+          "const": 0,
+          "title": "No"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        }
+      ]
+    },
+    "DEMOG_WEIGHT_1_1": {
+      "title": "What is your weight?",
+      "description": "Shown if ([DEMOG_WEIGHT_ENTER_UNIT_1_1] = 1) or ([DEMOG_WEIGHT_ENTER_UNIT_1_1] = 2)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_shown"
+        }
+      ],
+      "x-unit": "kg",
+      "x-universe": "Participants who entered their weight in stones and pounds or in kilograms.",
+      "$comment": "The source lists no codes and states no range, so none is asserted (D024). Stored in kg whichever unit the participant chose to enter (D032)."
+    },
+    "DEMOG_WEIGHT_ENTER_UNIT_1_1": {
+      "title": "How would you prefer to enter your weight?",
+      "description": "We are now going to ask you to tell us how much you weigh. (Introduction to the question in the questionnaire logic file.)",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Stones and pounds"
+        },
+        {
+          "const": 2,
+          "title": "Kilograms"
+        },
+        {
+          "const": -1,
+          "title": "Do not know my weight"
+        },
+        {
+          "const": -3,
+          "title": "Prefer not to provide my weight"
+        }
+      ]
+    },
+    "HOUSING_CURR_ADD_YRS_1_1": {
+      "title": "How many years have you lived at your current address?",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -999,
+              -10,
+              -1,
+              -3,
+              -998
+            ]
+          }
+        },
+        {
+          "const": -10,
+          "title": "Less than a year"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/dont_know"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/suppressed"
+        }
+      ],
+      "x-unit": "years",
+      "$comment": "-10 is a substantive answer (less than a year), not a missing code (D003). The source states no range, so none is asserted (D024)."
+    },
+    "HOUSING_ENERGY_1_M": {
+      "title": "Do you have any of the following in your home?",
+      "anyOf": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "const": 1,
+                "title": "A gas hob or gas cooker"
+              },
+              {
+                "const": 2,
+                "title": "A gas fire that you use regularly in winter time"
+              },
+              {
+                "const": 3,
+                "title": "An open solid fuel fire that you use regularly in winter time"
+              },
+              {
+                "const": -7,
+                "title": "None of the above"
+              },
+              {
+                "$ref": "../../common/defs.json#/$defs/dont_know"
+              },
+              {
+                "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+              }
+            ]
+          }
+        },
+        {
+          "const": [
+            1
+          ],
+          "title": "A gas hob or gas cooker"
+        },
+        {
+          "const": [
+            2
+          ],
+          "title": "A gas fire that you use regularly in winter time"
+        },
+        {
+          "const": [
+            3
+          ],
+          "title": "An open solid fuel fire that you use regularly in winter time"
+        },
+        {
+          "const": [
+            -7
+          ],
+          "title": "None of the above"
+        },
+        {
+          "const": [
+            -1
+          ],
+          "title": "Do not know"
+        },
+        {
+          "const": [
+            -3
+          ],
+          "title": "Prefer not to answer"
+        }
+      ],
+      "$comment": "Multi-select: stored as an array of codes in one field (D031). Each single choice is also listed as a one-item array so the dictionary page shows the options (D052)."
+    },
+    "HOUSING_HEAT_1_M": {
+      "title": "How is your home mainly heated?",
+      "anyOf": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "const": 1,
+                "title": "Gas central heating"
+              },
+              {
+                "const": 2,
+                "title": "Electric storage heaters"
+              },
+              {
+                "const": 3,
+                "title": "Oil (kerosene) central heating"
+              },
+              {
+                "const": 4,
+                "title": "Portable gas or paraffin heaters"
+              },
+              {
+                "const": 5,
+                "title": "Solid fuel central heating"
+              },
+              {
+                "const": 6,
+                "title": "Open fire without central heating"
+              },
+              {
+                "const": -7,
+                "title": "None of the above"
+              },
+              {
+                "$ref": "../../common/defs.json#/$defs/dont_know"
+              },
+              {
+                "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+              }
+            ]
+          }
+        },
+        {
+          "const": [
+            1
+          ],
+          "title": "Gas central heating"
+        },
+        {
+          "const": [
+            2
+          ],
+          "title": "Electric storage heaters"
+        },
+        {
+          "const": [
+            3
+          ],
+          "title": "Oil (kerosene) central heating"
+        },
+        {
+          "const": [
+            4
+          ],
+          "title": "Portable gas or paraffin heaters"
+        },
+        {
+          "const": [
+            5
+          ],
+          "title": "Solid fuel central heating"
+        },
+        {
+          "const": [
+            6
+          ],
+          "title": "Open fire without central heating"
+        },
+        {
+          "const": [
+            -7
+          ],
+          "title": "None of the above"
+        },
+        {
+          "const": [
+            -1
+          ],
+          "title": "Do not know"
+        },
+        {
+          "const": [
+            -3
+          ],
+          "title": "Prefer not to answer"
+        }
+      ],
+      "$comment": "Multi-select: stored as an array of codes in one field (D031). Each single choice is also listed as a one-item array so the dictionary page shows the options (D052)."
+    },
+    "HOUSING_PEOPLE_1_1": {
+      "title": "Including yourself, how many people are living together in your household?",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -1,
+              -3,
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/dont_know"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        }
+      ],
+      "$comment": "The source lists only the missing codes and states no range for the count itself, so none is asserted (D024)."
+    },
+    "HOUSING_PEOPLE_RELATE_1_M": {
+      "title": "How are the other people who live with you related to you?",
+      "description": "Shown if ([HOUSING_PEOPLE_1_1] ONE of [int(>1), -1, -3])",
+      "anyOf": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "const": 1,
+                "title": "Husband, wife or partner"
+              },
+              {
+                "const": 2,
+                "title": "Son and/or daughter (include step-children)"
+              },
+              {
+                "const": 3,
+                "title": "Brother and/or sister"
+              },
+              {
+                "const": 4,
+                "title": "Mother and/or father"
+              },
+              {
+                "const": 5,
+                "title": "Grandparent"
+              },
+              {
+                "const": 6,
+                "title": "Grandchild"
+              },
+              {
+                "const": 7,
+                "title": "Other related"
+              },
+              {
+                "const": 8,
+                "title": "Other unrelated"
+              },
+              {
+                "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+              }
+            ]
+          }
+        },
+        {
+          "const": [
+            1
+          ],
+          "title": "Husband, wife or partner"
+        },
+        {
+          "const": [
+            2
+          ],
+          "title": "Son and/or daughter (include step-children)"
+        },
+        {
+          "const": [
+            3
+          ],
+          "title": "Brother and/or sister"
+        },
+        {
+          "const": [
+            4
+          ],
+          "title": "Mother and/or father"
+        },
+        {
+          "const": [
+            5
+          ],
+          "title": "Grandparent"
+        },
+        {
+          "const": [
+            6
+          ],
+          "title": "Grandchild"
+        },
+        {
+          "const": [
+            7
+          ],
+          "title": "Other related"
+        },
+        {
+          "const": [
+            8
+          ],
+          "title": "Other unrelated"
+        },
+        {
+          "const": [
+            -3
+          ],
+          "title": "Prefer not to answer"
+        },
+        {
+          "const": [
+            -998
+          ],
+          "title": "Question not shown"
+        }
+      ],
+      "$comment": "Multi-select: stored as an array of codes in one field (D031). A question not shown is the one-item array [-998]. Each single choice is also listed as a one-item array so the dictionary page shows the options (D052).",
+      "x-universe": "Participants who live with other people (household of more than one, or household size unknown or not given)."
+    },
+    "HOUSING_TENURE_1_1": {
+      "title": "Do you own or rent the accommodation that you live in?",
+      "description": "Shown if ([HOUSING_TYPE_1_1] ONE of [1, 2, 3, -7, -3])",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "Own outright (by you or someone in your household)"
+        },
+        {
+          "const": 2,
+          "title": "Own with a mortgage"
+        },
+        {
+          "const": 3,
+          "title": "Rent – from local authority, local council, housing association, student accommodation"
+        },
+        {
+          "const": 4,
+          "title": "Rent – from private landlord or letting agency"
+        },
+        {
+          "const": 5,
+          "title": "Pay part rent and part mortgage (shared ownership)"
+        },
+        {
+          "const": 6,
+          "title": "Live in accommodation rent free"
+        },
+        {
+          "const": -7,
+          "title": "None of the above"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_shown"
+        }
+      ],
+      "$comment": "Source typo: 'accomodation' [sic], corrected to 'accommodation' in the title.",
+      "x-universe": "Participants whose accommodation is not sheltered accommodation or a care home."
+    },
+    "HOUSING_TYPE_1_1": {
+      "title": "What type of accommodation do you live in?",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "A house or bungalow"
+        },
+        {
+          "const": 2,
+          "title": "A flat, maisonette or apartment"
+        },
+        {
+          "const": 3,
+          "title": "Mobile or temporary structure (i.e. caravan)"
+        },
+        {
+          "const": 4,
+          "title": "Sheltered accommodation"
+        },
+        {
+          "const": 5,
+          "title": "Care home"
+        },
+        {
+          "const": -7,
+          "title": "None of the above"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        }
+      ]
+    },
+    "HOUSING_VEHICLES_1_1": {
+      "title": "How many cars or vans are owned, or available for use, by you or members of your household?",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "None"
+        },
+        {
+          "const": 2,
+          "title": "One"
+        },
+        {
+          "const": 3,
+          "title": "Two"
+        },
+        {
+          "const": 4,
+          "title": "Three"
+        },
+        {
+          "const": 5,
+          "title": "Four or more"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/dont_know"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
+        }
+      ]
+    }
+  },
+  "required": [
+    "DEMOG_HEIGHT_1_1",
+    "DEMOG_HEIGHT_ENTER_UNIT_1_1",
+    "DEMOG_LANGUAGE_1_1",
+    "DEMOG_RELATSH_CIVIL_CURR_1_1",
+    "DEMOG_RELATSH_CIVIL_PREV_1_1",
+    "DEMOG_RELATSH_MARR_CURR_1_1",
+    "DEMOG_RELATSH_MARR_PREV_1_1",
+    "DEMOG_RELATSH_STATUS_1_1",
+    "DEMOG_RELATSH_STATUS_2_1",
+    "DEMOG_SEXUAL_ORIENTATION_1_1",
+    "DEMOG_TRANSGENDER_1_1",
+    "DEMOG_WEIGHT_1_1",
+    "DEMOG_WEIGHT_ENTER_UNIT_1_1",
+    "HOUSING_CURR_ADD_YRS_1_1",
+    "HOUSING_ENERGY_1_M",
+    "HOUSING_HEAT_1_M",
+    "HOUSING_PEOPLE_1_1",
+    "HOUSING_PEOPLE_RELATE_1_M",
+    "HOUSING_TENURE_1_1",
+    "HOUSING_TYPE_1_1",
+    "HOUSING_VEHICLES_1_1"
+  ]
+}

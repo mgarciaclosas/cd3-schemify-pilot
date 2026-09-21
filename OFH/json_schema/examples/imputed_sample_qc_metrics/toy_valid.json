@@ -1,0 +1,50 @@
+[
+  {
+    "PID": "TOY0001",
+    "plate": "TOYTEXT0",
+    "genetic_sex": "TOYTEXT0",
+    "batch": "TOYTEXT0",
+    "array_manifest_version": "TOYTEXT0",
+    "imputation_group": "TOYTEXT0"
+  },
+  {
+    "PID": "TOY0002",
+    "plate": "TOYTEXT1",
+    "genetic_sex": "TOYTEXT1",
+    "batch": "TOYTEXT1",
+    "array_manifest_version": "TOYTEXT1",
+    "imputation_group": "TOYTEXT1"
+  },
+  {
+    "PID": "TOY0003",
+    "plate": "-998",
+    "genetic_sex": "-998",
+    "batch": "-998",
+    "array_manifest_version": "-998",
+    "imputation_group": "-998"
+  },
+  {
+    "PID": "TOY0004",
+    "plate": "TOYTEXT3",
+    "genetic_sex": "TOYTEXT3",
+    "batch": "TOYTEXT3",
+    "array_manifest_version": "TOYTEXT3",
+    "imputation_group": "TOYTEXT3"
+  },
+  {
+    "PID": "TOY0005",
+    "plate": "TOYTEXT4",
+    "genetic_sex": "TOYTEXT4",
+    "batch": "TOYTEXT4",
+    "array_manifest_version": "TOYTEXT4",
+    "imputation_group": "TOYTEXT4"
+  },
+  {
+    "PID": "TOY0006",
+    "plate": "TOYTEXT5",
+    "genetic_sex": "TOYTEXT5",
+    "batch": "TOYTEXT5",
+    "array_manifest_version": "TOYTEXT5",
+    "imputation_group": "TOYTEXT5"
+  }
+]

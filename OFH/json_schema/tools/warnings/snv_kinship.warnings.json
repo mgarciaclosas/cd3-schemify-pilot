@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/snv_kinship.warnings.json",
+  "title": "Our Future Health — Genotype array data — SNV kinship — warning checks",
+  "description": "Non-blocking checks for the snv_kinship table, from plausibility ranges the source does not state (D127). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning G01: HetHet is expected to be between 0 and 1 (it is a fraction of markers); a value outside that range may point to a data problem.",
+        "properties": {
+          "HetHet": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G02: IBS0 is expected to be between 0 and 1 (it is a fraction of markers); a value outside that range may point to a data problem.",
+        "properties": {
+          "IBS0": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G03: Kinship is expected to be at most 0.5 (a kinship coefficient cannot exceed 0.5); a value outside that range may point to a data problem.",
+        "properties": {
+          "Kinship": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "maximum": 0.5
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

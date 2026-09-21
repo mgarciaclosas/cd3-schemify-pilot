@@ -1,0 +1,31 @@
+{
+  "study": "Our Future Health",
+  "tables": [
+    "participant",
+    "questionnaire",
+    "clinic_measurements",
+    "poct_lipid_profile",
+    "country_region",
+    "lsoa",
+    "msoa",
+    "intermediate_zones",
+    "nhse_eng_canpat",
+    "nhse_eng_canreg_pattumour",
+    "nhse_eng_canreg_pre1995",
+    "nhse_eng_canreg_treat",
+    "nhse_eng_ecds",
+    "nhse_eng_ed",
+    "nhse_eng_inpat",
+    "nhse_eng_outpat",
+    "nhse_eng_primcare_meds",
+    "nhse_engwal_deaths",
+    "participant_nhs_linked",
+    "genotype_sample_qc_metrics",
+    "snv_pvcf",
+    "snv_kinship",
+    "imputed_sample_qc_metrics",
+    "imputed_pvcf",
+    "variant_summary_statistics",
+    "ancestry_estimation_metrics"
+  ]
+}

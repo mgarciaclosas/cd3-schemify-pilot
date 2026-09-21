@@ -1,0 +1,22 @@
+[
+  {
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLC"
+  },
+  {
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLK"
+  },
+  {
+    "COUNTRY_AT_REG": "W92000004",
+    "REGION_AT_REG": "TLL"
+  },
+  {
+    "COUNTRY_AT_REG": "S92000003",
+    "REGION_AT_REG": "TLM"
+  },
+  {
+    "COUNTRY_AT_REG": "N92000002",
+    "REGION_AT_REG": "TLN"
+  }
+]

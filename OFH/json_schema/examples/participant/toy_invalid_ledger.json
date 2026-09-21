@@ -1,48 +1,60 @@
 {
-  "$comment": "Ground truth for toy_invalid.json. No pattern-break case: PID has no pattern constraint (source gives no ID format). No skip-break/applicability-break: no if/then routing rules in this table. No duplicate-row: validate.py fixtures checks rows independently, never array-level uniqueItems; verified separately.",
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column. The table has no pattern, skip or routing rules, so those kinds are absent.",
   "rowIndexBase": 0,
   "violations": [
     {
       "row": 0,
       "column": "REGISTRATION_YEAR",
       "kind": "wrong-type",
-      "value": "twenty-twenty-five",
-      "reason": "must be an integer"
+      "reason": "year given as a string"
     },
     {
       "row": 1,
-      "column": "DEMOG_SEX_1_1",
+      "column": "BLOOD_SAMPLE",
       "kind": "unknown-level",
-      "value": 9,
-      "reason": "9 is not a declared code in the source coding table"
+      "reason": "2 is not a declared code"
     },
     {
       "row": 2,
-      "column": "BIRTH_YEAR",
+      "column": "REGISTRATION_MONTH",
       "kind": "range-break",
-      "value": 1800,
-      "reason": "below plausibility min 1920"
+      "reason": "month 13 is outside 1-12"
     },
     {
       "row": 3,
-      "column": "BLOOD_SAMPLE",
+      "column": "CONSENT_MONTH",
       "kind": "invented-sentinel",
-      "value": -3,
-      "reason": "-3 (prefer_not_to_answer) is not defined for BLOOD_SAMPLE in the source; it only defines 0/1"
+      "reason": "-999 is only defined for birth year and month"
     },
     {
       "row": 4,
-      "column": "DEMOG_GENDER_1_1",
-      "kind": "missing-key",
-      "value": null,
-      "reason": "column omitted -- every property is required"
+      "column": "DEMOG_SEX_2_1",
+      "kind": "invented-sentinel",
+      "reason": "-1 (do not know) is not a code this variable defines"
     },
     {
       "row": 5,
-      "column": "HEIGHT_CM",
+      "column": "BIRTH_MONTH",
+      "kind": "range-break",
+      "reason": "month 0 is outside 1-12"
+    },
+    {
+      "row": 6,
+      "column": "DEMOG_ETHNICITY_1_1",
+      "kind": "unknown-level",
+      "reason": "20 is not a declared code"
+    },
+    {
+      "row": 7,
+      "column": "CONSENT_YEAR",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 8,
+      "column": "SHOE_SIZE",
       "kind": "undeclared-column",
-      "value": 170,
-      "reason": "not in the source dictionary; rejected by unevaluatedProperties"
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
     }
   ]
 }

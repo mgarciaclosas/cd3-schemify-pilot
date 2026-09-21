@@ -1,28 +1,43 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schemas.example.org/cd3-ofh-pilot/common/defs.json",
-  "title": "CD3 / Our Future Health (schemify pilot) — shared definitions",
-  "description": "Only invariant tokens are centralised here; context-specific sentinels are inlined per field because their meanings differ by variable. Shared across both tables in this package (participant, questionnaire).",
+  "title": "Our Future Health — shared definitions",
+  "description": "Only invariant tokens are centralised here; context-specific sentinels are inlined per field because their meanings differ by variable.",
   "$defs": {
     "prefer_not_to_answer": {
       "const": -3,
       "title": "Prefer not to answer",
-      "description": "Adopted verbatim from the source's own coding tables (our_future_health_codings_v14.xlsx). Confirmed invariant at scale: appears with this exact meaning across all 5 DEMOG_* participant-domain fields and 347 of 353 coded questionnaire-domain fields."
-    },
-    "suppressed": {
-      "const": -999,
-      "title": "Suppressed",
-      "description": "Adopted verbatim from the source's own coding tables: statistical disclosure control, not a generic 'missing' sentinel. Note this is a DIFFERENT meaning from the -999 used in the sibling BGS pilot package (that one is agent-decided generic missingness) -- packages are independent and this collision is expected, not a bug."
+      "description": "The participant chose not to answer. Adopted from the source's own codings (coded -3 on 347 questionnaire codings and 5 participant codings), not invented — D003."
     },
     "dont_know": {
       "const": -1,
       "title": "Do not know",
-      "description": "Adopted verbatim from the source's own coding tables. Found only in the questionnaire domain (280 of 353 coded fields), not present in participant."
+      "description": "The participant did not know the answer. Adopted from the source's own codings (coded -1 on 280 questionnaire codings) — D003."
     },
-    "none_of_the_above": {
-      "const": -7,
-      "title": "None of the above",
-      "description": "Adopted verbatim from the source's own coding tables (131 of 353 coded questionnaire fields). Unlike the other three shared defs, this is a substantive response (the participant actively selected 'none of the listed options apply'), not a missingness sentinel -- centralised here because the code and meaning are invariant wherever it appears, per SCHEMA-PATTERNS.md's rule for any truly invariant shared shape, not only sentinels."
+    "dont_remember": {
+      "const": -4,
+      "title": "Do not remember",
+      "description": "The participant did not remember. Adopted from the source's own codings (coded -4 on 4 questionnaire codings) — D003."
+    },
+    "suppressed": {
+      "const": -999,
+      "title": "Suppressed",
+      "description": "The value is withheld by the data provider. Adopted from the source's own codings (coded -999 on 10 questionnaire and 2 participant codings) — D003."
+    },
+    "not_shown": {
+      "const": -998,
+      "title": "Question not shown",
+      "description": "The questionnaire routing did not show this question to the participant. The source's raw tables hold NULL here (the logic file: \"If the field is null in the dataset, the question was not shown\"); the package records it in-band as -998, an agent-proposed code the steward ratified on 2026-09-19 — D021."
+    },
+    "not_recorded": {
+      "const": -998,
+      "title": "Not recorded",
+      "description": "The measurement, or the reason for skipping it, is absent in the source (NULL) because the participant skipped the measurement, or the reason does not apply. The same in-band code as not_shown (D021), named for a measurement instead of a question — D088."
+    },
+    "not_recorded_text": {
+      "const": "-998",
+      "title": "Not recorded",
+      "description": "The value is absent (NULL) in the source. The string form of the package's -998 code, used where the value itself is text, so that the cell keeps its type — D101."
     }
   }
 }

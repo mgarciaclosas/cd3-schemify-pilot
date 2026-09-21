@@ -1,0 +1,692 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/nhse_eng_outpat.warnings.json",
+  "title": "Our Future Health — Linked health records data — Outpatient — warning checks",
+  "description": "Non-blocking checks for the nhse_eng_outpat table, from rules the source does not state but the steward asked to have checked (D122). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning R198: DIAG_4_01 is not recorded but the next slot DIAG_4_02 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_01"
+          ],
+          "properties": {
+            "DIAG_4_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_02 is not recorded but the next slot DIAG_4_03 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_02"
+          ],
+          "properties": {
+            "DIAG_4_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_03 is not recorded but the next slot DIAG_4_04 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_03"
+          ],
+          "properties": {
+            "DIAG_4_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_04 is not recorded but the next slot DIAG_4_05 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_04"
+          ],
+          "properties": {
+            "DIAG_4_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_05 is not recorded but the next slot DIAG_4_06 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_05"
+          ],
+          "properties": {
+            "DIAG_4_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_06 is not recorded but the next slot DIAG_4_07 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_06"
+          ],
+          "properties": {
+            "DIAG_4_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_07 is not recorded but the next slot DIAG_4_08 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_07"
+          ],
+          "properties": {
+            "DIAG_4_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_08 is not recorded but the next slot DIAG_4_09 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_08"
+          ],
+          "properties": {
+            "DIAG_4_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_09 is not recorded but the next slot DIAG_4_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_09"
+          ],
+          "properties": {
+            "DIAG_4_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_10 is not recorded but the next slot DIAG_4_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_10"
+          ],
+          "properties": {
+            "DIAG_4_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R198: DIAG_4_11 is not recorded but the next slot DIAG_4_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_4_11"
+          ],
+          "properties": {
+            "DIAG_4_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_4_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_01 is not recorded but the next slot OPERTN_02 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_01"
+          ],
+          "properties": {
+            "OPERTN_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_02 is not recorded but the next slot OPERTN_03 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_02"
+          ],
+          "properties": {
+            "OPERTN_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_03 is not recorded but the next slot OPERTN_04 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_03"
+          ],
+          "properties": {
+            "OPERTN_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_04 is not recorded but the next slot OPERTN_05 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_04"
+          ],
+          "properties": {
+            "OPERTN_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_05 is not recorded but the next slot OPERTN_06 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_05"
+          ],
+          "properties": {
+            "OPERTN_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_06 is not recorded but the next slot OPERTN_07 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_06"
+          ],
+          "properties": {
+            "OPERTN_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_07 is not recorded but the next slot OPERTN_08 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_07"
+          ],
+          "properties": {
+            "OPERTN_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_08 is not recorded but the next slot OPERTN_09 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_08"
+          ],
+          "properties": {
+            "OPERTN_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_09 is not recorded but the next slot OPERTN_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_09"
+          ],
+          "properties": {
+            "OPERTN_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_10 is not recorded but the next slot OPERTN_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_10"
+          ],
+          "properties": {
+            "OPERTN_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_11 is not recorded but the next slot OPERTN_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_11"
+          ],
+          "properties": {
+            "OPERTN_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_12 is not recorded but the next slot OPERTN_13 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_12"
+          ],
+          "properties": {
+            "OPERTN_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_13": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_13 is not recorded but the next slot OPERTN_14 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_13"
+          ],
+          "properties": {
+            "OPERTN_13": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_14": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_14 is not recorded but the next slot OPERTN_15 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_14"
+          ],
+          "properties": {
+            "OPERTN_14": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_15": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_15 is not recorded but the next slot OPERTN_16 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_15"
+          ],
+          "properties": {
+            "OPERTN_15": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_16": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_16 is not recorded but the next slot OPERTN_17 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_16"
+          ],
+          "properties": {
+            "OPERTN_16": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_17": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_17 is not recorded but the next slot OPERTN_18 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_17"
+          ],
+          "properties": {
+            "OPERTN_17": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_18": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_18 is not recorded but the next slot OPERTN_19 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_18"
+          ],
+          "properties": {
+            "OPERTN_18": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_19": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_19 is not recorded but the next slot OPERTN_20 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_19"
+          ],
+          "properties": {
+            "OPERTN_19": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_20": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_20 is not recorded but the next slot OPERTN_21 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_20"
+          ],
+          "properties": {
+            "OPERTN_20": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_21": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_21 is not recorded but the next slot OPERTN_22 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_21"
+          ],
+          "properties": {
+            "OPERTN_21": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_22": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_22 is not recorded but the next slot OPERTN_23 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_22"
+          ],
+          "properties": {
+            "OPERTN_22": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_23": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R199: OPERTN_23 is not recorded but the next slot OPERTN_24 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "OPERTN_23"
+          ],
+          "properties": {
+            "OPERTN_23": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "OPERTN_24": {
+              "const": "-998"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

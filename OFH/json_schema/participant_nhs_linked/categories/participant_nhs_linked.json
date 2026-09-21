@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/participant_nhs_linked/categories/participant_nhs_linked.json",
+  "title": "Linked health records data — Participants linked to an NHS number",
+  "description": "Participants successfully linked to an NHS number.",
+  "type": "object",
+  "x-variable-group": "participant_nhs_linked",
+  "properties": {
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "ROW_ID": {
+      "title": "OFH generated local key",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D102). The source states no format, so no pattern is asserted (D043)."
+    }
+  },
+  "required": [
+    "PID",
+    "ROW_ID"
+  ]
+}

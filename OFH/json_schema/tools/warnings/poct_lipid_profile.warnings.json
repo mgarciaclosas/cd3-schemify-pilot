@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/poct_lipid_profile.warnings.json",
+  "title": "Our Future Health — POCT lipid profile data — warning checks",
+  "description": "Non-blocking checks for the poct_lipid_profile table, from rules the source does not state but the steward accepted (D129). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning R190: the first set of POCT lipid measurements was skipped but SECOND_READING_SKIPPED is not -998; only participants with abnormal first readings are offered a second set, so a participant with no first readings should not have one.",
+        "if": {
+          "required": [
+            "FIRST_READING_SKIPPED"
+          ],
+          "properties": {
+            "FIRST_READING_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SECOND_READING_SKIPPED": {
+              "const": -998
+            }
+          }
+        }
+      }
+    ]
+  }
+}

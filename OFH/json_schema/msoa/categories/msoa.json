@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/msoa/categories/msoa.json",
+  "title": "Participant geographies data — Middle layer super output areas (MSOA)",
+  "description": "Middle Layer Super Output Areas (MSOA) for England and Wales.",
+  "type": "object",
+  "x-variable-group": "msoa",
+  "properties": {
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "ID": {
+      "title": "Row ID",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "MSOA_AT_REG": {
+      "title": "Middle Super Output Area (MSOA) of participants living in England and Wales at the time of registration",
+      "type": "string",
+      "pattern": "^[EW]02[0-9]{6}$",
+      "$comment": "Format taken from the source's own 7264 codes, all of which match it; whether a code is one of them is not checked, because listing them would make the page and the schema unusably large (D098)."
+    }
+  },
+  "required": [
+    "PID",
+    "ID",
+    "MSOA_AT_REG"
+  ]
+}

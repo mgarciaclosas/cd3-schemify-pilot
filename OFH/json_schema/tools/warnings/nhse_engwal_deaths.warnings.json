@@ -1,0 +1,292 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/nhse_engwal_deaths.warnings.json",
+  "title": "Our Future Health — Linked health records data — Deaths — warning checks",
+  "description": "Non-blocking checks for the nhse_engwal_deaths table, from rules the source does not state but the steward asked to have checked (D122). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning R193: S_COD_CODE_1 is not recorded but the next slot S_COD_CODE_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_1"
+          ],
+          "properties": {
+            "S_COD_CODE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_2 is not recorded but the next slot S_COD_CODE_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_2"
+          ],
+          "properties": {
+            "S_COD_CODE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_3 is not recorded but the next slot S_COD_CODE_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_3"
+          ],
+          "properties": {
+            "S_COD_CODE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_4 is not recorded but the next slot S_COD_CODE_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_4"
+          ],
+          "properties": {
+            "S_COD_CODE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_5 is not recorded but the next slot S_COD_CODE_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_5"
+          ],
+          "properties": {
+            "S_COD_CODE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_6 is not recorded but the next slot S_COD_CODE_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_6"
+          ],
+          "properties": {
+            "S_COD_CODE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_7 is not recorded but the next slot S_COD_CODE_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_7"
+          ],
+          "properties": {
+            "S_COD_CODE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_8 is not recorded but the next slot S_COD_CODE_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_8"
+          ],
+          "properties": {
+            "S_COD_CODE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_9 is not recorded but the next slot S_COD_CODE_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_9"
+          ],
+          "properties": {
+            "S_COD_CODE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_10 is not recorded but the next slot S_COD_CODE_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_10"
+          ],
+          "properties": {
+            "S_COD_CODE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_11 is not recorded but the next slot S_COD_CODE_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_11"
+          ],
+          "properties": {
+            "S_COD_CODE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_12 is not recorded but the next slot S_COD_CODE_13 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_12"
+          ],
+          "properties": {
+            "S_COD_CODE_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_13": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_13 is not recorded but the next slot S_COD_CODE_14 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_13"
+          ],
+          "properties": {
+            "S_COD_CODE_13": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_14": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R193: S_COD_CODE_14 is not recorded but the next slot S_COD_CODE_15 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "S_COD_CODE_14"
+          ],
+          "properties": {
+            "S_COD_CODE_14": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "S_COD_CODE_15": {
+              "const": "-998"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

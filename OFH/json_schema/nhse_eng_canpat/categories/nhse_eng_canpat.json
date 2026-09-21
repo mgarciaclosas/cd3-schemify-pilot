@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/nhse_eng_canpat/categories/nhse_eng_canpat.json",
+  "title": "Linked health records data — Cancer pathways data",
+  "description": "Cancer pathways data.",
+  "type": "object",
+  "x-variable-group": "nhse_eng_canpat",
+  "properties": {
+    "EVENT_DATE": {
+      "title": "Event start date",
+      "type": "string"
+    },
+    "EVENT_END": {
+      "title": "Event end date",
+      "type": "string"
+    },
+    "EVENT_PROPERTY_1": {
+      "title": "Event property (1)",
+      "type": "string"
+    },
+    "EVENT_PROPERTY_2": {
+      "title": "Event property (2)",
+      "type": "string"
+    },
+    "EVENT_PROPERTY_3": {
+      "title": "Event property (3)",
+      "type": "string"
+    },
+    "EVENT_TYPE": {
+      "title": "Type of event",
+      "oneOf": [
+        {
+          "const": 501,
+          "title": "CWT referral"
+        },
+        {
+          "const": 502,
+          "title": "CWT First seen"
+        },
+        {
+          "const": 503,
+          "title": "Radiology"
+        },
+        {
+          "const": 504,
+          "title": "HES Admitted Patient Care episode"
+        },
+        {
+          "const": 505,
+          "title": "HES A&E attendance"
+        },
+        {
+          "const": 506,
+          "title": "ENCR Diagnosis"
+        },
+        {
+          "const": 507,
+          "title": "CWT Active Monitoring"
+        },
+        {
+          "const": 508,
+          "title": "Major Surgery"
+        },
+        {
+          "const": 509,
+          "title": "RTDS appointment (pre 201604)"
+        },
+        {
+          "const": 510,
+          "title": "SACT regimen start"
+        },
+        {
+          "const": 511,
+          "title": "Vital Status"
+        },
+        {
+          "const": 512,
+          "title": "Cancer Treatment Period Start"
+        },
+        {
+          "const": 513,
+          "title": "Cancer Treatment"
+        },
+        {
+          "const": 514,
+          "title": "Outpatient attendence"
+        },
+        {
+          "const": 515,
+          "title": "MDT: COSD"
+        },
+        {
+          "const": 516,
+          "title": "Other tumour diagnosis"
+        },
+        {
+          "const": 517,
+          "title": "CT from AV_TREATMENT"
+        },
+        {
+          "const": 518,
+          "title": "RT from AV_TREATMENT"
+        },
+        {
+          "const": 519,
+          "title": "Surgery from AV_TREATMENT"
+        },
+        {
+          "const": 520,
+          "title": "Major Surgery from AV_TREATMENT"
+        },
+        {
+          "const": 521,
+          "title": "SACT cycle event"
+        },
+        {
+          "const": 522,
+          "title": "SACT drug event"
+        },
+        {
+          "const": 523,
+          "title": "Hormone from AV_TREATMENT"
+        },
+        {
+          "const": 524,
+          "title": "Brachy from AV_TREATMENT"
+        },
+        {
+          "const": 525,
+          "title": "Biopsy "
+        },
+        {
+          "const": 526,
+          "title": "Endoscopy from COSD"
+        },
+        {
+          "const": 527,
+          "title": "COSD Pathology"
+        },
+        {
+          "const": 528,
+          "title": "RTD start point"
+        },
+        {
+          "const": 529,
+          "title": "RTD referral date"
+        },
+        {
+          "const": 530,
+          "title": "MDT: CWT"
+        },
+        {
+          "const": 531,
+          "title": "Biopsy from APC HES"
+        },
+        {
+          "const": 532,
+          "title": "Endoscopy from HES"
+        },
+        {
+          "const": 533,
+          "title": "Active monitoring from COSD"
+        },
+        {
+          "const": 534,
+          "title": "Path sample taken"
+        },
+        {
+          "const": 535,
+          "title": "Path sample received"
+        },
+        {
+          "const": 536,
+          "title": "Path investigation result"
+        },
+        {
+          "const": 537,
+          "title": "RTDS episode (post 201604)"
+        },
+        {
+          "const": 538,
+          "title": "RTDS appointment (post 201604)"
+        },
+        {
+          "const": 539,
+          "title": "RTDS episode (pre 201604)"
+        },
+        {
+          "const": 540,
+          "title": "HESAPC procedures"
+        },
+        {
+          "const": 548,
+          "title": "COSD recurrence"
+        },
+        {
+          "const": 549,
+          "title": "AV_TREATMENT imaging"
+        },
+        {
+          "const": 550,
+          "title": "AV_TREATMENT Other event"
+        },
+        {
+          "const": 551,
+          "title": "RTDS brachytherapy fractions up to April 2016"
+        },
+        {
+          "const": 552,
+          "title": "RTDS brachytherapy fractions  from April 2016"
+        },
+        {
+          "const": 553,
+          "title": "RTDS brachytherapy appointments from April 2016"
+        },
+        {
+          "const": 554,
+          "title": "RTDS brachytherapy episodes up to April 2016"
+        },
+        {
+          "const": 600,
+          "title": "Derived Diagnosis date"
+        },
+        {
+          "const": 601,
+          "title": "Referral date"
+        },
+        {
+          "const": 602,
+          "title": "First Seen"
+        },
+        {
+          "const": 603,
+          "title": "Derived MDTs"
+        },
+        {
+          "const": 604,
+          "title": "Derived first treatment"
+        },
+        {
+          "const": 605,
+          "title": "Derived end of initial treatment"
+        },
+        {
+          "const": 606,
+          "title": "Treatment for recurrence"
+        },
+        {
+          "const": 607,
+          "title": "HES Recurrence"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "PSEUDONYMISED_AVPID": {
+      "title": "Pseuonymised Event ID",
+      "type": "string"
+    },
+    "PSEUDONYMISED_TUMOURID": {
+      "title": "Pseudonymised tumour ID",
+      "type": "string"
+    },
+    "ROW_ID": {
+      "title": "OFH generated local key",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "SOURCE_ID": {
+      "title": "Unique ID of the record in the source table",
+      "type": "string"
+    },
+    "SOURCE_TABLE": {
+      "title": "Source of event data",
+      "type": "string"
+    }
+  },
+  "required": [
+    "EVENT_DATE",
+    "EVENT_END",
+    "EVENT_PROPERTY_1",
+    "EVENT_PROPERTY_2",
+    "EVENT_PROPERTY_3",
+    "EVENT_TYPE",
+    "PID",
+    "PSEUDONYMISED_AVPID",
+    "PSEUDONYMISED_TUMOURID",
+    "ROW_ID",
+    "SOURCE_ID",
+    "SOURCE_TABLE"
+  ]
+}

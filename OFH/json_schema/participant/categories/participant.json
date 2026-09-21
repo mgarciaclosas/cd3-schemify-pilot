@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schemas.example.org/cd3-ofh-pilot/participant/categories/participant.json",
-  "title": "PARTICIPANT — Participant",
-  "description": "Core participant registration, consent, birth, blood-sample and demographic fields.",
+  "title": "Participant data — Participant",
+  "description": "Registration and consent metadata, and demographics data.",
   "type": "object",
   "x-variable-group": "participant",
   "properties": {
@@ -10,63 +10,56 @@
       "title": "Participant ID",
       "type": "string",
       "x-role": "primary key",
-      "$comment": "Source gives no coding/nullability signal for this field; treated as always present. Open item -- see DECISIONS.md D004."
+      "$comment": "Source type string, primary_key_type global (links every dataset). The source states no format, so no pattern is asserted (D025)."
     },
     "REGISTRATION_YEAR": {
-      "title": "Year of registration",
+      "title": "Year of Registration derived from Date of Registration",
       "type": "integer",
-      "minimum": 2020,
-      "maximum": 2035,
-      "x-derivation": "Derived from Date of Registration.",
-      "$comment": "Bounds are an agent-decided plausibility range (OFH is a modern recruitment, dictionary v14); source states no range. Source gives no nullability/coding signal -- treated as always present, unlike BIRTH_YEAR which the source explicitly marks is_sparse_coding with a Suppressed code. Open item -- see DECISIONS.md D004."
+      "$comment": "The source states no range, so none is asserted (D024)."
     },
     "REGISTRATION_MONTH": {
-      "title": "Month of registration",
+      "title": "Month of Registration derived from Date of Registration",
       "type": "integer",
       "minimum": 1,
       "maximum": 12,
-      "x-derivation": "Derived from Date of Registration.",
-      "$comment": "Source gives no nullability/coding signal -- treated as always present. Open item -- see DECISIONS.md D004."
+      "$comment": "The source states no range; 1-12 is the calendar range, not a plausibility bound (D024)."
     },
     "CONSENT_VERSION": {
-      "title": "Consent version",
+      "title": "Consent Version",
       "type": "string",
-      "x-derivation": "Version identifier of the consent form signed.",
-      "$comment": "Source gives no nullability/coding signal -- treated as always present. Open item -- see DECISIONS.md D004."
+      "$comment": "The source lists no codes or format for this string."
     },
     "CONSENT_YEAR": {
-      "title": "Year of consent",
+      "title": "Year of Consent derived from Date of Consent",
       "type": "integer",
-      "minimum": 2020,
-      "maximum": 2035,
-      "x-derivation": "Derived from Date of Consent.",
-      "$comment": "Bounds are an agent-decided plausibility range; source states no range. Source gives no nullability/coding signal -- treated as always present. Open item -- see DECISIONS.md D004."
+      "$comment": "The source states no range, so none is asserted (D024)."
     },
     "CONSENT_MONTH": {
-      "title": "Month of consent",
+      "title": "Month of Consent derived from Date of Consent",
       "type": "integer",
       "minimum": 1,
       "maximum": 12,
-      "x-derivation": "Derived from Date of Consent.",
-      "$comment": "Source gives no nullability/coding signal -- treated as always present. Open item -- see DECISIONS.md D004."
+      "$comment": "The source states no range; 1-12 is the calendar range, not a plausibility bound (D024)."
     },
     "BIRTH_YEAR": {
-      "title": "Year of birth",
+      "title": "Year of Birth derived from Date of Birth",
       "anyOf": [
         {
           "type": "integer",
-          "minimum": 1920,
-          "maximum": 2010
+          "not": {
+            "enum": [
+              -999
+            ]
+          }
         },
         {
           "$ref": "../../common/defs.json#/$defs/suppressed"
         }
       ],
-      "x-derivation": "Derived from Date of Birth.",
-      "$comment": "Bounds are an agent-decided plausibility range for adult participants; source states no range. is_sparse_coding=yes in the source dictionary, with a documented Suppressed (-999) code -- adopted verbatim, this is disclosure control, not generic missingness."
+      "$comment": "Sparse coding: only the suppressed code is listed; every other value is the year itself. The source states no range, so none is asserted (D024)."
     },
     "BIRTH_MONTH": {
-      "title": "Month of birth",
+      "title": "Month of Birth derived from Date of Birth",
       "anyOf": [
         {
           "type": "integer",
@@ -77,11 +70,10 @@
           "$ref": "../../common/defs.json#/$defs/suppressed"
         }
       ],
-      "x-derivation": "Derived from Date of Birth.",
-      "$comment": "is_sparse_coding=yes in the source dictionary, with a documented Suppressed (-999) code -- adopted verbatim."
+      "$comment": "Sparse coding: only the suppressed code is listed; every other value is the month itself."
     },
     "BLOOD_SAMPLE": {
-      "title": "Blood sample quality",
+      "title": "Blood sample obtained with sufficient condition and volume for extraction of buffy coat, DNA and plasma",
       "oneOf": [
         {
           "const": 0,
@@ -91,12 +83,11 @@
           "const": 1,
           "title": "Valid Sample"
         }
-      ],
-      "x-derivation": "Blood sample obtained with sufficient condition and volume for extraction of buffy coat, DNA and plasma.",
-      "$comment": "Source coding table defines only 0/1, no missingness code -- treated as always present. Open item -- see DECISIONS.md D004."
+      ]
     },
     "DEMOG_ETHNICITY_1_1": {
-      "title": "Ethnic group",
+      "title": "What is your ethnic group?",
+      "description": "Choose one option that best describes your ethnic group or background.",
       "oneOf": [
         {
           "const": 1,
@@ -177,11 +168,10 @@
         {
           "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
         }
-      ],
-      "x-derivation": "What is your ethnic group? Choose one option that best describes your ethnic group or background."
+      ]
     },
     "DEMOG_GENDER_1_1": {
-      "title": "Gender identity",
+      "title": "To which gender identity do you most identify?",
       "oneOf": [
         {
           "const": 1,
@@ -211,10 +201,10 @@
           "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
         }
       ],
-      "x-derivation": "To which gender identity do you most identify?"
+      "$comment": "Questionnaire v1 wording; the v2 question is DEMOG_GENDER_2_1 (D019, D026)."
     },
     "DEMOG_GENDER_2_1": {
-      "title": "Current gender identity (detailed)",
+      "title": "Select the option that best describes your current gender identity",
       "oneOf": [
         {
           "const": 1,
@@ -240,10 +230,10 @@
           "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
         }
       ],
-      "x-derivation": "Select the option that best describes your current gender identity."
+      "$comment": "Questionnaire v2 wording; the v1 question is DEMOG_GENDER_1_1 (D019, D026)."
     },
     "DEMOG_SEX_1_1": {
-      "title": "Sex assigned at birth",
+      "title": "What sex was assigned to you at birth?",
       "oneOf": [
         {
           "const": 1,
@@ -261,10 +251,10 @@
           "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
         }
       ],
-      "x-derivation": "What sex was assigned to you at birth?"
+      "$comment": "Questionnaire v1 wording; the v2 question is DEMOG_SEX_2_1 (D019, D026)."
     },
     "DEMOG_SEX_2_1": {
-      "title": "Sex registered at birth",
+      "title": "What sex were you registered with at birth?",
       "oneOf": [
         {
           "const": 2,
@@ -282,7 +272,7 @@
           "$ref": "../../common/defs.json#/$defs/prefer_not_to_answer"
         }
       ],
-      "x-derivation": "What sex were you registered with at birth?"
+      "$comment": "Questionnaire v2 wording; the v1 question is DEMOG_SEX_1_1 (D019, D026)."
     }
   },
   "required": [

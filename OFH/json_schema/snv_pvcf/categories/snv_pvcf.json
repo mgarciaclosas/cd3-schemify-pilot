@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/snv_pvcf/categories/snv_pvcf.json",
+  "title": "Genotype array data — SNV VCF",
+  "description": "One element is one record of the genotype array SNV VCF files (ofh_snv.v10.chrZ-bXXXX.vcf.gz): the genotype of one sample at one variant with that variant's allele count and total alleles.",
+  "type": "object",
+  "x-variable-group": "snv_pvcf",
+  "properties": {
+    "GT": {
+      "title": "Genotype of the sample",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "AC": {
+      "title": "Allele count in genotypes",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "AN": {
+      "title": "Total number of alleles in called genotypes",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    }
+  },
+  "required": [
+    "GT",
+    "AC",
+    "AN"
+  ]
+}

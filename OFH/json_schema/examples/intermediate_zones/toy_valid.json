@@ -1,0 +1,22 @@
+[
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGIN0001",
+    "IZ_AT_REG": "S02002515"
+  },
+  {
+    "PID": "TOY0003",
+    "ID": "TOYGIN0002",
+    "IZ_AT_REG": "S02001236"
+  },
+  {
+    "PID": "TOY0004",
+    "ID": "TOYGIN0003",
+    "IZ_AT_REG": "S02000001"
+  },
+  {
+    "PID": "TOY0005",
+    "ID": "TOYGIN0004",
+    "IZ_AT_REG": "S02002515"
+  }
+]

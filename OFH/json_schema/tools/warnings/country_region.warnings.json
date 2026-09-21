@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/country_region.warnings.json",
+  "title": "Our Future Health — Participant geographies data — Country and region — warning checks",
+  "description": "Non-blocking checks for the country_region table, from rules the source does not state but the steward accepted (D129). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning R192: the country at registration is England (E92000001) but the region at registration is not one of its regions (TLC, TLD, TLE, TLF, TLG, TLH, TLI, TLJ, TLK); the region labels name their country.",
+        "if": {
+          "required": [
+            "COUNTRY_AT_REG"
+          ],
+          "properties": {
+            "COUNTRY_AT_REG": {
+              "const": "E92000001"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REGION_AT_REG": {
+              "enum": [
+                "TLC",
+                "TLD",
+                "TLE",
+                "TLF",
+                "TLG",
+                "TLH",
+                "TLI",
+                "TLJ",
+                "TLK"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R192: the country at registration is Wales (W92000004) but the region at registration is not one of its regions (TLL); the region labels name their country.",
+        "if": {
+          "required": [
+            "COUNTRY_AT_REG"
+          ],
+          "properties": {
+            "COUNTRY_AT_REG": {
+              "const": "W92000004"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REGION_AT_REG": {
+              "enum": [
+                "TLL"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R192: the country at registration is Scotland (S92000003) but the region at registration is not one of its regions (TLM); the region labels name their country.",
+        "if": {
+          "required": [
+            "COUNTRY_AT_REG"
+          ],
+          "properties": {
+            "COUNTRY_AT_REG": {
+              "const": "S92000003"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REGION_AT_REG": {
+              "enum": [
+                "TLM"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R192: the country at registration is Northern Ireland (N92000002) but the region at registration is not one of its regions (TLN); the region labels name their country.",
+        "if": {
+          "required": [
+            "COUNTRY_AT_REG"
+          ],
+          "properties": {
+            "COUNTRY_AT_REG": {
+              "const": "N92000002"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REGION_AT_REG": {
+              "enum": [
+                "TLN"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

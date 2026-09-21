@@ -1,0 +1,84 @@
+{
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column.",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "row": 0,
+      "column": "TC_FIRST_READING",
+      "kind": "skip-break",
+      "reason": "R187: the first set was skipped but a reading is recorded (must be -998)"
+    },
+    {
+      "row": 1,
+      "column": "TG_FIRST_READING",
+      "kind": "applicability-break",
+      "reason": "R187: the first set was not skipped but a reading is the not-recorded code"
+    },
+    {
+      "row": 2,
+      "column": "FIRST_READING_SKIPPED_REASON",
+      "kind": "skip-break",
+      "reason": "R188: the first set was not skipped but a reason is recorded (must be -998)"
+    },
+    {
+      "row": 3,
+      "column": "FIRST_READING_SKIPPED_REASON",
+      "kind": "applicability-break",
+      "reason": "R188: the first set was skipped but the reason is the not-recorded code"
+    },
+    {
+      "row": 4,
+      "column": "TC_SECOND_READING",
+      "kind": "skip-break",
+      "reason": "R189: the second set was skipped but a reading is recorded (must be -998)"
+    },
+    {
+      "row": 5,
+      "column": "HDL_SECOND_READING",
+      "kind": "skip-break",
+      "reason": "R189: no second set was offered but a reading is recorded (must be -998)"
+    },
+    {
+      "row": 6,
+      "column": "LDL_SECOND_READING",
+      "kind": "applicability-break",
+      "reason": "R189: the second set was not skipped but a reading is the not-recorded code"
+    },
+    {
+      "row": 7,
+      "column": "FIRST_READING_SKIPPED",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not a code of the first skipped flag"
+    },
+    {
+      "row": 8,
+      "column": "FIRST_READING_SKIPPED",
+      "kind": "unknown-level",
+      "reason": "2 is not a declared code"
+    },
+    {
+      "row": 9,
+      "column": "FIRST_READING_SKIPPED_REASON",
+      "kind": "unknown-level",
+      "reason": "6 is not a declared reason code"
+    },
+    {
+      "row": 10,
+      "column": "TC_FIRST_READING",
+      "kind": "wrong-type",
+      "reason": "a reading must be a number"
+    },
+    {
+      "row": 11,
+      "column": "PID",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 12,
+      "column": "SHOE_SIZE",
+      "kind": "undeclared-column",
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
+    }
+  ]
+}

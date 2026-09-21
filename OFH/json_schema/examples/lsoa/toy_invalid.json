@@ -1,0 +1,32 @@
+[
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGLS0001",
+    "LSOA_AT_REG": "X01000001"
+  },
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGLS0001",
+    "LSOA_AT_REG": "E0100000"
+  },
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGLS0001",
+    "LSOA_AT_REG": 12345
+  },
+  {
+    "PID": "TOY0002",
+    "ID": 7,
+    "LSOA_AT_REG": "E01000001"
+  },
+  {
+    "ID": "TOYGLS0001",
+    "LSOA_AT_REG": "E01000001"
+  },
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGLS0001",
+    "LSOA_AT_REG": "E01000001",
+    "SHOE_SIZE": 7
+  }
+]

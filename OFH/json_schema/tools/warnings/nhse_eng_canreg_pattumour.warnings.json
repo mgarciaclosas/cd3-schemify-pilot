@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/nhse_eng_canreg_pattumour.warnings.json",
+  "title": "Our Future Health — Linked health records data — Cancer treatment at tumour level — warning checks",
+  "description": "Non-blocking checks for the nhse_eng_canreg_pattumour table, from rules the source does not state but the steward accepted (D129). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning R197: the tumour site is not prostate (not C61) but a Gleason score is not 8; Gleason is a prostate score and the source labels 8 \"not applicable\".",
+        "if": {
+          "required": [
+            "SITE_ICD10_O2"
+          ],
+          "properties": {
+            "SITE_ICD10_O2": {
+              "type": "string",
+              "pattern": "^(?!C61)[A-Z][0-9]"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "GLEASON_PRIMARY": {
+              "const": 8
+            },
+            "GLEASON_SECONDARY": {
+              "const": 8
+            },
+            "GLEASON_TERTIARY": {
+              "const": 8
+            }
+          }
+        }
+      }
+    ]
+  }
+}

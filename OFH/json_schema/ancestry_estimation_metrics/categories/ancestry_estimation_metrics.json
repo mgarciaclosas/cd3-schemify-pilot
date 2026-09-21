@@ -1,0 +1,604 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/ancestry_estimation_metrics/categories/ancestry_estimation_metrics.json",
+  "title": "Genetic ancestry data — Ancestry estimation metrics",
+  "description": "One element is one participant's estimated genetic ancestry (file ofh_imputed_sample_ancestry).",
+  "type": "object",
+  "x-variable-group": "ancestry_estimation_metrics",
+  "properties": {
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "North Africa": {
+      "title": "North Africa",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "East Africa": {
+      "title": "East Africa",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "West Africa": {
+      "title": "West Africa",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Central and Southern Africa": {
+      "title": "Central and Southern Africa",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "East Asia": {
+      "title": "East Asia",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Japan and Korea": {
+      "title": "Japan and Korea",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Southeast Asia": {
+      "title": "Southeast Asia",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Central and South America": {
+      "title": "Central and South America",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "India and Pakistan": {
+      "title": "India and Pakistan",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Bangladesh": {
+      "title": "Bangladesh",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Sri Lanka": {
+      "title": "Sri Lanka",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Central Asia": {
+      "title": "Central Asia",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Middle East and Western Asia": {
+      "title": "Middle East and Western Asia",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "North West Wales": {
+      "title": "North West Wales",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "South West Wales": {
+      "title": "South West Wales",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Northern England and Southern Scotland": {
+      "title": "Northern England and Southern Scotland",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Northern Ireland and North Scotland": {
+      "title": "Northern Ireland and North Scotland",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Central and Southern UK": {
+      "title": "Central and Southern UK",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Finland": {
+      "title": "Finland",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Ireland": {
+      "title": "Ireland",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Portugal and Spain": {
+      "title": "Portugal and Spain",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Southeastern Europe": {
+      "title": "Southeastern Europe",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Northern Europe": {
+      "title": "Northern Europe",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Eastern Europe": {
+      "title": "Eastern Europe",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "Central and Western Europe": {
+      "title": "Central and Western Europe",
+      "description": "Ancestry proportions estimated with NNLS admixture approach developed by Genomics Ltd",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "One column for each of the source's 25 regions; the column names are taken from the source's list of ancestry call labels because the sheet gives only \"25 in total\" (D125)."
+    },
+    "ANCESTRY_CALL": {
+      "title": "Ancestry Call",
+      "description": "Assigned ancestry label estimated with NNLS hard-calling approach developed by Genomics Ltd",
+      "oneOf": [
+        {
+          "const": "North Africa",
+          "title": "North Africa"
+        },
+        {
+          "const": "East Africa",
+          "title": "East Africa"
+        },
+        {
+          "const": "West Africa",
+          "title": "West Africa"
+        },
+        {
+          "const": "Central and Southern Africa",
+          "title": "Central and Southern Africa"
+        },
+        {
+          "const": "East Asia",
+          "title": "East Asia"
+        },
+        {
+          "const": "Japan and Korea",
+          "title": "Japan and Korea"
+        },
+        {
+          "const": "Southeast Asia",
+          "title": "Southeast Asia"
+        },
+        {
+          "const": "Central and South America",
+          "title": "Central and South America"
+        },
+        {
+          "const": "India and Pakistan",
+          "title": "India and Pakistan"
+        },
+        {
+          "const": "Bangladesh",
+          "title": "Bangladesh"
+        },
+        {
+          "const": "Sri Lanka",
+          "title": "Sri Lanka"
+        },
+        {
+          "const": "Central Asia",
+          "title": "Central Asia"
+        },
+        {
+          "const": "Middle East and Western Asia",
+          "title": "Middle East and Western Asia"
+        },
+        {
+          "const": "North West Wales",
+          "title": "North West Wales"
+        },
+        {
+          "const": "South West Wales",
+          "title": "South West Wales"
+        },
+        {
+          "const": "Northern England and Southern Scotland",
+          "title": "Northern England and Southern Scotland"
+        },
+        {
+          "const": "Northern Ireland and North Scotland",
+          "title": "Northern Ireland and North Scotland"
+        },
+        {
+          "const": "Central and Southern UK",
+          "title": "Central and Southern UK"
+        },
+        {
+          "const": "Finland",
+          "title": "Finland"
+        },
+        {
+          "const": "Ireland",
+          "title": "Ireland"
+        },
+        {
+          "const": "Portugal and Spain",
+          "title": "Portugal and Spain"
+        },
+        {
+          "const": "Southeastern Europe",
+          "title": "Southeastern Europe"
+        },
+        {
+          "const": "Northern Europe",
+          "title": "Northern Europe"
+        },
+        {
+          "const": "Eastern Europe",
+          "title": "Eastern Europe"
+        },
+        {
+          "const": "Central and Western Europe",
+          "title": "Central and Western Europe"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    }
+  },
+  "required": [
+    "PID",
+    "North Africa",
+    "East Africa",
+    "West Africa",
+    "Central and Southern Africa",
+    "East Asia",
+    "Japan and Korea",
+    "Southeast Asia",
+    "Central and South America",
+    "India and Pakistan",
+    "Bangladesh",
+    "Sri Lanka",
+    "Central Asia",
+    "Middle East and Western Asia",
+    "North West Wales",
+    "South West Wales",
+    "Northern England and Southern Scotland",
+    "Northern Ireland and North Scotland",
+    "Central and Southern UK",
+    "Finland",
+    "Ireland",
+    "Portugal and Spain",
+    "Southeastern Europe",
+    "Northern Europe",
+    "Eastern Europe",
+    "Central and Western Europe",
+    "ANCESTRY_CALL"
+  ]
+}

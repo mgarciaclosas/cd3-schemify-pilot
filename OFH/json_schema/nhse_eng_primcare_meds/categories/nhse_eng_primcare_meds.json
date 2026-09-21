@@ -1,0 +1,3455 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/nhse_eng_primcare_meds/categories/nhse_eng_primcare_meds.json",
+  "title": "Linked health records data — Medicines dispensed in primary care (from 1 April 2018)",
+  "description": "Medicines dispensed in primary care settings in England from 1 April 2018.",
+  "type": "object",
+  "x-variable-group": "nhse_eng_primcare_meds",
+  "properties": {
+    "BSAPrescriptionID": {
+      "title": "NHS Business Services Authority identification number for a prescription (can be used to identify an item dispensed when used with 'prescription item identification number')",
+      "type": "string"
+    },
+    "ChargeStatus": {
+      "title": "Charging or exemption status",
+      "oneOf": [
+        {
+          "const": "-",
+          "title": "Unknown"
+        },
+        {
+          "const": "C",
+          "title": "Chargeable at Current Rate"
+        },
+        {
+          "const": "E",
+          "title": "Exempt"
+        },
+        {
+          "const": "O",
+          "title": "Chargeable at Previous Rate"
+        },
+        {
+          "const": "U",
+          "title": "Unknown"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "CostCentreODSCode_OFH": {
+      "title": "Code for the organisation that issued the prescription, as taken from the Organisation Data Service (Pseudonymised by OFH)",
+      "type": "string"
+    },
+    "CostCentreSubType": {
+      "title": "Sub-type of prescribing organisation",
+      "anyOf": [
+        {
+          "const": "-",
+          "title": "Does not apply"
+        },
+        {
+          "const": "01",
+          "title": "Walk-in-Centre"
+        },
+        {
+          "const": "02",
+          "title": "Out-of-hours service"
+        },
+        {
+          "const": "03",
+          "title": "Walk-in Centre and Out-of-hours service"
+        },
+        {
+          "const": "04",
+          "title": "GP Practice"
+        },
+        {
+          "const": "05",
+          "title": "Health & Justice"
+        },
+        {
+          "const": "06",
+          "title": "Private Controlled Drug practice"
+        },
+        {
+          "const": "07",
+          "title": "Other"
+        },
+        {
+          "const": "08",
+          "title": "Public health service"
+        },
+        {
+          "const": "09",
+          "title": "Community health service"
+        },
+        {
+          "const": "10",
+          "title": "Hospital service"
+        },
+        {
+          "const": "11",
+          "title": "Optometry service"
+        },
+        {
+          "const": "12",
+          "title": "Urgent & emergency care"
+        },
+        {
+          "const": "13",
+          "title": "Hospice"
+        },
+        {
+          "const": "14",
+          "title": "Care home/nursing home"
+        },
+        {
+          "const": "15",
+          "title": "PCN"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "CostCentreType": {
+      "title": "Type of prescribing organisation",
+      "oneOf": [
+        {
+          "const": 15,
+          "title": "GENERAL PRACTITIONER"
+        },
+        {
+          "const": 16,
+          "title": "DENTAL PRACTITIONER"
+        },
+        {
+          "const": 18,
+          "title": "HOSPITAL DOCTOR"
+        },
+        {
+          "const": 22,
+          "title": "SCOTTISH LEAKED DATA BATCHES"
+        },
+        {
+          "const": 23,
+          "title": "WELSH LEAKED DATA BATCHES"
+        },
+        {
+          "const": 33,
+          "title": "NURSE"
+        },
+        {
+          "const": 34,
+          "title": "COMMUNITY NURSE PRESCRIBING CONTRACT"
+        },
+        {
+          "const": 48,
+          "title": "ADDITIONAL PRESCRIBER"
+        },
+        {
+          "const": 5,
+          "title": "HOSPITAL"
+        },
+        {
+          "const": 51,
+          "title": "PRIVATE DOCTOR"
+        },
+        {
+          "const": 52,
+          "title": "PRIVATE NURSE"
+        },
+        {
+          "const": 53,
+          "title": "PRIVATE ADDITIONAL PRESCRIBER"
+        },
+        {
+          "const": 54,
+          "title": "PRIVATE GROUP"
+        },
+        {
+          "const": 7,
+          "title": "GP PRACTICE / COST CENTRE"
+        },
+        {
+          "const": 8,
+          "title": "CONTRACTOR"
+        },
+        {
+          "const": 9,
+          "title": "DENTIST PRACTICE"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "DispensedPharmacyType": {
+      "title": "Type of dispenser",
+      "oneOf": [
+        {
+          "const": 15,
+          "title": "GENERAL PRACTITIONER"
+        },
+        {
+          "const": 16,
+          "title": "DENTAL PRACTITIONER"
+        },
+        {
+          "const": 18,
+          "title": "HOSPITAL DOCTOR"
+        },
+        {
+          "const": 22,
+          "title": "SCOTTISH LEAKED DATA BATCHES"
+        },
+        {
+          "const": 23,
+          "title": "WELSH LEAKED DATA BATCHES"
+        },
+        {
+          "const": 33,
+          "title": "NURSE"
+        },
+        {
+          "const": 34,
+          "title": "COMMUNITY NURSE PRESCRIBING CONTRACT"
+        },
+        {
+          "const": 48,
+          "title": "ADDITIONAL PRESCRIBER"
+        },
+        {
+          "const": 5,
+          "title": "HOSPITAL"
+        },
+        {
+          "const": 51,
+          "title": "PRIVATE DOCTOR"
+        },
+        {
+          "const": 52,
+          "title": "PRIVATE NURSE"
+        },
+        {
+          "const": 53,
+          "title": "PRIVATE ADDITIONAL PRESCRIBER"
+        },
+        {
+          "const": 54,
+          "title": "PRIVATE GROUP"
+        },
+        {
+          "const": 7,
+          "title": "GP PRACTICE / COST CENTRE"
+        },
+        {
+          "const": 8,
+          "title": "CONTRACTOR"
+        },
+        {
+          "const": 9,
+          "title": "DENTIST PRACTICE"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "ItemActualCost": {
+      "title": "Actual cost paid for the dispensed medicine (national average discount for the month+out of pocket+consumables+container allowance)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "ItemID": {
+      "title": "NHS Business Services Authority identification number for an item on a prescription (can be used to identify an item dispensed when used with 'prescription identification number')",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "ItemNIC": {
+      "title": "The Net Ingredient Cost of the medicine",
+      "type": "string"
+    },
+    "MaternityExemptionFlag": {
+      "title": "Indicator of whether or not the patient is pregnant, derived from maternity exemption.",
+      "description": "Data is limited because maternity exemption does not start at the beginning of pregnancy and it continues for 12 months after due date or birth",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": " no"
+        },
+        {
+          "const": 1,
+          "title": "yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "OutOfHoursIndicator": {
+      "title": "Whether the prescription was Out of Hours",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "PaidBNFCode": {
+      "title": "BNF code of the medicines dispensed, as reimbursed by NHSBSA",
+      "type": "string"
+    },
+    "PaidBNFName": {
+      "title": "BNF name of the medicine dispensed, as reimbursed by NHSBSA",
+      "type": "string"
+    },
+    "PaidDissallowedIndicator": {
+      "title": "Indicator showing whether or not the item was disallowed by NHSBSA i.e. dispensed but not reimbursed",
+      "oneOf": [
+        {
+          "const": "N",
+          "title": "no"
+        },
+        {
+          "const": "Y",
+          "title": "yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "PaidDrugStrength": {
+      "title": "Strength of the medicine dispensed, as reimbursed by NHSBSA",
+      "type": "string"
+    },
+    "PaidFlavourIndicator": {
+      "title": "Flavour of medicine dispensed, as reimbursed by NHSBSA",
+      "anyOf": [
+        {
+          "const": "-",
+          "title": "UNKNOWN"
+        },
+        {
+          "const": "0001",
+          "title": "Almond"
+        },
+        {
+          "const": "0002",
+          "title": "Aniseed"
+        },
+        {
+          "const": "0003",
+          "title": "Apple"
+        },
+        {
+          "const": "0004",
+          "title": "Apple & pear"
+        },
+        {
+          "const": "0005",
+          "title": "Apricot"
+        },
+        {
+          "const": "0006",
+          "title": "Asparagus"
+        },
+        {
+          "const": "0007",
+          "title": "Banana"
+        },
+        {
+          "const": "0008",
+          "title": "Blackcurrant"
+        },
+        {
+          "const": "0009",
+          "title": "Blackcurrant & apple"
+        },
+        {
+          "const": "0010",
+          "title": "Butterscotch"
+        },
+        {
+          "const": "0011",
+          "title": "Cappuccino"
+        },
+        {
+          "const": "0012",
+          "title": "Caramel"
+        },
+        {
+          "const": "0013",
+          "title": "Cherry"
+        },
+        {
+          "const": "0014",
+          "title": "Cherry & vanilla"
+        },
+        {
+          "const": "0015",
+          "title": "Chicken"
+        },
+        {
+          "const": "0016",
+          "title": "Chicken & mushroom"
+        },
+        {
+          "const": "0017",
+          "title": "Chocolate"
+        },
+        {
+          "const": "0018",
+          "title": "Chocolate mint"
+        },
+        {
+          "const": "0019",
+          "title": "Citrus"
+        },
+        {
+          "const": "0020",
+          "title": "Citrus cola"
+        },
+        {
+          "const": "0021",
+          "title": "Coffee"
+        },
+        {
+          "const": "0022",
+          "title": "Cola"
+        },
+        {
+          "const": "0023",
+          "title": "Cranberry"
+        },
+        {
+          "const": "0024",
+          "title": "Egg-nog"
+        },
+        {
+          "const": "0025",
+          "title": "Forest fruits"
+        },
+        {
+          "const": "0026",
+          "title": "Fruit"
+        },
+        {
+          "const": "0027",
+          "title": "Fruit(s) of the forest"
+        },
+        {
+          "const": "0028",
+          "title": "Grapefruit"
+        },
+        {
+          "const": "0029",
+          "title": "Leek & potato"
+        },
+        {
+          "const": "0030",
+          "title": "Lemon"
+        },
+        {
+          "const": "0031",
+          "title": "Lemon & lime"
+        },
+        {
+          "const": "0032",
+          "title": "Melon"
+        },
+        {
+          "const": "0033",
+          "title": "Menthol"
+        },
+        {
+          "const": "0034",
+          "title": "Mint"
+        },
+        {
+          "const": "0035",
+          "title": "Mocha"
+        },
+        {
+          "const": "0036",
+          "title": "Mushroom"
+        },
+        {
+          "const": "0037",
+          "title": "Natural"
+        },
+        {
+          "const": "0038",
+          "title": "Neutral"
+        },
+        {
+          "const": "0039",
+          "title": "Nut"
+        },
+        {
+          "const": "0040",
+          "title": "Orange"
+        },
+        {
+          "const": "0041",
+          "title": "Orange & lemon"
+        },
+        {
+          "const": "0042",
+          "title": "Orange & pineapple"
+        },
+        {
+          "const": "0043",
+          "title": "Peach"
+        },
+        {
+          "const": "0044",
+          "title": "Peach & orange"
+        },
+        {
+          "const": "0045",
+          "title": "Pear & cherry"
+        },
+        {
+          "const": "0046",
+          "title": "Pineapple"
+        },
+        {
+          "const": "0047",
+          "title": "Plain"
+        },
+        {
+          "const": "0048",
+          "title": "Plum"
+        },
+        {
+          "const": "0049",
+          "title": "Raspberry"
+        },
+        {
+          "const": "0050",
+          "title": "Raspberry & blackcurrant"
+        },
+        {
+          "const": "0051",
+          "title": "Savoury tomato"
+        },
+        {
+          "const": "0052",
+          "title": "Strawberry"
+        },
+        {
+          "const": "0053",
+          "title": "Strawberry & raspberry"
+        },
+        {
+          "const": "0054",
+          "title": "Summer fruit(s)"
+        },
+        {
+          "const": "0055",
+          "title": "Toffee"
+        },
+        {
+          "const": "0056",
+          "title": "Tropical fruits"
+        },
+        {
+          "const": "0057",
+          "title": "Tutti frutti"
+        },
+        {
+          "const": "0058",
+          "title": "Unflavoured"
+        },
+        {
+          "const": "0059",
+          "title": "Vanilla"
+        },
+        {
+          "const": "0060",
+          "title": "Vegetable cream"
+        },
+        {
+          "const": "0061",
+          "title": "Vanilla & lemon"
+        },
+        {
+          "const": "0062",
+          "title": "Fruit punch"
+        },
+        {
+          "const": "0063",
+          "title": "Tomato"
+        },
+        {
+          "const": "0064",
+          "title": "Toffee caramel"
+        },
+        {
+          "const": "0065",
+          "title": "Cherry vanilla"
+        },
+        {
+          "const": "0066",
+          "title": "Cinnamon"
+        },
+        {
+          "const": "0067",
+          "title": "Harvest fruits"
+        },
+        {
+          "const": "0068",
+          "title": "Herb"
+        },
+        {
+          "const": "0069",
+          "title": "Hazelnut"
+        },
+        {
+          "const": "0070",
+          "title": "Peppermint"
+        },
+        {
+          "const": "0071",
+          "title": "Pineapple & vanilla"
+        },
+        {
+          "const": "0072",
+          "title": "Spearmint"
+        },
+        {
+          "const": "0073",
+          "title": "Tea"
+        },
+        {
+          "const": "0074",
+          "title": "Raspberry cola"
+        },
+        {
+          "const": "0075",
+          "title": "Aniseed & caramel"
+        },
+        {
+          "const": "0076",
+          "title": "Bubblegum"
+        },
+        {
+          "const": "0077",
+          "title": "Lemon & aniseed"
+        },
+        {
+          "const": "0078",
+          "title": "Banana & strawberry"
+        },
+        {
+          "const": "0079",
+          "title": "Passion fruit"
+        },
+        {
+          "const": "0080",
+          "title": "Kiwi strawberry"
+        },
+        {
+          "const": "0081",
+          "title": "Lemon-Apricot"
+        },
+        {
+          "const": "0082",
+          "title": "Honey & lemon"
+        },
+        {
+          "const": "0083",
+          "title": "Banana & vanilla"
+        },
+        {
+          "const": "0084",
+          "title": "Cherry menthol"
+        },
+        {
+          "const": "0085",
+          "title": "Orange & grapefruit"
+        },
+        {
+          "const": "0086",
+          "title": "Banana & orange"
+        },
+        {
+          "const": "0087",
+          "title": "Black cherry"
+        },
+        {
+          "const": "0088",
+          "title": "Orange & vanilla"
+        },
+        {
+          "const": "0089",
+          "title": "Lemon & herb"
+        },
+        {
+          "const": "0090",
+          "title": "Grape"
+        },
+        {
+          "const": "0091",
+          "title": "Beef & carrot"
+        },
+        {
+          "const": "0092",
+          "title": "Salmon & spinach"
+        },
+        {
+          "const": "0093",
+          "title": "Chicken & vegetable"
+        },
+        {
+          "const": "0094",
+          "title": "Liquorice & aniseed"
+        },
+        {
+          "const": "0095",
+          "title": "Assorted"
+        },
+        {
+          "const": "0096",
+          "title": "Loganberry"
+        },
+        {
+          "const": "0097",
+          "title": "Strawberry & mint"
+        },
+        {
+          "const": "0098",
+          "title": "Original"
+        },
+        {
+          "const": "0099",
+          "title": "Lemon & cream"
+        },
+        {
+          "const": "0100",
+          "title": "Ginger lemon"
+        },
+        {
+          "const": "0101",
+          "title": "Liquorice"
+        },
+        {
+          "const": "0102",
+          "title": "Forest berries"
+        },
+        {
+          "const": "0103",
+          "title": "Blackberry"
+        },
+        {
+          "const": "0104",
+          "title": "Citrus menthol"
+        },
+        {
+          "const": "0105",
+          "title": "Freshmint"
+        },
+        {
+          "const": "0106",
+          "title": "Carrot & apple"
+        },
+        {
+          "const": "0107",
+          "title": "Tropical surprise"
+        },
+        {
+          "const": "0108",
+          "title": "Redcurrant & rosehip"
+        },
+        {
+          "const": "0109",
+          "title": "Sweet & sour"
+        },
+        {
+          "const": "0110",
+          "title": "Tomato & basil"
+        },
+        {
+          "const": "0111",
+          "title": "Curry"
+        },
+        {
+          "const": "0112",
+          "title": "Tropical"
+        },
+        {
+          "const": "0113",
+          "title": "Wild strawberry"
+        },
+        {
+          "const": "0114",
+          "title": "Berry"
+        },
+        {
+          "const": "0115",
+          "title": "Orangecooler"
+        },
+        {
+          "const": "0116",
+          "title": "Purple"
+        },
+        {
+          "const": "0117",
+          "title": "Golden vegetable"
+        },
+        {
+          "const": "0118",
+          "title": "Apple & cinnamon"
+        },
+        {
+          "const": "0119",
+          "title": "Peach & ginger"
+        },
+        {
+          "const": "0120",
+          "title": "Minty Fresh"
+        },
+        {
+          "const": "0121",
+          "title": "Honey"
+        },
+        {
+          "const": "0122",
+          "title": "Winter vegetables"
+        },
+        {
+          "const": "0123",
+          "title": "Rice & lemon"
+        },
+        {
+          "const": "0124",
+          "title": "Fish"
+        },
+        {
+          "const": "0125",
+          "title": "Cool"
+        },
+        {
+          "const": "0126",
+          "title": "Vegetable"
+        },
+        {
+          "const": "0127",
+          "title": "Mixed"
+        },
+        {
+          "const": "0128",
+          "title": "Cappuccino caramel"
+        },
+        {
+          "const": "0129",
+          "title": "Curry chicken"
+        },
+        {
+          "const": "0130",
+          "title": "Fish & vegetable"
+        },
+        {
+          "const": "0131",
+          "title": "Lentil"
+        },
+        {
+          "const": "0132",
+          "title": "Chickpea"
+        },
+        {
+          "const": "0133",
+          "title": "Ham"
+        },
+        {
+          "const": "0134",
+          "title": "Veal"
+        },
+        {
+          "const": "0135",
+          "title": "Rice & apple"
+        },
+        {
+          "const": "0136",
+          "title": "Freshfruit"
+        },
+        {
+          "const": "0137",
+          "title": "Milk"
+        },
+        {
+          "const": "0138",
+          "title": "Strawberry & vanilla"
+        },
+        {
+          "const": "0139",
+          "title": "Chocolate & banana"
+        },
+        {
+          "const": "0140",
+          "title": "Orange & menthol"
+        },
+        {
+          "const": "0141",
+          "title": "Tropical twist"
+        },
+        {
+          "const": "0142",
+          "title": "Apple-peach"
+        },
+        {
+          "const": "0143",
+          "title": "Apple-strawberry"
+        },
+        {
+          "const": "0144",
+          "title": "Menthol mint"
+        },
+        {
+          "const": "0145",
+          "title": "Blueberry"
+        },
+        {
+          "const": "0146",
+          "title": "Prune"
+        },
+        {
+          "const": "0147",
+          "title": "Apple & sage"
+        },
+        {
+          "const": "0148",
+          "title": "Wild berry & orange"
+        },
+        {
+          "const": "0149",
+          "title": "Ice"
+        },
+        {
+          "const": "0150",
+          "title": "Apricot-peach"
+        },
+        {
+          "const": "0151",
+          "title": "Praline"
+        },
+        {
+          "const": "0152",
+          "title": "Ginger"
+        },
+        {
+          "const": "0153",
+          "title": "Balsamic herb"
+        },
+        {
+          "const": "0154",
+          "title": "Onion & chive"
+        },
+        {
+          "const": "0155",
+          "title": "Garden vegetable"
+        },
+        {
+          "const": "0156",
+          "title": "Sweetcorn"
+        },
+        {
+          "const": "0157",
+          "title": "Wild raspberry"
+        },
+        {
+          "const": "0158",
+          "title": "Mixed fruit"
+        },
+        {
+          "const": "0159",
+          "title": "Cheese & onion"
+        },
+        {
+          "const": "0160",
+          "title": "Jalapeno"
+        },
+        {
+          "const": "0161",
+          "title": "Salt & vinegar"
+        },
+        {
+          "const": "0162",
+          "title": "Ready salted"
+        },
+        {
+          "const": "0163",
+          "title": "Sour cream & onion"
+        },
+        {
+          "const": "0164",
+          "title": "Tomato, olive & oregano"
+        },
+        {
+          "const": "0165",
+          "title": "Rosemary & onion"
+        },
+        {
+          "const": "0166",
+          "title": "Sundried tomato & pesto"
+        },
+        {
+          "const": "0167",
+          "title": "Creamy vanilla"
+        },
+        {
+          "const": "0168",
+          "title": "Strawberry biscuit"
+        },
+        {
+          "const": "0169",
+          "title": "Orange creme"
+        },
+        {
+          "const": "0170",
+          "title": "Citrus berry"
+        },
+        {
+          "const": "0171",
+          "title": "Biscuit"
+        },
+        {
+          "const": "0172",
+          "title": "Lemon menthol"
+        },
+        {
+          "const": "0173",
+          "title": "Cranberry & blackcurrant"
+        },
+        {
+          "const": "0174",
+          "title": "Berry burst"
+        },
+        {
+          "const": "0175",
+          "title": "Chip shop curry"
+        },
+        {
+          "const": "0176",
+          "title": "Rogan style curry"
+        },
+        {
+          "const": "0177",
+          "title": "Beef & tomato"
+        },
+        {
+          "const": "0178",
+          "title": "All day scramble"
+        },
+        {
+          "const": "0179",
+          "title": "White tea"
+        },
+        {
+          "const": "0180",
+          "title": "Berries"
+        },
+        {
+          "const": "0181",
+          "title": "Cabbage & bacon"
+        },
+        {
+          "const": "0182",
+          "title": "Onion"
+        },
+        {
+          "const": "0183",
+          "title": "Sausage"
+        },
+        {
+          "const": "0184",
+          "title": "Cheese"
+        },
+        {
+          "const": "0185",
+          "title": "Jackfruit"
+        },
+        {
+          "const": "0186",
+          "title": "Eggnogg"
+        },
+        {
+          "const": "0187",
+          "title": "Mixed berries"
+        },
+        {
+          "const": "0188",
+          "title": "Creamy chicken"
+        },
+        {
+          "const": "0189",
+          "title": "Minestrone"
+        },
+        {
+          "const": "0190",
+          "title": "Creamy tomato"
+        },
+        {
+          "const": "0191",
+          "title": "Pea & mint"
+        },
+        {
+          "const": "0192",
+          "title": "Honey & ginger"
+        },
+        {
+          "const": "0193",
+          "title": "Mango & passion fruit"
+        },
+        {
+          "const": "0194",
+          "title": "Chocolate & cranberry"
+        },
+        {
+          "const": "0195",
+          "title": "Berry Fruit"
+        },
+        {
+          "const": "0196",
+          "title": "Mango"
+        },
+        {
+          "const": "0197",
+          "title": "Apple & blackcurrant"
+        },
+        {
+          "const": "0198",
+          "title": "Peach & mango"
+        },
+        {
+          "const": "0199",
+          "title": "Wild berries"
+        },
+        {
+          "const": "0200",
+          "title": "Hazel chocolate"
+        },
+        {
+          "const": "0201",
+          "title": "Chocolate orange"
+        },
+        {
+          "const": "0202",
+          "title": "Fruitfusion"
+        },
+        {
+          "const": "0203",
+          "title": "Fruit Fresh"
+        },
+        {
+          "const": "0204",
+          "title": "Ice Mint"
+        },
+        {
+          "const": "0205",
+          "title": "Red fruits"
+        },
+        {
+          "const": "0206",
+          "title": "Chicken & sage"
+        },
+        {
+          "const": "0207",
+          "title": "Vegetarian"
+        },
+        {
+          "const": "0208",
+          "title": "Lime"
+        },
+        {
+          "const": "0209",
+          "title": "Cafe latte"
+        },
+        {
+          "const": "0210",
+          "title": "Mixed berry"
+        },
+        {
+          "const": "0211",
+          "title": "Coconut"
+        },
+        {
+          "const": "0212",
+          "title": "Red berry"
+        },
+        {
+          "const": "0213",
+          "title": "Vanilla-Caramel"
+        },
+        {
+          "const": "0214",
+          "title": "Strawberry creme"
+        },
+        {
+          "const": "0215",
+          "title": "Peanut butter"
+        },
+        {
+          "const": "0216",
+          "title": "Fruit frenzy"
+        },
+        {
+          "const": "0217",
+          "title": "Hot tropical ginger"
+        },
+        {
+          "const": "0218",
+          "title": "Custard"
+        },
+        {
+          "const": "0219",
+          "title": "Lamb & mint"
+        },
+        {
+          "const": "0220",
+          "title": "Tomato, pepper & herb"
+        },
+        {
+          "const": "0221",
+          "title": "Moroccan"
+        },
+        {
+          "const": "0222",
+          "title": "Cheese & broccoli"
+        },
+        {
+          "const": "0223",
+          "title": "Cool berry"
+        },
+        {
+          "const": "0224",
+          "title": "Orange citrus"
+        },
+        {
+          "const": "0225",
+          "title": "Apple-prune"
+        },
+        {
+          "const": "0226",
+          "title": "Strawberry & Cranberry"
+        },
+        {
+          "const": "0227",
+          "title": "Mint Chocolate"
+        },
+        {
+          "const": "0228",
+          "title": "Lemon tea"
+        },
+        {
+          "const": "0229",
+          "title": "Raspberry ripple"
+        },
+        {
+          "const": "0230",
+          "title": "Chocolate-caramel"
+        },
+        {
+          "const": "0231",
+          "title": "Eucalyptus"
+        },
+        {
+          "const": "0232",
+          "title": "Orange-honey"
+        },
+        {
+          "const": "0233",
+          "title": "Cool red fruits"
+        },
+        {
+          "const": "0234",
+          "title": "Wild berry"
+        },
+        {
+          "const": "0235",
+          "title": "Coffee mocha"
+        },
+        {
+          "const": "0236",
+          "title": "Cherry bakewell"
+        },
+        {
+          "const": "0237",
+          "title": "Orange & mango"
+        },
+        {
+          "const": "0238",
+          "title": "Cranberry & raspberry"
+        },
+        {
+          "const": "0239",
+          "title": "Raspberry lemonade"
+        },
+        {
+          "const": "0240",
+          "title": "Smooth"
+        },
+        {
+          "const": "0241",
+          "title": "Watermelon"
+        },
+        {
+          "const": "0242",
+          "title": "Pear"
+        },
+        {
+          "const": "0243",
+          "title": "Lemonade"
+        },
+        {
+          "const": "0244",
+          "title": "Buttery oat"
+        },
+        {
+          "const": "0245",
+          "title": "Chocolate chip"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "PaidFormulation": {
+      "title": "Formulation of the medicine dispensed, as reimbursed by NHSBSA",
+      "anyOf": [
+        {
+          "const": "-",
+          "title": "UNKNOWN"
+        },
+        {
+          "const": "0001",
+          "title": "Bath additive"
+        },
+        {
+          "const": "0002",
+          "title": "Buccal tablet"
+        },
+        {
+          "const": "0003",
+          "title": "Cachet"
+        },
+        {
+          "const": "0004",
+          "title": "Capsule"
+        },
+        {
+          "const": "0005",
+          "title": "Chewable tablet"
+        },
+        {
+          "const": "0006",
+          "title": "Collodion"
+        },
+        {
+          "const": "0007",
+          "title": "Cream"
+        },
+        {
+          "const": "0008",
+          "title": "Cutaneous sponge"
+        },
+        {
+          "const": "0009",
+          "title": "Dental insert"
+        },
+        {
+          "const": "0010",
+          "title": "Dispersible tablet"
+        },
+        {
+          "const": "0011",
+          "title": "Drops"
+        },
+        {
+          "const": "0012",
+          "title": "Effervescent granules"
+        },
+        {
+          "const": "0013",
+          "title": "Effervescent powder"
+        },
+        {
+          "const": "0014",
+          "title": "Effervescent tablet"
+        },
+        {
+          "const": "0015",
+          "title": "Effervescent vaginal tablet"
+        },
+        {
+          "const": "0016",
+          "title": "Enema"
+        },
+        {
+          "const": "0017",
+          "title": "Eye lotion"
+        },
+        {
+          "const": "0018",
+          "title": "Foam"
+        },
+        {
+          "const": "0019",
+          "title": "Gargle"
+        },
+        {
+          "const": "0020",
+          "title": "Gastro-resistant capsule"
+        },
+        {
+          "const": "0021",
+          "title": "Gastro-resistant granules"
+        },
+        {
+          "const": "0022",
+          "title": "Gastro-resistant tablet"
+        },
+        {
+          "const": "0023",
+          "title": "Gel"
+        },
+        {
+          "const": "0024",
+          "title": "Granules"
+        },
+        {
+          "const": "0025",
+          "title": "Herbal tea"
+        },
+        {
+          "const": "0026",
+          "title": "Implant"
+        },
+        {
+          "const": "0027",
+          "title": "Impregnated dressing"
+        },
+        {
+          "const": "0028",
+          "title": "Inhalation gas"
+        },
+        {
+          "const": "0029",
+          "title": "Inhalation powder"
+        },
+        {
+          "const": "0030",
+          "title": "Inhalation vapour"
+        },
+        {
+          "const": "0031",
+          "title": "Obsolete - Injection"
+        },
+        {
+          "const": "0032",
+          "title": "Instant herbal tea"
+        },
+        {
+          "const": "0033",
+          "title": "Obsolete - Intravenous infusion"
+        },
+        {
+          "const": "0034",
+          "title": "Irrigation"
+        },
+        {
+          "const": "0035",
+          "title": "Liquid"
+        },
+        {
+          "const": "0036",
+          "title": "Lozenge"
+        },
+        {
+          "const": "0037",
+          "title": "Medicated chewing-gum"
+        },
+        {
+          "const": "0038",
+          "title": "Medicated nail lacquer"
+        },
+        {
+          "const": "0039",
+          "title": "Modified-release capsule"
+        },
+        {
+          "const": "0040",
+          "title": "Modified-release drops"
+        },
+        {
+          "const": "0041",
+          "title": "Modified-release granules"
+        },
+        {
+          "const": "0042",
+          "title": "Modified-release tablet"
+        },
+        {
+          "const": "0043",
+          "title": "Mouthwash"
+        },
+        {
+          "const": "0044",
+          "title": "Muco-adhesive buccal tablet"
+        },
+        {
+          "const": "0045",
+          "title": "Nebuliser liquid"
+        },
+        {
+          "const": "0046",
+          "title": "Ointment"
+        },
+        {
+          "const": "0047",
+          "title": "Ophthalmic insert"
+        },
+        {
+          "const": "0048",
+          "title": "Oral emulsion"
+        },
+        {
+          "const": "0049",
+          "title": "Oral gum"
+        },
+        {
+          "const": "0050",
+          "title": "Oral solution"
+        },
+        {
+          "const": "0051",
+          "title": "Oral suspension"
+        },
+        {
+          "const": "0052",
+          "title": "Oral lyophilisate"
+        },
+        {
+          "const": "0053",
+          "title": "Orodispersible tablet"
+        },
+        {
+          "const": "0054",
+          "title": "Cutaneous paint"
+        },
+        {
+          "const": "0055",
+          "title": "Paste"
+        },
+        {
+          "const": "0056",
+          "title": "Pastille"
+        },
+        {
+          "const": "0057",
+          "title": "Pessary"
+        },
+        {
+          "const": "0058",
+          "title": "Pillules"
+        },
+        {
+          "const": "0059",
+          "title": "Poultice"
+        },
+        {
+          "const": "0060",
+          "title": "Powder"
+        },
+        {
+          "const": "0061",
+          "title": "Pressurised inhalation"
+        },
+        {
+          "const": "0062",
+          "title": "Shampoo"
+        },
+        {
+          "const": "0063",
+          "title": "Soluble tablet"
+        },
+        {
+          "const": "0064",
+          "title": "Spray"
+        },
+        {
+          "const": "0065",
+          "title": "Stick"
+        },
+        {
+          "const": "0066",
+          "title": "Sublingual spray"
+        },
+        {
+          "const": "0067",
+          "title": "Sublingual tablet"
+        },
+        {
+          "const": "0068",
+          "title": "Suppository"
+        },
+        {
+          "const": "0069",
+          "title": "Tablet"
+        },
+        {
+          "const": "0070",
+          "title": "Tampon"
+        },
+        {
+          "const": "0071",
+          "title": "Transdermal patch"
+        },
+        {
+          "const": "0072",
+          "title": "Vaginal device"
+        },
+        {
+          "const": "0073",
+          "title": "Vaginal sponge"
+        },
+        {
+          "const": "0074",
+          "title": "Cutaneous wash"
+        },
+        {
+          "const": "0075",
+          "title": "Not applicable"
+        },
+        {
+          "const": "0076",
+          "title": "Intrauterine device"
+        },
+        {
+          "const": "0077",
+          "title": "Epidural infusion"
+        },
+        {
+          "const": "0078",
+          "title": "Homeopathic tablet"
+        },
+        {
+          "const": "0080",
+          "title": "Homeopathic pillule"
+        },
+        {
+          "const": "0085",
+          "title": "Homeopathic cream"
+        },
+        {
+          "const": "0086",
+          "title": "Homeopathic ointment"
+        },
+        {
+          "const": "0087",
+          "title": "Homeopathic granules"
+        },
+        {
+          "const": "0088",
+          "title": "Homeopathic oral powder"
+        },
+        {
+          "const": "0089",
+          "title": "Homeopathic liquid potency"
+        },
+        {
+          "const": "0090",
+          "title": "Solution for injection"
+        },
+        {
+          "const": "0091",
+          "title": "Suspension for injection"
+        },
+        {
+          "const": "0092",
+          "title": "Emulsion for injection"
+        },
+        {
+          "const": "0093",
+          "title": "Powder for solution for injection"
+        },
+        {
+          "const": "0094",
+          "title": "Powder for suspension for injection"
+        },
+        {
+          "const": "0095",
+          "title": "Powder and solvent for solution for injection"
+        },
+        {
+          "const": "0096",
+          "title": "Powder and solvent for suspension for injection"
+        },
+        {
+          "const": "0097",
+          "title": "Powder for injection"
+        },
+        {
+          "const": "0098",
+          "title": "Powder and solvent for dispersion for injection"
+        },
+        {
+          "const": "0099",
+          "title": "Powder for reconstitution for instillation"
+        },
+        {
+          "const": "0100",
+          "title": "Cement"
+        },
+        {
+          "const": "0101",
+          "title": "Colloidal suspension for injection"
+        },
+        {
+          "const": "0102",
+          "title": "Sterile solution"
+        },
+        {
+          "const": "0103",
+          "title": "Radionuclide generator"
+        },
+        {
+          "const": "0104",
+          "title": "Aerosol generator"
+        },
+        {
+          "const": "0105",
+          "title": "Homeopathic elixir"
+        },
+        {
+          "const": "0106",
+          "title": "Homeopathic drops"
+        },
+        {
+          "const": "0107",
+          "title": "Solution for peritoneal dialysis"
+        },
+        {
+          "const": "0108",
+          "title": "Solution for haemodialysis"
+        },
+        {
+          "const": "0109",
+          "title": "Solution for haemofiltration"
+        },
+        {
+          "const": "0110",
+          "title": "Ophthalmic strip"
+        },
+        {
+          "const": "0111",
+          "title": "Medicated plaster"
+        },
+        {
+          "const": "0112",
+          "title": "Powder and solvent for solution for instillation"
+        },
+        {
+          "const": "0113",
+          "title": "Impregnated cigarette"
+        },
+        {
+          "const": "0114",
+          "title": "Solution for dispersion for injection"
+        },
+        {
+          "const": "0115",
+          "title": "Modified-release muco-adhesive buccal tablet"
+        },
+        {
+          "const": "0116",
+          "title": "Transdermal system"
+        },
+        {
+          "const": "0117",
+          "title": "Bladder irrigation"
+        },
+        {
+          "const": "0118",
+          "title": "Gastroenteral liquid"
+        },
+        {
+          "const": "0119",
+          "title": "Powder for gastroenteral liquid"
+        },
+        {
+          "const": "0120",
+          "title": "Powder for nebuliser solution"
+        },
+        {
+          "const": "0121",
+          "title": "Solution for infusion"
+        },
+        {
+          "const": "0122",
+          "title": "Emulsion for infusion"
+        },
+        {
+          "const": "0123",
+          "title": "Powder for solution for infusion"
+        },
+        {
+          "const": "0124",
+          "title": "Powder and solvent for solution for infusion"
+        },
+        {
+          "const": "0125",
+          "title": "Infusion"
+        },
+        {
+          "const": "0126",
+          "title": "Cutaneous spray solution"
+        },
+        {
+          "const": "0127",
+          "title": "Oromucosal solution"
+        },
+        {
+          "const": "0128",
+          "title": "Nasal spray suspension"
+        },
+        {
+          "const": "0129",
+          "title": "Tablet for cutaneous solution"
+        },
+        {
+          "const": "0130",
+          "title": "Vaginal delivery system"
+        },
+        {
+          "const": "0131",
+          "title": "Powder for suspension for infusion"
+        },
+        {
+          "const": "0132",
+          "title": "Emulsion and suspension for emulsion for injection"
+        },
+        {
+          "const": "0133",
+          "title": "Suspension for infusion"
+        },
+        {
+          "const": "0134",
+          "title": "Solution for skin-prick test"
+        },
+        {
+          "const": "0135",
+          "title": "Eye drops"
+        },
+        {
+          "const": "0136",
+          "title": "Ear drops"
+        },
+        {
+          "const": "0137",
+          "title": "Nasal drops"
+        },
+        {
+          "const": "0138",
+          "title": "Implantation suspension"
+        },
+        {
+          "const": "0139",
+          "title": "Irrigation solution"
+        },
+        {
+          "const": "0140",
+          "title": "Granules for oral suspension"
+        },
+        {
+          "const": "0141",
+          "title": "Cutaneous emulsion"
+        },
+        {
+          "const": "0142",
+          "title": "Powder and solvent for suspension for infusion"
+        },
+        {
+          "const": "0143",
+          "title": "Powder and suspension for suspension for injection"
+        },
+        {
+          "const": "0144",
+          "title": "Cutaneous patch"
+        },
+        {
+          "const": "0145",
+          "title": "Powder and solvent for nebuliser solution"
+        },
+        {
+          "const": "0146",
+          "title": "Gel for injection"
+        },
+        {
+          "const": "0147",
+          "title": "Homeopathic liquid"
+        },
+        {
+          "const": "0148",
+          "title": "Oral drops"
+        },
+        {
+          "const": "0149",
+          "title": "Eye ointment"
+        },
+        {
+          "const": "0150",
+          "title": "Nasal ointment"
+        },
+        {
+          "const": "0151",
+          "title": "Rectal ointment"
+        },
+        {
+          "const": "0152",
+          "title": "Dental gel"
+        },
+        {
+          "const": "0153",
+          "title": "Eye gel"
+        },
+        {
+          "const": "0154",
+          "title": "Oral gel"
+        },
+        {
+          "const": "0155",
+          "title": "Oromucosal gel"
+        },
+        {
+          "const": "0156",
+          "title": "Vaginal gel"
+        },
+        {
+          "const": "0157",
+          "title": "Ear/eye drops solution"
+        },
+        {
+          "const": "0158",
+          "title": "Ear/eye/nose drops solution"
+        },
+        {
+          "const": "0159",
+          "title": "Solution for sealant"
+        },
+        {
+          "const": "0160",
+          "title": "Cutaneous solution"
+        },
+        {
+          "const": "0161",
+          "title": "Concentrate for oral solution"
+        },
+        {
+          "const": "0162",
+          "title": "Intravesical solution"
+        },
+        {
+          "const": "0163",
+          "title": "Intestinal gel"
+        },
+        {
+          "const": "0164",
+          "title": "Powder for solution for iontophoresis"
+        },
+        {
+          "const": "0165",
+          "title": "Orodispersible film"
+        },
+        {
+          "const": "0166",
+          "title": "Buccal film"
+        },
+        {
+          "const": "0167",
+          "title": "Solution for cardioplegia"
+        },
+        {
+          "const": "0168",
+          "title": "Nasal gel"
+        },
+        {
+          "const": "0169",
+          "title": "Powder and solvent for suspension for instillation"
+        },
+        {
+          "const": "0170",
+          "title": "Chewable capsule"
+        },
+        {
+          "const": "0171",
+          "title": "Powder and solvent for prolonged-release suspension for inj"
+        },
+        {
+          "const": "0172",
+          "title": "Prolonged-release suspension for injection"
+        },
+        {
+          "const": "0173",
+          "title": "Powder and gel for gel"
+        },
+        {
+          "const": "0174",
+          "title": "Gas and solvent for dispersion for injection/infusion"
+        },
+        {
+          "const": "0175",
+          "title": "Dispersion for injection"
+        },
+        {
+          "const": "0176",
+          "title": "Powder and solvent for intravesical solution"
+        },
+        {
+          "const": "0177",
+          "title": "Kit for radiopharmaceutical preparation"
+        },
+        {
+          "const": "0178",
+          "title": "Living tissue equivalent"
+        },
+        {
+          "const": "0179",
+          "title": "Solution for blood fraction modification"
+        },
+        {
+          "const": "0180",
+          "title": "Solution for iontophoresis"
+        },
+        {
+          "const": "0181",
+          "title": "Periodontal insert"
+        },
+        {
+          "const": "0182",
+          "title": "Dispersion for infusion"
+        },
+        {
+          "const": "0183",
+          "title": "Prolonged-release solution for injection"
+        },
+        {
+          "const": "0184",
+          "title": "Dental suspension"
+        },
+        {
+          "const": "0185",
+          "title": "Solvent for BCG Vaccine AJV"
+        },
+        {
+          "const": "0186",
+          "title": "Concentrate and solvent for solution for injection"
+        },
+        {
+          "const": "0187",
+          "title": "Powder for intravesical solution"
+        },
+        {
+          "const": "0188",
+          "title": "Powder for dispersion for infusion"
+        },
+        {
+          "const": "0189",
+          "title": "Inhalation solution"
+        },
+        {
+          "const": "0190",
+          "title": "Sublingual film"
+        },
+        {
+          "const": "0191",
+          "title": "12-hour modified-release capsule"
+        },
+        {
+          "const": "0192",
+          "title": "12-hour modified-release tablet"
+        },
+        {
+          "const": "0193",
+          "title": "24-hour modified-release capsule"
+        },
+        {
+          "const": "0194",
+          "title": "24-hour modified-release tablet"
+        },
+        {
+          "const": "0195",
+          "title": "Nebuliser dispersion"
+        },
+        {
+          "const": "0196",
+          "title": "Radiopharmaceutical precursor, solution"
+        },
+        {
+          "const": "0197",
+          "title": "Prolonged-release dispersion for injection"
+        },
+        {
+          "const": "0198",
+          "title": "Solution for cardioplegia/organ preservation"
+        },
+        {
+          "const": "0199",
+          "title": "Intrauterine gel"
+        },
+        {
+          "const": "0200",
+          "title": "Solution and emulsion for emulsion for injection"
+        },
+        {
+          "const": "0201",
+          "title": "Effervescent powder and suspension for oral suspension"
+        },
+        {
+          "const": "0202",
+          "title": "Effervescent powder and powder for oral suspension"
+        },
+        {
+          "const": "0203",
+          "title": "Rectal foam"
+        },
+        {
+          "const": "0204",
+          "title": "Oral capsule"
+        },
+        {
+          "const": "0205",
+          "title": "Vaginal capsule"
+        },
+        {
+          "const": "0206",
+          "title": "Cutaneous cream"
+        },
+        {
+          "const": "0210",
+          "title": "Nasal cream"
+        },
+        {
+          "const": "0211",
+          "title": "Rectal cream"
+        },
+        {
+          "const": "0212",
+          "title": "Transdermal cream"
+        },
+        {
+          "const": "0213",
+          "title": "Vaginal cream"
+        },
+        {
+          "const": "0214",
+          "title": "Cutaneous foam"
+        },
+        {
+          "const": "0216",
+          "title": "Transdermal foam"
+        },
+        {
+          "const": "0217",
+          "title": "Vaginal foam"
+        },
+        {
+          "const": "0218",
+          "title": "Cutaneous gel"
+        },
+        {
+          "const": "0222",
+          "title": "Transdermal gel"
+        },
+        {
+          "const": "0223",
+          "title": "Granules for intrauterine suspension"
+        },
+        {
+          "const": "0224",
+          "title": "Oral granules"
+        },
+        {
+          "const": "0225",
+          "title": "Granules for oral solution"
+        },
+        {
+          "const": "0226",
+          "title": "Granules for gastroenteral or oral suspension"
+        },
+        {
+          "const": "0227",
+          "title": "Granules for oral or rectal suspension"
+        },
+        {
+          "const": "0266",
+          "title": "Cutaneous ointment"
+        },
+        {
+          "const": "0268",
+          "title": "Cutaneous or nasal ointment"
+        },
+        {
+          "const": "0270",
+          "title": "Ear ointment"
+        },
+        {
+          "const": "0271",
+          "title": "Inhalation vapour ointment"
+        },
+        {
+          "const": "0272",
+          "title": "Transdermal ointment"
+        },
+        {
+          "const": "0273",
+          "title": "Cutaneous paste"
+        },
+        {
+          "const": "0274",
+          "title": "Dental paste"
+        },
+        {
+          "const": "0275",
+          "title": "Oromucosal paste"
+        },
+        {
+          "const": "0282",
+          "title": "Oral tablet"
+        },
+        {
+          "const": "0285",
+          "title": "Vaginal tablet"
+        },
+        {
+          "const": "0288",
+          "title": "Periodontal gel"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "PaidIndicator": {
+      "title": "Valid NHS prescription that NHS BSA reimbursed",
+      "oneOf": [
+        {
+          "const": "N",
+          "title": "no"
+        },
+        {
+          "const": "Y",
+          "title": "yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "PaidQuantity": {
+      "title": "Quantity of medicine dispensed, as reimbursed by NHSABSA",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PaidSupplierName": {
+      "title": "Name of the supplier of the medicine or appliance dispensed, as reimbursed by NHSBSA",
+      "type": "string"
+    },
+    "PaiddmdCode": {
+      "title": "dm+d code of the medicine or appliance dispensed, as reimbursed by NHSBSA",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{15,17}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 220707 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "PrescribedBNFCode": {
+      "title": "British National Formulary (BNF) code of the medicine prescribed",
+      "type": "string"
+    },
+    "PrescribedBNFName": {
+      "title": "The name of the medicine/device",
+      "type": "string"
+    },
+    "PrescribedFormulation": {
+      "title": "Formulation of the medicine prescribed (see formulations reference)",
+      "anyOf": [
+        {
+          "const": "-",
+          "title": "UNKNOWN"
+        },
+        {
+          "const": "0001",
+          "title": "Bath additive"
+        },
+        {
+          "const": "0002",
+          "title": "Buccal tablet"
+        },
+        {
+          "const": "0003",
+          "title": "Cachet"
+        },
+        {
+          "const": "0004",
+          "title": "Capsule"
+        },
+        {
+          "const": "0005",
+          "title": "Chewable tablet"
+        },
+        {
+          "const": "0006",
+          "title": "Collodion"
+        },
+        {
+          "const": "0007",
+          "title": "Cream"
+        },
+        {
+          "const": "0008",
+          "title": "Cutaneous sponge"
+        },
+        {
+          "const": "0009",
+          "title": "Dental insert"
+        },
+        {
+          "const": "0010",
+          "title": "Dispersible tablet"
+        },
+        {
+          "const": "0011",
+          "title": "Drops"
+        },
+        {
+          "const": "0012",
+          "title": "Effervescent granules"
+        },
+        {
+          "const": "0013",
+          "title": "Effervescent powder"
+        },
+        {
+          "const": "0014",
+          "title": "Effervescent tablet"
+        },
+        {
+          "const": "0015",
+          "title": "Effervescent vaginal tablet"
+        },
+        {
+          "const": "0016",
+          "title": "Enema"
+        },
+        {
+          "const": "0017",
+          "title": "Eye lotion"
+        },
+        {
+          "const": "0018",
+          "title": "Foam"
+        },
+        {
+          "const": "0019",
+          "title": "Gargle"
+        },
+        {
+          "const": "0020",
+          "title": "Gastro-resistant capsule"
+        },
+        {
+          "const": "0021",
+          "title": "Gastro-resistant granules"
+        },
+        {
+          "const": "0022",
+          "title": "Gastro-resistant tablet"
+        },
+        {
+          "const": "0023",
+          "title": "Gel"
+        },
+        {
+          "const": "0024",
+          "title": "Granules"
+        },
+        {
+          "const": "0025",
+          "title": "Herbal tea"
+        },
+        {
+          "const": "0026",
+          "title": "Implant"
+        },
+        {
+          "const": "0027",
+          "title": "Impregnated dressing"
+        },
+        {
+          "const": "0028",
+          "title": "Inhalation gas"
+        },
+        {
+          "const": "0029",
+          "title": "Inhalation powder"
+        },
+        {
+          "const": "0030",
+          "title": "Inhalation vapour"
+        },
+        {
+          "const": "0031",
+          "title": "Obsolete - Injection"
+        },
+        {
+          "const": "0032",
+          "title": "Instant herbal tea"
+        },
+        {
+          "const": "0033",
+          "title": "Obsolete - Intravenous infusion"
+        },
+        {
+          "const": "0034",
+          "title": "Irrigation"
+        },
+        {
+          "const": "0035",
+          "title": "Liquid"
+        },
+        {
+          "const": "0036",
+          "title": "Lozenge"
+        },
+        {
+          "const": "0037",
+          "title": "Medicated chewing-gum"
+        },
+        {
+          "const": "0038",
+          "title": "Medicated nail lacquer"
+        },
+        {
+          "const": "0039",
+          "title": "Modified-release capsule"
+        },
+        {
+          "const": "0040",
+          "title": "Modified-release drops"
+        },
+        {
+          "const": "0041",
+          "title": "Modified-release granules"
+        },
+        {
+          "const": "0042",
+          "title": "Modified-release tablet"
+        },
+        {
+          "const": "0043",
+          "title": "Mouthwash"
+        },
+        {
+          "const": "0044",
+          "title": "Muco-adhesive buccal tablet"
+        },
+        {
+          "const": "0045",
+          "title": "Nebuliser liquid"
+        },
+        {
+          "const": "0046",
+          "title": "Ointment"
+        },
+        {
+          "const": "0047",
+          "title": "Ophthalmic insert"
+        },
+        {
+          "const": "0048",
+          "title": "Oral emulsion"
+        },
+        {
+          "const": "0049",
+          "title": "Oral gum"
+        },
+        {
+          "const": "0050",
+          "title": "Oral solution"
+        },
+        {
+          "const": "0051",
+          "title": "Oral suspension"
+        },
+        {
+          "const": "0052",
+          "title": "Oral lyophilisate"
+        },
+        {
+          "const": "0053",
+          "title": "Orodispersible tablet"
+        },
+        {
+          "const": "0054",
+          "title": "Cutaneous paint"
+        },
+        {
+          "const": "0055",
+          "title": "Paste"
+        },
+        {
+          "const": "0056",
+          "title": "Pastille"
+        },
+        {
+          "const": "0057",
+          "title": "Pessary"
+        },
+        {
+          "const": "0058",
+          "title": "Pillules"
+        },
+        {
+          "const": "0059",
+          "title": "Poultice"
+        },
+        {
+          "const": "0060",
+          "title": "Powder"
+        },
+        {
+          "const": "0061",
+          "title": "Pressurised inhalation"
+        },
+        {
+          "const": "0062",
+          "title": "Shampoo"
+        },
+        {
+          "const": "0063",
+          "title": "Soluble tablet"
+        },
+        {
+          "const": "0064",
+          "title": "Spray"
+        },
+        {
+          "const": "0065",
+          "title": "Stick"
+        },
+        {
+          "const": "0066",
+          "title": "Sublingual spray"
+        },
+        {
+          "const": "0067",
+          "title": "Sublingual tablet"
+        },
+        {
+          "const": "0068",
+          "title": "Suppository"
+        },
+        {
+          "const": "0069",
+          "title": "Tablet"
+        },
+        {
+          "const": "0070",
+          "title": "Tampon"
+        },
+        {
+          "const": "0071",
+          "title": "Transdermal patch"
+        },
+        {
+          "const": "0072",
+          "title": "Vaginal device"
+        },
+        {
+          "const": "0073",
+          "title": "Vaginal sponge"
+        },
+        {
+          "const": "0074",
+          "title": "Cutaneous wash"
+        },
+        {
+          "const": "0075",
+          "title": "Not applicable"
+        },
+        {
+          "const": "0076",
+          "title": "Intrauterine device"
+        },
+        {
+          "const": "0077",
+          "title": "Epidural infusion"
+        },
+        {
+          "const": "0078",
+          "title": "Homeopathic tablet"
+        },
+        {
+          "const": "0080",
+          "title": "Homeopathic pillule"
+        },
+        {
+          "const": "0085",
+          "title": "Homeopathic cream"
+        },
+        {
+          "const": "0086",
+          "title": "Homeopathic ointment"
+        },
+        {
+          "const": "0087",
+          "title": "Homeopathic granules"
+        },
+        {
+          "const": "0088",
+          "title": "Homeopathic oral powder"
+        },
+        {
+          "const": "0089",
+          "title": "Homeopathic liquid potency"
+        },
+        {
+          "const": "0090",
+          "title": "Solution for injection"
+        },
+        {
+          "const": "0091",
+          "title": "Suspension for injection"
+        },
+        {
+          "const": "0092",
+          "title": "Emulsion for injection"
+        },
+        {
+          "const": "0093",
+          "title": "Powder for solution for injection"
+        },
+        {
+          "const": "0094",
+          "title": "Powder for suspension for injection"
+        },
+        {
+          "const": "0095",
+          "title": "Powder and solvent for solution for injection"
+        },
+        {
+          "const": "0096",
+          "title": "Powder and solvent for suspension for injection"
+        },
+        {
+          "const": "0097",
+          "title": "Powder for injection"
+        },
+        {
+          "const": "0098",
+          "title": "Powder and solvent for dispersion for injection"
+        },
+        {
+          "const": "0099",
+          "title": "Powder for reconstitution for instillation"
+        },
+        {
+          "const": "0100",
+          "title": "Cement"
+        },
+        {
+          "const": "0101",
+          "title": "Colloidal suspension for injection"
+        },
+        {
+          "const": "0102",
+          "title": "Sterile solution"
+        },
+        {
+          "const": "0103",
+          "title": "Radionuclide generator"
+        },
+        {
+          "const": "0104",
+          "title": "Aerosol generator"
+        },
+        {
+          "const": "0105",
+          "title": "Homeopathic elixir"
+        },
+        {
+          "const": "0106",
+          "title": "Homeopathic drops"
+        },
+        {
+          "const": "0107",
+          "title": "Solution for peritoneal dialysis"
+        },
+        {
+          "const": "0108",
+          "title": "Solution for haemodialysis"
+        },
+        {
+          "const": "0109",
+          "title": "Solution for haemofiltration"
+        },
+        {
+          "const": "0110",
+          "title": "Ophthalmic strip"
+        },
+        {
+          "const": "0111",
+          "title": "Medicated plaster"
+        },
+        {
+          "const": "0112",
+          "title": "Powder and solvent for solution for instillation"
+        },
+        {
+          "const": "0113",
+          "title": "Impregnated cigarette"
+        },
+        {
+          "const": "0114",
+          "title": "Solution for dispersion for injection"
+        },
+        {
+          "const": "0115",
+          "title": "Modified-release muco-adhesive buccal tablet"
+        },
+        {
+          "const": "0116",
+          "title": "Transdermal system"
+        },
+        {
+          "const": "0117",
+          "title": "Bladder irrigation"
+        },
+        {
+          "const": "0118",
+          "title": "Gastroenteral liquid"
+        },
+        {
+          "const": "0119",
+          "title": "Powder for gastroenteral liquid"
+        },
+        {
+          "const": "0120",
+          "title": "Powder for nebuliser solution"
+        },
+        {
+          "const": "0121",
+          "title": "Solution for infusion"
+        },
+        {
+          "const": "0122",
+          "title": "Emulsion for infusion"
+        },
+        {
+          "const": "0123",
+          "title": "Powder for solution for infusion"
+        },
+        {
+          "const": "0124",
+          "title": "Powder and solvent for solution for infusion"
+        },
+        {
+          "const": "0125",
+          "title": "Infusion"
+        },
+        {
+          "const": "0126",
+          "title": "Cutaneous spray solution"
+        },
+        {
+          "const": "0127",
+          "title": "Oromucosal solution"
+        },
+        {
+          "const": "0128",
+          "title": "Nasal spray suspension"
+        },
+        {
+          "const": "0129",
+          "title": "Tablet for cutaneous solution"
+        },
+        {
+          "const": "0130",
+          "title": "Vaginal delivery system"
+        },
+        {
+          "const": "0131",
+          "title": "Powder for suspension for infusion"
+        },
+        {
+          "const": "0132",
+          "title": "Emulsion and suspension for emulsion for injection"
+        },
+        {
+          "const": "0133",
+          "title": "Suspension for infusion"
+        },
+        {
+          "const": "0134",
+          "title": "Solution for skin-prick test"
+        },
+        {
+          "const": "0135",
+          "title": "Eye drops"
+        },
+        {
+          "const": "0136",
+          "title": "Ear drops"
+        },
+        {
+          "const": "0137",
+          "title": "Nasal drops"
+        },
+        {
+          "const": "0138",
+          "title": "Implantation suspension"
+        },
+        {
+          "const": "0139",
+          "title": "Irrigation solution"
+        },
+        {
+          "const": "0140",
+          "title": "Granules for oral suspension"
+        },
+        {
+          "const": "0141",
+          "title": "Cutaneous emulsion"
+        },
+        {
+          "const": "0142",
+          "title": "Powder and solvent for suspension for infusion"
+        },
+        {
+          "const": "0143",
+          "title": "Powder and suspension for suspension for injection"
+        },
+        {
+          "const": "0144",
+          "title": "Cutaneous patch"
+        },
+        {
+          "const": "0145",
+          "title": "Powder and solvent for nebuliser solution"
+        },
+        {
+          "const": "0146",
+          "title": "Gel for injection"
+        },
+        {
+          "const": "0147",
+          "title": "Homeopathic liquid"
+        },
+        {
+          "const": "0148",
+          "title": "Oral drops"
+        },
+        {
+          "const": "0149",
+          "title": "Eye ointment"
+        },
+        {
+          "const": "0150",
+          "title": "Nasal ointment"
+        },
+        {
+          "const": "0151",
+          "title": "Rectal ointment"
+        },
+        {
+          "const": "0152",
+          "title": "Dental gel"
+        },
+        {
+          "const": "0153",
+          "title": "Eye gel"
+        },
+        {
+          "const": "0154",
+          "title": "Oral gel"
+        },
+        {
+          "const": "0155",
+          "title": "Oromucosal gel"
+        },
+        {
+          "const": "0156",
+          "title": "Vaginal gel"
+        },
+        {
+          "const": "0157",
+          "title": "Ear/eye drops solution"
+        },
+        {
+          "const": "0158",
+          "title": "Ear/eye/nose drops solution"
+        },
+        {
+          "const": "0159",
+          "title": "Solution for sealant"
+        },
+        {
+          "const": "0160",
+          "title": "Cutaneous solution"
+        },
+        {
+          "const": "0161",
+          "title": "Concentrate for oral solution"
+        },
+        {
+          "const": "0162",
+          "title": "Intravesical solution"
+        },
+        {
+          "const": "0163",
+          "title": "Intestinal gel"
+        },
+        {
+          "const": "0164",
+          "title": "Powder for solution for iontophoresis"
+        },
+        {
+          "const": "0165",
+          "title": "Orodispersible film"
+        },
+        {
+          "const": "0166",
+          "title": "Buccal film"
+        },
+        {
+          "const": "0167",
+          "title": "Solution for cardioplegia"
+        },
+        {
+          "const": "0168",
+          "title": "Nasal gel"
+        },
+        {
+          "const": "0169",
+          "title": "Powder and solvent for suspension for instillation"
+        },
+        {
+          "const": "0170",
+          "title": "Chewable capsule"
+        },
+        {
+          "const": "0171",
+          "title": "Powder and solvent for prolonged-release suspension for inj"
+        },
+        {
+          "const": "0172",
+          "title": "Prolonged-release suspension for injection"
+        },
+        {
+          "const": "0173",
+          "title": "Powder and gel for gel"
+        },
+        {
+          "const": "0174",
+          "title": "Gas and solvent for dispersion for injection/infusion"
+        },
+        {
+          "const": "0175",
+          "title": "Dispersion for injection"
+        },
+        {
+          "const": "0176",
+          "title": "Powder and solvent for intravesical solution"
+        },
+        {
+          "const": "0177",
+          "title": "Kit for radiopharmaceutical preparation"
+        },
+        {
+          "const": "0178",
+          "title": "Living tissue equivalent"
+        },
+        {
+          "const": "0179",
+          "title": "Solution for blood fraction modification"
+        },
+        {
+          "const": "0180",
+          "title": "Solution for iontophoresis"
+        },
+        {
+          "const": "0181",
+          "title": "Periodontal insert"
+        },
+        {
+          "const": "0182",
+          "title": "Dispersion for infusion"
+        },
+        {
+          "const": "0183",
+          "title": "Prolonged-release solution for injection"
+        },
+        {
+          "const": "0184",
+          "title": "Dental suspension"
+        },
+        {
+          "const": "0185",
+          "title": "Solvent for BCG Vaccine AJV"
+        },
+        {
+          "const": "0186",
+          "title": "Concentrate and solvent for solution for injection"
+        },
+        {
+          "const": "0187",
+          "title": "Powder for intravesical solution"
+        },
+        {
+          "const": "0188",
+          "title": "Powder for dispersion for infusion"
+        },
+        {
+          "const": "0189",
+          "title": "Inhalation solution"
+        },
+        {
+          "const": "0190",
+          "title": "Sublingual film"
+        },
+        {
+          "const": "0191",
+          "title": "12-hour modified-release capsule"
+        },
+        {
+          "const": "0192",
+          "title": "12-hour modified-release tablet"
+        },
+        {
+          "const": "0193",
+          "title": "24-hour modified-release capsule"
+        },
+        {
+          "const": "0194",
+          "title": "24-hour modified-release tablet"
+        },
+        {
+          "const": "0195",
+          "title": "Nebuliser dispersion"
+        },
+        {
+          "const": "0196",
+          "title": "Radiopharmaceutical precursor, solution"
+        },
+        {
+          "const": "0197",
+          "title": "Prolonged-release dispersion for injection"
+        },
+        {
+          "const": "0198",
+          "title": "Solution for cardioplegia/organ preservation"
+        },
+        {
+          "const": "0199",
+          "title": "Intrauterine gel"
+        },
+        {
+          "const": "0200",
+          "title": "Solution and emulsion for emulsion for injection"
+        },
+        {
+          "const": "0201",
+          "title": "Effervescent powder and suspension for oral suspension"
+        },
+        {
+          "const": "0202",
+          "title": "Effervescent powder and powder for oral suspension"
+        },
+        {
+          "const": "0203",
+          "title": "Rectal foam"
+        },
+        {
+          "const": "0204",
+          "title": "Oral capsule"
+        },
+        {
+          "const": "0205",
+          "title": "Vaginal capsule"
+        },
+        {
+          "const": "0206",
+          "title": "Cutaneous cream"
+        },
+        {
+          "const": "0210",
+          "title": "Nasal cream"
+        },
+        {
+          "const": "0211",
+          "title": "Rectal cream"
+        },
+        {
+          "const": "0212",
+          "title": "Transdermal cream"
+        },
+        {
+          "const": "0213",
+          "title": "Vaginal cream"
+        },
+        {
+          "const": "0214",
+          "title": "Cutaneous foam"
+        },
+        {
+          "const": "0216",
+          "title": "Transdermal foam"
+        },
+        {
+          "const": "0217",
+          "title": "Vaginal foam"
+        },
+        {
+          "const": "0218",
+          "title": "Cutaneous gel"
+        },
+        {
+          "const": "0222",
+          "title": "Transdermal gel"
+        },
+        {
+          "const": "0223",
+          "title": "Granules for intrauterine suspension"
+        },
+        {
+          "const": "0224",
+          "title": "Oral granules"
+        },
+        {
+          "const": "0225",
+          "title": "Granules for oral solution"
+        },
+        {
+          "const": "0226",
+          "title": "Granules for gastroenteral or oral suspension"
+        },
+        {
+          "const": "0227",
+          "title": "Granules for oral or rectal suspension"
+        },
+        {
+          "const": "0266",
+          "title": "Cutaneous ointment"
+        },
+        {
+          "const": "0268",
+          "title": "Cutaneous or nasal ointment"
+        },
+        {
+          "const": "0270",
+          "title": "Ear ointment"
+        },
+        {
+          "const": "0271",
+          "title": "Inhalation vapour ointment"
+        },
+        {
+          "const": "0272",
+          "title": "Transdermal ointment"
+        },
+        {
+          "const": "0273",
+          "title": "Cutaneous paste"
+        },
+        {
+          "const": "0274",
+          "title": "Dental paste"
+        },
+        {
+          "const": "0275",
+          "title": "Oromucosal paste"
+        },
+        {
+          "const": "0282",
+          "title": "Oral tablet"
+        },
+        {
+          "const": "0285",
+          "title": "Vaginal tablet"
+        },
+        {
+          "const": "0288",
+          "title": "Periodontal gel"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "PrescribedMedicineStrength": {
+      "title": "The strength of the medicine prescribed",
+      "type": "string"
+    },
+    "PrescribedQuantity": {
+      "title": "Quantity of medicine prescribed",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PrescribeddmdCode": {
+      "title": "Dictionary of medicines and devices (dm+d) code of the medicine or appliance prescribed",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{15,17}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 220707 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "PrescriberType": {
+      "title": "Type of prescriber",
+      "oneOf": [
+        {
+          "const": 15,
+          "title": "GENERAL PRACTITIONER"
+        },
+        {
+          "const": 16,
+          "title": "DENTAL PRACTITIONER"
+        },
+        {
+          "const": 18,
+          "title": "HOSPITAL DOCTOR"
+        },
+        {
+          "const": 22,
+          "title": "SCOTTISH LEAKED DATA BATCHES"
+        },
+        {
+          "const": 23,
+          "title": "WELSH LEAKED DATA BATCHES"
+        },
+        {
+          "const": 33,
+          "title": "NURSE"
+        },
+        {
+          "const": 34,
+          "title": "COMMUNITY NURSE PRESCRIBING CONTRACT"
+        },
+        {
+          "const": 48,
+          "title": "ADDITIONAL PRESCRIBER"
+        },
+        {
+          "const": 5,
+          "title": "HOSPITAL"
+        },
+        {
+          "const": 51,
+          "title": "PRIVATE DOCTOR"
+        },
+        {
+          "const": 52,
+          "title": "PRIVATE NURSE"
+        },
+        {
+          "const": 53,
+          "title": "PRIVATE ADDITIONAL PRESCRIBER"
+        },
+        {
+          "const": 54,
+          "title": "PRIVATE GROUP"
+        },
+        {
+          "const": 7,
+          "title": "GP PRACTICE / COST CENTRE"
+        },
+        {
+          "const": 8,
+          "title": "CONTRACTOR"
+        },
+        {
+          "const": 9,
+          "title": "DENTIST PRACTICE"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "PrivatePrescriptionIndicator": {
+      "title": "Whether the prescription was a private prescription",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "ProcessedPeriod": {
+      "title": "The month during which data is submitted by pharmacists to NHSBSA",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "ProcessingPeriodDate": {
+      "title": "Month and year prescriptions were submitted to NHS Business Services Authority for processing, displayed as a first of the month date in the format 2018-07-01",
+      "type": "string"
+    },
+    "ROW_ID": {
+      "title": "OFH generated local key",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D102). The source states no format, so no pattern is asserted (D043)."
+    }
+  },
+  "required": [
+    "BSAPrescriptionID",
+    "ChargeStatus",
+    "CostCentreODSCode_OFH",
+    "CostCentreSubType",
+    "CostCentreType",
+    "DispensedPharmacyType",
+    "ItemActualCost",
+    "ItemID",
+    "ItemNIC",
+    "MaternityExemptionFlag",
+    "OutOfHoursIndicator",
+    "PID",
+    "PaidBNFCode",
+    "PaidBNFName",
+    "PaidDissallowedIndicator",
+    "PaidDrugStrength",
+    "PaidFlavourIndicator",
+    "PaidFormulation",
+    "PaidIndicator",
+    "PaidQuantity",
+    "PaidSupplierName",
+    "PaiddmdCode",
+    "PrescribedBNFCode",
+    "PrescribedBNFName",
+    "PrescribedFormulation",
+    "PrescribedMedicineStrength",
+    "PrescribedQuantity",
+    "PrescribeddmdCode",
+    "PrescriberType",
+    "PrivatePrescriptionIndicator",
+    "ProcessedPeriod",
+    "ProcessingPeriodDate",
+    "ROW_ID"
+  ]
+}

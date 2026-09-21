@@ -1,0 +1,530 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/clinic_measurements/categories/clinic_measurements.json",
+  "title": "Clinic measurements data — Clinic measurements",
+  "description": "Clinic measurements data: body measurements, blood pressure and heart readings, and the clinic that took them.",
+  "type": "object",
+  "x-variable-group": "clinic_measurements",
+  "properties": {
+    "ID": {
+      "title": "Row ID",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "APPOINTMENT_VERSION": {
+      "title": "Appointment Version",
+      "type": "string",
+      "$comment": "The source lists no values or format for this string, so none is asserted."
+    },
+    "APPOINTMENT_DATETIME": {
+      "title": "Appointment Date and Time.",
+      "description": "Time is rounded to the nearest hour.",
+      "type": "string",
+      "$comment": "The dictionary type is datetime but states no delivered string format, so no pattern is asserted (D043)."
+    },
+    "HEIGHT": {
+      "title": "Height recorded in centimeters (cm)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "cm",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "WEIGHT": {
+      "title": "Weight recorded in kilograms (kg)",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "kg",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "WAIST": {
+      "title": "Waist circumference recorded in centimeters (cm)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "cm",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEART_FIRST_RATE": {
+      "title": "First heart rate measurement recorded in beats per minute (bpm)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "bpm",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEART_FIRST_BP_SYSTOLIC": {
+      "title": "First systolic blood pressure reading recorded in millimeters of mercury (mmHg)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmHg",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEART_FIRST_BP_DIASTOLIC": {
+      "title": "First diastolic blood pressure reading recorded in millimeters of mercury (mmHg)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmHg",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEART_SECOND_RATE": {
+      "title": "Second heart rate measurement recorded in beats per minute (bpm)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "bpm",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEART_SECOND_BP_SYSTOLIC": {
+      "title": "Second systolic blood pressure reading, recorded in millimeters of mercury (mmHg)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmHg",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEART_SECOND_BP_DIASTOLIC": {
+      "title": "Second diastolic blood pressure reading recorded in millimeters of mercury (mmHg)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmHg",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEART_THIRD_RATE": {
+      "title": "Third heart rate measurement recorded in beats per minute (bpm)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "bpm",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEART_THIRD_BP_SYSTOLIC": {
+      "title": "Third systolic blood pressure reading recorded in millimeters of mercury (mmHg)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmHg",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEART_THIRD_BP_DIASTOLIC": {
+      "title": "Third diastolic blood pressure reading recorded in millimeters of mercury (mmHg)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "mmHg",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "HEIGHT_SKIPPED": {
+      "title": "Indicator of whether the participant skipped the height measurement",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "not skipped"
+        },
+        {
+          "const": 1,
+          "title": "skipped"
+        }
+      ]
+    },
+    "WEIGHT_SKIPPED": {
+      "title": "Indicator of whether the participant skipped the weight measurement",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "not skipped"
+        },
+        {
+          "const": 1,
+          "title": "skipped"
+        }
+      ]
+    },
+    "WAIST_SKIPPED": {
+      "title": "Indicator of whether the participant skipped the waist circumference measurement",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "not skipped"
+        },
+        {
+          "const": 1,
+          "title": "skipped"
+        }
+      ]
+    },
+    "HEART_FIRST_SKIPPED": {
+      "title": "Indicator of whether the participant skipped the first set of heart measurements",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "not skipped"
+        },
+        {
+          "const": 1,
+          "title": "skipped"
+        }
+      ]
+    },
+    "HEART_SECOND_SKIPPED": {
+      "title": "Indicator of whether the participant skipped the second set of heart measurements",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "not skipped"
+        },
+        {
+          "const": 1,
+          "title": "skipped"
+        }
+      ]
+    },
+    "HEART_THIRD_SKIPPED": {
+      "title": "Indicator of whether the participant skipped the third set of heart measurements. Only participants with abnormal readings to the first and second measurements are offered a third measurement",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "not skipped"
+        },
+        {
+          "const": 1,
+          "title": "skipped"
+        }
+      ]
+    },
+    "HEIGHT_SKIPPED_REASON": {
+      "title": "Reason given for skipping the height measurement",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "other reason"
+        },
+        {
+          "const": 2,
+          "title": "participant refused"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "WEIGHT_SKIPPED_REASON": {
+      "title": "Reason given for skipping the weight measurement",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "other reason"
+        },
+        {
+          "const": 2,
+          "title": "participant refused"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "WAIST_SKIPPED_REASON": {
+      "title": "Reason given for skipping the waist circumference measurement",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "other reason"
+        },
+        {
+          "const": 2,
+          "title": "participant refused"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "HEART_FIRST_RHYTHM": {
+      "title": "First heart rhythm measurement recorded as regular or irregular",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "regular"
+        },
+        {
+          "const": 2,
+          "title": "irregular"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "HEART_SECOND_RHYTHM": {
+      "title": "Second heart rhythm measurement recorded as regular or irregular",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "regular"
+        },
+        {
+          "const": 2,
+          "title": "irregular"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "HEART_THIRD_RHYTHM": {
+      "title": "Third heart rhythm measurement recorded as regular or irregular",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "regular"
+        },
+        {
+          "const": 2,
+          "title": "irregular"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "HEART_FIRST_SKIPPED_REASON": {
+      "title": "Reason given for skipping the first set of heart measurements",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "other reason"
+        },
+        {
+          "const": 2,
+          "title": "participant refused"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "HEART_SECOND_SKIPPED_REASON": {
+      "title": "Reason given for skipping the second set of heart measurements",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "other reason"
+        },
+        {
+          "const": 2,
+          "title": "participant refused"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "HEART_THIRD_SKIPPED_REASON": {
+      "title": "Reason given for skipping the third set of heart measurements",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "other reason"
+        },
+        {
+          "const": 2,
+          "title": "participant refused"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "CLINIC_SITE_REF": {
+      "title": "Reference to the clinic site where the measurements were taken",
+      "type": "string",
+      "$comment": "The source lists no values or format for this string, so none is asserted."
+    },
+    "CLINIC_PROVIDER": {
+      "title": "Reference to the organisation providing the clinic",
+      "type": "string",
+      "$comment": "The source lists no values or format for this string, so none is asserted."
+    },
+    "IS_MOBILE_CLINIC": {
+      "title": "Indicator of whether the clinic is a mobile clinic",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "mobile clinic"
+        },
+        {
+          "const": 0,
+          "title": "not a mobile clinic"
+        }
+      ]
+    }
+  },
+  "required": [
+    "ID",
+    "PID",
+    "APPOINTMENT_VERSION",
+    "APPOINTMENT_DATETIME",
+    "HEIGHT",
+    "WEIGHT",
+    "WAIST",
+    "HEART_FIRST_RATE",
+    "HEART_FIRST_BP_SYSTOLIC",
+    "HEART_FIRST_BP_DIASTOLIC",
+    "HEART_SECOND_RATE",
+    "HEART_SECOND_BP_SYSTOLIC",
+    "HEART_SECOND_BP_DIASTOLIC",
+    "HEART_THIRD_RATE",
+    "HEART_THIRD_BP_SYSTOLIC",
+    "HEART_THIRD_BP_DIASTOLIC",
+    "HEIGHT_SKIPPED",
+    "WEIGHT_SKIPPED",
+    "WAIST_SKIPPED",
+    "HEART_FIRST_SKIPPED",
+    "HEART_SECOND_SKIPPED",
+    "HEART_THIRD_SKIPPED",
+    "HEIGHT_SKIPPED_REASON",
+    "WEIGHT_SKIPPED_REASON",
+    "WAIST_SKIPPED_REASON",
+    "HEART_FIRST_RHYTHM",
+    "HEART_SECOND_RHYTHM",
+    "HEART_THIRD_RHYTHM",
+    "HEART_FIRST_SKIPPED_REASON",
+    "HEART_SECOND_SKIPPED_REASON",
+    "HEART_THIRD_SKIPPED_REASON",
+    "CLINIC_SITE_REF",
+    "CLINIC_PROVIDER",
+    "IS_MOBILE_CLINIC"
+  ]
+}

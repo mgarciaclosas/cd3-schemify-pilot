@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/poct_lipid_profile/poct_lipid_profile.schema.json",
+  "title": "Our Future Health — POCT lipid profile data",
+  "description": "Array of Our Future Health point-of-care lipid records. One element is one clinic appointment's point-of-care lipid profile: up to two sets of readings.",
+  "$comment": "Standard JSON Schema cannot enforce that ID is unique across rows, that every PID exists in the participant table (D090), or that a second set is offered only after abnormal first readings and that derived values match their inputs (D095).",
+  "type": "array",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "title": "POCT lipid profile data record",
+    "allOf": [
+      {
+        "$ref": "categories/poct_lipid_profile.json"
+      },
+      {
+        "$comment": "Skip pattern R187: a participant who skipped the first set has no first readings. Implied by the dictionary text 'Skipped the first set of POCT lipid measurements' and 'Reason for skipping the first set of POCT lipid measurements' (D093).",
+        "if": {
+          "required": [
+            "FIRST_READING_SKIPPED"
+          ],
+          "properties": {
+            "FIRST_READING_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TC_FIRST_READING": {
+              "const": -998
+            },
+            "HDL_FIRST_READING": {
+              "const": -998
+            },
+            "TG_FIRST_READING": {
+              "const": -998
+            },
+            "LDL_FIRST_READING": {
+              "const": -998
+            },
+            "NONHDL_FIRST_READING": {
+              "const": -998
+            },
+            "TC_HDL_RATIO_FIRST_READING": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R187: a participant who did not skip the first set has readings, so none is the not-recorded code. Implied by the dictionary text 'Skipped the first set of POCT lipid measurements' and 'Reason for skipping the first set of POCT lipid measurements' (D093).",
+        "if": {
+          "required": [
+            "FIRST_READING_SKIPPED"
+          ],
+          "properties": {
+            "FIRST_READING_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TC_FIRST_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HDL_FIRST_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "TG_FIRST_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "LDL_FIRST_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "NONHDL_FIRST_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "TC_HDL_RATIO_FIRST_READING": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R188: a participant who did not skip the first set has no reason for skipping. Implied by the dictionary text 'Skipped the first set of POCT lipid measurements' and 'Reason for skipping the first set of POCT lipid measurements' (D093).",
+        "if": {
+          "required": [
+            "FIRST_READING_SKIPPED"
+          ],
+          "properties": {
+            "FIRST_READING_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "FIRST_READING_SKIPPED_REASON": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R188: a participant who skipped the first set gave a reason, so it is never the not-recorded code. Implied by the dictionary text 'Skipped the first set of POCT lipid measurements' and 'Reason for skipping the first set of POCT lipid measurements' (D093).",
+        "if": {
+          "required": [
+            "FIRST_READING_SKIPPED"
+          ],
+          "properties": {
+            "FIRST_READING_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "FIRST_READING_SKIPPED_REASON": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R189: a participant who skipped the second set, or was not offered one, has no second readings. Implied by the dictionary text 'Skipped the second set of POCT lipid measurements. Only participants with abnormal readings to the first measurements are offered a second measurement' (only participants with abnormal first readings are offered a second measurement) (D094).",
+        "if": {
+          "required": [
+            "SECOND_READING_SKIPPED"
+          ],
+          "properties": {
+            "SECOND_READING_SKIPPED": {
+              "enum": [
+                1,
+                -998
+              ]
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TC_SECOND_READING": {
+              "const": -998
+            },
+            "HDL_SECOND_READING": {
+              "const": -998
+            },
+            "TG_SECOND_READING": {
+              "const": -998
+            },
+            "LDL_SECOND_READING": {
+              "const": -998
+            },
+            "NONHDL_SECOND_READING": {
+              "const": -998
+            },
+            "TC_HDL_RATIO_SECOND_READING": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R189: a participant who did not skip the second set has second readings, so none is the not-recorded code. Implied by the dictionary text 'Skipped the second set of POCT lipid measurements. Only participants with abnormal readings to the first measurements are offered a second measurement' (only participants with abnormal first readings are offered a second measurement) (D094).",
+        "if": {
+          "required": [
+            "SECOND_READING_SKIPPED"
+          ],
+          "properties": {
+            "SECOND_READING_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TC_SECOND_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HDL_SECOND_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "TG_SECOND_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "LDL_SECOND_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "NONHDL_SECOND_READING": {
+              "not": {
+                "const": -998
+              }
+            },
+            "TC_HDL_RATIO_SECOND_READING": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      }
+    ],
+    "unevaluatedProperties": false
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "DR2": "5",
+    "AF": 0.0625,
+    "N_GROUPS_IMPUTED": 5,
+    "N_GROUPS_TYPED": 5,
+    "PROP_TYPED": 0.0625
+  },
+  {
+    "AF": 0.0625,
+    "N_GROUPS_IMPUTED": 5,
+    "N_GROUPS_TYPED": 5,
+    "PROP_TYPED": 0.0625
+  },
+  {
+    "DR2": 0.0625,
+    "AF": 0.0625,
+    "N_GROUPS_IMPUTED": 5,
+    "N_GROUPS_TYPED": 5,
+    "PROP_TYPED": 0.0625,
+    "SHOE_SIZE": 7
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGIN0001",
+    "IZ_AT_REG": "X01000001"
+  },
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGIN0001",
+    "IZ_AT_REG": "E0100000"
+  },
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGIN0001",
+    "IZ_AT_REG": 12345
+  },
+  {
+    "PID": "TOY0002",
+    "ID": 7,
+    "IZ_AT_REG": "S02002515"
+  },
+  {
+    "ID": "TOYGIN0001",
+    "IZ_AT_REG": "S02002515"
+  },
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGIN0001",
+    "IZ_AT_REG": "S02002515",
+    "SHOE_SIZE": 7
+  }
+]

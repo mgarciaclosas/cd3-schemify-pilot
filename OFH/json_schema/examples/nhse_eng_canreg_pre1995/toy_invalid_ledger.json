@@ -1,0 +1,54 @@
+{
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column. The table has no routing rules.",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "row": 0,
+      "column": "BASISOFDIAGNOSIS",
+      "kind": "unknown-level",
+      "reason": "the value is not a declared code"
+    },
+    {
+      "row": 1,
+      "column": "BASISOFDIAGNOSIS",
+      "kind": "wrong-type",
+      "reason": "wrong type for a coded value"
+    },
+    {
+      "row": 2,
+      "column": "DIAGNOSIS_SITE_CODE",
+      "kind": "pattern-break",
+      "reason": "the value does not match the format of the source's codes"
+    },
+    {
+      "row": 3,
+      "column": "DIAGNOSIS_SITE_CODE",
+      "kind": "wrong-type",
+      "reason": "a code is a string"
+    },
+    {
+      "row": 4,
+      "column": "DIAGNOSISDATEBEST",
+      "kind": "wrong-type",
+      "reason": "a text or date value is a string"
+    },
+    {
+      "row": 5,
+      "column": "ROW_ID",
+      "kind": "wrong-type",
+      "reason": "the row key is a string"
+    },
+    {
+      "row": 6,
+      "column": "PID",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 7,
+      "column": "SHOE_SIZE",
+      "kind": "undeclared-column",
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
+    }
+  ]
+}

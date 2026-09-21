@@ -1,0 +1,44 @@
+[
+  {
+    "DR2": 0.0625,
+    "AF": 0.0625,
+    "N_GROUPS_IMPUTED": 5,
+    "N_GROUPS_TYPED": 5,
+    "PROP_TYPED": 0.0625
+  },
+  {
+    "DR2": 0.125,
+    "AF": 0.125,
+    "N_GROUPS_IMPUTED": 6,
+    "N_GROUPS_TYPED": 6,
+    "PROP_TYPED": 0.125
+  },
+  {
+    "DR2": -998,
+    "AF": -998,
+    "N_GROUPS_IMPUTED": -998,
+    "N_GROUPS_TYPED": -998,
+    "PROP_TYPED": -998
+  },
+  {
+    "DR2": 0.25,
+    "AF": 0.25,
+    "N_GROUPS_IMPUTED": 8,
+    "N_GROUPS_TYPED": 8,
+    "PROP_TYPED": 0.25
+  },
+  {
+    "DR2": 0.3125,
+    "AF": 0.3125,
+    "N_GROUPS_IMPUTED": 9,
+    "N_GROUPS_TYPED": 9,
+    "PROP_TYPED": 0.3125
+  },
+  {
+    "DR2": 0.375,
+    "AF": 0.375,
+    "N_GROUPS_IMPUTED": 10,
+    "N_GROUPS_TYPED": 10,
+    "PROP_TYPED": 0.375
+  }
+]

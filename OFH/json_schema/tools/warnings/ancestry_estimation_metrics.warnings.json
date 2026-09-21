@@ -1,0 +1,437 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/ancestry_estimation_metrics.warnings.json",
+  "title": "Our Future Health — Genetic ancestry data — Ancestry estimation metrics — warning checks",
+  "description": "Non-blocking checks for the ancestry_estimation_metrics table, from plausibility ranges the source does not state (D127). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning G01: North Africa is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "North Africa": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G02: East Africa is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "East Africa": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G03: West Africa is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "West Africa": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G04: Central and Southern Africa is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Central and Southern Africa": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G05: East Asia is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "East Asia": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G06: Japan and Korea is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Japan and Korea": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G07: Southeast Asia is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Southeast Asia": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G08: Central and South America is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Central and South America": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G09: India and Pakistan is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "India and Pakistan": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G10: Bangladesh is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Bangladesh": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G11: Sri Lanka is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Sri Lanka": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G12: Central Asia is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Central Asia": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G13: Middle East and Western Asia is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Middle East and Western Asia": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G14: North West Wales is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "North West Wales": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G15: South West Wales is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "South West Wales": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G16: Northern England and Southern Scotland is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Northern England and Southern Scotland": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G17: Northern Ireland and North Scotland is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Northern Ireland and North Scotland": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G18: Central and Southern UK is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Central and Southern UK": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G19: Finland is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Finland": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G20: Ireland is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Ireland": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G21: Portugal and Spain is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Portugal and Spain": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G22: Southeastern Europe is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Southeastern Europe": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G23: Northern Europe is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Northern Europe": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G24: Eastern Europe is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Eastern Europe": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G25: Central and Western Europe is expected to be between 0 and 1 (an ancestry proportion is a share of the whole); a value outside that range may point to a data problem.",
+        "properties": {
+          "Central and Western Europe": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "SITE_ICD10_O2": "C619",
+    "GLEASON_PRIMARY": 3,
+    "GLEASON_SECONDARY": 4,
+    "GLEASON_TERTIARY": 5
+  },
+  {
+    "SITE_ICD10_O2": "C509",
+    "GLEASON_PRIMARY": 8,
+    "GLEASON_SECONDARY": 8,
+    "GLEASON_TERTIARY": 8
+  },
+  {
+    "SITE_ICD10_O2": "-998",
+    "GLEASON_PRIMARY": 3,
+    "GLEASON_SECONDARY": 3,
+    "GLEASON_TERTIARY": 3
+  }
+]

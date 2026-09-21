@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/imputed_pvcf/categories/imputed_pvcf.json",
+  "title": "Imputed genotype data — Imputed VCF",
+  "description": "One element is one record of the imputed VCF files (ofh_imputed.v6.chrZ-bXXXX.vcf.gz): the genotype and genotype probability of one sample at one variant.",
+  "type": "object",
+  "x-variable-group": "imputed_pvcf",
+  "properties": {
+    "GT": {
+      "title": "Genotype of the sample",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "GP": {
+      "title": "Estimated genotype probability of the sample",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    }
+  },
+  "required": [
+    "GT",
+    "GP"
+  ]
+}
