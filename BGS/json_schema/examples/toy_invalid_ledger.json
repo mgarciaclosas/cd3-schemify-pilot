@@ -1,55 +1,361 @@
 {
-  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column. No skip-break/applicability-break case: this mother file has no if/then routing rules yet -- the source schema did not establish clear cross-field skip logic for this table's fields (e.g. R0_AgeMenopause has no NA branch even though R0_Menopause=2 'Premenopausal' would logically make it inapplicable), so none was invented. Logged as an open item in DECISIONS.md for steward input. No duplicate-row case: validate.py fixtures checks each row independently against the item schema, never the array-level uniqueItems constraint; verified separately via 'validate.py data' against a two-identical-row file.",
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column. Rows cover the identification, demographics, anthropometric, reproductive_hormonal, medical_history, behavioral and family_history categories; later categories extend the trio.",
   "rowIndexBase": 0,
   "violations": [
     {
       "row": 0,
-      "column": "R0_AgeMenopause",
-      "kind": "wrong-type",
-      "value": "fifty",
-      "reason": "age must be an integer or the missing_numeric sentinel, not a string"
+      "column": "R0_Height20",
+      "kind": "range-break",
+      "value": 320,
+      "reason": "source exclusiveMaximum 320: 320 is not allowed"
     },
     {
       "row": 1,
-      "column": "R0_MenopauseReason",
-      "kind": "unknown-level",
-      "value": 99,
-      "reason": "99 is not a declared code in the source schema for this field"
+      "column": "R0_Weight20",
+      "kind": "range-break",
+      "value": 0,
+      "reason": "source exclusiveMinimum 0: 0 is not allowed"
     },
     {
       "row": 2,
-      "column": "R0_CigsPerDay",
+      "column": "R0_BMI20",
       "kind": "range-break",
-      "value": 500,
-      "reason": "above plausibility max 100"
+      "value": -5,
+      "reason": "negative and not a declared code"
     },
     {
       "row": 3,
-      "column": "R0_HRTStatus",
+      "column": "R0_Height",
       "kind": "invented-sentinel",
-      "value": -1,
-      "reason": "-1 is not a code this source defines for R0_HRTStatus; the package's sentinel is -999"
+      "value": 9999,
+      "reason": "R0_Height has no 9999 branch in the source"
     },
     {
       "row": 4,
-      "column": "TCode",
-      "kind": "pattern-break",
-      "value": "abc123",
-      "reason": "must match ^[A-Z0-9]{8}$ -- eight uppercase alphanumeric characters, lowercase not allowed"
+      "column": "R0_Weight",
+      "kind": "invented-sentinel",
+      "value": -777,
+      "reason": "-777 is not a code this package defines"
     },
     {
       "row": 5,
-      "column": "R0_WaistCircum",
-      "kind": "missing-key",
-      "value": null,
-      "reason": "column omitted -- missingness must be in-band (missing_numeric), never an absent key"
+      "column": "R0_HighestWeight",
+      "kind": "range-break",
+      "value": 700,
+      "reason": "source exclusiveMaximum 700"
     },
     {
       "row": 6,
-      "column": "R0_ShoeSize",
+      "column": "R0_HighestWeightAge",
+      "kind": "wrong-type",
+      "value": 34.5,
+      "reason": "whole years: integer required"
+    },
+    {
+      "row": 7,
+      "column": "R0_HighestWeightAge",
+      "kind": "range-break",
+      "value": -1,
+      "reason": "source minimum 0; -1 is not a declared code"
+    },
+    {
+      "row": 8,
+      "column": "R0_WaistCircum",
+      "kind": "wrong-type",
+      "value": "80",
+      "reason": "numeric measure given as a string"
+    },
+    {
+      "row": 9,
+      "column": "R0_HipCircum",
+      "kind": "range-break",
+      "value": 350,
+      "reason": "source exclusiveMaximum 350"
+    },
+    {
+      "row": 10,
+      "column": "R0_WaistHipRatio",
+      "kind": "range-break",
+      "value": 10,
+      "reason": "source exclusiveMaximum 10"
+    },
+    {
+      "row": 11,
+      "column": "TCode",
+      "kind": "pattern-break",
+      "value": "AB0001",
+      "reason": "must be 8 characters"
+    },
+    {
+      "row": 12,
+      "column": "R0_BMI",
+      "kind": "missing-key",
+      "reason": "column omitted - missingness must be in-band"
+    },
+    {
+      "row": 13,
+      "column": "R0_Shoe",
       "kind": "undeclared-column",
-      "value": 8,
-      "reason": "not in the source schema; rejected by unevaluatedProperties"
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
+    },
+    {
+      "row": 14,
+      "column": "R0_BMI20",
+      "kind": "skip-break",
+      "value": 22.0,
+      "reason": "R001: R0_PregAt20=1 but a real BMI at 20 is present (must be 9999)"
+    },
+    {
+      "row": 15,
+      "column": "R0_BMI20",
+      "kind": "applicability-break",
+      "value": 9999,
+      "reason": "R001: R0_PregAt20=0 but the not-applicable code is recorded"
+    },
+    {
+      "row": 16,
+      "column": "R0_BMI",
+      "kind": "skip-break",
+      "value": 24.9,
+      "reason": "R002: R0_PregAtEntry=1 but a real BMI is present (must be 9999)"
+    },
+    {
+      "row": 17,
+      "column": "R0_WaistHipRatio",
+      "kind": "skip-break",
+      "value": 0.82,
+      "reason": "R002: R0_PregAtEntry=1 but a real waist-hip ratio is present (must be 9999)"
+    },
+    {
+      "row": 18,
+      "column": "R0_BMI",
+      "kind": "applicability-break",
+      "value": 9999,
+      "reason": "R002: R0_PregAtEntry=0 but the not-applicable code is recorded"
+    },
+    {
+      "row": 19,
+      "column": "R0_AgeFFTP",
+      "kind": "skip-break",
+      "value": 27.0,
+      "reason": "R003: R0_Parous=0 but a real age at first full-term pregnancy is present (must be 9999)"
+    },
+    {
+      "row": 20,
+      "column": "R0_Breastfed",
+      "kind": "skip-break",
+      "value": 1,
+      "reason": "R003: R0_Parous=-1 but a real ever-breastfed value is present (must be 9999)"
+    },
+    {
+      "row": 21,
+      "column": "R0_Breastfed",
+      "kind": "applicability-break",
+      "value": 9999,
+      "reason": "R003: R0_Parous=1 but the not-applicable code is recorded"
+    },
+    {
+      "row": 22,
+      "column": "R0_BreastfeedingDuration",
+      "kind": "applicability-break",
+      "value": 9999,
+      "reason": "R003: R0_Parous=1 but the not-applicable code is recorded"
+    },
+    {
+      "row": 23,
+      "column": "R0_Parous",
+      "kind": "unknown-level",
+      "value": 2,
+      "reason": "2 is not a declared code"
+    },
+    {
+      "row": 24,
+      "column": "R0_MenopauseReason",
+      "kind": "unknown-level",
+      "value": 20,
+      "reason": "20 is not a declared code"
+    },
+    {
+      "row": 25,
+      "column": "R0_AgeMenarche",
+      "kind": "range-break",
+      "value": 100,
+      "reason": "source exclusiveMaximum 100"
+    },
+    {
+      "row": 26,
+      "column": "R0_HRTStartAge",
+      "kind": "wrong-type",
+      "value": 40.5,
+      "reason": "whole years: integer required"
+    },
+    {
+      "row": 27,
+      "column": "R0_AgeStartedOC",
+      "kind": "range-break",
+      "value": 120,
+      "reason": "source exclusiveMaximum 120"
+    },
+    {
+      "row": 28,
+      "column": "R0_OralContraceptiveStatus",
+      "kind": "invented-sentinel",
+      "value": 9999,
+      "reason": "9999 is not a level of this coded variable"
+    },
+    {
+      "row": 29,
+      "column": "R0_BreastfeedingDuration",
+      "kind": "range-break",
+      "value": 1300,
+      "reason": "source exclusiveMaximum 1300"
+    },
+    {
+      "row": 30,
+      "column": "R0_OCLength",
+      "kind": "range-break",
+      "value": -1,
+      "reason": "source minimum 0; -1 is not a declared code"
+    },
+    {
+      "row": 31,
+      "column": "R0_AgeDiabetes",
+      "kind": "skip-break",
+      "value": 45,
+      "reason": "R004: R0_DiabetesStatus=0 but a real age at diagnosis is present (must be -999)"
+    },
+    {
+      "row": 32,
+      "column": "R0_AgeDiabetes",
+      "kind": "skip-break",
+      "value": 45,
+      "reason": "R004: R0_DiabetesStatus=-999 but a real age at diagnosis is present (must be -999)"
+    },
+    {
+      "row": 33,
+      "column": "R0_AgeDiabetes",
+      "kind": "range-break",
+      "value": -1,
+      "reason": "source minimum 0; -1 is not a declared code"
+    },
+    {
+      "row": 34,
+      "column": "R0_BBD",
+      "kind": "unknown-level",
+      "value": 2,
+      "reason": "2 is not a declared code"
+    },
+    {
+      "row": 35,
+      "column": "R0_DiabetesInsulin",
+      "kind": "wrong-type",
+      "value": "1",
+      "reason": "coded variable given as a string"
+    },
+    {
+      "row": 36,
+      "column": "R0_AlcoholStatus",
+      "kind": "unknown-level",
+      "value": 3,
+      "reason": "3 is not a declared code"
+    },
+    {
+      "row": 37,
+      "column": "R0_SmokingStatus",
+      "kind": "invented-sentinel",
+      "value": 9999,
+      "reason": "9999 is not a level of this coded variable"
+    },
+    {
+      "row": 38,
+      "column": "R0_AgeStartedDrinking",
+      "kind": "range-break",
+      "value": -1,
+      "reason": "source minimum 0; -1 is not a declared code"
+    },
+    {
+      "row": 39,
+      "column": "R0_AgeStartedSmoking",
+      "kind": "wrong-type",
+      "value": 17.5,
+      "reason": "whole years: integer required"
+    },
+    {
+      "row": 40,
+      "column": "R0_CigsPerDay",
+      "kind": "range-break",
+      "value": -1,
+      "reason": "source minimum 0; -1 is not a declared code"
+    },
+    {
+      "row": 41,
+      "column": "R0_PhysicalActivity",
+      "kind": "wrong-type",
+      "value": "10",
+      "reason": "numeric measure given as a string"
+    },
+    {
+      "row": 42,
+      "column": "R0_FruitDailyServings",
+      "kind": "range-break",
+      "value": -2,
+      "reason": "source minimum 0; -2 is not a declared code"
+    },
+    {
+      "row": 43,
+      "column": "R0_GreenVegDailyServings",
+      "kind": "wrong-type",
+      "value": 2.5,
+      "reason": "servings are whole numbers in the source (integer)"
+    },
+    {
+      "row": 44,
+      "column": "R0_FamHistCancer",
+      "kind": "unknown-level",
+      "value": 2,
+      "reason": "2 is not a declared code"
+    },
+    {
+      "row": 45,
+      "column": "R0_FamHistBCNum",
+      "kind": "range-break",
+      "value": -1,
+      "reason": "source minimum 0; -1 is not a declared code"
+    },
+    {
+      "row": 46,
+      "column": "R0_FamHistOVNum",
+      "kind": "wrong-type",
+      "value": 1.5,
+      "reason": "counts are whole numbers (integer)"
+    },
+    {
+      "row": 47,
+      "column": "R0_FamHistColo",
+      "kind": "wrong-type",
+      "value": "1",
+      "reason": "coded variable given as a string"
+    },
+    {
+      "row": 48,
+      "column": "R0_FamHistProst",
+      "kind": "invented-sentinel",
+      "value": 9999,
+      "reason": "9999 is not a level of this coded variable"
+    },
+    {
+      "row": 49,
+      "column": "R0_Ethnicity",
+      "kind": "unknown-level",
+      "value": 5,
+      "reason": "5 is not a declared code"
+    },
+    {
+      "row": 50,
+      "column": "R0_AshkenaziAncestry",
+      "kind": "wrong-type",
+      "value": "0",
+      "reason": "coded variable given as a string"
     }
   ]
 }

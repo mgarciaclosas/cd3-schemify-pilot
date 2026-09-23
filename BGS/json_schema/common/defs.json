@@ -1,23 +1,24 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schemas.example.org/cd3-bgs-pilot/common/defs.json",
-  "title": "CD3 / BGS (Breast Cancer Now Generations Study) — derived variables (schemify pilot) — shared definitions",
+  "title": "BGS pilot — shared definitions",
   "description": "Only invariant tokens are centralised here; context-specific sentinels are inlined per field because their meanings differ by variable.",
   "$defs": {
-    "missing_numeric": {
-      "const": -999,
-      "title": "Missing or not recorded",
-      "description": "The derivation logic could not determine a value and no more specific sentinel applies -- agent-decided, since the source schema used bare null with no distinguishing code. Open for steward confirmation at review."
-    },
-    "missing_string": {
-      "const": "MISSING",
-      "title": "Missing or not recorded",
-      "description": "String-typed equivalent of missing_numeric, for the (rare) string-valued fields in this table."
-    },
     "not_applicable": {
       "const": 9999,
       "title": "Not applicable",
-      "description": "The derivation logic determined the field is structurally not applicable to this participant (e.g. too young at baseline, no live birth, currently pregnant) -- adopted verbatim from the source schema, which already used 9999 for this meaning consistently across ~12 properties (distinct from bare null, which meant genuinely missing information)."
+      "description": "The derivation is structurally inapplicable for this participant (for example too young at baseline, pregnant, or never had a live birth). Distinct from missing_numeric, which means no valid value could be derived. Adopted from the source's own 9999 code, D003."
+    },
+    "missing_numeric": {
+      "const": -999,
+      "title": "Missing",
+      "description": "No valid value was derived. Replaces the source's bare null (source wording: 'Missing or invalid', 'Unknown', 'Left blank'). Agent-proposed code, steward-approved 2026-09-21, D004."
+    },
+    "participant_id": {
+      "type": "string",
+      "pattern": "^.{8}$",
+      "title": "Pseudo-anonymized 8-character study identifier.",
+      "$comment": "Source: type string, minLength 8, maxLength 8. The source states no character set, so the pattern only fixes the length (D017)."
     }
   }
 }

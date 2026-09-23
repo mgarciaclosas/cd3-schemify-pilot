@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schemas.example.org/cd3-bgs-pilot/derived_variables/derived_variables.schema.json",
-  "title": "BGS (Breast Cancer Now Generations Study) — Derived Variables table (CD3 schemify pilot)",
-  "description": "Array of R0 derived-variable records. One element is one participant's analysis-ready derived variables at baseline. Full pilot: all 60 properties from DerivedVariables_Schema.json converted, across 12 categories.",
-  "$comment": "Standard JSON Schema cannot enforce uniqueness of TCode across rows, nor cross-field arithmetic identities (e.g. R0_BMI = R0_Weight / (R0_Height/100)^2). See the README's 'Documented but not enforced' section.",
+  "title": "BGS — DERIVED_VARIABLES table",
+  "description": "Array of Generations Study baseline records. One element is one participant's baseline (R0) analysis-ready derived variables, keyed by TCode. Missing values are the in-band code -999 and structural not-applicable values the code 9999, so the dataset stays rectangular.",
+  "$comment": "Standard JSON Schema cannot enforce uniqueness of TCode across rows or the arithmetic behind the derived measures (for example BMI = weight / height squared). See the README's 'Documented but not enforced' section once written.",
   "type": "array",
   "minItems": 1,
   "uniqueItems": true,
@@ -12,40 +12,199 @@
     "title": "DERIVED_VARIABLES record",
     "allOf": [
       {
-        "$ref": "categories/identity.json"
+        "$ref": "categories/identification.json"
       },
       {
-        "$ref": "categories/ethnicity.json"
+        "$ref": "categories/demographics.json"
       },
       {
-        "$ref": "categories/body_size.json"
+        "$ref": "categories/anthropometric.json"
       },
       {
-        "$ref": "categories/menarche.json"
+        "$ref": "categories/reproductive_hormonal.json"
       },
       {
-        "$ref": "categories/contraceptive_use.json"
+        "$ref": "categories/medical_history.json"
       },
       {
-        "$ref": "categories/pregnancy_parity.json"
-      },
-      {
-        "$ref": "categories/breast_disease.json"
-      },
-      {
-        "$ref": "categories/diabetes.json"
-      },
-      {
-        "$ref": "categories/menopause_hrt.json"
-      },
-      {
-        "$ref": "categories/alcohol.json"
-      },
-      {
-        "$ref": "categories/smoking_diet_activity.json"
+        "$ref": "categories/behavioral.json"
       },
       {
         "$ref": "categories/family_history.json"
+      },
+      {
+        "$comment": "Skip pattern R001: pregnant at age 20 means BMI at 20 is structurally not applicable. Source (R0_BMI20 x-description): 'If AgeEntry < 20 or R0_PregAt20 == 1, BMI is set to 9999.' Pair confirmed as D022; the AgeEntry < 20 half is not enforceable (D013).",
+        "if": {
+          "required": [
+            "R0_PregAt20"
+          ],
+          "properties": {
+            "R0_PregAt20": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "R0_BMI20": {
+              "const": 9999
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R001: not pregnant at age 20 (R0_PregAt20 = 0) means BMI at 20 must not carry the not-applicable code, because the source sets R0_PregAt20 to 9999 when AgeEntry < 20, so 0 implies the participant was 20 or over (D022).",
+        "if": {
+          "required": [
+            "R0_PregAt20"
+          ],
+          "properties": {
+            "R0_PregAt20": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "R0_BMI20": {
+              "not": {
+                "const": 9999
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R002: pregnant at baseline means BMI and waist-hip ratio are structurally not applicable. Source: 'If R0_CurrentPreg == 1, BMI is set to 9999' (same for the ratio); R0_PregAtEntry is the delivered flag built from R0_CurrentPreg (D023, implied).",
+        "if": {
+          "required": [
+            "R0_PregAtEntry"
+          ],
+          "properties": {
+            "R0_PregAtEntry": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "R0_BMI": {
+              "const": 9999
+            },
+            "R0_WaistHipRatio": {
+              "const": 9999
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R002: not pregnant at baseline (R0_PregAtEntry = 0) means BMI and waist-hip ratio must not carry the not-applicable code; the source sets 9999 only when R0_CurrentPreg == 1 (D023).",
+        "if": {
+          "required": [
+            "R0_PregAtEntry"
+          ],
+          "properties": {
+            "R0_PregAtEntry": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "R0_BMI": {
+              "not": {
+                "const": 9999
+              }
+            },
+            "R0_WaistHipRatio": {
+              "not": {
+                "const": 9999
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R003: never pregnant or nulliparous (R0_Parous = -1 or 0, no live birth before entry) means age at first and last full-term pregnancy, breastfeeding duration and ever breastfed are structurally not applicable. Source: '9999 (NA) if no live-birth pregnancies or dates' (ages), '9999 (NA) if never a live-birth' (R0_Breastfed) (D024).",
+        "if": {
+          "required": [
+            "R0_Parous"
+          ],
+          "properties": {
+            "R0_Parous": {
+              "enum": [
+                -1,
+                0
+              ]
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "R0_AgeFFTP": {
+              "const": 9999
+            },
+            "R0_AgeLFTP": {
+              "const": 9999
+            },
+            "R0_BreastfeedingDuration": {
+              "const": 9999
+            },
+            "R0_Breastfed": {
+              "const": 9999
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R003: parous (R0_Parous = 1) means ever breastfed and breastfeeding duration must not carry the not-applicable code. No applicability half for the two age fields: the source also gives them 9999 when dates are missing (D024).",
+        "if": {
+          "required": [
+            "R0_Parous"
+          ],
+          "properties": {
+            "R0_Parous": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "R0_BreastfeedingDuration": {
+              "not": {
+                "const": 9999
+              }
+            },
+            "R0_Breastfed": {
+              "not": {
+                "const": 9999
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Diabetes routing R004: age at diabetes diagnosis is kept only when diabetes status is Yes, so status No or Missing means the age is -999 (missing). Source (R0_AgeDiabetes x-description): 'only retained if R0_DiabetesStatus=1'; the source's only non-retained value is null, carried as -999. No reverse half: with status Yes the age may be a number or -999. D029.",
+        "if": {
+          "required": [
+            "R0_DiabetesStatus"
+          ],
+          "properties": {
+            "R0_DiabetesStatus": {
+              "enum": [
+                0,
+                -999
+              ]
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "R0_AgeDiabetes": {
+              "const": -999
+            }
+          }
+        }
       }
     ],
     "unevaluatedProperties": false

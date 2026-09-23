@@ -1,8 +1,8 @@
-# CD3 pilot — BGS (Breast Cancer Now Generations Study) derived variables — conversion progress
+# CD3 pilot — BGS derived variables — conversion progress
 
-package: CD3_Schemify_Pilot/BGS/json_schema · started: 2026-08-21
-grain: One element is one participant's R0 (baseline) analysis-ready derived variables.
-dictionary: DerivedVariables_Schema.json (Schema_and_Derivation_Utils/Questionnaire/R0/schemas/derived/) — full inventory in SOURCES.md
+package: CD3_Schemify_Pilot/BGS/json_schema · started: 2026-09-15
+grain: One element is one participant's baseline (R0) analysis-ready derived variables, keyed by `TCode`
+dictionary: DerivedVariables_Schema.json (Generations Study, JSON Schema, 60 properties) — full inventory in SOURCES.md
 
 ## How to continue
 
@@ -15,62 +15,54 @@ and invoke the skill again. The agent reads this file and proposes the next
 unit. You can also ask for anything directly — a specific category, a change,
 a question, the final review.
 
-This package is one of three sibling CD3 pilots (BGS, OFH, MWS — see
-`../../` for the others), independent of the earlier R0-questionnaire pilot at
-`GS_Schemify_Pilot/`. Unlike that pilot, this one converts **all** source
-properties in one pass, not a single category, per the steward's explicit
-instruction.
-
 ## Conventions
 
-- sentinels: -999 (missing_numeric) · "MISSING" (missing_string) — agent-decided,
-  mirrors the R0-questionnaire pilot's policy · D001. Plus 9999 (not_applicable)
-  — adopted verbatim from the source, which already used it consistently across
-  ~12 properties, distinct from bare null · D002
-- $id base: https://schemas.example.org/cd3-bgs-pilot/ (replace before publishing)
-- grain: see header · title separator: — (em dash) · formatting: 2-space, one key per line
-- real data: none in this repo; toy fixtures authored from the source schema's
-  stated bounds and enums only · D003
-- x-derivedFrom (source's lineage-pointer mechanism) has no equivalent in
-  schemify's 5-key x-* vocabulary; folded into x-derivation as prose instead ·
-  D004. x-formerName (legacy variable name) folded into $comment · D005
-- 10 R0_FamHist* properties trace provenance to legacy SAS scripts on a network
-  drive, not other schema fields — preserved verbatim in x-derivation rather
-  than treated as unresolvable $defs pointers · D006
-- no cross-field routing (if/then) rules added yet — the source schema does not
-  establish clear skip logic between these derived fields (e.g. R0_AgeMenopause
-  has no NA branch even though R0_Menopause=2 would logically make it
-  inapplicable) — open item, D007
+- sentinels: `9999` not applicable (adopted from source) · `-999` missing (approved, replaces source `null`) · D003, D004
+- $id base: https://schemas.example.org/cd3-bgs-pilot/ (replace before publishing) · D002
+- grain: see header · title separator: — (em dash) · formatting: 2-space, one key per line · D002
+- titles: source `description` text verbatim; no separate description · D010
+- real data: none in repo · D005
+- routing: faithful · D009
 
 ## Categories
 
-| # | category | file | vars | status | touched |
-|---|---|---|---|---|---|
-| 1 | Identity | derived_variables/categories/identity.json | 1 | rendered, pending steward review | 2026-08-21 |
-| 2 | Ethnicity | derived_variables/categories/ethnicity.json | 2 | rendered, pending steward review | 2026-08-21 |
-| 3 | Body Size | derived_variables/categories/body_size.json | 11 | rendered, pending steward review | 2026-08-21 |
-| 4 | Menarche | derived_variables/categories/menarche.json | 1 | rendered, pending steward review | 2026-08-21 |
-| 5 | Contraceptive Use | derived_variables/categories/contraceptive_use.json | 4 | rendered, pending steward review | 2026-08-21 |
-| 6 | Pregnancy Parity | derived_variables/categories/pregnancy_parity.json | 8 | rendered, pending steward review | 2026-08-21 |
-| 7 | Breast Disease | derived_variables/categories/breast_disease.json | 1 | rendered, pending steward review | 2026-08-21 |
-| 8 | Diabetes | derived_variables/categories/diabetes.json | 3 | rendered, pending steward review | 2026-08-21 |
-| 9 | Menopause HRT | derived_variables/categories/menopause_hrt.json | 7 | rendered, pending steward review | 2026-08-21 |
-| 10 | Alcohol | derived_variables/categories/alcohol.json | 4 | rendered, pending steward review | 2026-08-21 |
-| 11 | Smoking Diet Activity | derived_variables/categories/smoking_diet_activity.json | 8 | rendered, pending steward review | 2026-08-21 |
-| 12 | Family History | derived_variables/categories/family_history.json | 10 | rendered, pending steward review | 2026-08-21 |
+Approved by the steward 2026-09-21 (D015).
 
-60 of 60 source properties converted (full pilot, no subset).
+| # | category | file | vars | source slice | status | touched |
+|---|---|---|---|---|---|---|
+| 1 | Identification | derived_variables/categories/identification.json | 1 | TCode | confirmed | 2026-09-21 |
+| 2 | Demographics | derived_variables/categories/demographics.json | 2 | R0_Ethnicity, R0_AshkenaziAncestry | confirmed | 2026-09-21 |
+| 3 | Anthropometric | derived_variables/categories/anthropometric.json | 11 | Height/Weight/BMI (age 20 and baseline), HighestWeight(+Age), Waist, Hip, WaistHipRatio | confirmed | 2026-09-21 |
+| 4 | Reproductive/Hormonal | derived_variables/categories/reproductive_hormonal.json | 20 | pregnancy, menarche, OC, parity/births, breastfeeding, menopause, HRT | confirmed | 2026-09-21 |
+| 5 | Medical History | derived_variables/categories/medical_history.json | 4 | R0_BBD, diabetes (3) | confirmed | 2026-09-21 |
+| 6 | Behavioral | derived_variables/categories/behavioral.json | 12 | alcohol (4), smoking (5), physical activity, fruit, green veg | confirmed | 2026-09-21 |
+| 7 | Family History | derived_variables/categories/family_history.json | 10 | R0_FamHist* | confirmed | 2026-09-21 |
 
 ## Package milestones
 
-- [x] intake: source registered · grain confirmed · categories confirmed (12, all converted)
-- [x] common/defs.json + mother scaffold validate green
-- [ ] every category confirmed (all 12 rendered; steward confirmation still open)
-- [ ] cross-category skip audit (D007 — no rules written yet, needs steward input)
-- [x] coverage audit 1:1 (60/60)
-- [x] pages current for all 12 categories
-- [ ] review walked · cleanup decided
+- [x] intake: sources registered · grain confirmed · categories confirmed (D001, D015)
+- [x] common/defs.json + mother scaffold validate green (2026-09-21, 3 files)
+- [x] every category confirmed (7/7, 2026-09-21)
+- [x] skip audit (ROUTING.md) — done 2026-09-21: R001-R004 encoded and fixtured, R005 not-enforceable (D013), R006/R007 declined (D036)
+- [x] coverage audit 1:1 (60/60 converted, 0 pending, 0 mismatches)
+- [x] pages current for the whole package (2026-09-21)
+- [x] review walked (18 agent-decided lines ratified 2026-09-21, 0 open) · [x] cleanup decided (keep, 2026-09-21)
 
 ## Session log
 
-- 2026-08-21 · intake + convert all 12 categories · Registered DerivedVariables_Schema.json, proposed and confirmed the 12-category breakdown, scaffolded package, drafted all 60 properties across 12 category files, authored fixtures (27 valid rows, 7 invalid cases), rendered dictionary.html + playground.html, all validate.py checks green (check/fixtures/coverage). Caught and fixed one gap during fixture-building: R0_Parity had no plausibility maximum (unlike the other count fields). · next: present to the steward for category-by-category confirmation, and settle D007 (cross-field routing) before review.
+- 2026-09-21 · intake · sources surveyed, routing scan run (5 stated rules in ROUTING.csv), interview answered (D001–D010), Generations conventions doc consulted, 7 categories proposed · next: intake (steward approves category table, then scaffold)
+- 2026-09-21 · intake · category table approved (D015), `-999` approved (D004), D016 resolved; scaffolded package (assets, tools, common/defs.json, mother, identification category), validate.py check green, VARIABLES.csv categories assigned · next: convert anthropometric
+- 2026-09-21 · convert anthropometric · 11 vars drafted, fixtures 8 valid / 14 seeded violations all caught, both pages rendered, D018-D020; routing R001/R002 stay waiting on reproductive_hormonal (PregAt20, PregAtEntry) · next: convert reproductive_hormonal (steward confirms anthropometric first)
+- 2026-09-21 · convert reproductive_hormonal · anthropometric confirmed by steward; 20 vars drafted, R001-R003 encoded (D022-D024), x-universe added on BMI/WHR, fixtures 9 valid / 31 seeded violations all caught, D022-D027 · next: steward confirms reproductive_hormonal and answers D027, then convert medical_history (encodes R004)
+- 2026-09-21 · convert medical_history · reproductive_hormonal confirmed by steward (D027 answered, D028 open); 4 vars drafted, R004 encoded (D029), fixtures 9 valid / 36 seeded violations all caught, D029-D030 · next: steward confirms medical_history and answers D030, then convert behavioral
+- 2026-09-21 · convert behavioral · medical_history confirmed by steward; 12 vars drafted, no rule encoded (R006/R007 proposed, cell value asked, D032), PhysicalActivity unit defect D031, fixtures 9 valid / 44 seeded violations all caught · next: steward confirms behavioral and answers D030-D032, then convert family_history
+- 2026-09-21 · elicit (0 open in this batch) · D030 -999 for now, D031 keep unit defect as is, D032 keep no rule for R006/R007 for now (rows stay proposed) · next: convert family_history (behavioral awaiting steward confirmation)
+- 2026-09-21 · convert family_history + demographics · behavioral confirmed by steward; family_history (10) drafted with soft checks D033; demographics (2) had been skipped in planning order and was caught by the coverage check, converted (D035); all 60 converted, fixtures 9 valid / 51 seeded violations all caught · next: steward confirms demographics and family_history, then skips audit (R006/R007 proposed) and review
+- 2026-09-21 · skips audit · demographics, family_history, identification confirmed by steward (7/7); routing check green: R001-R004 encoded and fixtured, R005 not-enforceable (D013), 5 NA-bearing fields with no stated trigger covered by D016; R006/R007 still proposed (steward: keep as is for now) so the milestone is not ticked · next: skips audit (steward decides R006/R007, or a second 'later' migrates them to the README at review)
+- 2026-09-21 · skips audit · steward declined R006/R007 (D036); swept stale 'waits'/'awaits' comments in anthropometric.json and behavioral.json (5); routing check green (2 informational/warn notes explained: R0_EverHadPeriods not delivered, 5 NA-bearing fields with no stated trigger D016); milestone ticked · next: review
+- 2026-09-21 · elicit (0 open) · D028 closed by reading the raw Generations notebook; D037 defect (R0_PregAtEntry codes 0/1 declared vs 0/1/2/3 produced) resolved: keep declared 0/1, note added to the field's comment · next: review
+- 2026-09-21 · revise all categories (comments) · removed 'Derived from' lineage sentences from 59 property comments at steward request (D038); kept former names, formulas, rule and defect notes, one [sic] note on R0_Height20; re-rendered; no status changes · next: review
+- 2026-09-21 · review (walk, part 1) · completion checks run (summary green, 0 open ledger lines, 18 agent-decided lines grouped into 5 themes); presented themes 1-3 (sentinels, bounds and types, naming and annotations) · next: review (walk themes 4-5: routing rules, not-enforceable; then README and cleanup)
+- 2026-09-21 · review (walk, part 2) · steward accepted themes 1-3 (D003, D011, D012, D014, D017, D019, D020, D025, D034, D035 now user-confirmed); presenting themes 4-5 (routing D022-D024, D029; not-enforceable D013, D018, D026, D033) · next: review (steward answers themes 4-5; then README and cleanup)
+- 2026-09-21 · review (README) · steward accepted themes 4-5 (all 18 agent-decided lines now user-confirmed); README.md written with 10 sections; real-data offer: none in repo (D005) · next: review (cleanup offer: keep or clean the working files)
+- 2026-09-21 · review (cleanup) · steward chose keep: state trio stays beside the package · next: — (complete)
