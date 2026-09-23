@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/questionnaire/categories/questionnaire_information.json",
+  "title": "Questionnaire data — Questionnaire information",
+  "description": "Identifies each questionnaire response, the participant who gave it, the questionnaire version and the submission date. Holds the table's link keys.",
+  "type": "object",
+  "x-variable-group": "questionnaire_information",
+  "properties": {
+    "ID": {
+      "title": "Unique identifier for questionnaire response",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table. The source states no format, so no pattern is asserted (D043)."
+    },
+    "PID": {
+      "title": "Participant identifier",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID. That every PID exists in the participant table cannot be enforced across tables (D044). The source states no format, so no pattern is asserted (D043)."
+    },
+    "QUESTIONNAIRE_VERSION": {
+      "title": "Version of questionnaire completed",
+      "type": "string",
+      "$comment": "The dictionary lists no values or format for this string, so none is asserted (D045)."
+    },
+    "SUBMISSION_DATE": {
+      "title": "Date questionnaire was submitted",
+      "type": "string",
+      "$comment": "The dictionary type is date but states no delivered string format, so no pattern is asserted (D043)."
+    }
+  },
+  "required": [
+    "ID",
+    "PID",
+    "QUESTIONNAIRE_VERSION",
+    "SUBMISSION_DATE"
+  ]
+}

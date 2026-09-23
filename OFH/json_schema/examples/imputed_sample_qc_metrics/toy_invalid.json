@@ -1,0 +1,34 @@
+[
+  {
+    "PID": "TOY0001",
+    "plate": 12345,
+    "genetic_sex": "TOYTEXT0",
+    "batch": "TOYTEXT0",
+    "array_manifest_version": "TOYTEXT0",
+    "imputation_group": "TOYTEXT0"
+  },
+  {
+    "PID": 7,
+    "plate": "TOYTEXT0",
+    "genetic_sex": "TOYTEXT0",
+    "batch": "TOYTEXT0",
+    "array_manifest_version": "TOYTEXT0",
+    "imputation_group": "TOYTEXT0"
+  },
+  {
+    "plate": "TOYTEXT0",
+    "genetic_sex": "TOYTEXT0",
+    "batch": "TOYTEXT0",
+    "array_manifest_version": "TOYTEXT0",
+    "imputation_group": "TOYTEXT0"
+  },
+  {
+    "PID": "TOY0001",
+    "plate": "TOYTEXT0",
+    "genetic_sex": "TOYTEXT0",
+    "batch": "TOYTEXT0",
+    "array_manifest_version": "TOYTEXT0",
+    "imputation_group": "TOYTEXT0",
+    "SHOE_SIZE": 7
+  }
+]

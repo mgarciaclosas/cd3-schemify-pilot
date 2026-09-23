@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/variant_summary_statistics/categories/variant_summary_statistics.json",
+  "title": "Imputed genotype data — Variant summary statistics",
+  "description": "One element is one variant in the imputed variant summary statistics file (ofh_imputed_variant_summary_stats.v6.vcf.gz).",
+  "type": "object",
+  "x-variable-group": "variant_summary_statistics",
+  "properties": {
+    "DR2": {
+      "title": "Dosage R.squared",
+      "description": "Estimated dosage r-squared",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "AF": {
+      "title": "ALT allele frequency",
+      "description": "Estimated ALT allele frequencies",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "N_GROUPS_IMPUTED": {
+      "title": "Number of groups imputed",
+      "description": "Number of groups imputed for the variant",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "N_GROUPS_TYPED": {
+      "title": "Number of groups genotyped",
+      "description": "Number of groups directly genotyped for the variant",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PROP_TYPED": {
+      "title": "Proportion of groups genotyped",
+      "description": "Proportion of groups directly genotyped for the variant",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    }
+  },
+  "required": [
+    "DR2",
+    "AF",
+    "N_GROUPS_IMPUTED",
+    "N_GROUPS_TYPED",
+    "PROP_TYPED"
+  ]
+}

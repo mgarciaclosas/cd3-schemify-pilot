@@ -1,0 +1,871 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/genotype_sample_qc_metrics/categories/genotype_sample_qc_metrics.json",
+  "title": "Genotype array data — Sample QC metrics",
+  "description": "One element is one participant's sample quality-control record from the genotype array (file ofh_sample_qc_metrics.v10.tsv).",
+  "type": "object",
+  "x-variable-group": "genotype_sample_qc_metrics",
+  "properties": {
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "plate": {
+      "title": "Plate",
+      "description": "Identifier of the microwell plate of the sample",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "genetic_sex": {
+      "title": "Genetic sex",
+      "description": "Estimated genetic sex of the sample",
+      "oneOf": [
+        {
+          "const": "M",
+          "title": "Male"
+        },
+        {
+          "const": "F",
+          "title": "Female"
+        },
+        {
+          "const": "U",
+          "title": "Unknown"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "batch": {
+      "title": "Batch",
+      "description": "Identifier of the batch based on the date of genotype calling and the microwell plate identifier",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "call_rate": {
+      "title": "Call rate",
+      "description": "Call rate of the sample based on variants from all chromosomes",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "x-unit": "proportion of variants with genotype call",
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "array_manifest_version": {
+      "title": "Array manifest version",
+      "description": "Version of array manifest used to call samples",
+      "oneOf": [
+        {
+          "const": "v1",
+          "title": "A1 manifest"
+        },
+        {
+          "const": "v2",
+          "title": "C2 manifest"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "PC1": {
+      "title": "PC1",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC2": {
+      "title": "PC2",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC3": {
+      "title": "PC3",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC4": {
+      "title": "PC4",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC5": {
+      "title": "PC5",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC6": {
+      "title": "PC6",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC7": {
+      "title": "PC7",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC8": {
+      "title": "PC8",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC9": {
+      "title": "PC9",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC10": {
+      "title": "PC10",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC11": {
+      "title": "PC11",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC12": {
+      "title": "PC12",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC13": {
+      "title": "PC13",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC14": {
+      "title": "PC14",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC15": {
+      "title": "PC15",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC16": {
+      "title": "PC16",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC17": {
+      "title": "PC17",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC18": {
+      "title": "PC18",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC19": {
+      "title": "PC19",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC20": {
+      "title": "PC20",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC21": {
+      "title": "PC21",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC22": {
+      "title": "PC22",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC23": {
+      "title": "PC23",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC24": {
+      "title": "PC24",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC25": {
+      "title": "PC25",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC26": {
+      "title": "PC26",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC27": {
+      "title": "PC27",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC28": {
+      "title": "PC28",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC29": {
+      "title": "PC29",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC30": {
+      "title": "PC30",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC31": {
+      "title": "PC31",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC32": {
+      "title": "PC32",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC33": {
+      "title": "PC33",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC34": {
+      "title": "PC34",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC35": {
+      "title": "PC35",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC36": {
+      "title": "PC36",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC37": {
+      "title": "PC37",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC38": {
+      "title": "PC38",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC39": {
+      "title": "PC39",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "PC40": {
+      "title": "PC40",
+      "description": "Score for each principal component 1-40",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    }
+  },
+  "required": [
+    "PID",
+    "plate",
+    "genetic_sex",
+    "batch",
+    "call_rate",
+    "array_manifest_version",
+    "PC1",
+    "PC2",
+    "PC3",
+    "PC4",
+    "PC5",
+    "PC6",
+    "PC7",
+    "PC8",
+    "PC9",
+    "PC10",
+    "PC11",
+    "PC12",
+    "PC13",
+    "PC14",
+    "PC15",
+    "PC16",
+    "PC17",
+    "PC18",
+    "PC19",
+    "PC20",
+    "PC21",
+    "PC22",
+    "PC23",
+    "PC24",
+    "PC25",
+    "PC26",
+    "PC27",
+    "PC28",
+    "PC29",
+    "PC30",
+    "PC31",
+    "PC32",
+    "PC33",
+    "PC34",
+    "PC35",
+    "PC36",
+    "PC37",
+    "PC38",
+    "PC39",
+    "PC40"
+  ]
+}

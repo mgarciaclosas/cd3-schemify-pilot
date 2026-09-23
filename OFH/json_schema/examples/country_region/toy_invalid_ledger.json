@@ -1,0 +1,42 @@
+{
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column.",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "row": 0,
+      "column": "COUNTRY_AT_REG",
+      "kind": "unknown-level",
+      "reason": "E92000009 is not a declared country code"
+    },
+    {
+      "row": 1,
+      "column": "REGION_AT_REG",
+      "kind": "unknown-level",
+      "reason": "TLZ is not a declared region code"
+    },
+    {
+      "row": 2,
+      "column": "COUNTRY_AT_REG",
+      "kind": "wrong-type",
+      "reason": "a geography code is a string"
+    },
+    {
+      "row": 3,
+      "column": "ID",
+      "kind": "wrong-type",
+      "reason": "the row identifier is a string"
+    },
+    {
+      "row": 4,
+      "column": "PID",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 5,
+      "column": "SHOE_SIZE",
+      "kind": "undeclared-column",
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "ID": "TOYGCO0001",
+    "PID": "TOY0002",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLC"
+  },
+  {
+    "ID": "TOYGCO0002",
+    "PID": "TOY0003",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLD"
+  },
+  {
+    "ID": "TOYGCO0003",
+    "PID": "TOY0004",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLE"
+  },
+  {
+    "ID": "TOYGCO0004",
+    "PID": "TOY0005",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLF"
+  },
+  {
+    "ID": "TOYGCO0005",
+    "PID": "TOY0006",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLG"
+  },
+  {
+    "ID": "TOYGCO0006",
+    "PID": "TOY0007",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLH"
+  },
+  {
+    "ID": "TOYGCO0007",
+    "PID": "TOY0001",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLI"
+  },
+  {
+    "ID": "TOYGCO0008",
+    "PID": "TOY0002",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLJ"
+  },
+  {
+    "ID": "TOYGCO0009",
+    "PID": "TOY0003",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLK"
+  },
+  {
+    "ID": "TOYGCO0010",
+    "PID": "TOY0004",
+    "COUNTRY_AT_REG": "W92000004",
+    "REGION_AT_REG": "TLL"
+  },
+  {
+    "ID": "TOYGCO0011",
+    "PID": "TOY0005",
+    "COUNTRY_AT_REG": "S92000003",
+    "REGION_AT_REG": "TLM"
+  },
+  {
+    "ID": "TOYGCO0012",
+    "PID": "TOY0006",
+    "COUNTRY_AT_REG": "N92000002",
+    "REGION_AT_REG": "TLN"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "GT": 12345,
+    "GP": "TOYTEXT0"
+  },
+  {
+    "GP": "TOYTEXT0"
+  },
+  {
+    "GT": "TOYTEXT0",
+    "GP": "TOYTEXT0",
+    "SHOE_SIZE": 7
+  }
+]

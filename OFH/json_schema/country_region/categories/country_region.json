@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/country_region/categories/country_region.json",
+  "title": "Participant geographies data — Country and region",
+  "description": "Country and region for England, Wales, Scotland and Northern Ireland.",
+  "type": "object",
+  "x-variable-group": "country_region",
+  "properties": {
+    "ID": {
+      "title": "Row ID",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "COUNTRY_AT_REG": {
+      "title": "Participants' country at the time of registration.",
+      "oneOf": [
+        {
+          "const": "E92000001",
+          "title": "England"
+        },
+        {
+          "const": "N92000002",
+          "title": "Northern Ireland"
+        },
+        {
+          "const": "S92000003",
+          "title": "Scotland"
+        },
+        {
+          "const": "W92000004",
+          "title": "Wales"
+        }
+      ]
+    },
+    "REGION_AT_REG": {
+      "title": "Participants' region at the time of registration.",
+      "oneOf": [
+        {
+          "const": "TLC",
+          "title": "North East (England)"
+        },
+        {
+          "const": "TLD",
+          "title": "North West (England)"
+        },
+        {
+          "const": "TLE",
+          "title": "Yorkshire and The Humber"
+        },
+        {
+          "const": "TLF",
+          "title": "East Midlands (England)"
+        },
+        {
+          "const": "TLG",
+          "title": "West Midlands (England)"
+        },
+        {
+          "const": "TLH",
+          "title": "East (England)"
+        },
+        {
+          "const": "TLI",
+          "title": "London"
+        },
+        {
+          "const": "TLJ",
+          "title": "South East (England)"
+        },
+        {
+          "const": "TLK",
+          "title": "South West (England)"
+        },
+        {
+          "const": "TLL",
+          "title": "Wales"
+        },
+        {
+          "const": "TLM",
+          "title": "Scotland"
+        },
+        {
+          "const": "TLN",
+          "title": "Northern Ireland"
+        }
+      ]
+    }
+  },
+  "required": [
+    "ID",
+    "PID",
+    "COUNTRY_AT_REG",
+    "REGION_AT_REG"
+  ]
+}

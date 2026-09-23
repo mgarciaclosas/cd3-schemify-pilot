@@ -1,0 +1,3852 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/nhse_eng_ecds.warnings.json",
+  "title": "Our Future Health — Linked health records data — Emergency care (ECDS) — warning checks",
+  "description": "Non-blocking checks for the nhse_eng_ecds table, from rules the source does not state but the steward asked to have checked (D122). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_1 is not recorded but the next slot DIAGNOSIS_QUALIFIER_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_1"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_2 is not recorded but the next slot DIAGNOSIS_QUALIFIER_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_2"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_3 is not recorded but the next slot DIAGNOSIS_QUALIFIER_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_3"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_4 is not recorded but the next slot DIAGNOSIS_QUALIFIER_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_4"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_5 is not recorded but the next slot DIAGNOSIS_QUALIFIER_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_5"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_6 is not recorded but the next slot DIAGNOSIS_QUALIFIER_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_6"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_7 is not recorded but the next slot DIAGNOSIS_QUALIFIER_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_7"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_8 is not recorded but the next slot DIAGNOSIS_QUALIFIER_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_8"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_9 is not recorded but the next slot DIAGNOSIS_QUALIFIER_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_9"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_10 is not recorded but the next slot DIAGNOSIS_QUALIFIER_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_10"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_QUALIFIER_11 is not recorded but the next slot DIAGNOSIS_QUALIFIER_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_QUALIFIER_11"
+          ],
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_1 is not recorded but the next slot SEQUENCE_NUMBER_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_1"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_1": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_2": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_2 is not recorded but the next slot SEQUENCE_NUMBER_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_2"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_2": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_3": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_3 is not recorded but the next slot SEQUENCE_NUMBER_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_3"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_3": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_4": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_4 is not recorded but the next slot SEQUENCE_NUMBER_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_4"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_4": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_5": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_5 is not recorded but the next slot SEQUENCE_NUMBER_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_5"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_5": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_6": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_6 is not recorded but the next slot SEQUENCE_NUMBER_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_6"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_6": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_7": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_7 is not recorded but the next slot SEQUENCE_NUMBER_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_7"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_7": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_8": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_8 is not recorded but the next slot SEQUENCE_NUMBER_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_8"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_8": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_9": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_9 is not recorded but the next slot SEQUENCE_NUMBER_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_9"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_9": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_10": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_10 is not recorded but the next slot SEQUENCE_NUMBER_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_10"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_10": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_11": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SEQUENCE_NUMBER_11 is not recorded but the next slot SEQUENCE_NUMBER_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SEQUENCE_NUMBER_11"
+          ],
+          "properties": {
+            "SEQUENCE_NUMBER_11": {
+              "const": -998
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SEQUENCE_NUMBER_12": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_1 is not recorded but the next slot TREATMENT_DATE_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_1"
+          ],
+          "properties": {
+            "TREATMENT_DATE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_2 is not recorded but the next slot TREATMENT_DATE_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_2"
+          ],
+          "properties": {
+            "TREATMENT_DATE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_3 is not recorded but the next slot TREATMENT_DATE_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_3"
+          ],
+          "properties": {
+            "TREATMENT_DATE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_4 is not recorded but the next slot TREATMENT_DATE_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_4"
+          ],
+          "properties": {
+            "TREATMENT_DATE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_5 is not recorded but the next slot TREATMENT_DATE_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_5"
+          ],
+          "properties": {
+            "TREATMENT_DATE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_6 is not recorded but the next slot TREATMENT_DATE_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_6"
+          ],
+          "properties": {
+            "TREATMENT_DATE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_7 is not recorded but the next slot TREATMENT_DATE_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_7"
+          ],
+          "properties": {
+            "TREATMENT_DATE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_8 is not recorded but the next slot TREATMENT_DATE_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_8"
+          ],
+          "properties": {
+            "TREATMENT_DATE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_9 is not recorded but the next slot TREATMENT_DATE_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_9"
+          ],
+          "properties": {
+            "TREATMENT_DATE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_10 is not recorded but the next slot TREATMENT_DATE_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_10"
+          ],
+          "properties": {
+            "TREATMENT_DATE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_DATE_11 is not recorded but the next slot TREATMENT_DATE_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_DATE_11"
+          ],
+          "properties": {
+            "TREATMENT_DATE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_1 is not recorded but the next slot INVESTIGATION_CODE_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_1"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_2 is not recorded but the next slot INVESTIGATION_CODE_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_2"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_3 is not recorded but the next slot INVESTIGATION_CODE_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_3"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_4 is not recorded but the next slot INVESTIGATION_CODE_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_4"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_5 is not recorded but the next slot INVESTIGATION_CODE_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_5"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_6 is not recorded but the next slot INVESTIGATION_CODE_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_6"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_7 is not recorded but the next slot INVESTIGATION_CODE_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_7"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_8 is not recorded but the next slot INVESTIGATION_CODE_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_8"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_9 is not recorded but the next slot INVESTIGATION_CODE_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_9"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_10 is not recorded but the next slot INVESTIGATION_CODE_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_10"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_CODE_11 is not recorded but the next slot INVESTIGATION_CODE_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_11"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_CODE_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: COMORBIDITIES_1 is not recorded but the next slot COMORBIDITIES_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "COMORBIDITIES_1"
+          ],
+          "properties": {
+            "COMORBIDITIES_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "COMORBIDITIES_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: COMORBIDITIES_2 is not recorded but the next slot COMORBIDITIES_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "COMORBIDITIES_2"
+          ],
+          "properties": {
+            "COMORBIDITIES_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "COMORBIDITIES_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: COMORBIDITIES_3 is not recorded but the next slot COMORBIDITIES_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "COMORBIDITIES_3"
+          ],
+          "properties": {
+            "COMORBIDITIES_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "COMORBIDITIES_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: COMORBIDITIES_4 is not recorded but the next slot COMORBIDITIES_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "COMORBIDITIES_4"
+          ],
+          "properties": {
+            "COMORBIDITIES_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "COMORBIDITIES_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: COMORBIDITIES_5 is not recorded but the next slot COMORBIDITIES_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "COMORBIDITIES_5"
+          ],
+          "properties": {
+            "COMORBIDITIES_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "COMORBIDITIES_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: COMORBIDITIES_6 is not recorded but the next slot COMORBIDITIES_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "COMORBIDITIES_6"
+          ],
+          "properties": {
+            "COMORBIDITIES_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "COMORBIDITIES_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: COMORBIDITIES_7 is not recorded but the next slot COMORBIDITIES_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "COMORBIDITIES_7"
+          ],
+          "properties": {
+            "COMORBIDITIES_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "COMORBIDITIES_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: COMORBIDITIES_8 is not recorded but the next slot COMORBIDITIES_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "COMORBIDITIES_8"
+          ],
+          "properties": {
+            "COMORBIDITIES_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "COMORBIDITIES_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: COMORBIDITIES_9 is not recorded but the next slot COMORBIDITIES_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "COMORBIDITIES_9"
+          ],
+          "properties": {
+            "COMORBIDITIES_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "COMORBIDITIES_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_1 is not recorded but the next slot DIAGNOSIS_CODE_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_1"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_2 is not recorded but the next slot DIAGNOSIS_CODE_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_2"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_3 is not recorded but the next slot DIAGNOSIS_CODE_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_3"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_4 is not recorded but the next slot DIAGNOSIS_CODE_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_4"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_5 is not recorded but the next slot DIAGNOSIS_CODE_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_5"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_6 is not recorded but the next slot DIAGNOSIS_CODE_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_6"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_7 is not recorded but the next slot DIAGNOSIS_CODE_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_7"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_8 is not recorded but the next slot DIAGNOSIS_CODE_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_8"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_9 is not recorded but the next slot DIAGNOSIS_CODE_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_9"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_10 is not recorded but the next slot DIAGNOSIS_CODE_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_10"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: DIAGNOSIS_CODE_11 is not recorded but the next slot DIAGNOSIS_CODE_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_11"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_CODE_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_1 is not recorded but the next slot TREATMENT_TIME_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_1"
+          ],
+          "properties": {
+            "TREATMENT_TIME_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_2 is not recorded but the next slot TREATMENT_TIME_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_2"
+          ],
+          "properties": {
+            "TREATMENT_TIME_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_3 is not recorded but the next slot TREATMENT_TIME_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_3"
+          ],
+          "properties": {
+            "TREATMENT_TIME_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_4 is not recorded but the next slot TREATMENT_TIME_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_4"
+          ],
+          "properties": {
+            "TREATMENT_TIME_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_5 is not recorded but the next slot TREATMENT_TIME_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_5"
+          ],
+          "properties": {
+            "TREATMENT_TIME_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_6 is not recorded but the next slot TREATMENT_TIME_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_6"
+          ],
+          "properties": {
+            "TREATMENT_TIME_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_7 is not recorded but the next slot TREATMENT_TIME_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_7"
+          ],
+          "properties": {
+            "TREATMENT_TIME_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_8 is not recorded but the next slot TREATMENT_TIME_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_8"
+          ],
+          "properties": {
+            "TREATMENT_TIME_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_9 is not recorded but the next slot TREATMENT_TIME_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_9"
+          ],
+          "properties": {
+            "TREATMENT_TIME_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_10 is not recorded but the next slot TREATMENT_TIME_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_10"
+          ],
+          "properties": {
+            "TREATMENT_TIME_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_TIME_11 is not recorded but the next slot TREATMENT_TIME_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_TIME_11"
+          ],
+          "properties": {
+            "TREATMENT_TIME_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_1 is not recorded but the next slot TREATMENT_CODE_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_1"
+          ],
+          "properties": {
+            "TREATMENT_CODE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_2 is not recorded but the next slot TREATMENT_CODE_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_2"
+          ],
+          "properties": {
+            "TREATMENT_CODE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_3 is not recorded but the next slot TREATMENT_CODE_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_3"
+          ],
+          "properties": {
+            "TREATMENT_CODE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_4 is not recorded but the next slot TREATMENT_CODE_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_4"
+          ],
+          "properties": {
+            "TREATMENT_CODE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_5 is not recorded but the next slot TREATMENT_CODE_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_5"
+          ],
+          "properties": {
+            "TREATMENT_CODE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_6 is not recorded but the next slot TREATMENT_CODE_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_6"
+          ],
+          "properties": {
+            "TREATMENT_CODE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_7 is not recorded but the next slot TREATMENT_CODE_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_7"
+          ],
+          "properties": {
+            "TREATMENT_CODE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_8 is not recorded but the next slot TREATMENT_CODE_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_8"
+          ],
+          "properties": {
+            "TREATMENT_CODE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_9 is not recorded but the next slot TREATMENT_CODE_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_9"
+          ],
+          "properties": {
+            "TREATMENT_CODE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_10 is not recorded but the next slot TREATMENT_CODE_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_10"
+          ],
+          "properties": {
+            "TREATMENT_CODE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: TREATMENT_CODE_11 is not recorded but the next slot TREATMENT_CODE_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_11"
+          ],
+          "properties": {
+            "TREATMENT_CODE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_CODE_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_1 is not recorded but the next slot INVESTIGATION_DATE_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_1"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_2 is not recorded but the next slot INVESTIGATION_DATE_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_2"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_3 is not recorded but the next slot INVESTIGATION_DATE_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_3"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_4 is not recorded but the next slot INVESTIGATION_DATE_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_4"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_5 is not recorded but the next slot INVESTIGATION_DATE_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_5"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_6 is not recorded but the next slot INVESTIGATION_DATE_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_6"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_7 is not recorded but the next slot INVESTIGATION_DATE_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_7"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_8 is not recorded but the next slot INVESTIGATION_DATE_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_8"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_9 is not recorded but the next slot INVESTIGATION_DATE_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_9"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_10 is not recorded but the next slot INVESTIGATION_DATE_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_10"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_DATE_11 is not recorded but the next slot INVESTIGATION_DATE_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_DATE_11"
+          ],
+          "properties": {
+            "INVESTIGATION_DATE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SERVICE_REQUEST_DATE_1 is not recorded but the next slot SERVICE_REQUEST_DATE_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SERVICE_REQUEST_DATE_1"
+          ],
+          "properties": {
+            "SERVICE_REQUEST_DATE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SERVICE_REQUEST_DATE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SERVICE_REQUEST_DATE_2 is not recorded but the next slot SERVICE_REQUEST_DATE_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SERVICE_REQUEST_DATE_2"
+          ],
+          "properties": {
+            "SERVICE_REQUEST_DATE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SERVICE_REQUEST_DATE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: SERVICE_REQUEST_DATE_3 is not recorded but the next slot SERVICE_REQUEST_DATE_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "SERVICE_REQUEST_DATE_3"
+          ],
+          "properties": {
+            "SERVICE_REQUEST_DATE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SERVICE_REQUEST_DATE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_1 is not recorded but the next slot INVESTIGATION_TIME_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_1"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_2 is not recorded but the next slot INVESTIGATION_TIME_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_2"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_3 is not recorded but the next slot INVESTIGATION_TIME_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_3"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_4 is not recorded but the next slot INVESTIGATION_TIME_5 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_4"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_5 is not recorded but the next slot INVESTIGATION_TIME_6 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_5"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_6 is not recorded but the next slot INVESTIGATION_TIME_7 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_6"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_7 is not recorded but the next slot INVESTIGATION_TIME_8 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_7"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_8 is not recorded but the next slot INVESTIGATION_TIME_9 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_8"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_9 is not recorded but the next slot INVESTIGATION_TIME_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_9"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_10 is not recorded but the next slot INVESTIGATION_TIME_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_10"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: INVESTIGATION_TIME_11 is not recorded but the next slot INVESTIGATION_TIME_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVESTIGATION_TIME_11"
+          ],
+          "properties": {
+            "INVESTIGATION_TIME_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: REFERRAL_ASSESSMENT_TIME_1 is not recorded but the next slot REFERRAL_ASSESSMENT_TIME_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "REFERRAL_ASSESSMENT_TIME_1"
+          ],
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: REFERRAL_ASSESSMENT_TIME_2 is not recorded but the next slot REFERRAL_ASSESSMENT_TIME_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "REFERRAL_ASSESSMENT_TIME_2"
+          ],
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: REFERRAL_ASSESSMENT_TIME_3 is not recorded but the next slot REFERRAL_ASSESSMENT_TIME_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "REFERRAL_ASSESSMENT_TIME_3"
+          ],
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: REFERRED_TO_SERVICE_1 is not recorded but the next slot REFERRED_TO_SERVICE_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_1"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRED_TO_SERVICE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: REFERRED_TO_SERVICE_2 is not recorded but the next slot REFERRED_TO_SERVICE_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_2"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRED_TO_SERVICE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: REFERRED_TO_SERVICE_3 is not recorded but the next slot REFERRED_TO_SERVICE_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_3"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRED_TO_SERVICE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: REFERRAL_ASSESSMENT_DATE_1 is not recorded but the next slot REFERRAL_ASSESSMENT_DATE_2 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "REFERRAL_ASSESSMENT_DATE_1"
+          ],
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: REFERRAL_ASSESSMENT_DATE_2 is not recorded but the next slot REFERRAL_ASSESSMENT_DATE_3 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "REFERRAL_ASSESSMENT_DATE_2"
+          ],
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R205: REFERRAL_ASSESSMENT_DATE_3 is not recorded but the next slot REFERRAL_ASSESSMENT_DATE_4 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "REFERRAL_ASSESSMENT_DATE_3"
+          ],
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_1 is not recorded but its detail column DIAGNOSIS_QUALIFIER_1 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_1"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_1": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_10 is not recorded but its detail column DIAGNOSIS_QUALIFIER_10 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_10"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_11 is not recorded but its detail column DIAGNOSIS_QUALIFIER_11 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_11"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_12 is not recorded but its detail column DIAGNOSIS_QUALIFIER_12 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_12"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_2 is not recorded but its detail column DIAGNOSIS_QUALIFIER_2 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_2"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_3 is not recorded but its detail column DIAGNOSIS_QUALIFIER_3 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_3"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_4 is not recorded but its detail column DIAGNOSIS_QUALIFIER_4 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_4"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_5 is not recorded but its detail column DIAGNOSIS_QUALIFIER_5 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_5"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_6 is not recorded but its detail column DIAGNOSIS_QUALIFIER_6 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_6"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_7 is not recorded but its detail column DIAGNOSIS_QUALIFIER_7 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_7"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_8 is not recorded but its detail column DIAGNOSIS_QUALIFIER_8 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_8"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R206: DIAGNOSIS_CODE_9 is not recorded but its detail column DIAGNOSIS_QUALIFIER_9 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAGNOSIS_CODE_9"
+          ],
+          "properties": {
+            "DIAGNOSIS_CODE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGNOSIS_QUALIFIER_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_1 is not recorded but its detail column INVESTIGATION_DATE_1 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_1"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_1": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_10 is not recorded but its detail column INVESTIGATION_DATE_10 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_10"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_11 is not recorded but its detail column INVESTIGATION_DATE_11 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_11"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_12 is not recorded but its detail column INVESTIGATION_DATE_12 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_12"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_2 is not recorded but its detail column INVESTIGATION_DATE_2 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_2"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_3 is not recorded but its detail column INVESTIGATION_DATE_3 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_3"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_4 is not recorded but its detail column INVESTIGATION_DATE_4 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_4"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_5 is not recorded but its detail column INVESTIGATION_DATE_5 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_5"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_6 is not recorded but its detail column INVESTIGATION_DATE_6 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_6"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_7 is not recorded but its detail column INVESTIGATION_DATE_7 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_7"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_8 is not recorded but its detail column INVESTIGATION_DATE_8 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_8"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_9 is not recorded but its detail column INVESTIGATION_DATE_9 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_9"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_DATE_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_1 is not recorded but its detail column INVESTIGATION_TIME_1 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_1"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_1": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_10 is not recorded but its detail column INVESTIGATION_TIME_10 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_10"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_11 is not recorded but its detail column INVESTIGATION_TIME_11 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_11"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_12 is not recorded but its detail column INVESTIGATION_TIME_12 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_12"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_2 is not recorded but its detail column INVESTIGATION_TIME_2 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_2"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_3 is not recorded but its detail column INVESTIGATION_TIME_3 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_3"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_4 is not recorded but its detail column INVESTIGATION_TIME_4 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_4"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_5 is not recorded but its detail column INVESTIGATION_TIME_5 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_5"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_6 is not recorded but its detail column INVESTIGATION_TIME_6 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_6"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_7 is not recorded but its detail column INVESTIGATION_TIME_7 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_7"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_8 is not recorded but its detail column INVESTIGATION_TIME_8 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_8"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R207: INVESTIGATION_CODE_9 is not recorded but its detail column INVESTIGATION_TIME_9 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVESTIGATION_CODE_9"
+          ],
+          "properties": {
+            "INVESTIGATION_CODE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVESTIGATION_TIME_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_1 is not recorded but its detail column TREATMENT_DATE_1 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_1"
+          ],
+          "properties": {
+            "TREATMENT_CODE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_1": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_10 is not recorded but its detail column TREATMENT_DATE_10 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_10"
+          ],
+          "properties": {
+            "TREATMENT_CODE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_11 is not recorded but its detail column TREATMENT_DATE_11 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_11"
+          ],
+          "properties": {
+            "TREATMENT_CODE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_12 is not recorded but its detail column TREATMENT_DATE_12 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_12"
+          ],
+          "properties": {
+            "TREATMENT_CODE_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_2 is not recorded but its detail column TREATMENT_DATE_2 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_2"
+          ],
+          "properties": {
+            "TREATMENT_CODE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_3 is not recorded but its detail column TREATMENT_DATE_3 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_3"
+          ],
+          "properties": {
+            "TREATMENT_CODE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_4 is not recorded but its detail column TREATMENT_DATE_4 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_4"
+          ],
+          "properties": {
+            "TREATMENT_CODE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_5 is not recorded but its detail column TREATMENT_DATE_5 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_5"
+          ],
+          "properties": {
+            "TREATMENT_CODE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_6 is not recorded but its detail column TREATMENT_DATE_6 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_6"
+          ],
+          "properties": {
+            "TREATMENT_CODE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_7 is not recorded but its detail column TREATMENT_DATE_7 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_7"
+          ],
+          "properties": {
+            "TREATMENT_CODE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_8 is not recorded but its detail column TREATMENT_DATE_8 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_8"
+          ],
+          "properties": {
+            "TREATMENT_CODE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_9 is not recorded but its detail column TREATMENT_DATE_9 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_9"
+          ],
+          "properties": {
+            "TREATMENT_CODE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_DATE_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_1 is not recorded but its detail column TREATMENT_TIME_1 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_1"
+          ],
+          "properties": {
+            "TREATMENT_CODE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_1": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_10 is not recorded but its detail column TREATMENT_TIME_10 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_10"
+          ],
+          "properties": {
+            "TREATMENT_CODE_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_11 is not recorded but its detail column TREATMENT_TIME_11 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_11"
+          ],
+          "properties": {
+            "TREATMENT_CODE_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_12 is not recorded but its detail column TREATMENT_TIME_12 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_12"
+          ],
+          "properties": {
+            "TREATMENT_CODE_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_2 is not recorded but its detail column TREATMENT_TIME_2 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_2"
+          ],
+          "properties": {
+            "TREATMENT_CODE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_3 is not recorded but its detail column TREATMENT_TIME_3 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_3"
+          ],
+          "properties": {
+            "TREATMENT_CODE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_4 is not recorded but its detail column TREATMENT_TIME_4 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_4"
+          ],
+          "properties": {
+            "TREATMENT_CODE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_5 is not recorded but its detail column TREATMENT_TIME_5 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_5"
+          ],
+          "properties": {
+            "TREATMENT_CODE_5": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_5": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_6 is not recorded but its detail column TREATMENT_TIME_6 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_6"
+          ],
+          "properties": {
+            "TREATMENT_CODE_6": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_6": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_7 is not recorded but its detail column TREATMENT_TIME_7 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_7"
+          ],
+          "properties": {
+            "TREATMENT_CODE_7": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_7": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_8 is not recorded but its detail column TREATMENT_TIME_8 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_8"
+          ],
+          "properties": {
+            "TREATMENT_CODE_8": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_8": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R208: TREATMENT_CODE_9 is not recorded but its detail column TREATMENT_TIME_9 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "TREATMENT_CODE_9"
+          ],
+          "properties": {
+            "TREATMENT_CODE_9": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREATMENT_TIME_9": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_1 is not recorded but its detail column REFERRAL_ASSESSMENT_DATE_1 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_1"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_1": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_2 is not recorded but its detail column REFERRAL_ASSESSMENT_DATE_2 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_2"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_3 is not recorded but its detail column REFERRAL_ASSESSMENT_DATE_3 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_3"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_4 is not recorded but its detail column REFERRAL_ASSESSMENT_DATE_4 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_4"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_DATE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_1 is not recorded but its detail column REFERRAL_ASSESSMENT_TIME_1 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_1"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_1": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_2 is not recorded but its detail column REFERRAL_ASSESSMENT_TIME_2 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_2"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_3 is not recorded but its detail column REFERRAL_ASSESSMENT_TIME_3 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_3"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_4 is not recorded but its detail column REFERRAL_ASSESSMENT_TIME_4 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_4"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "REFERRAL_ASSESSMENT_TIME_4": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_1 is not recorded but its detail column SERVICE_REQUEST_DATE_1 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_1"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_1": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SERVICE_REQUEST_DATE_1": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_2 is not recorded but its detail column SERVICE_REQUEST_DATE_2 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_2"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_2": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SERVICE_REQUEST_DATE_2": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_3 is not recorded but its detail column SERVICE_REQUEST_DATE_3 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_3"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_3": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SERVICE_REQUEST_DATE_3": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R209: REFERRED_TO_SERVICE_4 is not recorded but its detail column SERVICE_REQUEST_DATE_4 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "REFERRED_TO_SERVICE_4"
+          ],
+          "properties": {
+            "REFERRED_TO_SERVICE_4": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "SERVICE_REQUEST_DATE_4": {
+              "const": "-998"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

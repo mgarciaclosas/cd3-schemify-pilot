@@ -1,0 +1,198 @@
+{
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column.",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "column": "HEIGHT",
+      "kind": "skip-break",
+      "reason": "R175: the height was skipped but HEIGHT has a value (must be -998)",
+      "row": 0
+    },
+    {
+      "column": "HEIGHT",
+      "kind": "applicability-break",
+      "reason": "R175: the height was not skipped but HEIGHT is the not-recorded code",
+      "row": 1
+    },
+    {
+      "column": "HEIGHT_SKIPPED_REASON",
+      "kind": "skip-break",
+      "reason": "R176: the height was not skipped but a reason is recorded (must be -998)",
+      "row": 2
+    },
+    {
+      "column": "HEIGHT_SKIPPED_REASON",
+      "kind": "applicability-break",
+      "reason": "R176: the height was skipped but the reason is the not-recorded code",
+      "row": 3
+    },
+    {
+      "column": "WEIGHT",
+      "kind": "skip-break",
+      "reason": "R177: the weight was skipped but WEIGHT has a value (must be -998)",
+      "row": 4
+    },
+    {
+      "column": "WEIGHT",
+      "kind": "applicability-break",
+      "reason": "R177: the weight was not skipped but WEIGHT is the not-recorded code",
+      "row": 5
+    },
+    {
+      "column": "WEIGHT_SKIPPED_REASON",
+      "kind": "skip-break",
+      "reason": "R178: the weight was not skipped but a reason is recorded (must be -998)",
+      "row": 6
+    },
+    {
+      "column": "WEIGHT_SKIPPED_REASON",
+      "kind": "applicability-break",
+      "reason": "R178: the weight was skipped but the reason is the not-recorded code",
+      "row": 7
+    },
+    {
+      "column": "WAIST",
+      "kind": "skip-break",
+      "reason": "R179: the waist circumference was skipped but WAIST has a value (must be -998)",
+      "row": 8
+    },
+    {
+      "column": "WAIST",
+      "kind": "applicability-break",
+      "reason": "R179: the waist circumference was not skipped but WAIST is the not-recorded code",
+      "row": 9
+    },
+    {
+      "column": "WAIST_SKIPPED_REASON",
+      "kind": "skip-break",
+      "reason": "R180: the waist circumference was not skipped but a reason is recorded (must be -998)",
+      "row": 10
+    },
+    {
+      "column": "WAIST_SKIPPED_REASON",
+      "kind": "applicability-break",
+      "reason": "R180: the waist circumference was skipped but the reason is the not-recorded code",
+      "row": 11
+    },
+    {
+      "column": "HEART_FIRST_RATE",
+      "kind": "skip-break",
+      "reason": "R181: the first set of heart measurements was skipped but HEART_FIRST_RATE has a value (must be -998)",
+      "row": 12
+    },
+    {
+      "column": "HEART_FIRST_RATE",
+      "kind": "applicability-break",
+      "reason": "R181: the first set of heart measurements was not skipped but HEART_FIRST_RATE is the not-recorded code",
+      "row": 13
+    },
+    {
+      "column": "HEART_FIRST_SKIPPED_REASON",
+      "kind": "skip-break",
+      "reason": "R182: the first set of heart measurements was not skipped but a reason is recorded (must be -998)",
+      "row": 14
+    },
+    {
+      "column": "HEART_FIRST_SKIPPED_REASON",
+      "kind": "applicability-break",
+      "reason": "R182: the first set of heart measurements was skipped but the reason is the not-recorded code",
+      "row": 15
+    },
+    {
+      "column": "HEART_SECOND_RATE",
+      "kind": "skip-break",
+      "reason": "R183: the second set of heart measurements was skipped but HEART_SECOND_RATE has a value (must be -998)",
+      "row": 16
+    },
+    {
+      "column": "HEART_SECOND_RATE",
+      "kind": "applicability-break",
+      "reason": "R183: the second set of heart measurements was not skipped but HEART_SECOND_RATE is the not-recorded code",
+      "row": 17
+    },
+    {
+      "column": "HEART_SECOND_SKIPPED_REASON",
+      "kind": "skip-break",
+      "reason": "R184: the second set of heart measurements was not skipped but a reason is recorded (must be -998)",
+      "row": 18
+    },
+    {
+      "column": "HEART_SECOND_SKIPPED_REASON",
+      "kind": "applicability-break",
+      "reason": "R184: the second set of heart measurements was skipped but the reason is the not-recorded code",
+      "row": 19
+    },
+    {
+      "column": "HEART_THIRD_RATE",
+      "kind": "skip-break",
+      "reason": "R185: the third set of heart measurements was skipped but HEART_THIRD_RATE has a value (must be -998)",
+      "row": 20
+    },
+    {
+      "column": "HEART_THIRD_RATE",
+      "kind": "applicability-break",
+      "reason": "R185: the third set of heart measurements was not skipped but HEART_THIRD_RATE is the not-recorded code",
+      "row": 21
+    },
+    {
+      "column": "HEART_THIRD_SKIPPED_REASON",
+      "kind": "skip-break",
+      "reason": "R186: the third set of heart measurements was not skipped but a reason is recorded (must be -998)",
+      "row": 22
+    },
+    {
+      "column": "HEART_THIRD_SKIPPED_REASON",
+      "kind": "applicability-break",
+      "reason": "R186: the third set of heart measurements was skipped but the reason is the not-recorded code",
+      "row": 23
+    },
+    {
+      "column": "IS_MOBILE_CLINIC",
+      "kind": "unknown-level",
+      "reason": "2 is not a declared code",
+      "row": 24
+    },
+    {
+      "column": "HEIGHT",
+      "kind": "wrong-type",
+      "reason": "height must be an integer",
+      "row": 25
+    },
+    {
+      "column": "WEIGHT",
+      "kind": "wrong-type",
+      "reason": "weight must be a number",
+      "row": 26
+    },
+    {
+      "column": "HEIGHT_SKIPPED",
+      "kind": "invented-sentinel",
+      "reason": "-998 is not a code of the skipped flag",
+      "row": 27
+    },
+    {
+      "column": "HEART_FIRST_RHYTHM",
+      "kind": "unknown-level",
+      "reason": "3 is not a declared rhythm code",
+      "row": 28
+    },
+    {
+      "column": "CLINIC_SITE_REF",
+      "kind": "wrong-type",
+      "reason": "a clinic site reference is a string",
+      "row": 29
+    },
+    {
+      "column": "PID",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band",
+      "row": 30
+    },
+    {
+      "row": 31,
+      "column": "SHOE_SIZE",
+      "kind": "undeclared-column",
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
+    }
+  ]
+}

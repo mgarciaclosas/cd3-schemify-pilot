@@ -1,0 +1,42 @@
+{
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column.",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "row": 0,
+      "column": "LSOA_AT_REG",
+      "kind": "pattern-break",
+      "reason": "the code does not match the source's format"
+    },
+    {
+      "row": 1,
+      "column": "LSOA_AT_REG",
+      "kind": "pattern-break",
+      "reason": "a code has 9 characters, this has 8"
+    },
+    {
+      "row": 2,
+      "column": "LSOA_AT_REG",
+      "kind": "wrong-type",
+      "reason": "a geography code is a string"
+    },
+    {
+      "row": 3,
+      "column": "ID",
+      "kind": "wrong-type",
+      "reason": "the row identifier is a string"
+    },
+    {
+      "row": 4,
+      "column": "PID",
+      "kind": "missing-key",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 5,
+      "column": "SHOE_SIZE",
+      "kind": "undeclared-column",
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
+    }
+  ]
+}

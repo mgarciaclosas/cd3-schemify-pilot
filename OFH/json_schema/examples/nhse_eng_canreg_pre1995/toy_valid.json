@@ -1,0 +1,79 @@
+[
+  {
+    "BASISOFDIAGNOSIS": "&",
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": "001",
+    "GRADE": "&",
+    "LATERALITY": "&",
+    "PID": "TOY0001",
+    "ROW_ID": "TOYROW0001",
+    "SCREENINGSTATUS": "&",
+    "STAGE": "&"
+  },
+  {
+    "BASISOFDIAGNOSIS": "1",
+    "DIAGNOSISDATEBEST": "TOYTEXT",
+    "DIAGNOSIS_SITE_CODE": "V829",
+    "GRADE": "1",
+    "LATERALITY": "1",
+    "PID": "TOY0002",
+    "ROW_ID": "TOYROW0002",
+    "SCREENINGSTATUS": "0",
+    "STAGE": "0"
+  },
+  {
+    "BASISOFDIAGNOSIS": "2",
+    "DIAGNOSISDATEBEST": "-998",
+    "DIAGNOSIS_SITE_CODE": "75617",
+    "GRADE": "2",
+    "LATERALITY": "2",
+    "PID": "TOY0003",
+    "ROW_ID": "TOYROW0003",
+    "SCREENINGSTATUS": "1",
+    "STAGE": "1"
+  },
+  {
+    "BASISOFDIAGNOSIS": "3",
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": "6411",
+    "GRADE": "3",
+    "LATERALITY": "3",
+    "PID": "TOY0004",
+    "ROW_ID": "TOYROW0004",
+    "SCREENINGSTATUS": "-998",
+    "STAGE": "2"
+  },
+  {
+    "BASISOFDIAGNOSIS": "4",
+    "DIAGNOSISDATEBEST": "TOYTEXT",
+    "DIAGNOSIS_SITE_CODE": "E8163",
+    "GRADE": "4",
+    "LATERALITY": "-998",
+    "PID": "TOY0005",
+    "ROW_ID": "TOYROW0005",
+    "SCREENINGSTATUS": "&",
+    "STAGE": "3"
+  },
+  {
+    "BASISOFDIAGNOSIS": "-998",
+    "DIAGNOSISDATEBEST": "-998",
+    "DIAGNOSIS_SITE_CODE": "-998",
+    "GRADE": "-998",
+    "LATERALITY": "&",
+    "PID": "TOY0006",
+    "ROW_ID": "TOYROW0006",
+    "SCREENINGSTATUS": "0",
+    "STAGE": "4"
+  },
+  {
+    "BASISOFDIAGNOSIS": "&",
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": "001",
+    "GRADE": "&",
+    "LATERALITY": "1",
+    "PID": "TOY0007",
+    "ROW_ID": "TOYROW0007",
+    "SCREENINGSTATUS": "1",
+    "STAGE": "-998"
+  }
+]

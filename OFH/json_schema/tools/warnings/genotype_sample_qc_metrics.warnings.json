@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/genotype_sample_qc_metrics.warnings.json",
+  "title": "Our Future Health — Genotype array data — Sample QC metrics — warning checks",
+  "description": "Non-blocking checks for the genotype_sample_qc_metrics table, from plausibility ranges the source does not state (D127). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning G01: call_rate is expected to be between 0 and 1 (the call rate is the proportion of variants with a genotype call); a value outside that range may point to a data problem.",
+        "properties": {
+          "call_rate": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

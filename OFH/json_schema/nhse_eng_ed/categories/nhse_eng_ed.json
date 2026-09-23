@@ -1,0 +1,4224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/nhse_eng_ed/categories/nhse_eng_ed.json",
+  "title": "Linked health records data — Major A&E attendances (1 April 2007 to 31 March 2020)",
+  "description": "Attendances of major A&E departments in England from 1 April 2007 until 31 March 2020.",
+  "type": "object",
+  "x-variable-group": "nhse_eng_ed",
+  "properties": {
+    "AEARRIVALMODE": {
+      "title": "Arrival Mode",
+      "oneOf": [
+        {
+          "const": "1",
+          "title": "Brought in by ambulance (including helicopter / Air Ambulance)"
+        },
+        {
+          "const": "2",
+          "title": "Other"
+        },
+        {
+          "const": "9",
+          "title": "Not known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "AEATTENDCAT": {
+      "title": "Attendance Category",
+      "oneOf": [
+        {
+          "const": "1",
+          "title": "First A&E attendance"
+        },
+        {
+          "const": "2",
+          "title": "Follow-up A&E attendance - planned"
+        },
+        {
+          "const": "3",
+          "title": "Follow-up A&E attendance - unplanned"
+        },
+        {
+          "const": "9",
+          "title": "Not known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "AEATTENDDISP": {
+      "title": "Attendance Disposal",
+      "oneOf": [
+        {
+          "const": "01",
+          "title": "Admitted to hospital bed / became a lodged patient of the same health care provider"
+        },
+        {
+          "const": "02",
+          "title": "Discharged – follow-up treatment to be provided by general practitioner"
+        },
+        {
+          "const": "03",
+          "title": "Discharged – did not require any follow-up treatment"
+        },
+        {
+          "const": "04",
+          "title": "Referred to A&E clinic"
+        },
+        {
+          "const": "05",
+          "title": "Referred to fracture clinic"
+        },
+        {
+          "const": "06",
+          "title": "Referred to other outpatient clinic"
+        },
+        {
+          "const": "07",
+          "title": "Transferred to other healthcare provider"
+        },
+        {
+          "const": "10",
+          "title": "Died in department"
+        },
+        {
+          "const": "11",
+          "title": "Referred to other healthcare professional"
+        },
+        {
+          "const": "12",
+          "title": "Left department before being treated"
+        },
+        {
+          "const": "13",
+          "title": "Left department having refused treatment"
+        },
+        {
+          "const": "14",
+          "title": "Other"
+        },
+        {
+          "const": "99",
+          "title": "Not known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "AEDEPTTYPE": {
+      "title": "Department Type",
+      "oneOf": [
+        {
+          "const": "01",
+          "title": "Emergency departments are a consultant led 24-hour service with full resuscitation facilities and designated accommodation for the reception of accident and emergency patients"
+        },
+        {
+          "const": "02",
+          "title": "Consultant-led mono specialty accident and emergency service (e.g. ophthalmology  dental) with designated accommodation for the reception of patients"
+        },
+        {
+          "const": "03",
+          "title": "Other type of A&E/minor injury activity with designated accommodation for the reception of accident and emergency patients. The department may be doctor led or nurse led and treats at least minor injuries and illnesses and can be routinely accessed without appointment. A service mainly or entirely appointment based (for example a GP practice or outpatient clinic) is excluded even though it may treat a number of patients with minor illness or injury. Excludes NHS walk-in centres"
+        },
+        {
+          "const": "04",
+          "title": "NHS walk-in centres"
+        },
+        {
+          "const": "05",
+          "title": "Same Day Emergency Care (SDEC)"
+        },
+        {
+          "const": "99",
+          "title": "Not known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "AEKEY": {
+      "title": "HES Record Identifier",
+      "type": "string"
+    },
+    "AEREFSOURCE": {
+      "title": "Source of Referral For A&E",
+      "anyOf": [
+        {
+          "const": "00",
+          "title": "General medical practitioner"
+        },
+        {
+          "const": "01",
+          "title": "Self referral"
+        },
+        {
+          "const": "02",
+          "title": "Local authority social services"
+        },
+        {
+          "const": "03",
+          "title": "Emergency services"
+        },
+        {
+          "const": "04",
+          "title": "Work"
+        },
+        {
+          "const": "05",
+          "title": "Educational establishment"
+        },
+        {
+          "const": "06",
+          "title": "Police"
+        },
+        {
+          "const": "07",
+          "title": "Health care provider: same or other"
+        },
+        {
+          "const": "08",
+          "title": "Other"
+        },
+        {
+          "const": "92",
+          "title": "General dental practitioner"
+        },
+        {
+          "const": "93",
+          "title": "Community dental service"
+        },
+        {
+          "const": "99",
+          "title": "Not known"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "ARRIVALDATE": {
+      "title": "Arrival Date",
+      "type": "string"
+    },
+    "ARRIVALTIME": {
+      "title": "Arrival Time",
+      "type": "string"
+    },
+    "CONCLTIME": {
+      "title": "Conclusion Time",
+      "anyOf": [
+        {
+          "const": "3000",
+          "title": "Invalid time submitted"
+        },
+        {
+          "const": "4000",
+          "title": "Null time submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DEPTIME": {
+      "title": "Departure Time",
+      "anyOf": [
+        {
+          "const": "3000",
+          "title": "Invalid time submitted"
+        },
+        {
+          "const": "4000",
+          "title": "Null time submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_01": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_02": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_03": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_04": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_05": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_06": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_07": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_08": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_09": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_10": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_11": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGA_12": {
+      "title": "Diagnosis Code - Anatomical Area",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Brain"
+        },
+        {
+          "const": "02",
+          "title": "Head"
+        },
+        {
+          "const": "03",
+          "title": "Face"
+        },
+        {
+          "const": "04",
+          "title": "Eye"
+        },
+        {
+          "const": "05",
+          "title": "Ear"
+        },
+        {
+          "const": "06",
+          "title": "Nose"
+        },
+        {
+          "const": "07",
+          "title": "Mouth Jaw Teeth"
+        },
+        {
+          "const": "08",
+          "title": "Throat"
+        },
+        {
+          "const": "09",
+          "title": "Neck"
+        },
+        {
+          "const": "10",
+          "title": "Shoulder"
+        },
+        {
+          "const": "11",
+          "title": "Axilla"
+        },
+        {
+          "const": "12",
+          "title": "Upper Arm"
+        },
+        {
+          "const": "13",
+          "title": "Elbow"
+        },
+        {
+          "const": "14",
+          "title": "Forearm"
+        },
+        {
+          "const": "15",
+          "title": "Wrist"
+        },
+        {
+          "const": "16",
+          "title": "Hand"
+        },
+        {
+          "const": "17",
+          "title": "Digit"
+        },
+        {
+          "const": "18",
+          "title": "Cervical spine"
+        },
+        {
+          "const": "19",
+          "title": "Thoracic"
+        },
+        {
+          "const": "20",
+          "title": "Lumbosacral spine"
+        },
+        {
+          "const": "21",
+          "title": "Pelvis"
+        },
+        {
+          "const": "22",
+          "title": "Chest"
+        },
+        {
+          "const": "23",
+          "title": "Breast"
+        },
+        {
+          "const": "24",
+          "title": "Abdomen"
+        },
+        {
+          "const": "25",
+          "title": "Back/buttocks"
+        },
+        {
+          "const": "26",
+          "title": "Ano/rectal"
+        },
+        {
+          "const": "27",
+          "title": "Genitalia"
+        },
+        {
+          "const": "28",
+          "title": "Hip"
+        },
+        {
+          "const": "29",
+          "title": "Groin"
+        },
+        {
+          "const": "30",
+          "title": "Thigh"
+        },
+        {
+          "const": "31",
+          "title": "Knee"
+        },
+        {
+          "const": "32",
+          "title": "Lower leg"
+        },
+        {
+          "const": "33",
+          "title": "Ankle"
+        },
+        {
+          "const": "34",
+          "title": "Foot"
+        },
+        {
+          "const": "35",
+          "title": "Toe"
+        },
+        {
+          "const": "36",
+          "title": "Multiple site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGSCHEME": {
+      "title": "Diagnosis Scheme in Use",
+      "oneOf": [
+        {
+          "const": "01",
+          "title": "Accident & Emergency diagnosis"
+        },
+        {
+          "const": "02",
+          "title": "ICD-10"
+        },
+        {
+          "const": "04",
+          "title": "Read coded clinical terms version 2"
+        },
+        {
+          "const": "Null",
+          "title": "Not known / not applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "DIAGS_01": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_02": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_03": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_04": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_05": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_06": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_07": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_08": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_09": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_10": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_11": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAGS_12": {
+      "title": "Diagnosis Code - Anatomical Side",
+      "anyOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DIAG_01": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_02": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_03": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_04": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_05": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_06": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_07": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_08": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_09": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_10": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_11": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "DIAG_12": {
+      "title": "Diagnosis Code",
+      "type": "string"
+    },
+    "EPIKEY": {
+      "title": "APC Record Identifier",
+      "type": "string"
+    },
+    "IMD04_DECILE": {
+      "title": "IMD Decile Group",
+      "type": "string"
+    },
+    "INVEST2_01": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_02": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_03": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_04": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_05": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_06": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_07": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_08": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_09": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_10": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_11": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST2_12": {
+      "title": "A&E Investigation - 2 Character",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "X-ray plain film"
+        },
+        {
+          "const": "02",
+          "title": "Electrocardiogram"
+        },
+        {
+          "const": "03",
+          "title": "Haematology"
+        },
+        {
+          "const": "04",
+          "title": "Cross match blood/group & save serum for later cross match"
+        },
+        {
+          "const": "05",
+          "title": "Biochemistry"
+        },
+        {
+          "const": "06",
+          "title": "Urinalysis"
+        },
+        {
+          "const": "07",
+          "title": "Bacteriology"
+        },
+        {
+          "const": "08",
+          "title": "Histology"
+        },
+        {
+          "const": "09",
+          "title": "Computerised tomography (retired 2006)"
+        },
+        {
+          "const": "10",
+          "title": "Ultrasound"
+        },
+        {
+          "const": "11",
+          "title": "Magnetic resonance imaging"
+        },
+        {
+          "const": "12",
+          "title": "Computerised tomography (exc genito urinary contrast examination/tomography)"
+        },
+        {
+          "const": "13",
+          "title": "Genito urinary contrast examination/tomography"
+        },
+        {
+          "const": "14",
+          "title": "Clotting studies"
+        },
+        {
+          "const": "15",
+          "title": "Immunology"
+        },
+        {
+          "const": "16",
+          "title": "Cardiac enzymes"
+        },
+        {
+          "const": "17",
+          "title": "Arterial/capillary blood gas"
+        },
+        {
+          "const": "18",
+          "title": "Toxicology"
+        },
+        {
+          "const": "19",
+          "title": "Blood culture"
+        },
+        {
+          "const": "20",
+          "title": "Serology"
+        },
+        {
+          "const": "21",
+          "title": "Pregnancy test"
+        },
+        {
+          "const": "22",
+          "title": "Dental investigation"
+        },
+        {
+          "const": "23",
+          "title": "Refraction  orthoptic tests and computerised visual fields"
+        },
+        {
+          "const": "24",
+          "title": "None"
+        },
+        {
+          "const": "99",
+          "title": "Other"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "INVEST_01": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_02": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_03": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_04": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_05": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_06": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_07": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_08": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_09": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_10": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_11": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "INVEST_12": {
+      "title": "A&E Investigation",
+      "type": "string"
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "PROCODE3_OFH": {
+      "title": "Provider Organisation Code (Pseudonymised by OFH)",
+      "type": "string"
+    },
+    "PROTYPE": {
+      "title": "Provider Type",
+      "oneOf": [
+        {
+          "const": "CARETRUST",
+          "title": "Care trust"
+        },
+        {
+          "const": "CCG",
+          "title": "Clinical Commissioning Group"
+        },
+        {
+          "const": "FOUNDATION",
+          "title": "NHS foundation trust"
+        },
+        {
+          "const": "IND",
+          "title": "Independent sector provider"
+        },
+        {
+          "const": "INDSITE",
+          "title": "Independent sector provider site"
+        },
+        {
+          "const": "INDSITETC",
+          "title": "Treatment centre at independent sector provider site"
+        },
+        {
+          "const": "OTHERPROV",
+          "title": "Other provider organisation"
+        },
+        {
+          "const": "PCT",
+          "title": "Primary care trust"
+        },
+        {
+          "const": "TRUST",
+          "title": "NHS trust"
+        },
+        {
+          "const": "TRUSTSITETC",
+          "title": "Treatment centre at NHS trust site"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "ROW_ID": {
+      "title": "OFH generated local key",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "SUSSPELLID": {
+      "title": "SUS Generated Spell Identifier",
+      "anyOf": [
+        {
+          "const": "-1",
+          "title": "Unspellable episodes"
+        },
+        {
+          "const": "Null",
+          "title": "Records that have excluded from PbR in SUS as the activity is outside the scope of PbR"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "TREAT_01": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_02": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_03": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_04": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_05": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_06": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_07": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_08": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_09": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_10": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_11": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TREAT_12": {
+      "title": "A&E Treatment",
+      "type": "string"
+    },
+    "TRETTIME": {
+      "title": "Time Seen For Treatment",
+      "anyOf": [
+        {
+          "const": "3000",
+          "title": "Invalid time submitted"
+        },
+        {
+          "const": "4000",
+          "title": "Null time submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    }
+  },
+  "required": [
+    "AEARRIVALMODE",
+    "AEATTENDCAT",
+    "AEATTENDDISP",
+    "AEDEPTTYPE",
+    "AEKEY",
+    "AEREFSOURCE",
+    "ARRIVALDATE",
+    "ARRIVALTIME",
+    "CONCLTIME",
+    "DEPTIME",
+    "DIAGA_01",
+    "DIAGA_02",
+    "DIAGA_03",
+    "DIAGA_04",
+    "DIAGA_05",
+    "DIAGA_06",
+    "DIAGA_07",
+    "DIAGA_08",
+    "DIAGA_09",
+    "DIAGA_10",
+    "DIAGA_11",
+    "DIAGA_12",
+    "DIAGSCHEME",
+    "DIAGS_01",
+    "DIAGS_02",
+    "DIAGS_03",
+    "DIAGS_04",
+    "DIAGS_05",
+    "DIAGS_06",
+    "DIAGS_07",
+    "DIAGS_08",
+    "DIAGS_09",
+    "DIAGS_10",
+    "DIAGS_11",
+    "DIAGS_12",
+    "DIAG_01",
+    "DIAG_02",
+    "DIAG_03",
+    "DIAG_04",
+    "DIAG_05",
+    "DIAG_06",
+    "DIAG_07",
+    "DIAG_08",
+    "DIAG_09",
+    "DIAG_10",
+    "DIAG_11",
+    "DIAG_12",
+    "EPIKEY",
+    "IMD04_DECILE",
+    "INVEST2_01",
+    "INVEST2_02",
+    "INVEST2_03",
+    "INVEST2_04",
+    "INVEST2_05",
+    "INVEST2_06",
+    "INVEST2_07",
+    "INVEST2_08",
+    "INVEST2_09",
+    "INVEST2_10",
+    "INVEST2_11",
+    "INVEST2_12",
+    "INVEST_01",
+    "INVEST_02",
+    "INVEST_03",
+    "INVEST_04",
+    "INVEST_05",
+    "INVEST_06",
+    "INVEST_07",
+    "INVEST_08",
+    "INVEST_09",
+    "INVEST_10",
+    "INVEST_11",
+    "INVEST_12",
+    "PID",
+    "PROCODE3_OFH",
+    "PROTYPE",
+    "ROW_ID",
+    "SUSSPELLID",
+    "TREAT_01",
+    "TREAT_02",
+    "TREAT_03",
+    "TREAT_04",
+    "TREAT_05",
+    "TREAT_06",
+    "TREAT_07",
+    "TREAT_08",
+    "TREAT_09",
+    "TREAT_10",
+    "TREAT_11",
+    "TREAT_12",
+    "TRETTIME"
+  ]
+}

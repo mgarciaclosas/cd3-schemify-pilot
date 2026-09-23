@@ -1,0 +1,3411 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/nhse_eng_inpat/categories/nhse_eng_inpat.json",
+  "title": "Linked health records data — Episodes of in-patient care",
+  "description": "Episodes of in-patient care in hospitals in England.",
+  "type": "object",
+  "x-variable-group": "nhse_eng_inpat",
+  "properties": {
+    "ACSCFLAG": {
+      "title": "Ambulatory Care Sensitive Condition Flag",
+      "oneOf": [
+        {
+          "const": 0,
+          "title": "Episode does not contain a diagnosis that is ambulatory care sensitive"
+        },
+        {
+          "const": 1,
+          "title": "Episode contains a diagnosis that is ambulatory care sensitive"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "ADMIDATE": {
+      "title": "Admission Date (Hospital Provider Spell)",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "ADMIMETH": {
+      "title": "Method of Admission",
+      "oneOf": [
+        {
+          "const": "-999",
+          "title": "Suppressed"
+        },
+        {
+          "const": "11",
+          "title": "Waiting list. A Patient admitted electively from a waiting list having been given no date of admission at a time a decision was made to admit (Elective Admission  when the decision to admit could be separated in time from the actual admission)"
+        },
+        {
+          "const": "12",
+          "title": "Booked. A Patient admitted having been given a date at the time the decision to admit was made  determined mainly on the grounds of resource availability (Elective Admission  when the decision to admit could be separated in time from the actual admission)"
+        },
+        {
+          "const": "13",
+          "title": "Planned. A Patient admitted  having been given a date or approximate date at the time that the decision to admit was made. This is usually part of a planned sequence of clinical care determined mainly on social or clinical criteria (e.g. check cystoscopy). A planned admission is one where the date of admission is determined by the needs of the treatment  rather than by the availability of resources. (Elective Admission  when the decision to admit could be separated in time from the actual admission)"
+        },
+        {
+          "const": "21",
+          "title": "Emergency Care Department or acute or emergency dental service (Emergency Admission  when admission is unpredictable and at short notice because of clinical need)"
+        },
+        {
+          "const": "22",
+          "title": "General Practitioner:  after a request for immediate admission has been made direct to a Hospital Provider  i.e. not through a Bed bureau  by a GP or deputy (Emergency Admission  when admission is unpredictable and at short notice because of clinical need)"
+        },
+        {
+          "const": "23",
+          "title": "Bed bureau (Emergency Admission  when admission is unpredictable and at short notice because of clinical need)"
+        },
+        {
+          "const": "24",
+          "title": "Consultant Clinic  of this or another Health Care Provider (Emergency Admission  when admission is unpredictable and at short notice because of clinical need)"
+        },
+        {
+          "const": "28",
+          "title": "Other means  examples are:- admitted from the Accident and Emergency Department of another provider where they had not been admitted- transfer of an admitted PATIENT from another Hospital Provider in an emergency- baby born at home as intended (retired on 2022-23) (Emergency Admission  when admission is unpredictable and at short notice because of clinical need)"
+        },
+        {
+          "const": "2A",
+          "title": "Emergency Care Department of another provider where the patient had not been admitted (available from 2013/14) (Emergency Admission  when admission is unpredictable and at short notice because of clinical need)"
+        },
+        {
+          "const": "2B",
+          "title": "Transfer of an admitted patient from another Hospital Provider in an emergency (available from 2013/14) (Emergency Admission  when admission is unpredictable and at short notice because of clinical need)"
+        },
+        {
+          "const": "2D",
+          "title": "Other emergency admission (available from 2013/14) (Emergency Admission  when admission is unpredictable and at short notice because of clinical need)"
+        },
+        {
+          "const": "31",
+          "title": "Admitted ante-partum (Maternity Admission  of a pregnant or recently pregnant woman to a maternity ward (including delivery facilities) except when the intention is to terminate the pregnancy)"
+        },
+        {
+          "const": "32",
+          "title": "Admitted post-partum (Maternity Admission  of a pregnant or recently pregnant woman to a maternity ward (including delivery facilities) except when the intention is to terminate the pregnancy)"
+        },
+        {
+          "const": "81",
+          "title": "Transfer of any admitted patient from other Hospital Provider other than in an emergency (Other Admission not specified above)"
+        },
+        {
+          "const": "82",
+          "title": "The birth of a baby in this Health Care Provider (Other Admission not specified above)"
+        },
+        {
+          "const": "89",
+          "title": "HSPH Admissions Waiting List of a High Security Psychiatric Hospital (available between 1999 and 2006) (Other Admission not specified above)"
+        },
+        {
+          "const": "98",
+          "title": "Not applicable (available from 1996/97) (Other Admission not specified above)"
+        },
+        {
+          "const": "99",
+          "title": "Method of admission not known (Other Admission not specified above)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "ADMINCAT": {
+      "title": "Administrative Category Code on Admission",
+      "oneOf": [
+        {
+          "const": "01",
+          "title": "NHS patient  including overseas visitors charged under the  National Health Service (Overseas Visitors Hospital Charging Regulations)"
+        },
+        {
+          "const": "02",
+          "title": "Private patient  one who uses accommodation or services authorised under the National Health Service Act 2006"
+        },
+        {
+          "const": "03",
+          "title": "Amenity patient  one who pays for the use of a single room or small ward in accordance with the National Health Service Act 2006"
+        },
+        {
+          "const": "04",
+          "title": "Category II patient  one for whom work is undertaken by hospital medical or dental staff within category II as defined in paragraph 37 of the Terms and Conditions of Service of Hospital Medical and Dental Staff"
+        },
+        {
+          "const": "98",
+          "title": "Not applicable"
+        },
+        {
+          "const": "99",
+          "title": "Administravite category not known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "ADMISORC": {
+      "title": "Source of Admission",
+      "oneOf": [
+        {
+          "const": "-999",
+          "title": "Suppressed"
+        },
+        {
+          "const": "19",
+          "title": "The usual place of residence  unless listed below  for example  a private dwelling whether owner occupied or owned by Local Authority  housing association or other landlord. This includes wardened accommodation but not residential accommodation where health care is provided. It also includes patients with no fixed abode."
+        },
+        {
+          "const": "29",
+          "title": "Temporary place of residence when usually resident elsewhere  for example  hotels and residential educational establishments"
+        },
+        {
+          "const": "30",
+          "title": "Repatriation from high security psychiatric hospital (1999-00 to 2006-07)"
+        },
+        {
+          "const": "51",
+          "title": "NHS other hospital provider: ward for general patients or the younger physically disabled or Emergency and Care department"
+        },
+        {
+          "const": "52",
+          "title": "NHS other hospital provider: ward for maternity patients or neonates"
+        },
+        {
+          "const": "53",
+          "title": "NHS other hospital provider: ward for patients who are mentally ill or have learning disabilities"
+        },
+        {
+          "const": "54",
+          "title": "NHS run care home (retired in 2022-23)"
+        },
+        {
+          "const": "55",
+          "title": "Care Home with Nursing"
+        },
+        {
+          "const": "56",
+          "title": "Care Home without Nursing"
+        },
+        {
+          "const": "65",
+          "title": "Local authority residential accommodation i.e. where care is provided (retired in 2022-23)"
+        },
+        {
+          "const": "66",
+          "title": "Local authority foster care  but not in residential accommodation i.e. where care is provided"
+        },
+        {
+          "const": "69",
+          "title": "Local authority home or care (1989-90 to 1995-96)"
+        },
+        {
+          "const": "79",
+          "title": "Babies born in or on the way to hospital"
+        },
+        {
+          "const": "85",
+          "title": "Non-NHS (other than local authority) run care home (retired in 2022-23)"
+        },
+        {
+          "const": "86",
+          "title": "Non-NHS (other than local authority) run nursing home"
+        },
+        {
+          "const": "87",
+          "title": "Independent Sector Healthcare Provider run hospital"
+        },
+        {
+          "const": "88",
+          "title": "Hospice"
+        },
+        {
+          "const": "89",
+          "title": "Non-NHS institution (1989-90 to 1995-96)"
+        },
+        {
+          "const": "98",
+          "title": "Not applicable"
+        },
+        {
+          "const": "99",
+          "title": "Admission Source Not known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "AEKEY": {
+      "title": "A&E Record Identifier",
+      "type": "string"
+    },
+    "BEDYEAR": {
+      "title": "Bed Days Within the Year",
+      "anyOf": [
+        {
+          "const": "Null",
+          "title": "Not applicable (other maternity event / not known)"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "CARERSI": {
+      "title": "Carer Support Indicator",
+      "oneOf": [
+        {
+          "const": "01",
+          "title": "Yes - Carer support is available"
+        },
+        {
+          "const": "02",
+          "title": "No - Carer support is not available"
+        },
+        {
+          "const": "99",
+          "title": "Not known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "CLASSPAT": {
+      "title": "Patient Classification",
+      "oneOf": [
+        {
+          "const": "1",
+          "title": "Ordinary admission"
+        },
+        {
+          "const": "2",
+          "title": "Day case admission"
+        },
+        {
+          "const": "3",
+          "title": "Regular day attender"
+        },
+        {
+          "const": "4",
+          "title": "Regular night attender"
+        },
+        {
+          "const": "5",
+          "title": "Mothers and babies using only delivery facilities"
+        },
+        {
+          "const": "8",
+          "title": "Not applicable (other maternity event)"
+        },
+        {
+          "const": "9",
+          "title": "Not known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "DIAG_4_01": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_02": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_03": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_04": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_05": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_06": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_07": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_08": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_09": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_10": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_11": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_12": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_13": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_14": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_15": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_16": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_17": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_18": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_19": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAG_4_20": {
+      "title": "Diagnosis Code - 4 Character",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DISDATE": {
+      "title": "Date of Discharge",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DISDEST": {
+      "title": "Destination on Discharge",
+      "oneOf": [
+        {
+          "const": "-999",
+          "title": "Suppressed"
+        },
+        {
+          "const": "19",
+          "title": "The usual place of residence  including no fixed abode"
+        },
+        {
+          "const": "29",
+          "title": "Temporary place of residence when usually resident elsewhere  for example  hotels and residential educational establishments"
+        },
+        {
+          "const": "30",
+          "title": "Repatriation from high security psychiatric hospital (from 1999-2000)"
+        },
+        {
+          "const": "37",
+          "title": "Penal establishment - court (from 1999-2000)"
+        },
+        {
+          "const": "51",
+          "title": "NHS other hospital provider - ward for general PATIENTS or the younger physically disabled"
+        },
+        {
+          "const": "52",
+          "title": "NHS other hospital provider - ward for maternity PATIENTS or Neonates"
+        },
+        {
+          "const": "53",
+          "title": "NHS other hospital provider - ward for PATIENTS who are mentally ill or have learning disabilities"
+        },
+        {
+          "const": "54",
+          "title": "NHS run Care Home (retired in 2022-23)"
+        },
+        {
+          "const": "55",
+          "title": "Care Home With Nursing"
+        },
+        {
+          "const": "56",
+          "title": "Care Home Without Nursing"
+        },
+        {
+          "const": "65",
+          "title": "Local Authority residential accommodation i.e. where care is provided (retired in 2022-23)"
+        },
+        {
+          "const": "66",
+          "title": "Local Authority foster care"
+        },
+        {
+          "const": "69",
+          "title": "Local Authority home or care (1989-1990 to 1995-1996)"
+        },
+        {
+          "const": "79",
+          "title": "PATIENT died or still birth"
+        },
+        {
+          "const": "84",
+          "title": "Independent Sector Healthcare Provider run hospital - medium secure unit"
+        },
+        {
+          "const": "85",
+          "title": "Non-NHS (other than Local Authority) run Care Home (retired in 2022-23)"
+        },
+        {
+          "const": "86",
+          "title": "Non-NHS (other than Local Authority) run nursing home (from 1996-1997)"
+        },
+        {
+          "const": "87",
+          "title": "Independent Sector Healthcare Provider run hospital - excluding medium secure unit"
+        },
+        {
+          "const": "88",
+          "title": "Hospice"
+        },
+        {
+          "const": "98",
+          "title": "Not applicable - Hospital Provider Spell not finished at episode end (i.e. not discharged) or current episode unfinished"
+        },
+        {
+          "const": "99",
+          "title": "Destination of Discharge Not Known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "DISMETH": {
+      "title": "Method of Discharge",
+      "oneOf": [
+        {
+          "const": "1",
+          "title": "Patient discharged on clinical advice or with clinical consent"
+        },
+        {
+          "const": "2",
+          "title": "Patient discharged him/herself or was discharged by a relative or advocate (retired in 2022-23)"
+        },
+        {
+          "const": "3",
+          "title": "Patient discharged by a mental health review tribunal  Home Secretary or court"
+        },
+        {
+          "const": "4",
+          "title": "Patient died"
+        },
+        {
+          "const": "5",
+          "title": "Stillbirth"
+        },
+        {
+          "const": "6",
+          "title": "Patient discharged himself/herself (available from 2022-23)"
+        },
+        {
+          "const": "7",
+          "title": "Patient discharged by a relative or advocate (available from 2022-23)"
+        },
+        {
+          "const": "8",
+          "title": "Not applicable - Hospital Provider Spell not finished at episode end (i.e. not discharged) or current episode unfinished"
+        },
+        {
+          "const": "9",
+          "title": "Method of Discharge Not Known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "DISREADYDATE": {
+      "title": "Discharge Ready Date",
+      "type": "string"
+    },
+    "ELECDATE": {
+      "title": "Date of Decision to Admit",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null date submitted"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "ELECDUR": {
+      "title": "Duration of Elective Wait (Derived)",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              9998,
+              9999,
+              -998
+            ]
+          }
+        },
+        {
+          "const": 9998,
+          "title": "Not applicable"
+        },
+        {
+          "const": 9999,
+          "title": "Not Known (no date known for Decision to Admit)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "EPIDUR": {
+      "title": "Episode Duration",
+      "anyOf": [
+        {
+          "const": "Null",
+          "title": "Not applicable (other maternity event or not known)"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "EPIEND": {
+      "title": "Episode End Date",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "EPIKEY": {
+      "title": "HES Record Identifier",
+      "type": "string"
+    },
+    "EPIORDER": {
+      "title": "Episode Order",
+      "anyOf": [
+        {
+          "const": "98",
+          "title": "Not applicable"
+        },
+        {
+          "const": "99",
+          "title": "Not known: a validation error"
+        },
+        {
+          "const": "Null",
+          "title": "Not applicable: other maternity event"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "EPISTART": {
+      "title": "Episode Start Date",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null date submitted"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "EPITYPE": {
+      "title": "Episode Type",
+      "oneOf": [
+        {
+          "const": 1,
+          "title": "General episode (anything that is not covered by the other codes)"
+        },
+        {
+          "const": 2,
+          "title": "Delivery episode"
+        },
+        {
+          "const": 3,
+          "title": "Birth episode"
+        },
+        {
+          "const": 4,
+          "title": "Formally detained under the provisions of mental health legislation or long-term (over one year) psychiatric patients who should have additional information recorded on the psychiatric census (until 2016-17)"
+        },
+        {
+          "const": 5,
+          "title": "Other delivery event"
+        },
+        {
+          "const": 6,
+          "title": "Other birth event"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ]
+    },
+    "FIRSTREG": {
+      "title": "First Regular Day or Night Admission",
+      "oneOf": [
+        {
+          "const": "0",
+          "title": "First in a series"
+        },
+        {
+          "const": "1",
+          "title": "Subsequent to first in a series"
+        },
+        {
+          "const": "2",
+          "title": "Invalid"
+        },
+        {
+          "const": "3",
+          "title": "Invalid"
+        },
+        {
+          "const": "4",
+          "title": "Invalid"
+        },
+        {
+          "const": "8",
+          "title": "Not applicable: this episode of care is neither the first nor any subsequent attendance within a sequence of regular day/night admissions (valid between 2002-03 and 2007-08)"
+        },
+        {
+          "const": "9",
+          "title": "Not known: this episode is an attendance within a sequence of regular day/night admissions  but the status of this episode within the attendance is not known: a validation error (valid between 2002-03 and 2007-08)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "IMD04_DECILE": {
+      "title": "IMD Decile Group",
+      "type": "string"
+    },
+    "INTMANIG": {
+      "title": "Intended Management",
+      "oneOf": [
+        {
+          "const": "1",
+          "title": "Patient to stay in hospital for at least one night"
+        },
+        {
+          "const": "2",
+          "title": "Patient not to stay in hospital overnight"
+        },
+        {
+          "const": "3",
+          "title": "Patient to have a planned series of admissions at least one overnight stay"
+        },
+        {
+          "const": "4",
+          "title": "Patient to have a planned sequence of admissions no overnight stay"
+        },
+        {
+          "const": "5",
+          "title": "Patient to be admitted regularly for a sequence of nights rest of the 24 hour period at home"
+        },
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "9",
+          "title": "Intendend Management not known"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "MAINSPEF": {
+      "title": "Main Specialty",
+      "oneOf": [
+        {
+          "const": "&",
+          "title": "Not Known"
+        },
+        {
+          "const": "100",
+          "title": "General Surgery"
+        },
+        {
+          "const": "101",
+          "title": "Urology"
+        },
+        {
+          "const": "107",
+          "title": "Vascular Surgery (Introduced 1 April 2021)"
+        },
+        {
+          "const": "110",
+          "title": "Trauma and Orthopaedics"
+        },
+        {
+          "const": "120",
+          "title": "Ear Nose and Throat"
+        },
+        {
+          "const": "130",
+          "title": "Ophthalmology"
+        },
+        {
+          "const": "140",
+          "title": "Oral Surgery"
+        },
+        {
+          "const": "141",
+          "title": "Restorative Dentistry"
+        },
+        {
+          "const": "142",
+          "title": "Paediatric Dentistry"
+        },
+        {
+          "const": "143",
+          "title": "Orthodontics"
+        },
+        {
+          "const": "145",
+          "title": "Oral and Maxillofacial Surgery"
+        },
+        {
+          "const": "146",
+          "title": "Endodontics"
+        },
+        {
+          "const": "147",
+          "title": "Periodontics"
+        },
+        {
+          "const": "148",
+          "title": "Prosthodontics"
+        },
+        {
+          "const": "149",
+          "title": "Surgical Dentistry"
+        },
+        {
+          "const": "150",
+          "title": "Neurosurgery"
+        },
+        {
+          "const": "160",
+          "title": "Plastic Surgery"
+        },
+        {
+          "const": "170",
+          "title": "Cardiothoracic Surgery"
+        },
+        {
+          "const": "171",
+          "title": "Paediatric Surgery"
+        },
+        {
+          "const": "180",
+          "title": "Emergency Medicine"
+        },
+        {
+          "const": "190",
+          "title": "Anaesthetics"
+        },
+        {
+          "const": "191",
+          "title": "Pain Management (Retired 1 April 2004)"
+        },
+        {
+          "const": "192",
+          "title": "Intensive Care Medicine"
+        },
+        {
+          "const": "199",
+          "title": "Non-UK Provider - Specialty Function Not Known  Treatment Mainly Surgical"
+        },
+        {
+          "const": "200",
+          "title": "Aviation and Space Medicine (Introduced 1 April 2021)"
+        },
+        {
+          "const": "300",
+          "title": "General Internal Medicine"
+        },
+        {
+          "const": "301",
+          "title": "Gastroenterology"
+        },
+        {
+          "const": "302",
+          "title": "Endocrinology and Diabetes"
+        },
+        {
+          "const": "303",
+          "title": "Clinical Haematology"
+        },
+        {
+          "const": "304",
+          "title": "Clinical Physiology"
+        },
+        {
+          "const": "305",
+          "title": "Clinical Pharmacology"
+        },
+        {
+          "const": "310",
+          "title": "Audio Vestibular Medicine"
+        },
+        {
+          "const": "311",
+          "title": "Clinical Genetics"
+        },
+        {
+          "const": "312",
+          "title": "Clinical Cytogenetics and Molecular Genetics (Retired 1 April 2010). National Code 312 is retained for consultants qualified in this Main Specialty prior to 1 April 2010"
+        },
+        {
+          "const": "313",
+          "title": "Clinical Immunology"
+        },
+        {
+          "const": "314",
+          "title": "Rehabilitation Medicine"
+        },
+        {
+          "const": "315",
+          "title": "Palliative Medicine"
+        },
+        {
+          "const": "317",
+          "title": "Allergy (Introduced 1 April 2021)"
+        },
+        {
+          "const": "320",
+          "title": "Cardiology"
+        },
+        {
+          "const": "321",
+          "title": "Paediatric Cardiology"
+        },
+        {
+          "const": "325",
+          "title": "Sport and Exercise Medicine"
+        },
+        {
+          "const": "326",
+          "title": "Acute Internal Medicine"
+        },
+        {
+          "const": "330",
+          "title": "Dermatology"
+        },
+        {
+          "const": "340",
+          "title": "Respiratory Medicine"
+        },
+        {
+          "const": "350",
+          "title": "Infectious Diseases"
+        },
+        {
+          "const": "352",
+          "title": "Tropical Medicine"
+        },
+        {
+          "const": "360",
+          "title": "Genitourinary Medicine"
+        },
+        {
+          "const": "361",
+          "title": "Renal Medicine"
+        },
+        {
+          "const": "370",
+          "title": "Medical Oncology"
+        },
+        {
+          "const": "371",
+          "title": "Nuclear Medicine"
+        },
+        {
+          "const": "400",
+          "title": "Neurology"
+        },
+        {
+          "const": "401",
+          "title": "Clinical Neurophysiology"
+        },
+        {
+          "const": "410",
+          "title": "Rheumatology"
+        },
+        {
+          "const": "420",
+          "title": "Paediatrics"
+        },
+        {
+          "const": "421",
+          "title": "Paediatric Neurology"
+        },
+        {
+          "const": "430",
+          "title": "Geriatric Medicine"
+        },
+        {
+          "const": "450",
+          "title": "Dental Medicine"
+        },
+        {
+          "const": "451",
+          "title": "Special Care Dentistry"
+        },
+        {
+          "const": "460",
+          "title": "Medical Ophthalmology"
+        },
+        {
+          "const": "499",
+          "title": "Non-UK Provider - Specialty Function Not Known  Treatment Mainly Medical"
+        },
+        {
+          "const": "500",
+          "title": "Invalid"
+        },
+        {
+          "const": "501",
+          "title": "Obstetrics"
+        },
+        {
+          "const": "502",
+          "title": "Gynaecology"
+        },
+        {
+          "const": "504",
+          "title": "Community Sexual and Reproductive Health"
+        },
+        {
+          "const": "510",
+          "title": "Antenatal Clinic (Retired 1 April 2004)"
+        },
+        {
+          "const": "520",
+          "title": "Postnatal Clinic (Retired 1 April 2004)"
+        },
+        {
+          "const": "560",
+          "title": "Midwifery"
+        },
+        {
+          "const": "600",
+          "title": "General Medical Practice"
+        },
+        {
+          "const": "601",
+          "title": "General Dental Practice"
+        },
+        {
+          "const": "610",
+          "title": "Maternity Function (Retired 1 April 2004)"
+        },
+        {
+          "const": "620",
+          "title": "Other than Maternity (Retired 1 April 2004)"
+        },
+        {
+          "const": "700",
+          "title": "Learning Disability"
+        },
+        {
+          "const": "710",
+          "title": "Adult Mental Illness"
+        },
+        {
+          "const": "711",
+          "title": "Child and Adolescent Psychiatry"
+        },
+        {
+          "const": "712",
+          "title": "Forensic Psychiatry"
+        },
+        {
+          "const": "713",
+          "title": "Medical Psychotherapy"
+        },
+        {
+          "const": "715",
+          "title": "Old Age Psychiatry"
+        },
+        {
+          "const": "800",
+          "title": "Clinical Oncology"
+        },
+        {
+          "const": "810",
+          "title": "Radiology"
+        },
+        {
+          "const": "820",
+          "title": "General Pathology"
+        },
+        {
+          "const": "821",
+          "title": "Blood Transfusion"
+        },
+        {
+          "const": "822",
+          "title": "Chemical Pathology"
+        },
+        {
+          "const": "823",
+          "title": "Haematology"
+        },
+        {
+          "const": "824",
+          "title": "Histopathology"
+        },
+        {
+          "const": "830",
+          "title": "Immunopathology"
+        },
+        {
+          "const": "831",
+          "title": "Medical Microbiology and Virology"
+        },
+        {
+          "const": "832",
+          "title": "Neuropathology (Retired 1 April 2004)"
+        },
+        {
+          "const": "833",
+          "title": "Medical Microbiology"
+        },
+        {
+          "const": "834",
+          "title": "Medical Virology"
+        },
+        {
+          "const": "900",
+          "title": "Community Medicine"
+        },
+        {
+          "const": "901",
+          "title": "Occupational Medicine"
+        },
+        {
+          "const": "902",
+          "title": "Community Health Services Dental"
+        },
+        {
+          "const": "903",
+          "title": "Public Health Medicine"
+        },
+        {
+          "const": "904",
+          "title": "Public Health Dental"
+        },
+        {
+          "const": "950",
+          "title": "Nursing"
+        },
+        {
+          "const": "960",
+          "title": "Allied Health Professional"
+        },
+        {
+          "const": "990",
+          "title": "Joint Consultant Clinics (Retired 1 April 2004)"
+        },
+        {
+          "const": "Null",
+          "title": "Other Maternity Event"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "OPDATE_01": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_02": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_03": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_04": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_05": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_06": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_07": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_08": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_09": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_10": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_11": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_12": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_13": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_14": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_15": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_16": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_17": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_18": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_19": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_20": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_21": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_22": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_23": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPDATE_24": {
+      "title": "Date of Procedure",
+      "anyOf": [
+        {
+          "const": "1800-01-01",
+          "title": "Null"
+        },
+        {
+          "const": "1801-01-01",
+          "title": "Invalid date submitted"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "OPERSTAT": {
+      "title": "Operation Status Code",
+      "oneOf": [
+        {
+          "const": "0",
+          "title": "Invalid"
+        },
+        {
+          "const": "1",
+          "title": "One or more operative procedures carried out"
+        },
+        {
+          "const": "2",
+          "title": "Invalid"
+        },
+        {
+          "const": "8",
+          "title": "No operative procedures performed or intended"
+        },
+        {
+          "const": "9",
+          "title": "Not known  i.e. finished episode but no data entered or the episode is unfinished and no data needs to be present (this would only be a validation error for a finished episode)."
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "OPERTN_01": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_02": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_03": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_04": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_05": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_06": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_07": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_08": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_09": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_10": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_11": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_12": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_13": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_14": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_15": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_16": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_17": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_18": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_19": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_20": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_21": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_22": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_23": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "OPERTN_24": {
+      "title": "Procedure Code",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\&|\\-|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z]{2}[0-9]{3})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 11535 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "POSOPDUR": {
+      "title": "Post-Operative Duration",
+      "anyOf": [
+        {
+          "const": "Null",
+          "title": "Not applicable: no procedure or episode is unfinished"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "PREOPDUR": {
+      "title": "Pre-Operative Duration",
+      "anyOf": [
+        {
+          "const": "Null",
+          "title": "Not applicable: no operation or procedure unfinished"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "PROCODE3_OFH": {
+      "title": "Organisation Identifier (Code of Provider) (3 Character) (Pseudonymised by OFH)",
+      "type": "string"
+    },
+    "PROTYPE": {
+      "title": "Provider Type",
+      "anyOf": [
+        {
+          "const": "CARETRUST",
+          "title": "Care trust"
+        },
+        {
+          "const": "CCG",
+          "title": "Clinical Commissioning Group"
+        },
+        {
+          "const": "FOUNDATION",
+          "title": "NHS foundation trust"
+        },
+        {
+          "const": "IND",
+          "title": "Independent sector provider"
+        },
+        {
+          "const": "INDSITE",
+          "title": "Independent sector provider site"
+        },
+        {
+          "const": "INDSITETC",
+          "title": "Treatment centre at independent sector provider site"
+        },
+        {
+          "const": "OTHERPROV",
+          "title": "Other provider organisation"
+        },
+        {
+          "const": "PCT",
+          "title": "Primary care trust"
+        },
+        {
+          "const": "TRUST",
+          "title": "NHS trust"
+        },
+        {
+          "const": "TRUSTSITETC",
+          "title": "Treatment centre at NHS trust site"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "ROW_ID": {
+      "title": "OFH generated local key",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "RTTPEREND": {
+      "title": "Referral to Treatment Period End Date",
+      "type": "string"
+    },
+    "RTTPERSTART": {
+      "title": "Referral to Treatment Period Start Date",
+      "type": "string"
+    },
+    "RTTPERSTAT": {
+      "title": "Referral to Treatment Period Status",
+      "oneOf": [
+        {
+          "const": "10",
+          "title": "First activity in a referral to treatment period (The first activity in a referral to treatment period where the first definitive treatment will be a subsequent activity)"
+        },
+        {
+          "const": "11",
+          "title": "First activity at the start of a new referral to treatment period following active monitoring (The first activity in a referral to treatment period where the first definitive treatment will be a subsequent activity)"
+        },
+        {
+          "const": "12",
+          "title": "First activity at the start of a new referral to treatment period following a decision to refer directly to the consultant or NHS allied health professional service (referral to treatment measurement) for a separate condition (The first activity in a referral to treatment period where the first definitive treatment will be a subsequent activity)"
+        },
+        {
+          "const": "20",
+          "title": "Subsequent activity during a referral to treatment period - further activities anticipated (Subsequent activity during a referral to treatment period)"
+        },
+        {
+          "const": "21",
+          "title": "Subsequent activity by another health care provider following a transfer to another health care provider during a referral to treatment period anticipated (Subsequent activity during a referral to treatment period)"
+        },
+        {
+          "const": "30",
+          "title": "Start of first definitive treatment (Activity that ends the referral to treatment period)"
+        },
+        {
+          "const": "31",
+          "title": "Start of active monitoring initiated by the patient (Activity that ends the referral to treatment period)"
+        },
+        {
+          "const": "32",
+          "title": "Start of active monitoring initiated by the care professional (Activity that ends the referral to treatment period)"
+        },
+        {
+          "const": "33",
+          "title": "Did not attend - the patient did not attend the first care activity after the referral1 (Activity that ends the referral to treatment period)"
+        },
+        {
+          "const": "34",
+          "title": "Decision not to treat - decision not to treat made or no further contact required2 (Activity that ends the referral to treatment period)"
+        },
+        {
+          "const": "35",
+          "title": "Patient declined offered treatment (Activity that ends the referral to treatment period)"
+        },
+        {
+          "const": "36",
+          "title": "Patient died before treatment (Activity that ends the referral to treatment period)"
+        },
+        {
+          "const": "90",
+          "title": "After treatment - first definitive treatment occurred previously (e.g. admitted as an emergency from A&E or the activity is after the start of treatment) (Activity that is not part of a referral to treatment period)"
+        },
+        {
+          "const": "91",
+          "title": "Care activity during active monitoring (Activity that is not part of a referral to treatment period)"
+        },
+        {
+          "const": "92",
+          "title": "Not yet referred for treatment  undergoing diagnostic tests by general practitioner before referral (Activity that is not part of a referral to treatment period)"
+        },
+        {
+          "const": "98",
+          "title": "Not applicable - activity not applicable to referral to treatment periods (Activity that is not part of a referral to treatment period)"
+        },
+        {
+          "const": "99",
+          "title": "Not yet known (Activity where the referral to treatment period status is not yet known)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "SPELBGIN": {
+      "title": "Beginning of Spell Indicator",
+      "oneOf": [
+        {
+          "const": "0",
+          "title": "Not the first episode of spell"
+        },
+        {
+          "const": "1",
+          "title": "First episode of spell that started in a previous year"
+        },
+        {
+          "const": "2",
+          "title": "First episode of spell that started in current year"
+        },
+        {
+          "const": "Null",
+          "title": "Not applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "SPELEND": {
+      "title": "End of Spell Indicator",
+      "oneOf": [
+        {
+          "const": "N",
+          "title": "Not last episode of spell"
+        },
+        {
+          "const": "Y",
+          "title": "Last episode of spell"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "SUSRECID": {
+      "title": "SUS Record Identifier",
+      "type": "string"
+    },
+    "SUSSPELLID": {
+      "title": "SUS Generated Spell Identifier",
+      "anyOf": [
+        {
+          "const": "-1",
+          "title": "Unspellable episodes"
+        },
+        {
+          "const": "Null",
+          "title": "Records that have excluded from PbR in SUS as the activity is outside the scope of PbR"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "TRETSPEF": {
+      "title": "Treatment Specialty",
+      "oneOf": [
+        {
+          "const": "&",
+          "title": "Not known (Until 2022-23)"
+        },
+        {
+          "const": "000",
+          "title": "Invalid"
+        },
+        {
+          "const": "100",
+          "title": " General Surgery Service"
+        },
+        {
+          "const": "101",
+          "title": " Urology Service"
+        },
+        {
+          "const": "102",
+          "title": " Transplant Surgery Service (From 1 April 2004)"
+        },
+        {
+          "const": "103",
+          "title": " Breast Surgery Service (From 1 April 2004)"
+        },
+        {
+          "const": "104",
+          "title": " Colorectal Surgery Service (From 1 April 2004)"
+        },
+        {
+          "const": "105",
+          "title": " Hepatobiliary and Pancreatic Surgery Service (From 1 April 2004)"
+        },
+        {
+          "const": "106",
+          "title": " Upper Gastrointestinal Surgery Service (From 1 April 2004)"
+        },
+        {
+          "const": "107",
+          "title": " Vascular Surgery Service (From 1 April 2004)"
+        },
+        {
+          "const": "108",
+          "title": " Spinal Surgery Service (From April 2013)"
+        },
+        {
+          "const": "109",
+          "title": " Bariatric Surgery Service (From 1 April 2021)"
+        },
+        {
+          "const": "110",
+          "title": " Trauma and Orthopaedic Service"
+        },
+        {
+          "const": "111",
+          "title": " Orthopaedic Service (From 1 April 2021)"
+        },
+        {
+          "const": "113",
+          "title": " Endocrine Surgery Service (From 1 April 2021)"
+        },
+        {
+          "const": "115",
+          "title": " Trauma Surgery Service (From 1 April 2021)"
+        },
+        {
+          "const": "120",
+          "title": " Ear Nose and Throat Service"
+        },
+        {
+          "const": "130",
+          "title": " Ophthalmology Service"
+        },
+        {
+          "const": "140",
+          "title": " Oral Surgery Service"
+        },
+        {
+          "const": "141",
+          "title": " Restorative Dentistry Service"
+        },
+        {
+          "const": "142",
+          "title": " Paediatric Dentistry Service (From 1999-2000)"
+        },
+        {
+          "const": "143",
+          "title": " Orthodontic Service"
+        },
+        {
+          "const": "144",
+          "title": " Maxillofacial Surgery Service (From 1 April 2004)"
+        },
+        {
+          "const": "145",
+          "title": " Oral and Maxillofacial Surgery Service (From 1 April 2021)"
+        },
+        {
+          "const": "150",
+          "title": " Neurosurgical Service"
+        },
+        {
+          "const": "160",
+          "title": " Plastic Surgery Service"
+        },
+        {
+          "const": "161",
+          "title": " Burns Care Service (From 1 April 2004)"
+        },
+        {
+          "const": "170",
+          "title": " Cardiothoracic Surgery Service"
+        },
+        {
+          "const": "171",
+          "title": " Paediatric Surgery Service"
+        },
+        {
+          "const": "172",
+          "title": " Cardiac Surgery Service (From 1 April 2004)"
+        },
+        {
+          "const": "173",
+          "title": " Thoracic Surgery Service (From 1 April 2004)"
+        },
+        {
+          "const": "174",
+          "title": " Cardiothoracic Transplantation Service (From 1 April 2004)"
+        },
+        {
+          "const": "180",
+          "title": " Emergency Medicine Service"
+        },
+        {
+          "const": "190",
+          "title": " Anaesthetic Service"
+        },
+        {
+          "const": "191",
+          "title": " Pain Management Service (From 1998-99)"
+        },
+        {
+          "const": "192",
+          "title": " Intensive Care Medicine Service (From 1 April 2004)"
+        },
+        {
+          "const": "199",
+          "title": " Non-UK Provider; specialty function not known  treatment mainly surgical (Until 2022-23)"
+        },
+        {
+          "const": "200",
+          "title": " Aviation and Space Medicine Service (From 1 April 2021)"
+        },
+        {
+          "const": "211",
+          "title": " Paediatric Urology Service (From 2006-07)"
+        },
+        {
+          "const": "212",
+          "title": " Paediatric Transplantation Surgery Service (From 2006-07)"
+        },
+        {
+          "const": "213",
+          "title": " Paediatric Gastrointestinal Surgery Service (From 2006-07)"
+        },
+        {
+          "const": "214",
+          "title": " Paediatric Trauma and Orthopaedic Service (From 2006-07)"
+        },
+        {
+          "const": "215",
+          "title": " Paediatric Ear Nose and Throat Service (From 2006-07)"
+        },
+        {
+          "const": "216",
+          "title": " Paediatric Ophthalmology Service (From 2006-07)"
+        },
+        {
+          "const": "217",
+          "title": " Paediatric Oral and Maxillofacial Surgery Service (From 2006-07)"
+        },
+        {
+          "const": "218",
+          "title": " Paediatric Neurosurgery Service (From 2006-07)"
+        },
+        {
+          "const": "219",
+          "title": " Paediatric Plastic Surgery Service (From 2006-07)"
+        },
+        {
+          "const": "220",
+          "title": " Paediatric Burns Care Service (From 2006-07)"
+        },
+        {
+          "const": "221",
+          "title": " Paediatric Cardiac Surgery Service (From 2006-07)"
+        },
+        {
+          "const": "222",
+          "title": " Paediatric Thoracic Surgery Service (From 2006-07)"
+        },
+        {
+          "const": "223",
+          "title": " Paediatric Epilepsy Service (From April 2013)"
+        },
+        {
+          "const": "230",
+          "title": " Paediatric Clinical Pharmacology Service (From 1 April 2021)"
+        },
+        {
+          "const": "240",
+          "title": " Paediatric Palliative Medicine Service (From 1 April 2021)"
+        },
+        {
+          "const": "241",
+          "title": " Paediatric Pain Management Service (From 2006-07)"
+        },
+        {
+          "const": "242",
+          "title": " Paediatric Intensive Care Service (From 2006-07)"
+        },
+        {
+          "const": "250",
+          "title": " Paediatric Hepatology Service (From 1 April 2021)"
+        },
+        {
+          "const": "251",
+          "title": " Paediatric Gastroenterology Service (From 2006-07)"
+        },
+        {
+          "const": "252",
+          "title": " Paediatric Endocrinology Service (From 2006-07)"
+        },
+        {
+          "const": "253",
+          "title": " Paediatric Clinical Haematology Service (From 2006-07)"
+        },
+        {
+          "const": "254",
+          "title": " Paediatric Audio Vestibular Medicine Service (From 2006-07)"
+        },
+        {
+          "const": "255",
+          "title": " Paediatric Clinical Immunology and Allergy Service (From 2006-07)"
+        },
+        {
+          "const": "256",
+          "title": " Paediatric Infectious Diseases Service (From 2006-07)"
+        },
+        {
+          "const": "257",
+          "title": " Paediatric Dermatology Service (From 2006-07)"
+        },
+        {
+          "const": "258",
+          "title": " Paediatric Respiratory Medicine Service (From 2006-07)"
+        },
+        {
+          "const": "259",
+          "title": " Paediatric Nephrology Service (From 2006-07)"
+        },
+        {
+          "const": "260",
+          "title": " Paediatric Medical Oncology Service (From 2006-07)"
+        },
+        {
+          "const": "261",
+          "title": " Paediatric Inherited Metabolic Medicine Service (From 2006-07)"
+        },
+        {
+          "const": "262",
+          "title": " Paediatric Rheumatology Service (From 2006-07)"
+        },
+        {
+          "const": "263",
+          "title": " Paediatric Diabetes Service (From 1 April 2004)"
+        },
+        {
+          "const": "264",
+          "title": " Paediatric Cystic Fibrosis Service (From 1 April 2004)"
+        },
+        {
+          "const": "270",
+          "title": " Paediatric Emergency Medicine Service (From 1 April 2021)"
+        },
+        {
+          "const": "280",
+          "title": " Paediatric Interventional Radiology Service (From 2006-07)"
+        },
+        {
+          "const": "290",
+          "title": " Community Paediatric Service (From 2006-07)"
+        },
+        {
+          "const": "291",
+          "title": " Paediatric Neurodisability Service (From 2006-07)"
+        },
+        {
+          "const": "300",
+          "title": " General Internal Medicine Service"
+        },
+        {
+          "const": "301",
+          "title": " Gastroenterology Service"
+        },
+        {
+          "const": "302",
+          "title": " Endocrinology Service"
+        },
+        {
+          "const": "303",
+          "title": " Clinical Haematology Service"
+        },
+        {
+          "const": "304",
+          "title": " Clinical Physiology Service (From 2008-09)"
+        },
+        {
+          "const": "305",
+          "title": " Clinical Pharmacology Service"
+        },
+        {
+          "const": "306",
+          "title": " Hepatology Service (From 1 April 2004)"
+        },
+        {
+          "const": "307",
+          "title": " Diabetes Service (From 1 April 2004)"
+        },
+        {
+          "const": "308",
+          "title": " Blood and Marrow Transplantation Service (From 1 April 2004)"
+        },
+        {
+          "const": "309",
+          "title": " Haemophilia Service (From 1 April 2004)"
+        },
+        {
+          "const": "310",
+          "title": " Audio Vestibular Medicine Service"
+        },
+        {
+          "const": "311",
+          "title": " Clinical Genetics Service"
+        },
+        {
+          "const": "313",
+          "title": " Clinical Immunology and Allergy Service (From 1991-92)"
+        },
+        {
+          "const": "314",
+          "title": " Rehabilitation Medicine Service (From 1991-92)"
+        },
+        {
+          "const": "315",
+          "title": " Palliative Medicine Service"
+        },
+        {
+          "const": "316",
+          "title": " Clinical Immunology Service (From 1 April 2004)"
+        },
+        {
+          "const": "317",
+          "title": " Allergy Service (From 1 April 2004)"
+        },
+        {
+          "const": "318",
+          "title": " Intermediate Care Service (From 1 April 2004)"
+        },
+        {
+          "const": "319",
+          "title": " Respite Care Service (From 1 April 2004)"
+        },
+        {
+          "const": "320",
+          "title": " Cardiology Service"
+        },
+        {
+          "const": "321",
+          "title": " Paediatric Cardiology Service (From 1 April 2004)"
+        },
+        {
+          "const": "322",
+          "title": " Clinical Microbiology Service (From 1 April 2004)"
+        },
+        {
+          "const": "323",
+          "title": " Spinal Injuries Service (From 2006-07)"
+        },
+        {
+          "const": "324",
+          "title": " Anticoagulant Service (From 1 April 2004)"
+        },
+        {
+          "const": "325",
+          "title": " Sport and Exercise Medicine Service (From 1 April 2004)"
+        },
+        {
+          "const": "326",
+          "title": " Acute Internal Medicine Service (From 1 April 2021)"
+        },
+        {
+          "const": "327",
+          "title": " Cardiac Rehabilitation Service (From 1 April 2004)"
+        },
+        {
+          "const": "328",
+          "title": " Stroke Medicine Service (From 1 April 2004)"
+        },
+        {
+          "const": "329",
+          "title": " Transient Ischaemic Attack Service (From 1 April 2004)"
+        },
+        {
+          "const": "330",
+          "title": " Dermatology Service"
+        },
+        {
+          "const": "331",
+          "title": " Congenital Heart Disease Service (From April 2013)"
+        },
+        {
+          "const": "333",
+          "title": " Rare Disease Service (From 1 April 2021)"
+        },
+        {
+          "const": "335",
+          "title": " Inherited Metabolic Medicine Service (From 1 April 2021)"
+        },
+        {
+          "const": "340",
+          "title": " Respiratory Medicine Service"
+        },
+        {
+          "const": "341",
+          "title": " Respiratory Physiology Service (From 1 April 2004)"
+        },
+        {
+          "const": "342",
+          "title": " Pulmonary Rehabilitation Service (From 1 April 2004)"
+        },
+        {
+          "const": "343",
+          "title": " Adult Cystic Fibrosis Service (From 1 April 2004)"
+        },
+        {
+          "const": "344",
+          "title": " Complex Specialised Rehabilitation Service (From April 2013)"
+        },
+        {
+          "const": "345",
+          "title": " Specialist Rehabilitation Service (From April 2013)"
+        },
+        {
+          "const": "346",
+          "title": " Local Specialist Rehabilitation Service (From April 2013)"
+        },
+        {
+          "const": "347",
+          "title": " Sleep Medicine Service (From 1 April 2021)"
+        },
+        {
+          "const": "348",
+          "title": " Post-COVID-19 Syndrome Service (From 1 April 2021)"
+        },
+        {
+          "const": "350",
+          "title": " Infectious Diseases Service"
+        },
+        {
+          "const": "352",
+          "title": " Tropical Medicine Service (From 1 April 2004)"
+        },
+        {
+          "const": "360",
+          "title": " Genitourinary Medicine Service"
+        },
+        {
+          "const": "361",
+          "title": " Renal Medicine Service"
+        },
+        {
+          "const": "370",
+          "title": " Medical Oncology Service"
+        },
+        {
+          "const": "371",
+          "title": " Nuclear Medicine Service (From 2008-09)"
+        },
+        {
+          "const": "400",
+          "title": " Neurology Service"
+        },
+        {
+          "const": "401",
+          "title": " Clinical Neurophysiology Service (From 2008-09)"
+        },
+        {
+          "const": "410",
+          "title": " Rheumatology Service"
+        },
+        {
+          "const": "420",
+          "title": " Paediatric Service"
+        },
+        {
+          "const": "421",
+          "title": " Paediatric Neurology Service"
+        },
+        {
+          "const": "422",
+          "title": " Neonatal Critical Care Service (From 1 April 2004)"
+        },
+        {
+          "const": "424",
+          "title": " Well Baby Service (From 1 April 2004)"
+        },
+        {
+          "const": "430",
+          "title": " Elderly Medicine Service"
+        },
+        {
+          "const": "431",
+          "title": " Orthogeriatric Medicine Service (From 1 April 2021)"
+        },
+        {
+          "const": "450",
+          "title": " Dental Medicine Service (From 1990-91)"
+        },
+        {
+          "const": "451",
+          "title": " Special Care Dentistry Service (From 1 April 2021)"
+        },
+        {
+          "const": "460",
+          "title": " Medical Ophthalmology Service (From 1993-94)"
+        },
+        {
+          "const": "461",
+          "title": " Ophthalmic and Vision Science Service (From 1 April 2021)"
+        },
+        {
+          "const": "499",
+          "title": " Non-UK Provider; specialty function not known  treatment mainly medical (Until 2022-23)"
+        },
+        {
+          "const": "501",
+          "title": " Obstetrics Service"
+        },
+        {
+          "const": "502",
+          "title": " Gynaecology Service"
+        },
+        {
+          "const": "503",
+          "title": " Gynaecological Oncology Service (From 1 April 2004)"
+        },
+        {
+          "const": "504",
+          "title": " Community Sexual and Reproductive Health Service (From 1 April 2021)"
+        },
+        {
+          "const": "505",
+          "title": " Fetal Medicine Service (From 1 April 2021)"
+        },
+        {
+          "const": "510",
+          "title": "Retired but retained for historical purposes (From 2022-23)"
+        },
+        {
+          "const": "520",
+          "title": "Retired but retained for historical purposes (From 2022-23)"
+        },
+        {
+          "const": "560",
+          "title": " Midwifery Service (From October 1995)"
+        },
+        {
+          "const": "610",
+          "title": "Retired but retained for historical purposes (From 2022-23)"
+        },
+        {
+          "const": "620",
+          "title": "Retired but retained for historical purposes (From 2022-23)"
+        },
+        {
+          "const": "650",
+          "title": " Physiotherapy Service (From 2006-07)"
+        },
+        {
+          "const": "651",
+          "title": " Occupational Therapy Service (From 2006-07)"
+        },
+        {
+          "const": "652",
+          "title": " Speech and Language Therapy Service (From 2006-07)"
+        },
+        {
+          "const": "653",
+          "title": " Podiatry Service (From 2006-07)"
+        },
+        {
+          "const": "654",
+          "title": " Dietetics Service (From 2006-07)"
+        },
+        {
+          "const": "655",
+          "title": " Orthoptics Service (From 2006-07)"
+        },
+        {
+          "const": "656",
+          "title": " Clinical Psychology Service (From 2006-07)"
+        },
+        {
+          "const": "657",
+          "title": " Prosthetics Service (From 1 April 2004)"
+        },
+        {
+          "const": "658",
+          "title": " Orthotics Service (From 1 April 2004)"
+        },
+        {
+          "const": "659",
+          "title": " Dramatherapy Service (From 1 April 2004)"
+        },
+        {
+          "const": "660",
+          "title": " Art Therapy Service (From 1 April 2004)"
+        },
+        {
+          "const": "661",
+          "title": " Music Therapy Service (From 1 April 2004)"
+        },
+        {
+          "const": "662",
+          "title": " Optometry Service (From 1 April 2004)"
+        },
+        {
+          "const": "663",
+          "title": " Podiatric Surgery Service (From April 2013)"
+        },
+        {
+          "const": "670",
+          "title": " Urological Physiology Service (From 1 April 2021)"
+        },
+        {
+          "const": "673",
+          "title": " Vascular Physiology Service (From 1 April 2021)"
+        },
+        {
+          "const": "675",
+          "title": " Cardiac Physiology Service (From 1 April 2021)"
+        },
+        {
+          "const": "677",
+          "title": " Gastrointestinal Physiology Service (From 1 April 2021)"
+        },
+        {
+          "const": "700",
+          "title": " Learning Disability Service"
+        },
+        {
+          "const": "710",
+          "title": " Adult Mental Health Service"
+        },
+        {
+          "const": "711",
+          "title": " Child and Adolescent Psychiatry Service"
+        },
+        {
+          "const": "712",
+          "title": " Forensic Psychiatry Service"
+        },
+        {
+          "const": "713",
+          "title": " Medical Psychotherapy Service"
+        },
+        {
+          "const": "715",
+          "title": " Old Age Psychiatry Service (From 1990-91)"
+        },
+        {
+          "const": "720",
+          "title": " Eating Disorders Service (From 2006-07)"
+        },
+        {
+          "const": "721",
+          "title": " Addiction Service (From 2006-07)"
+        },
+        {
+          "const": "722",
+          "title": " Liaison Psychiatry Service (From 2006-07)"
+        },
+        {
+          "const": "723",
+          "title": " Psychiatric Intensive Care Service (From 2006-07)"
+        },
+        {
+          "const": "724",
+          "title": " Perinatal Mental Health Service (From 2006-07)"
+        },
+        {
+          "const": "725",
+          "title": " Mental Health Recovery and Rehabilitation Service (From April 2013)"
+        },
+        {
+          "const": "726",
+          "title": " Mental Health Dual Diagnosis Service (From April 2013)"
+        },
+        {
+          "const": "727",
+          "title": " Dementia Assessment Service (From April 2013)"
+        },
+        {
+          "const": "730",
+          "title": " Neuropsychiatry Service (From 1 April 2021)"
+        },
+        {
+          "const": "800",
+          "title": " Clinical Oncology Service"
+        },
+        {
+          "const": "810",
+          "title": "Invalid"
+        },
+        {
+          "const": "811",
+          "title": " Interventional Radiology Service (From 1 April 2004)"
+        },
+        {
+          "const": "812",
+          "title": " Diagnostic Imaging Service (From 2008-09)"
+        },
+        {
+          "const": "820",
+          "title": "Invalid"
+        },
+        {
+          "const": "821",
+          "title": "Invalid"
+        },
+        {
+          "const": "822",
+          "title": " Chemical Pathology Service"
+        },
+        {
+          "const": "823",
+          "title": "Invalid"
+        },
+        {
+          "const": "824",
+          "title": "Invalid"
+        },
+        {
+          "const": "830",
+          "title": "Invalid"
+        },
+        {
+          "const": "831",
+          "title": "Invalid"
+        },
+        {
+          "const": "832",
+          "title": "Retired but retained for historical purposes (From 2022-23)"
+        },
+        {
+          "const": "834",
+          "title": " Medical Virology Service (From 1 April 2004)"
+        },
+        {
+          "const": "840",
+          "title": " Audiology Service (From 2008-09)"
+        },
+        {
+          "const": "900",
+          "title": "Invalid"
+        },
+        {
+          "const": "920",
+          "title": " Diabetic Education Service (From April 2013)"
+        },
+        {
+          "const": "950",
+          "title": "Invalid"
+        },
+        {
+          "const": "990",
+          "title": "Retired but retained for historical purposes (From 2022-23)"
+        },
+        {
+          "const": "Null",
+          "title": "Other Maternity Event (Until 2022-23)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    }
+  },
+  "required": [
+    "ACSCFLAG",
+    "ADMIDATE",
+    "ADMIMETH",
+    "ADMINCAT",
+    "ADMISORC",
+    "AEKEY",
+    "BEDYEAR",
+    "CARERSI",
+    "CLASSPAT",
+    "DIAG_4_01",
+    "DIAG_4_02",
+    "DIAG_4_03",
+    "DIAG_4_04",
+    "DIAG_4_05",
+    "DIAG_4_06",
+    "DIAG_4_07",
+    "DIAG_4_08",
+    "DIAG_4_09",
+    "DIAG_4_10",
+    "DIAG_4_11",
+    "DIAG_4_12",
+    "DIAG_4_13",
+    "DIAG_4_14",
+    "DIAG_4_15",
+    "DIAG_4_16",
+    "DIAG_4_17",
+    "DIAG_4_18",
+    "DIAG_4_19",
+    "DIAG_4_20",
+    "DISDATE",
+    "DISDEST",
+    "DISMETH",
+    "DISREADYDATE",
+    "ELECDATE",
+    "ELECDUR",
+    "EPIDUR",
+    "EPIEND",
+    "EPIKEY",
+    "EPIORDER",
+    "EPISTART",
+    "EPITYPE",
+    "FIRSTREG",
+    "IMD04_DECILE",
+    "INTMANIG",
+    "MAINSPEF",
+    "OPDATE_01",
+    "OPDATE_02",
+    "OPDATE_03",
+    "OPDATE_04",
+    "OPDATE_05",
+    "OPDATE_06",
+    "OPDATE_07",
+    "OPDATE_08",
+    "OPDATE_09",
+    "OPDATE_10",
+    "OPDATE_11",
+    "OPDATE_12",
+    "OPDATE_13",
+    "OPDATE_14",
+    "OPDATE_15",
+    "OPDATE_16",
+    "OPDATE_17",
+    "OPDATE_18",
+    "OPDATE_19",
+    "OPDATE_20",
+    "OPDATE_21",
+    "OPDATE_22",
+    "OPDATE_23",
+    "OPDATE_24",
+    "OPERSTAT",
+    "OPERTN_01",
+    "OPERTN_02",
+    "OPERTN_03",
+    "OPERTN_04",
+    "OPERTN_05",
+    "OPERTN_06",
+    "OPERTN_07",
+    "OPERTN_08",
+    "OPERTN_09",
+    "OPERTN_10",
+    "OPERTN_11",
+    "OPERTN_12",
+    "OPERTN_13",
+    "OPERTN_14",
+    "OPERTN_15",
+    "OPERTN_16",
+    "OPERTN_17",
+    "OPERTN_18",
+    "OPERTN_19",
+    "OPERTN_20",
+    "OPERTN_21",
+    "OPERTN_22",
+    "OPERTN_23",
+    "OPERTN_24",
+    "PID",
+    "POSOPDUR",
+    "PREOPDUR",
+    "PROCODE3_OFH",
+    "PROTYPE",
+    "ROW_ID",
+    "RTTPEREND",
+    "RTTPERSTART",
+    "RTTPERSTAT",
+    "SPELBGIN",
+    "SPELEND",
+    "SUSRECID",
+    "SUSSPELLID",
+    "TRETSPEF"
+  ]
+}

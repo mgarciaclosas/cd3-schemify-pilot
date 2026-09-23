@@ -1,0 +1,17 @@
+[
+  {
+    "HetHet": 7.5,
+    "IBS0": 0.25,
+    "Kinship": 0.25
+  },
+  {
+    "HetHet": 0.25,
+    "IBS0": 7.5,
+    "Kinship": 0.25
+  },
+  {
+    "HetHet": 0.25,
+    "IBS0": 0.25,
+    "Kinship": 0.9
+  }
+]

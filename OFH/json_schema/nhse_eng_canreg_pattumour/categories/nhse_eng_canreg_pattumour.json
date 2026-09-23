@@ -1,0 +1,1329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/nhse_eng_canreg_pattumour/categories/nhse_eng_canreg_pattumour.json",
+  "title": "Linked health records data — Cancer treatment data at tumour level",
+  "description": "Cancer treatment data at tumour level.",
+  "type": "object",
+  "x-variable-group": "nhse_eng_canreg_pattumour",
+  "properties": {
+    "BEHAVIOUR_CODED": {
+      "title": "Numeric behaviour code and description",
+      "oneOf": [
+        {
+          "const": "0",
+          "title": "Benign"
+        },
+        {
+          "const": "1",
+          "title": "Uncertain"
+        },
+        {
+          "const": "2",
+          "title": "In Situ"
+        },
+        {
+          "const": "3",
+          "title": "Malignant"
+        },
+        {
+          "const": "5",
+          "title": "Micro-Invasive"
+        },
+        {
+          "const": "6",
+          "title": "Malignant, Metastatic / Secondary Site"
+        },
+        {
+          "const": "9",
+          "title": "Malignant, Uncertain whether primary or metastatic"
+        },
+        {
+          "const": "X",
+          "title": "Unknown / Inapplicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "BEHAVIOUR_CODED_DESC": {
+      "title": "Numeric behaviour code and description",
+      "type": "string"
+    },
+    "BEHAVIOUR_ICD10_O2": {
+      "title": "Behaviour of the cancer, in the ICD-10-O2 system",
+      "oneOf": [
+        {
+          "const": "0",
+          "title": "Benign"
+        },
+        {
+          "const": "1",
+          "title": "Uncertain"
+        },
+        {
+          "const": "2",
+          "title": "In Situ"
+        },
+        {
+          "const": "3",
+          "title": "Malignant"
+        },
+        {
+          "const": "5",
+          "title": "Micro-Invasive"
+        },
+        {
+          "const": "6",
+          "title": "Malignant, Metastatic / Secondary Site"
+        },
+        {
+          "const": "9",
+          "title": "Malignant, Uncertain whether primary or metastatic"
+        },
+        {
+          "const": "X",
+          "title": "Unknown / Inapplicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "BIGTUMOURCOUNT": {
+      "title": "Count of every tumour assigned to this PatientID",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "CODING_SYSTEM": {
+      "title": "The coding system used to register the tumour (code and description)",
+      "oneOf": [
+        {
+          "const": "1",
+          "title": "ICD-8"
+        },
+        {
+          "const": "10",
+          "title": "ICD-O-3 (2011)"
+        },
+        {
+          "const": "11",
+          "title": "ICD-10rev4/O-2"
+        },
+        {
+          "const": "12",
+          "title": "MOTNAC"
+        },
+        {
+          "const": "14",
+          "title": "SNOMED/O(TCR)"
+        },
+        {
+          "const": "15",
+          "title": "SNOMED/O-1"
+        },
+        {
+          "const": "16",
+          "title": "SNOMED/O-2"
+        },
+        {
+          "const": "17",
+          "title": "SNOMED/O-3"
+        },
+        {
+          "const": "19",
+          "title": "ICD-O-3 (2016)"
+        },
+        {
+          "const": "2",
+          "title": "ICD-9"
+        },
+        {
+          "const": "22",
+          "title": "ICD-O-3 (2019)"
+        },
+        {
+          "const": "3",
+          "title": "ICD-10/O-2"
+        },
+        {
+          "const": "4",
+          "title": "ICD-10/O-3"
+        },
+        {
+          "const": "5",
+          "title": "ICD-O-3"
+        },
+        {
+          "const": "6",
+          "title": "ICD-7"
+        },
+        {
+          "const": "7",
+          "title": "ICD-8pre1971"
+        },
+        {
+          "const": "8",
+          "title": "ICD-O-2"
+        },
+        {
+          "const": "9",
+          "title": "ICD-O"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "CODING_SYSTEM_DESC": {
+      "title": "The coding system used to register the tumour (code and description)",
+      "type": "string"
+    },
+    "DIAGNOSISDATE1": {
+      "title": "Earliest date when the diagnosis may have taken place",
+      "type": "string"
+    },
+    "DIAGNOSISDATE2": {
+      "title": "Latest date when the diagnosis may have taken place",
+      "type": "string"
+    },
+    "DIAGNOSISDATEBEST": {
+      "title": "Diagnosis date",
+      "type": "string"
+    },
+    "DUKES": {
+      "title": "Dukes' stage",
+      "anyOf": [
+        {
+          "const": "99",
+          "title": "Not Known"
+        },
+        {
+          "const": "A",
+          "title": "Dukes’ A: Tumour confined to wall of bowel, nodes negative"
+        },
+        {
+          "const": "B",
+          "title": "Dukes’ B: Tumour penetrates through the muscularis propria to involve extramural tissues, nodes negative"
+        },
+        {
+          "const": "C1",
+          "title": "Dukes’ C1: Metastases confined to regional lymph nodes (node/s positive but apical node negative)"
+        },
+        {
+          "const": "C2",
+          "title": "Dukes’ C2: Metastases present in nodes at mesenteric artery ligature (apical node positive)"
+        },
+        {
+          "const": "D",
+          "title": "Dukes D: Metastatic spread outside the operative field"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "ER_SCORE": {
+      "title": "Oestrogen receptor score of the tumour",
+      "type": "string"
+    },
+    "ER_STATUS": {
+      "title": "Oestrogen receptor status of the tumour",
+      "anyOf": [
+        {
+          "const": "N",
+          "title": "Negative"
+        },
+        {
+          "const": "P",
+          "title": "Positive"
+        },
+        {
+          "const": "X",
+          "title": "Not Performed"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "FIGO": {
+      "title": "FIGO stage",
+      "type": "string"
+    },
+    "GLEASON_COMBINED": {
+      "title": "Combined Gleason primary and secondary scores",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "GLEASON_PRIMARY": {
+      "title": "Gleason primary pattern",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              8,
+              -998
+            ]
+          }
+        },
+        {
+          "const": 8,
+          "title": "not applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "GLEASON_SECONDARY": {
+      "title": "Gleason secondary pattern",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              8,
+              -998
+            ]
+          }
+        },
+        {
+          "const": 8,
+          "title": "not applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "GLEASON_TERTIARY": {
+      "title": "Gleason tertiary pattern",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              8,
+              -998
+            ]
+          }
+        },
+        {
+          "const": 8,
+          "title": "not applicable"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "GRADE": {
+      "title": "Grade of tumour",
+      "anyOf": [
+        {
+          "const": "G0",
+          "title": "Borderline malignancy"
+        },
+        {
+          "const": "G1",
+          "title": "Well differentiated"
+        },
+        {
+          "const": "G2",
+          "title": "Moderately differentiated"
+        },
+        {
+          "const": "G3",
+          "title": "Poorly differentiated"
+        },
+        {
+          "const": "G4",
+          "title": "Undifferentiated / anaplastic"
+        },
+        {
+          "const": "G5",
+          "title": "T Cell"
+        },
+        {
+          "const": "G6",
+          "title": "B Cell"
+        },
+        {
+          "const": "G7",
+          "title": "Null cell"
+        },
+        {
+          "const": "GX",
+          "title": "Grade of differentiation is not appropriate or cannot be assessed"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "HER2_STATUS": {
+      "title": "Human Epidermal Growth Factor Receptor 2 (HER2) status of the tumour",
+      "anyOf": [
+        {
+          "const": "B",
+          "title": "Borderline"
+        },
+        {
+          "const": "N",
+          "title": "Negative"
+        },
+        {
+          "const": "P",
+          "title": "Positive"
+        },
+        {
+          "const": "X",
+          "title": "Not Performed"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "HISTOLOGY_CODED": {
+      "title": "Histology code and description",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{5}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 1239 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "HISTOLOGY_CODED_DESC": {
+      "title": "Histology code and description",
+      "type": "string"
+    },
+    "IMD_QUINTILE": {
+      "title": "Measure of deprivation at small area level made up from the IMD, quintiles are calculated from LSOAs",
+      "type": "string"
+    },
+    "LATERALITY": {
+      "title": "Laterality",
+      "oneOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "9",
+          "title": "Not Known"
+        },
+        {
+          "const": "B",
+          "title": "Bilateral"
+        },
+        {
+          "const": "L",
+          "title": "Left"
+        },
+        {
+          "const": "M",
+          "title": "Midline"
+        },
+        {
+          "const": "R",
+          "title": "Right"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "MORPH_CODED": {
+      "title": "Morphology of the cancer, in the coding system that the tumour was originally coded in.",
+      "type": "string"
+    },
+    "MORPH_ICD10_O2": {
+      "title": "Morphology of the cancer, in the ICD-10-O2 system",
+      "type": "string"
+    },
+    "M_BEST": {
+      "title": "M stage flagged by the registry as the ‘best’ M stage",
+      "anyOf": [
+        {
+          "const": "0",
+          "title": "No distant metastasis"
+        },
+        {
+          "const": "1",
+          "title": "Distant metastasis"
+        },
+        {
+          "const": "1a",
+          "title": "Distant metastasis"
+        },
+        {
+          "const": "1b",
+          "title": "Distant metastasis"
+        },
+        {
+          "const": "1c",
+          "title": "Distant metastasis"
+        },
+        {
+          "const": "1d",
+          "title": "Distant metastasis"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "NODESEXCISED": {
+      "title": "Number of nodes excised",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "NODESINVOLVED": {
+      "title": "Number of nodes involved",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "NPI": {
+      "title": "Nottingham Prognostic Index Score",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "N_BEST": {
+      "title": "N stage flagged by the registry as the ‘best’ N stage",
+      "anyOf": [
+        {
+          "const": "0",
+          "title": "No regional lymph node metastasis"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "PR_SCORE": {
+      "title": "Progesterone receptor score of the tumour",
+      "type": "string"
+    },
+    "PR_STATUS": {
+      "title": "Progesterone receptor status of the tumour",
+      "anyOf": [
+        {
+          "const": "N",
+          "title": "Negative"
+        },
+        {
+          "const": "P",
+          "title": "Positive"
+        },
+        {
+          "const": "X",
+          "title": "Not Performed"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "PSEUDONYMISED_TUMOURID": {
+      "title": "Pseudonymised tumour ID",
+      "type": "string"
+    },
+    "ROW_ID": {
+      "title": "OFH generated local key",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "SCREENDETECTED": {
+      "title": "Screen detected cancer",
+      "oneOf": [
+        {
+          "const": "8",
+          "title": "Not applicable"
+        },
+        {
+          "const": "9",
+          "title": "Not known"
+        },
+        {
+          "const": "N",
+          "title": "No"
+        },
+        {
+          "const": "Y",
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "SCREENINGSTATUSCOSD_CODE": {
+      "title": "Screening status of the tumour (code and description)",
+      "oneOf": [
+        {
+          "const": "1",
+          "title": "Screen-detected"
+        },
+        {
+          "const": "2",
+          "title": "Interval Cancer"
+        },
+        {
+          "const": "4",
+          "title": "Lapsed Attender"
+        },
+        {
+          "const": "5",
+          "title": "Never Attended"
+        },
+        {
+          "const": "6",
+          "title": "Never Invited"
+        },
+        {
+          "const": "7",
+          "title": "Other"
+        },
+        {
+          "const": "9",
+          "title": "Not Known"
+        },
+        {
+          "const": "NM",
+          "title": "Not Mapped"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "SCREENINGSTATUSCOSD_NAME": {
+      "title": "Screening status of the tumour (code and description)",
+      "type": "string"
+    },
+    "SCREENINGSTATUSFULL_CODE": {
+      "title": "Full detailed screening status of the tumour code and description",
+      "type": "string"
+    },
+    "SCREENINGSTATUSFULL_NAME": {
+      "title": "Full detailed screening status of the tumour code and description",
+      "type": "string"
+    },
+    "SITE_CODED": {
+      "title": "Site of the cancer and text description",
+      "type": "string"
+    },
+    "SITE_CODED_3CHAR": {
+      "title": "3 digit version of SITE_CODED",
+      "type": "string"
+    },
+    "SITE_CODED_DESC": {
+      "title": "Site of the cancer and text description",
+      "type": "string"
+    },
+    "SITE_ICD10_O2": {
+      "title": "Site of neoplasm (4-character ICD-10-O2 code)",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{2}[A-Z]|[A-Z][0-9]{2}[A-Z][0-9])$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 18277 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "STAGE_BEST": {
+      "title": "Best ‘registry’ stage at diagnosis of the tumour",
+      "anyOf": [
+        {
+          "const": " 3E",
+          "title": "Stage 3"
+        },
+        {
+          "const": "0",
+          "title": "Stage 0"
+        },
+        {
+          "const": "0A",
+          "title": "Stage 0"
+        },
+        {
+          "const": "0B",
+          "title": "Stage 0"
+        },
+        {
+          "const": "0C",
+          "title": "Stage 0"
+        },
+        {
+          "const": "0IS",
+          "title": "Stage 0"
+        },
+        {
+          "const": "1",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1A",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1A1",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1A2",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1A3",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1AE",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1AES",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1AEX",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1AEXS",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1AS",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1AX",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1B",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1B1",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1B2",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1BE",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1BES",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1BEX",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1BS",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1BX",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1C",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1C1",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1C2",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1E",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1ES",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1EX",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1S",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1X",
+          "title": "Stage 1"
+        },
+        {
+          "const": "1XS",
+          "title": "Stage 1"
+        },
+        {
+          "const": "2",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2A",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2A1",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2A2",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2AE",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2AES",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2AEX",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2AS",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2AX",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2B",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2BE",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2BEX",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2BS",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2BX",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2C",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2E",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2ES",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2EX",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2S",
+          "title": "Stage 2"
+        },
+        {
+          "const": "2X",
+          "title": "Stage 2"
+        },
+        {
+          "const": "3",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3A",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3A1",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3A1i",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3A1ii",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3A2",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3AE",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3AES",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3AEX",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3AS",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3AX",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3B",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3BE",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3BES",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3BEX",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3BEXS",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3BS",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3BX",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3BXS",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3C",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3C1",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3C2",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3D",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3ES",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3EX",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3S",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3X",
+          "title": "Stage 3"
+        },
+        {
+          "const": "3XS",
+          "title": "Stage 3"
+        },
+        {
+          "const": "4",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4A",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4AE",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4AES",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4AEX",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4AEXS",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4AS",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4AX",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4AXS",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4B",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4BE",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4BES",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4BEX",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4BEXS",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4BS",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4BX",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4BXS",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4C",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4E",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4ES",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4EX",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4EXS",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4S",
+          "title": "Stage 4"
+        },
+        {
+          "const": "4X",
+          "title": "Stage 4"
+        },
+        {
+          "const": "5",
+          "title": "Outdated or invalid code"
+        },
+        {
+          "const": "6",
+          "title": "not stageable"
+        },
+        {
+          "const": "?",
+          "title": "insufficient information"
+        },
+        {
+          "const": "A",
+          "title": "RaiBinet stage"
+        },
+        {
+          "const": "B",
+          "title": "RaiBinet stage"
+        },
+        {
+          "const": "C",
+          "title": "RaiBinet stage"
+        },
+        {
+          "const": "IC3",
+          "title": "Stage 1"
+        },
+        {
+          "const": "U",
+          "title": "unstageable"
+        },
+        {
+          "const": "X",
+          "title": "not staged"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "STAGE_BEST_SYSTEM": {
+      "title": "System used to record best registry stage at diagnosis",
+      "type": "string"
+    },
+    "TUMOURCOUNT": {
+      "title": "Count of every tumour assigned to this PatientID",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "TUMOURSIZE": {
+      "title": "Size of the largest dimension of the tumour",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "T_BEST": {
+      "title": "T stage flagged by the registry as the ‘best’ T stage",
+      "anyOf": [
+        {
+          "const": "0",
+          "title": "No evidence of primary tumour"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    }
+  },
+  "required": [
+    "BEHAVIOUR_CODED",
+    "BEHAVIOUR_CODED_DESC",
+    "BEHAVIOUR_ICD10_O2",
+    "BIGTUMOURCOUNT",
+    "CODING_SYSTEM",
+    "CODING_SYSTEM_DESC",
+    "DIAGNOSISDATE1",
+    "DIAGNOSISDATE2",
+    "DIAGNOSISDATEBEST",
+    "DUKES",
+    "ER_SCORE",
+    "ER_STATUS",
+    "FIGO",
+    "GLEASON_COMBINED",
+    "GLEASON_PRIMARY",
+    "GLEASON_SECONDARY",
+    "GLEASON_TERTIARY",
+    "GRADE",
+    "HER2_STATUS",
+    "HISTOLOGY_CODED",
+    "HISTOLOGY_CODED_DESC",
+    "IMD_QUINTILE",
+    "LATERALITY",
+    "MORPH_CODED",
+    "MORPH_ICD10_O2",
+    "M_BEST",
+    "NODESEXCISED",
+    "NODESINVOLVED",
+    "NPI",
+    "N_BEST",
+    "PID",
+    "PR_SCORE",
+    "PR_STATUS",
+    "PSEUDONYMISED_TUMOURID",
+    "ROW_ID",
+    "SCREENDETECTED",
+    "SCREENINGSTATUSCOSD_CODE",
+    "SCREENINGSTATUSCOSD_NAME",
+    "SCREENINGSTATUSFULL_CODE",
+    "SCREENINGSTATUSFULL_NAME",
+    "SITE_CODED",
+    "SITE_CODED_3CHAR",
+    "SITE_CODED_DESC",
+    "SITE_ICD10_O2",
+    "STAGE_BEST",
+    "STAGE_BEST_SYSTEM",
+    "TUMOURCOUNT",
+    "TUMOURSIZE",
+    "T_BEST"
+  ]
+}

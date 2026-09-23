@@ -1,0 +1,38 @@
+[
+  {
+    "ID": "TOYGCO0001",
+    "PID": "TOY0002",
+    "COUNTRY_AT_REG": "E92000009",
+    "REGION_AT_REG": "TLC"
+  },
+  {
+    "ID": "TOYGCO0001",
+    "PID": "TOY0002",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLZ"
+  },
+  {
+    "ID": "TOYGCO0001",
+    "PID": "TOY0002",
+    "COUNTRY_AT_REG": 12345,
+    "REGION_AT_REG": "TLC"
+  },
+  {
+    "ID": 7,
+    "PID": "TOY0002",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLC"
+  },
+  {
+    "ID": "TOYGCO0001",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLC"
+  },
+  {
+    "ID": "TOYGCO0001",
+    "PID": "TOY0002",
+    "COUNTRY_AT_REG": "E92000001",
+    "REGION_AT_REG": "TLC",
+    "SHOE_SIZE": 7
+  }
+]

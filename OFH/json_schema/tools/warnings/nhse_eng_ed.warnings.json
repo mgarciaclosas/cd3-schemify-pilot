@@ -1,0 +1,2052 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/nhse_eng_ed.warnings.json",
+  "title": "Our Future Health — Linked health records data — Emergency department (ED) — warning checks",
+  "description": "Non-blocking checks for the nhse_eng_ed table, from rules the source does not state but the steward asked to have checked (D122). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning R200: INVEST_01 is not recorded but the next slot INVEST_02 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_01"
+          ],
+          "properties": {
+            "INVEST_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_02 is not recorded but the next slot INVEST_03 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_02"
+          ],
+          "properties": {
+            "INVEST_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_03 is not recorded but the next slot INVEST_04 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_03"
+          ],
+          "properties": {
+            "INVEST_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_04 is not recorded but the next slot INVEST_05 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_04"
+          ],
+          "properties": {
+            "INVEST_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_05 is not recorded but the next slot INVEST_06 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_05"
+          ],
+          "properties": {
+            "INVEST_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_06 is not recorded but the next slot INVEST_07 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_06"
+          ],
+          "properties": {
+            "INVEST_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_07 is not recorded but the next slot INVEST_08 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_07"
+          ],
+          "properties": {
+            "INVEST_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_08 is not recorded but the next slot INVEST_09 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_08"
+          ],
+          "properties": {
+            "INVEST_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_09 is not recorded but the next slot INVEST_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_09"
+          ],
+          "properties": {
+            "INVEST_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_10 is not recorded but the next slot INVEST_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_10"
+          ],
+          "properties": {
+            "INVEST_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST_11 is not recorded but the next slot INVEST_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST_11"
+          ],
+          "properties": {
+            "INVEST_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_01 is not recorded but the next slot TREAT_02 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_01"
+          ],
+          "properties": {
+            "TREAT_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_02 is not recorded but the next slot TREAT_03 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_02"
+          ],
+          "properties": {
+            "TREAT_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_03 is not recorded but the next slot TREAT_04 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_03"
+          ],
+          "properties": {
+            "TREAT_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_04 is not recorded but the next slot TREAT_05 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_04"
+          ],
+          "properties": {
+            "TREAT_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_05 is not recorded but the next slot TREAT_06 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_05"
+          ],
+          "properties": {
+            "TREAT_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_06 is not recorded but the next slot TREAT_07 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_06"
+          ],
+          "properties": {
+            "TREAT_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_07 is not recorded but the next slot TREAT_08 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_07"
+          ],
+          "properties": {
+            "TREAT_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_08 is not recorded but the next slot TREAT_09 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_08"
+          ],
+          "properties": {
+            "TREAT_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_09 is not recorded but the next slot TREAT_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_09"
+          ],
+          "properties": {
+            "TREAT_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_10 is not recorded but the next slot TREAT_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_10"
+          ],
+          "properties": {
+            "TREAT_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: TREAT_11 is not recorded but the next slot TREAT_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "TREAT_11"
+          ],
+          "properties": {
+            "TREAT_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "TREAT_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_01 is not recorded but the next slot DIAGS_02 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_01"
+          ],
+          "properties": {
+            "DIAGS_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_02 is not recorded but the next slot DIAGS_03 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_02"
+          ],
+          "properties": {
+            "DIAGS_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_03 is not recorded but the next slot DIAGS_04 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_03"
+          ],
+          "properties": {
+            "DIAGS_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_04 is not recorded but the next slot DIAGS_05 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_04"
+          ],
+          "properties": {
+            "DIAGS_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_05 is not recorded but the next slot DIAGS_06 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_05"
+          ],
+          "properties": {
+            "DIAGS_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_06 is not recorded but the next slot DIAGS_07 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_06"
+          ],
+          "properties": {
+            "DIAGS_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_07 is not recorded but the next slot DIAGS_08 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_07"
+          ],
+          "properties": {
+            "DIAGS_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_08 is not recorded but the next slot DIAGS_09 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_08"
+          ],
+          "properties": {
+            "DIAGS_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_09 is not recorded but the next slot DIAGS_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_09"
+          ],
+          "properties": {
+            "DIAGS_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_10 is not recorded but the next slot DIAGS_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_10"
+          ],
+          "properties": {
+            "DIAGS_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGS_11 is not recorded but the next slot DIAGS_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGS_11"
+          ],
+          "properties": {
+            "DIAGS_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_01 is not recorded but the next slot DIAGA_02 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_01"
+          ],
+          "properties": {
+            "DIAGA_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_02 is not recorded but the next slot DIAGA_03 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_02"
+          ],
+          "properties": {
+            "DIAGA_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_03 is not recorded but the next slot DIAGA_04 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_03"
+          ],
+          "properties": {
+            "DIAGA_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_04 is not recorded but the next slot DIAGA_05 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_04"
+          ],
+          "properties": {
+            "DIAGA_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_05 is not recorded but the next slot DIAGA_06 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_05"
+          ],
+          "properties": {
+            "DIAGA_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_06 is not recorded but the next slot DIAGA_07 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_06"
+          ],
+          "properties": {
+            "DIAGA_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_07 is not recorded but the next slot DIAGA_08 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_07"
+          ],
+          "properties": {
+            "DIAGA_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_08 is not recorded but the next slot DIAGA_09 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_08"
+          ],
+          "properties": {
+            "DIAGA_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_09 is not recorded but the next slot DIAGA_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_09"
+          ],
+          "properties": {
+            "DIAGA_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_10 is not recorded but the next slot DIAGA_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_10"
+          ],
+          "properties": {
+            "DIAGA_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAGA_11 is not recorded but the next slot DIAGA_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAGA_11"
+          ],
+          "properties": {
+            "DIAGA_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_01 is not recorded but the next slot DIAG_02 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_01"
+          ],
+          "properties": {
+            "DIAG_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_02 is not recorded but the next slot DIAG_03 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_02"
+          ],
+          "properties": {
+            "DIAG_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_03 is not recorded but the next slot DIAG_04 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_03"
+          ],
+          "properties": {
+            "DIAG_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_04 is not recorded but the next slot DIAG_05 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_04"
+          ],
+          "properties": {
+            "DIAG_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_05 is not recorded but the next slot DIAG_06 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_05"
+          ],
+          "properties": {
+            "DIAG_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_06 is not recorded but the next slot DIAG_07 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_06"
+          ],
+          "properties": {
+            "DIAG_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_07 is not recorded but the next slot DIAG_08 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_07"
+          ],
+          "properties": {
+            "DIAG_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_08 is not recorded but the next slot DIAG_09 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_08"
+          ],
+          "properties": {
+            "DIAG_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_09 is not recorded but the next slot DIAG_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_09"
+          ],
+          "properties": {
+            "DIAG_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_10 is not recorded but the next slot DIAG_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_10"
+          ],
+          "properties": {
+            "DIAG_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: DIAG_11 is not recorded but the next slot DIAG_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "DIAG_11"
+          ],
+          "properties": {
+            "DIAG_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAG_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_01 is not recorded but the next slot INVEST2_02 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_01"
+          ],
+          "properties": {
+            "INVEST2_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_02 is not recorded but the next slot INVEST2_03 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_02"
+          ],
+          "properties": {
+            "INVEST2_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_03 is not recorded but the next slot INVEST2_04 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_03"
+          ],
+          "properties": {
+            "INVEST2_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_04 is not recorded but the next slot INVEST2_05 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_04"
+          ],
+          "properties": {
+            "INVEST2_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_05 is not recorded but the next slot INVEST2_06 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_05"
+          ],
+          "properties": {
+            "INVEST2_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_06 is not recorded but the next slot INVEST2_07 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_06"
+          ],
+          "properties": {
+            "INVEST2_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_07 is not recorded but the next slot INVEST2_08 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_07"
+          ],
+          "properties": {
+            "INVEST2_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_08 is not recorded but the next slot INVEST2_09 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_08"
+          ],
+          "properties": {
+            "INVEST2_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_09 is not recorded but the next slot INVEST2_10 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_09"
+          ],
+          "properties": {
+            "INVEST2_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_10 is not recorded but the next slot INVEST2_11 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_10"
+          ],
+          "properties": {
+            "INVEST2_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R200: INVEST2_11 is not recorded but the next slot INVEST2_12 is; numbered slots are filled in order, so a gap may point to a data problem.",
+        "if": {
+          "required": [
+            "INVEST2_11"
+          ],
+          "properties": {
+            "INVEST2_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_01 is not recorded but its detail column DIAGA_01 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_01"
+          ],
+          "properties": {
+            "DIAG_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_01": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_02 is not recorded but its detail column DIAGA_02 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_02"
+          ],
+          "properties": {
+            "DIAG_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_03 is not recorded but its detail column DIAGA_03 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_03"
+          ],
+          "properties": {
+            "DIAG_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_04 is not recorded but its detail column DIAGA_04 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_04"
+          ],
+          "properties": {
+            "DIAG_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_05 is not recorded but its detail column DIAGA_05 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_05"
+          ],
+          "properties": {
+            "DIAG_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_06 is not recorded but its detail column DIAGA_06 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_06"
+          ],
+          "properties": {
+            "DIAG_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_07 is not recorded but its detail column DIAGA_07 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_07"
+          ],
+          "properties": {
+            "DIAG_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_08 is not recorded but its detail column DIAGA_08 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_08"
+          ],
+          "properties": {
+            "DIAG_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_09 is not recorded but its detail column DIAGA_09 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_09"
+          ],
+          "properties": {
+            "DIAG_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_10 is not recorded but its detail column DIAGA_10 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_10"
+          ],
+          "properties": {
+            "DIAG_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_11 is not recorded but its detail column DIAGA_11 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_11"
+          ],
+          "properties": {
+            "DIAG_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_12 is not recorded but its detail column DIAGA_12 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_12"
+          ],
+          "properties": {
+            "DIAG_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGA_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_01 is not recorded but its detail column DIAGS_01 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_01"
+          ],
+          "properties": {
+            "DIAG_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_01": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_02 is not recorded but its detail column DIAGS_02 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_02"
+          ],
+          "properties": {
+            "DIAG_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_03 is not recorded but its detail column DIAGS_03 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_03"
+          ],
+          "properties": {
+            "DIAG_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_04 is not recorded but its detail column DIAGS_04 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_04"
+          ],
+          "properties": {
+            "DIAG_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_05 is not recorded but its detail column DIAGS_05 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_05"
+          ],
+          "properties": {
+            "DIAG_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_06 is not recorded but its detail column DIAGS_06 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_06"
+          ],
+          "properties": {
+            "DIAG_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_07 is not recorded but its detail column DIAGS_07 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_07"
+          ],
+          "properties": {
+            "DIAG_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_08 is not recorded but its detail column DIAGS_08 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_08"
+          ],
+          "properties": {
+            "DIAG_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_09 is not recorded but its detail column DIAGS_09 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_09"
+          ],
+          "properties": {
+            "DIAG_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_10 is not recorded but its detail column DIAGS_10 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_10"
+          ],
+          "properties": {
+            "DIAG_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_11 is not recorded but its detail column DIAGS_11 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_11"
+          ],
+          "properties": {
+            "DIAG_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R201: DIAG_12 is not recorded but its detail column DIAGS_12 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "DIAG_12"
+          ],
+          "properties": {
+            "DIAG_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "DIAGS_12": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_01 is not recorded but its detail column INVEST2_01 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_01"
+          ],
+          "properties": {
+            "INVEST_01": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_01": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_02 is not recorded but its detail column INVEST2_02 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_02"
+          ],
+          "properties": {
+            "INVEST_02": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_02": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_03 is not recorded but its detail column INVEST2_03 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_03"
+          ],
+          "properties": {
+            "INVEST_03": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_03": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_04 is not recorded but its detail column INVEST2_04 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_04"
+          ],
+          "properties": {
+            "INVEST_04": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_04": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_05 is not recorded but its detail column INVEST2_05 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_05"
+          ],
+          "properties": {
+            "INVEST_05": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_05": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_06 is not recorded but its detail column INVEST2_06 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_06"
+          ],
+          "properties": {
+            "INVEST_06": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_06": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_07 is not recorded but its detail column INVEST2_07 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_07"
+          ],
+          "properties": {
+            "INVEST_07": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_07": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_08 is not recorded but its detail column INVEST2_08 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_08"
+          ],
+          "properties": {
+            "INVEST_08": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_08": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_09 is not recorded but its detail column INVEST2_09 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_09"
+          ],
+          "properties": {
+            "INVEST_09": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_09": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_10 is not recorded but its detail column INVEST2_10 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_10"
+          ],
+          "properties": {
+            "INVEST_10": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_10": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_11 is not recorded but its detail column INVEST2_11 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_11"
+          ],
+          "properties": {
+            "INVEST_11": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_11": {
+              "const": "-998"
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Warning R202: INVEST_12 is not recorded but its detail column INVEST2_12 is; a detail should be blank when its main column is blank.",
+        "if": {
+          "required": [
+            "INVEST_12"
+          ],
+          "properties": {
+            "INVEST_12": {
+              "const": "-998"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "INVEST2_12": {
+              "const": "-998"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

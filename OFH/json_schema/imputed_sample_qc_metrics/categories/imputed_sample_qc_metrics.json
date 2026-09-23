@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/imputed_sample_qc_metrics/categories/imputed_sample_qc_metrics.json",
+  "title": "Imputed genotype data — Sample QC metrics",
+  "description": "One element is one participant's sample quality-control record from the imputed genotype data (file ofh_imputed_sample_qc_metrics.v6.tsv).",
+  "type": "object",
+  "x-variable-group": "imputed_sample_qc_metrics",
+  "properties": {
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "plate": {
+      "title": "Plate",
+      "description": "Identifier of the microwell plate of the sample",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "genetic_sex": {
+      "title": "Genetic sex",
+      "description": "Estimated genetic sex of the sample calculated by Eurofins",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "The source lists no values for this column in this file, so none are asserted; the same-named column in the genotype array file does list values (D126)."
+    },
+    "batch": {
+      "title": "Batch",
+      "description": "Identifier of the batch based on the date of genotype calling and the microwell plate identifier",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "array_manifest_version": {
+      "title": "Array manifest version",
+      "description": "Version of array manifest used to call samples",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "The source lists no values for this column in this file, so none are asserted; the same-named column in the genotype array file does list values (D126)."
+    },
+    "imputation_group": {
+      "title": "Imputation group",
+      "description": "Identifier of the imputation group of the sample",
+      "anyOf": [
+        {
+          "type": "string",
+          "not": {
+            "const": "-998"
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    }
+  },
+  "required": [
+    "PID",
+    "plate",
+    "genetic_sex",
+    "batch",
+    "array_manifest_version",
+    "imputation_group"
+  ]
+}

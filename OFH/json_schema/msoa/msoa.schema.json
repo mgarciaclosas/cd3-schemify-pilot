@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/msoa/msoa.schema.json",
+  "title": "Our Future Health — Participant geographies data — MSOA",
+  "description": "Array of Our Future Health participant geography records. One element is one participant living in England or Wales: their Middle Super Output Area (MSOA) at the time of registration.",
+  "$comment": "Standard JSON Schema cannot enforce that ID is unique across rows, or that every PID exists in the participant table (D090). Whether a geography code is one of the source's listed codes is not checked (D098).",
+  "type": "array",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "title": "MSOA record",
+    "allOf": [
+      {
+        "$ref": "categories/msoa.json"
+      }
+    ],
+    "unevaluatedProperties": false
+  }
+}

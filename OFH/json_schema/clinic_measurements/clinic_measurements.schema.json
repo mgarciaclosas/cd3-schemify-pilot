@@ -1,0 +1,596 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/clinic_measurements/clinic_measurements.schema.json",
+  "title": "Our Future Health — Clinic measurements data",
+  "description": "Array of Our Future Health clinic appointment records. One element is one clinic appointment: clinic measurements data.",
+  "$comment": "Standard JSON Schema cannot enforce that ID is unique across rows, or that every PID exists in the participant table (D090).",
+  "type": "array",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "title": "Clinic measurements data record",
+    "allOf": [
+      {
+        "$ref": "categories/clinic_measurements.json"
+      },
+      {
+        "$comment": "Skip pattern R175: a participant who skipped the height has no recorded measurement. Implied by the dictionary text 'Indicator of whether the participant skipped the height measurement' and 'Reason given for skipping the height measurement' (D089).",
+        "if": {
+          "required": [
+            "HEIGHT_SKIPPED"
+          ],
+          "properties": {
+            "HEIGHT_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEIGHT": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R175: a participant who did not skip the height has a recorded measurement, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the height measurement' and 'Reason given for skipping the height measurement' (D089).",
+        "if": {
+          "required": [
+            "HEIGHT_SKIPPED"
+          ],
+          "properties": {
+            "HEIGHT_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEIGHT": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R176: a participant who did not skip the height has no reason for skipping. Implied by the dictionary text 'Indicator of whether the participant skipped the height measurement' and 'Reason given for skipping the height measurement' (D089).",
+        "if": {
+          "required": [
+            "HEIGHT_SKIPPED"
+          ],
+          "properties": {
+            "HEIGHT_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEIGHT_SKIPPED_REASON": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R176: a participant who skipped the height gave a reason, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the height measurement' and 'Reason given for skipping the height measurement' (D089).",
+        "if": {
+          "required": [
+            "HEIGHT_SKIPPED"
+          ],
+          "properties": {
+            "HEIGHT_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEIGHT_SKIPPED_REASON": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R177: a participant who skipped the weight has no recorded measurement. Implied by the dictionary text 'Indicator of whether the participant skipped the weight measurement' and 'Reason given for skipping the weight measurement' (D089).",
+        "if": {
+          "required": [
+            "WEIGHT_SKIPPED"
+          ],
+          "properties": {
+            "WEIGHT_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "WEIGHT": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R177: a participant who did not skip the weight has a recorded measurement, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the weight measurement' and 'Reason given for skipping the weight measurement' (D089).",
+        "if": {
+          "required": [
+            "WEIGHT_SKIPPED"
+          ],
+          "properties": {
+            "WEIGHT_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "WEIGHT": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R178: a participant who did not skip the weight has no reason for skipping. Implied by the dictionary text 'Indicator of whether the participant skipped the weight measurement' and 'Reason given for skipping the weight measurement' (D089).",
+        "if": {
+          "required": [
+            "WEIGHT_SKIPPED"
+          ],
+          "properties": {
+            "WEIGHT_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "WEIGHT_SKIPPED_REASON": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R178: a participant who skipped the weight gave a reason, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the weight measurement' and 'Reason given for skipping the weight measurement' (D089).",
+        "if": {
+          "required": [
+            "WEIGHT_SKIPPED"
+          ],
+          "properties": {
+            "WEIGHT_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "WEIGHT_SKIPPED_REASON": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R179: a participant who skipped the waist circumference has no recorded measurement. Implied by the dictionary text 'Indicator of whether the participant skipped the waist circumference measurement' and 'Reason given for skipping the waist circumference measurement' (D089).",
+        "if": {
+          "required": [
+            "WAIST_SKIPPED"
+          ],
+          "properties": {
+            "WAIST_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "WAIST": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R179: a participant who did not skip the waist circumference has a recorded measurement, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the waist circumference measurement' and 'Reason given for skipping the waist circumference measurement' (D089).",
+        "if": {
+          "required": [
+            "WAIST_SKIPPED"
+          ],
+          "properties": {
+            "WAIST_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "WAIST": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R180: a participant who did not skip the waist circumference has no reason for skipping. Implied by the dictionary text 'Indicator of whether the participant skipped the waist circumference measurement' and 'Reason given for skipping the waist circumference measurement' (D089).",
+        "if": {
+          "required": [
+            "WAIST_SKIPPED"
+          ],
+          "properties": {
+            "WAIST_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "WAIST_SKIPPED_REASON": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R180: a participant who skipped the waist circumference gave a reason, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the waist circumference measurement' and 'Reason given for skipping the waist circumference measurement' (D089).",
+        "if": {
+          "required": [
+            "WAIST_SKIPPED"
+          ],
+          "properties": {
+            "WAIST_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "WAIST_SKIPPED_REASON": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R181: a participant who skipped the first set of heart measurements has no recorded measurement. Implied by the dictionary text 'Indicator of whether the participant skipped the first set of heart measurements' and 'Reason given for skipping the first set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_FIRST_SKIPPED"
+          ],
+          "properties": {
+            "HEART_FIRST_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_FIRST_RATE": {
+              "const": -998
+            },
+            "HEART_FIRST_BP_SYSTOLIC": {
+              "const": -998
+            },
+            "HEART_FIRST_BP_DIASTOLIC": {
+              "const": -998
+            },
+            "HEART_FIRST_RHYTHM": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R181: a participant who did not skip the first set of heart measurements has a recorded measurement, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the first set of heart measurements' and 'Reason given for skipping the first set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_FIRST_SKIPPED"
+          ],
+          "properties": {
+            "HEART_FIRST_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_FIRST_RATE": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HEART_FIRST_BP_SYSTOLIC": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HEART_FIRST_BP_DIASTOLIC": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HEART_FIRST_RHYTHM": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R182: a participant who did not skip the first set of heart measurements has no reason for skipping. Implied by the dictionary text 'Indicator of whether the participant skipped the first set of heart measurements' and 'Reason given for skipping the first set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_FIRST_SKIPPED"
+          ],
+          "properties": {
+            "HEART_FIRST_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_FIRST_SKIPPED_REASON": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R182: a participant who skipped the first set of heart measurements gave a reason, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the first set of heart measurements' and 'Reason given for skipping the first set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_FIRST_SKIPPED"
+          ],
+          "properties": {
+            "HEART_FIRST_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_FIRST_SKIPPED_REASON": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R183: a participant who skipped the second set of heart measurements has no recorded measurement. Implied by the dictionary text 'Indicator of whether the participant skipped the second set of heart measurements' and 'Reason given for skipping the second set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_SECOND_SKIPPED"
+          ],
+          "properties": {
+            "HEART_SECOND_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_SECOND_RATE": {
+              "const": -998
+            },
+            "HEART_SECOND_BP_SYSTOLIC": {
+              "const": -998
+            },
+            "HEART_SECOND_BP_DIASTOLIC": {
+              "const": -998
+            },
+            "HEART_SECOND_RHYTHM": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R183: a participant who did not skip the second set of heart measurements has a recorded measurement, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the second set of heart measurements' and 'Reason given for skipping the second set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_SECOND_SKIPPED"
+          ],
+          "properties": {
+            "HEART_SECOND_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_SECOND_RATE": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HEART_SECOND_BP_SYSTOLIC": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HEART_SECOND_BP_DIASTOLIC": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HEART_SECOND_RHYTHM": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R184: a participant who did not skip the second set of heart measurements has no reason for skipping. Implied by the dictionary text 'Indicator of whether the participant skipped the second set of heart measurements' and 'Reason given for skipping the second set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_SECOND_SKIPPED"
+          ],
+          "properties": {
+            "HEART_SECOND_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_SECOND_SKIPPED_REASON": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R184: a participant who skipped the second set of heart measurements gave a reason, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the second set of heart measurements' and 'Reason given for skipping the second set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_SECOND_SKIPPED"
+          ],
+          "properties": {
+            "HEART_SECOND_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_SECOND_SKIPPED_REASON": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R185: a participant who skipped the third set of heart measurements has no recorded measurement. Implied by the dictionary text 'Indicator of whether the participant skipped the third set of heart measurements. Only participants with abnormal readings to the first and second measurements are offered a third measurement' and 'Reason given for skipping the third set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_THIRD_SKIPPED"
+          ],
+          "properties": {
+            "HEART_THIRD_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_THIRD_RATE": {
+              "const": -998
+            },
+            "HEART_THIRD_BP_SYSTOLIC": {
+              "const": -998
+            },
+            "HEART_THIRD_BP_DIASTOLIC": {
+              "const": -998
+            },
+            "HEART_THIRD_RHYTHM": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R185: a participant who did not skip the third set of heart measurements has a recorded measurement, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the third set of heart measurements. Only participants with abnormal readings to the first and second measurements are offered a third measurement' and 'Reason given for skipping the third set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_THIRD_SKIPPED"
+          ],
+          "properties": {
+            "HEART_THIRD_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_THIRD_RATE": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HEART_THIRD_BP_SYSTOLIC": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HEART_THIRD_BP_DIASTOLIC": {
+              "not": {
+                "const": -998
+              }
+            },
+            "HEART_THIRD_RHYTHM": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Skip pattern R186: a participant who did not skip the third set of heart measurements has no reason for skipping. Implied by the dictionary text 'Indicator of whether the participant skipped the third set of heart measurements. Only participants with abnormal readings to the first and second measurements are offered a third measurement' and 'Reason given for skipping the third set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_THIRD_SKIPPED"
+          ],
+          "properties": {
+            "HEART_THIRD_SKIPPED": {
+              "const": 0
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_THIRD_SKIPPED_REASON": {
+              "const": -998
+            }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability R186: a participant who skipped the third set of heart measurements gave a reason, so it is never the not-recorded code. Implied by the dictionary text 'Indicator of whether the participant skipped the third set of heart measurements. Only participants with abnormal readings to the first and second measurements are offered a third measurement' and 'Reason given for skipping the third set of heart measurements' (D089).",
+        "if": {
+          "required": [
+            "HEART_THIRD_SKIPPED"
+          ],
+          "properties": {
+            "HEART_THIRD_SKIPPED": {
+              "const": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "HEART_THIRD_SKIPPED_REASON": {
+              "not": {
+                "const": -998
+              }
+            }
+          }
+        }
+      }
+    ],
+    "unevaluatedProperties": false
+  }
+}

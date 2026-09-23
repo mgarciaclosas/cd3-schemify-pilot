@@ -1,0 +1,90 @@
+[
+  {
+    "BASISOFDIAGNOSIS": "ZZZ-NOT-A-CODE",
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": "001",
+    "GRADE": "&",
+    "LATERALITY": "&",
+    "PID": "TOY0001",
+    "ROW_ID": "TOYROW0001",
+    "SCREENINGSTATUS": "&",
+    "STAGE": "&"
+  },
+  {
+    "BASISOFDIAGNOSIS": 1,
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": "001",
+    "GRADE": "&",
+    "LATERALITY": "&",
+    "PID": "TOY0001",
+    "ROW_ID": "TOYROW0001",
+    "SCREENINGSTATUS": "&",
+    "STAGE": "&"
+  },
+  {
+    "BASISOFDIAGNOSIS": "&",
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": "not a code!",
+    "GRADE": "&",
+    "LATERALITY": "&",
+    "PID": "TOY0001",
+    "ROW_ID": "TOYROW0001",
+    "SCREENINGSTATUS": "&",
+    "STAGE": "&"
+  },
+  {
+    "BASISOFDIAGNOSIS": "&",
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": 12345,
+    "GRADE": "&",
+    "LATERALITY": "&",
+    "PID": "TOY0001",
+    "ROW_ID": "TOYROW0001",
+    "SCREENINGSTATUS": "&",
+    "STAGE": "&"
+  },
+  {
+    "BASISOFDIAGNOSIS": "&",
+    "DIAGNOSISDATEBEST": 12345,
+    "DIAGNOSIS_SITE_CODE": "001",
+    "GRADE": "&",
+    "LATERALITY": "&",
+    "PID": "TOY0001",
+    "ROW_ID": "TOYROW0001",
+    "SCREENINGSTATUS": "&",
+    "STAGE": "&"
+  },
+  {
+    "BASISOFDIAGNOSIS": "&",
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": "001",
+    "GRADE": "&",
+    "LATERALITY": "&",
+    "PID": "TOY0001",
+    "ROW_ID": 7,
+    "SCREENINGSTATUS": "&",
+    "STAGE": "&"
+  },
+  {
+    "BASISOFDIAGNOSIS": "&",
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": "001",
+    "GRADE": "&",
+    "LATERALITY": "&",
+    "ROW_ID": "TOYROW0001",
+    "SCREENINGSTATUS": "&",
+    "STAGE": "&"
+  },
+  {
+    "BASISOFDIAGNOSIS": "&",
+    "DIAGNOSISDATEBEST": "2020-01-15",
+    "DIAGNOSIS_SITE_CODE": "001",
+    "GRADE": "&",
+    "LATERALITY": "&",
+    "PID": "TOY0001",
+    "ROW_ID": "TOYROW0001",
+    "SCREENINGSTATUS": "&",
+    "STAGE": "&",
+    "SHOE_SIZE": 7
+  }
+]

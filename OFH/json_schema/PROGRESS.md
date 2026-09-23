@@ -1,73 +1,125 @@
-# CD3 pilot — Our Future Health (participant + questionnaire) — conversion progress
+# Our Future Health (OFH) — conversion progress
 
-package: CD3_Schemify_Pilot/OFH/json_schema · started: 2026-08-21
-grain: Two tables, two grains. participant: one element is one participant's core registration/consent/birth/blood-sample/demographic record. questionnaire: one element is one submitted questionnaire response (a participant may have more than one).
-dictionary: our_future_health_data_dictionary_v14.xlsx + our_future_health_codings_v14.xlsx (participant and questionnaire sheets) — full inventory in SOURCES.md
+package: CD3_Schemify_Pilot/OFH/json_schema · started: 2026-09-19 · 26 tables planned (all 26 scaffolded)
+grain: participant · questionnaire response · clinic appointment · linked-record event — per table, see D001
+dictionary: our_future_health_data_dictionary_v14.xlsx + our_future_health_codings_v14.xlsx + Baseline Questionnaire Logic v2.2.xlsx (1038 variables) — full inventory in SOURCES.md
+
+## Tables
+
+The tables follow the dictionary's own entities. Participant geographies data holds four lookup tables and Linked health records data holds eleven NHS-linked tables.
+
+Order of work: participant → questionnaire (section by section) → clinic measurements → POCT lipid profile → participant geographies → linked health records → genetic data. Lifestyle (117 variables) and Medical history (128) are large; they may be converted in slices over several sittings and reach `drafted` only when every slice is in.
 
 ## How to continue
 
-This conversion runs over several sittings. To continue: open a fresh agent
-session in this package's directory and invoke the skill again.
+This conversion runs over several sittings — an agent session can hold only so
+much at once, so the work is planned in units that each fit one session. Nothing
+is lost between sittings: this file is the memory.
 
-This is one of three sibling CD3 pilots (BGS, OFH, MWS — see `../../`
-for the others). Scope for this pilot is `participant` (14 properties) +
-`questionnaire` (359 properties, all 6 of its source sections) — OFH's data
-dictionary has 5 more domains (`clinic_measurements`, `poct_lipid_profile`,
-`participant_geographies`, `linked_nhse_health_records`, `genetic_data`), not
-converted here; two of those (`linked_nhse_health_records` at 569 vars /
-328,833 coding rows, and `genetic_data`) are likely impractical for the same
-treatment without a different strategy for their coding tables.
+To continue at any time: open a fresh agent session in the CD3 folder and invoke
+the skill again, pointing it at `Harmonization/CD3_Schemify_Pilot/OFH/json_schema`.
+The agent reads this file and proposes the next unit. You can also ask for
+anything directly — a specific category, a change, a question, the final review.
 
 ## Conventions
 
-- sentinels are source-adopted, not agent-invented, for the fields that have
-  one: prefer_not_to_answer (-3), dont_know (-1, questionnaire only),
-  none_of_the_above (-7, questionnaire only, substantive not missingness),
-  suppressed (-999, disclosure control) · D001, D007
-- 352 of 353 coded questionnaire fields carry at least one of the four known
-  sentinels; only SKIP_PHQ9_GAD7_1_1 has none (left required) · D007
-- Important: -999 means something different here than in the sibling BGS
-  package (there, it's agent-decided generic missingness) — packages are
-  independent, this is expected, not a bug · D001
-- questionnaire is a second table, not folded into participant — genuinely
-  different grain, confirmed via the source's own relational metadata · D006
-- 134 of 353 questionnaire fields (is_multi_select=yes) have an unresolved
-  shape ambiguity — flagged per-field and as a package-level open item, not
-  guessed at · D008. Real, significant: affects over a third of the table.
-- height/weight fields have an unresolved unit ambiguity (paired unit-selector
-  fields) · D009. SUBMISSION_DATE format assumed ISO 8601 · D010.
-- $id base: https://schemas.example.org/cd3-ofh-pilot/ (replace before publishing)
-- title separator: — (em dash) · formatting: 2-space, one key per line
-- real data: none in this repo; toy fixtures authored from the source's stated
-  codes and an agent-decided plausibility range for uncoded numeric fields · D003
+- sentinels: -3 prefer not to answer · -1 do not know · -4 do not remember · -999 suppressed (all adopted from the source's own codings); -7 "None of the above" and -10 "Less than …" are substantive answers, not sentinels · D003, D016
+- $id base: https://schemas.example.org/cd3-ofh-pilot/ (replace before publishing) · D016
+- grain: see header · title separator: — (em dash) · formatting: 2-space, one key per line · titles in sentence case, files in snake_case · D015, D016
+- real data: none in repo; lives in the provider's Trusted Research Environment, never read · D004
+- routing: full · D006
+- structural not-applicable cell content: unknown until D008 is answered; no rule is encoded before that · D008
+- link keys: folded into each table's first category · D018
+- warnings: checks the source does not state but the steward accepted run as warnings, never rejections, from tools/warnings/<table>.warnings.json with tools/warn.py; the register marks them not-enforceable with a note · D122
+- page order: manifest.json `tables` lists the reading order (needs the local render.py patch, which a skill update would overwrite) · D091
+- multi-select properties: array rule plus one `{const: [code], title}` branch per option so the dictionary page lists the options; regenerate from `items.oneOf` for every new multi-select, and remove if the library is fixed · D052
+- routed questions: `description` is "Shown if " + the logic file's `show_if` verbatim, added for every routed question in each new category · D053
+- titles are the dictionary's wording verbatim; no description unless the source states extra text; no coding text in `$comment` · D040, D041
 
 ## Categories
 
-| # | table | category | file | vars | status | touched |
-|---|---|---|---|---|---|---|
-| 1 | participant | Participant | participant/categories/participant.json | 14 | rendered, pending steward review | 2026-08-21 |
-| 2 | questionnaire | Questionnaire Information | questionnaire/categories/questionnaire_info.json | 4 | rendered, pending steward review | 2026-08-21 |
-| 3 | questionnaire | About You Household | questionnaire/categories/about_you_household.json | 21 | rendered, pending steward review | 2026-08-21 |
-| 4 | questionnaire | Work Education | questionnaire/categories/work_education.json | 15 | rendered, pending steward review | 2026-08-21 |
-| 5 | questionnaire | Lifestyle | questionnaire/categories/lifestyle.json | 117 | rendered, pending steward review | 2026-08-21 |
-| 6 | questionnaire | Family Health History | questionnaire/categories/family_health_history.json | 74 | rendered, pending steward review | 2026-08-21 |
-| 7 | questionnaire | Health History | questionnaire/categories/health_history.json | 128 | rendered, pending steward review | 2026-08-21 |
-
-373 properties converted total (14 participant + 359 questionnaire, both full
-scope, no subset). Remaining 5 OFH domains not started.
+| # | table | category | file | vars | source slice | status | touched |
+|---|---|---|---|---|---|---|---|
+| 1 | Participant data | Participant | `participant/categories/participant.json` | 14 | dictionary v14, entity `participant` | confirmed | 2026-09-19 |
+| 2 | Questionnaire data | Questionnaire information | `questionnaire/categories/questionnaire_information.json` | 4 | dictionary v14, entity `questionnaire` | confirmed | 2026-09-19 |
+| 3 | Questionnaire data | About you and your household | `questionnaire/categories/about_you_and_household.json` | 21 | dictionary v14, entity `questionnaire` | confirmed | 2026-09-19 |
+| 4 | Questionnaire data | Work and education | `questionnaire/categories/work_and_education.json` | 15 | dictionary v14, entity `questionnaire` | confirmed | 2026-09-19 |
+| 5 | Questionnaire data | Lifestyle | `questionnaire/categories/lifestyle.json` | 117 | dictionary v14, entity `questionnaire` | confirmed (all 4 slices, 117 of 117) | 2026-09-19 |
+| 6 | Questionnaire data | Family health history | `questionnaire/categories/family_health_history.json` | 74 | dictionary v14, entity `questionnaire` | confirmed (3 sibling rules not enforced, D074) | 2026-09-20 |
+| 7 | Questionnaire data | Medical history | `questionnaire/categories/medical_history.json` | 128 | dictionary v14, entity `questionnaire` | confirmed (all 5 slices, 128 of 128) | 2026-09-20 |
+| 8 | Clinic measurements data | Clinic measurements | `clinic_measurements/categories/clinic_measurements.json` | 34 | dictionary v14, entity `clinic_measurements` | confirmed | 2026-09-20 |
+| 9 | POCT lipid profile data | POCT lipid profile | `poct_lipid_profile/categories/poct_lipid_profile.json` | 19 | dictionary v14, entity `poct_lipid_profile` | confirmed | 2026-09-20 |
+| 10 | Participant geographies data — Country and region | Country and region | `country_region/categories/country_region.json` | 4 | dictionary v14, entity `country_region` | confirmed | 2026-09-20 |
+| 11 | Participant geographies data — LSOA | Lower layer super output areas (LSOA) | `lsoa/categories/lsoa.json` | 3 | dictionary v14, entity `lsoa` | confirmed | 2026-09-20 |
+| 12 | Participant geographies data — MSOA | Middle layer super output areas (MSOA) | `msoa/categories/msoa.json` | 3 | dictionary v14, entity `msoa` | confirmed | 2026-09-20 |
+| 13 | Participant geographies data — Intermediate zones | Intermediate zones (IZ) | `intermediate_zones/categories/intermediate_zones.json` | 3 | dictionary v14, entity `intermediate_zones` | confirmed | 2026-09-20 |
+| 14 | Linked health records data — Cancer pathways | Cancer pathways data | `nhse_eng_canpat/categories/nhse_eng_canpat.json` | 12 | dictionary v14, entity `nhse_eng_canpat` | confirmed | 2026-09-20 |
+| 15 | Linked health records data — Cancer treatment at tumour level | Cancer treatment data at tumour level | `nhse_eng_canreg_pattumour/categories/nhse_eng_canreg_pattumour.json` | 49 | dictionary v14, entity `nhse_eng_canreg_pattumour` | confirmed | 2026-09-20 |
+| 16 | Linked health records data — Cancer registry 1985–1994 | Cancer registry data (1 January 1985 to 31 December 1994) | `nhse_eng_canreg_pre1995/categories/nhse_eng_canreg_pre1995.json` | 9 | dictionary v14, entity `nhse_eng_canreg_pre1995` | confirmed | 2026-09-20 |
+| 17 | Linked health records data — Cancer treatment events | Cancer data by treatment event (from 1 January 1995) | `nhse_eng_canreg_treat/categories/nhse_eng_canreg_treat.json` | 22 | dictionary v14, entity `nhse_eng_canreg_treat` | confirmed | 2026-09-20 |
+| 18 | Linked health records data — Emergency care (ECDS) | Major A&E attendances (from 1 April 2020) | `nhse_eng_ecds/categories/nhse_eng_ecds.json` | 167 | dictionary v14, entity `nhse_eng_ecds` | confirmed | 2026-09-20 |
+| 19 | Linked health records data — Emergency department (ED) | Major A&E attendances (1 April 2007 to 31 March 2020) | `nhse_eng_ed/categories/nhse_eng_ed.json` | 91 | dictionary v14, entity `nhse_eng_ed` | confirmed | 2026-09-20 |
+| 20 | Linked health records data — Inpatient | Episodes of in-patient care | `nhse_eng_inpat/categories/nhse_eng_inpat.json` | 108 | dictionary v14, entity `nhse_eng_inpat` | confirmed | 2026-09-20 |
+| 21 | Linked health records data — Outpatient | Outpatient appointments (from 1 April 2003) | `nhse_eng_outpat/categories/nhse_eng_outpat.json` | 55 | dictionary v14, entity `nhse_eng_outpat` | confirmed | 2026-09-20 |
+| 22 | Linked health records data — Primary care medicines | Medicines dispensed in primary care (from 1 April 2018) | `nhse_eng_primcare_meds/categories/nhse_eng_primcare_meds.json` | 33 | dictionary v14, entity `nhse_eng_primcare_meds` | confirmed | 2026-09-20 |
+| 23 | Linked health records data — Deaths | Death registration and mortality data | `nhse_engwal_deaths/categories/nhse_engwal_deaths.json` | 20 | dictionary v14, entity `nhse_engwal_deaths` | confirmed | 2026-09-20 |
+| 24 | Linked health records data — NHS-linked participants | Participants linked to an NHS number | `participant_nhs_linked/categories/participant_nhs_linked.json` | 2 | dictionary v14, entity `participant_nhs_linked` | confirmed | 2026-09-20 |
+| 25 | Genotype array data — Sample QC metrics | Sample QC metrics | `genotype_sample_qc_metrics/categories/genotype_sample_qc_metrics.json` | 46 | dictionary v14, sheet `genetic_data`, entity `genotype_sample_qc_metrics` (PC1–PC40 expanded to 40 columns) | confirmed | 2026-09-20 |
+| 26 | Genotype array data — SNV VCF | SNV VCF | `snv_pvcf/categories/snv_pvcf.json` | 3 | dictionary v14, sheet `genetic_data`, entity `snv_pvcf` | confirmed | 2026-09-20 |
+| 27 | Genotype array data — SNV kinship | SNV kinship | `snv_kinship/categories/snv_kinship.json` | 5 | dictionary v14, sheet `genetic_data`, entity `snv_kinship` | confirmed | 2026-09-20 |
+| 28 | Imputed genotype data — Sample QC metrics | Sample QC metrics | `imputed_sample_qc_metrics/categories/imputed_sample_qc_metrics.json` | 6 | dictionary v14, sheet `genetic_data`, entity `imputed_sample_qc_metrics` | confirmed | 2026-09-20 |
+| 29 | Imputed genotype data — Imputed VCF | Imputed VCF | `imputed_pvcf/categories/imputed_pvcf.json` | 2 | dictionary v14, sheet `genetic_data`, entity `imputed_pvcf` | confirmed | 2026-09-20 |
+| 30 | Imputed genotype data — Variant summary statistics | Variant summary statistics | `variant_summary_statistics/categories/variant_summary_statistics.json` | 5 | dictionary v14, sheet `genetic_data`, entity `variant_summary_statistics` | rendered | 2026-09-20 |
+| 31 | Genetic ancestry data — Ancestry estimation metrics | Ancestry estimation metrics | `ancestry_estimation_metrics/categories/ancestry_estimation_metrics.json` | 27 | dictionary v14, sheet `genetic_data`, entity `ancestry_estimation_metrics` (25 region columns + PID + call) | rendered | 2026-09-20 |
 
 ## Package milestones
 
-- [x] intake: sources registered · grain confirmed for both tables · categories confirmed (1 for participant; 6 for questionnaire, taken from source's own folder_path)
-- [x] common/defs.json + both mother scaffolds validate green
-- [ ] every category confirmed by steward
-- [ ] D008 (multi-select shape) resolved — significant open item, affects >1/3 of questionnaire
-- [x] coverage audit 1:1 (373/373, scoped to participant + questionnaire)
-- [x] pages current for both tables
-- [ ] review walked · cleanup decided
-- [ ] decide whether/how to scope the remaining 5 OFH domains
+- [x] intake: sources registered · grain confirmed · categories confirmed
+- [x] common/defs.json + mother scaffold validate green (participant and questionnaire mothers only, D017)
+- [x] every category confirmed (D128)
+- [x] skip audit (ROUTING.md) — D129
+- [x] coverage audit 1:1 — 1,101/1,101; deliberate additions: PC1–PC40 and the 25 ancestry regions as columns (D124, D125)
+- [x] pages current for the whole package
+- [x] review walked (2026-09-21) · [x] cleanup decided (keep the working files)
 
 ## Session log
 
-- 2026-08-21 · intake + convert participant domain · Registered both OFH source files, confirmed single-category scope (14 vars), scaffolded package, drafted all 14 properties, discovered and adopted the source's own sentinel conventions (-3 prefer-not-to-answer, -999 suppressed) rather than inventing one, authored fixtures (20 valid rows, 6 invalid cases), rendered both pages, all validate.py checks green. · next: present to steward; decide scope for the remaining 7 OFH domains if this pilot is judged successful.
-- 2026-08-21 · add questionnaire table (all 6 sections, 359 properties) · Confirmed questionnaire is a genuinely different grain from participant (own local ID, many_to_one PID) and added as a second table per LAYOUT.md. Derived the 6-category breakdown directly from the source's own folder_path column. Scanned all 353 coded fields' coding tables at scale, found two more invariant source sentinels (dont_know -1, none_of_the_above -7) confirmed by full-table scan not sampling; 352/353 fields covered. Flagged two significant open items rather than guessing: is_multi_select's type/shape mismatch (134 fields) and height/weight unit ambiguity. Reorganised fixtures into examples/<table>/ per LAYOUT.md's multi-table convention (moved participant's fixtures, not just added questionnaire's). Caught and fixed one real bug in my own fixture-generation script (two plain-string fields were silently dropped from every row). Authored fixtures (80 valid rows, 7 invalid cases). All validate.py checks green. · next: present to steward, with D008 (multi-select ambiguity) as the highest-priority open item.
+- 2026-09-19 · intake · sources registered (3 files, 1038 variables, 173 routing rules registered, 16 not-enforceable); interview answered; categories approved with merges (D014); scaffold written and validate.py check green; method introduced · next: convert Participant (open questions D008–D010 ride its presentation message)
+- 2026-09-19 · elicit · steward: encode skip patterns (D020); logic file v2.2 = questionnaire v2 (D010); logic file states skipped fields are NULL, so D008 became D021 (in-band code -998 recommended); questionnaire versions read as v1/v2 (D019, D022) · next: convert Participant (14 variables; no routing) — D021 to be answered before the first routed category (About you and your household)
+- 2026-09-19 · convert Participant · 14 variables converted (D024–D026), toy fixtures 7 valid / 9 seeded violations all caught, dictionary and participant playground rendered, -998 `not_shown` added to defs (D021) · awaiting steward confirmation of Participant · next: convert About you and your household (10 routed rules, 21 variables) once Participant is confirmed
+- 2026-09-19 · convert About you and your household · Participant confirmed (D027); 21 variables converted, 10 quoted routing rules encoded as 18 conditionals (R001–R010, D033), 19 toy rows valid / 30 seeded violations caught, both pages rendered; questionnaire page consulted (D028–D032); register cleaned (waits-for notes name real categories, R174 added) · awaiting steward confirmation of About you and your household · next: convert Work and education (15 variables, 9 routed rules) once confirmed
+- 2026-09-19 · revise Participant, About you and your household · 19 restating descriptions removed, source wording moved into each `$comment` (D038); validate.py summary green, pages re-rendered; Participant reopened to `rendered` (D039) · next: steward re-confirms Participant and confirms About you and your household, then convert Work and education
+- 2026-09-19 · revise Participant, About you and your household · titles are now the dictionary's own wording, descriptions only for extra source text (D040, supersedes D038); validate.py summary green, pages re-rendered; Participant still reopened (D039) · next: steward re-confirms Participant and confirms About you and your household, then convert Work and education
+- 2026-09-19 · revise Participant, About you and your household · "Source coding" text removed from all property comments because the valid values already list it (D041); validate.py summary green, pages re-rendered · next: steward re-confirms Participant and confirms About you and your household, then convert Work and education (no coding text in comments from now on)
+- 2026-09-19 · convert Questionnaire information · Participant and About you and your household confirmed (D042); the plan's second category, skipped earlier, now converted: 4 keys/metadata variables, first in the questionnaire mother's reading order, fixtures extended (34 seeded violations caught), pages rendered; R174 (version-twin -998) now `proposed` awaiting D045/D046 · awaiting steward confirmation of Questionnaire information · next: convert Work and education (15 variables, 9 routed rules)
+- 2026-09-19 · elicit · steward: R174 declined (D046), QUESTIONNAIRE_VERSION values unknown (D045/D047, low priority) · next: steward confirms Questionnaire information, then convert Work and education (15 variables, 9 routed rules)
+- 2026-09-19 · convert Work and education · Questionnaire information confirmed (D048); 15 variables converted (titles are the dictionary's wording, no coding text in comments), R011 and R012 encoded as 4 conditionals over a multi-select gate (D050), fixtures extended (50 seeded violations caught, 12/12 rules fixtured), pages rendered · awaiting steward confirmation of Work and education · next: convert Lifestyle (117 variables, in slices; smoking, physical activity, alcohol, sleep and screen time)
+- 2026-09-19 · revise About you and your household, Work and education · multi-select options now show on the dictionary page (7 properties, D052); validate.py summary green (50/50 seeded violations still caught), pages re-rendered · next: steward confirms Work and education, then convert Lifestyle (start with smoking, 49 variables)
+- 2026-09-19 · revise About you and your household, Work and education · 17 routed questions now carry the logic file's show_if as their description (D053); validate.py summary green, pages re-rendered · next: steward confirms Work and education, then convert Lifestyle (start with smoking, 49 variables)
+- 2026-09-19 · convert Lifestyle, slice 1 (smoking) · Work and education confirmed (D054); 49 smoking variables converted (titles = dictionary wording, multi-select options and show_if descriptions per D052/D053, -998 permitted throughout D056), R019/R020/R021/R032 encoded as 8 conditionals, fixtures extended (68 seeded violations caught, 16/16 rules fixtured), pages rendered; R022–R031 (the nested chain) wait on D055 ("= 0" on a multi-select) · awaiting steward answer to D055 and confirmation of the smoking slice · next: skips lifestyle (R022–R031) once D055 is answered, then convert Lifestyle slice 2 (physical activity, 26)
+- 2026-09-19 · skips lifestyle (smoking) · D055 answered ("0 means cigarette" = the list includes 0); the nested chain R022–R031 encoded as 20 conditionals (D060), fixtures rebuilt (26 valid rows, 88 seeded violations caught, 26/26 rules fixtured), pages re-rendered · awaiting steward confirmation of the smoking slice · next: convert Lifestyle slice 2 (physical activity, 26 variables) once the smoking slice is confirmed
+- 2026-09-19 · convert Lifestyle, slice 2 (physical activity) · v1 questionnaire to come later from the steward (D061); 26 physical activity variables converted, R013–R018 encoded as 12 conditionals (D062–D064), properties now in dictionary row order, fixtures extended (26 valid rows, 119 seeded violations caught, 32/32 rules fixtured), pages rendered · awaiting steward confirmation of smoking and physical activity · next: convert Lifestyle slice 3 (alcohol, 26 variables)
+- 2026-09-19 · convert Lifestyle, slice 3 (alcohol) · smoking and physical activity slices confirmed (D065); 26 alcohol variables converted, R033–R038 encoded as 12 conditionals off single-select gates (D066–D067), fixtures extended (26 valid rows, 144 seeded violations caught, 38/38 rules fixtured), pages rendered · awaiting steward confirmation of the alcohol slice · next: convert Lifestyle slice 4 (sleep and screen time, 16 variables), which completes Lifestyle
+- 2026-09-19 · convert Lifestyle, slice 4 (sleep and screen time) · alcohol slice confirmed (D068); 16 variables converted with no routing (D069), completing Lifestyle (117 of 117); fixtures extended (26 valid rows, 151 seeded violations caught, 38/38 rules fixtured), pages rendered · awaiting steward confirmation of sleep and screen time (then of Lifestyle as a whole) · next: convert Family health history (74 variables; parents 48, siblings and birth 26)
+- 2026-09-20 · revise Lifestyle, About you and your household · -998 removed from 17 always-shown, twinless Lifestyle questions and -998 kept out of unbounded numeric branches (D070, supersedes D056); toy rows and 3 seeded violations updated, validate.py summary green (154 seeded violations caught), pages re-rendered · next: steward confirms sleep and screen time (and Lifestyle as a whole), then convert Family health history (74 variables)
+- 2026-09-20 · convert Family health history · Lifestyle confirmed (D071); -998 removed from always-shown twinless questions (D070); 74 variables converted (63 multi-selects), 57 rules encoded as 114 conditionals for birthplace, father, mother and siblings (D072–D075), fixtures extended (26 valid rows, 276 seeded violations caught, 95/95 rules fixtured), pages rendered; R093–R095 held on D074 (sibling anxiety/depression/eating follow-ups use group 12, parents use 11) · awaiting steward answers to D073 (bracket reading) and D074, and confirmation of Family health history · next: convert Medical history (128 variables: general health, medication, diagnoses, reproductive history, mental health)
+- 2026-09-20 · convert Medical history, slice 1 (general health) · Family health history confirmed with R093–R095 declined (D074, D076); 38 general health variables converted (5 multi-selects), R099–R104 encoded as 12 conditionals including the chest-pain chain (D077–D078), fixtures extended (26 valid rows, 299 seeded violations caught, 101/101 rules fixtured), pages rendered · awaiting steward confirmation of the general health slice · next: convert Medical history slice 2 (medication, 22 variables)
+- 2026-09-20 · convert Medical history, slice 2 (medication) · general health slice confirmed (D079); 22 medication variables converted (all multi-selects), R140–R155 encoded as 32 conditionals (D080), fixtures extended (26 valid rows, 337 seeded violations caught, 117/117 rules fixtured), pages rendered · awaiting steward confirmation of the medication slice · next: convert Medical history slice 3 (diagnoses, 21 variables)
+- 2026-09-20 · convert Medical history, slice 3 (diagnoses) · medication slice confirmed (D081); 21 diagnoses variables converted (all multi-selects), R121–R139 encoded as 38 conditionals (D082), fixtures extended (26 valid rows, 380 seeded violations caught, 136/136 rules fixtured), pages rendered · awaiting steward confirmation of the diagnoses slice · next: convert Medical history slice 4 (reproductive history: GYN_, CHILDREN_ and the SKIP_ question, 29 variables)
+- 2026-09-20 · convert Medical history, slice 4 (reproductive history) · diagnoses slice confirmed (D083); 29 variables converted (GYN_, CHILDREN_, SKIP_PHQ9_GAD7_1_1); no rules encoded because every GYN_/CHILDREN_ rule is sex-gated across tables (D011, D084); fixtures extended (26 valid rows, 390 seeded violations caught, 136/136 rules fixtured), pages rendered · awaiting steward confirmation of the reproductive history slice · next: convert Medical history slice 5 (mental health: PHQ9_ 10 and GAD7_ 8, 18 variables) and encode R156–R172, the "skip PHQ and GAD" pins to -3
+- 2026-09-20 · convert Medical history, slice 5 (mental health) · reproductive history slice confirmed (D085); 18 PHQ-9 and GAD-7 variables converted, R156–R173 encoded as 20 conditionals (16 pins to -3, two impairment questions; D086), completing Medical history (128 of 128) and the Questionnaire data table (all 359 variables); fixtures extended (26 valid rows, 418 seeded violations caught, 154/154 rules fixtured), pages rendered · awaiting steward confirmation of mental health and Medical history as a whole · next: questionnaire table wrap-up (skip audit, coverage audit, pages), then convert Clinic measurements (34 variables)
+- 2026-09-20 · convert Clinic measurements · mental health and Medical history confirmed (D087); the table's mother, category and fixtures created; 34 variables converted, `not_recorded` (-998) added to defs (D088), 12 implied skipped-measurement rules R175–R186 encoded as 24 conditionals (D089), fixtures (10 valid rows, 32 seeded violations caught, 166/166 rules fixtured), pages rendered · awaiting steward confirmation of Clinic measurements and an answer to D089's open question · next: convert POCT lipid profile (19 variables); the Questionnaire data table still needs its wrap-up (skip audit, coverage audit, pages)
+- 2026-09-20 · pages · render.py patched locally to honour manifest.json's `tables` order and manifest.json added (D091); dictionary and playground pages now list participant, questionnaire, clinic measurements in that order; render.py check and validate.py summary green · next: steward confirms Clinic measurements and answers D089, then convert POCT lipid profile (19 variables)
+- 2026-09-20 · convert POCT lipid profile · Clinic measurements confirmed, D089 left open (D092); the table's mother, category and fixtures created; 19 variables converted, 3 implied rules R187–R189 encoded as 6 conditionals (D093–D094), R190 proposed and R191 not enforceable (D095–D096), fixtures (9 valid rows, 13 seeded violations caught, 169/169 encoded rules fixtured), pages rendered · awaiting steward confirmation of POCT lipid profile and an answer to D096 · next: the participant geographies tables (country_region, lsoa, msoa, intermediate_zones, 13 variables); the Questionnaire data table still needs its wrap-up
+- 2026-09-20 · convert Participant geographies data · POCT lipid profile confirmed, D096 left open (D097); four tables (country_region, lsoa, msoa, intermediate_zones) with mothers, categories and fixtures created; 13 variables converted, long code lists checked by format only (D098), R192 (region belongs to its country) proposed (D099), fixtures 6/6 seeded violations each, pages rendered · awaiting steward confirmation of the geography tables and answers to D096 and D099 · next: Linked health records data (11 tables, 568 variables), starting with the smallest, then genetic data; the Questionnaire data table still needs its wrap-up
+- 2026-09-20 · convert Linked health records data, tables 1–3 · geography tables confirmed, D096 and D099 left open (D100); one generic builder for the linked tables; participant_nhs_linked (2), nhse_eng_canreg_pre1995 (9) and nhse_eng_canpat (12) converted with their mothers, categories and fixtures, no routing (D101–D103); `not_recorded_text` added to defs; pages rendered · awaiting steward confirmation of these three tables · next: nhse_engwal_deaths (20), nhse_eng_canreg_treat (22), nhse_eng_primcare_meds (33), nhse_eng_canreg_pattumour (49), nhse_eng_outpat (55), nhse_eng_ed (91), nhse_eng_inpat (108), nhse_eng_ecds (167, to be sliced)
+- 2026-09-20 · convert Linked health records data, tables 4–6 · first three linked tables confirmed with D101's approach (D104); nhse_engwal_deaths (20), nhse_eng_canreg_treat (22) and nhse_eng_primcare_meds (33) converted with mothers, categories and fixtures (75 variables, 537 of 1,038 in all); four routing proposals registered R193–R196, none encoded (D105–D109) · awaiting steward confirmation of these three tables and answers to D106–D109 · next: nhse_eng_canreg_pattumour (49), nhse_eng_outpat (55), then nhse_eng_ed (91), nhse_eng_inpat (108), nhse_eng_ecds (167, to be sliced), genetic data; the Questionnaire data table still needs its wrap-up
+- 2026-09-20 · convert Linked health records data, tables 7–8 · tables 4–6 confirmed (D110); a sparse-coding error found and fixed in five properties of canreg_treat and primcare_meds, so those two go back to `rendered` for a second look (D111); nhse_eng_canreg_pattumour (49) and nhse_eng_outpat (55) converted (104 variables, 641 of 1,038 in all); three more proposals R197–R199 (D112–D113), nine open in all; not-enforceable list D114 · awaiting steward confirmation of these four tables and answers to the open proposals · next: nhse_eng_ed (91), nhse_eng_inpat (108), nhse_eng_ecds (167, to be sliced), then genetic data; the Questionnaire data table still needs its wrap-up
+- 2026-09-20 · convert Linked health records data, tables 9–10 · tables 7–8 confirmed and tables 5–6 re-confirmed (D115); nhse_eng_ed (91) and nhse_eng_inpat (108) converted (199 variables, 840 of 1,038 in all) with the source's own placeholder codes kept as labelled values (D116); five more slot proposals R200–R204 (D117), fourteen open in all; unrouted NA-labelled columns noted (D118) · awaiting steward confirmation of ED and inpatient and answers to the open proposals · next: nhse_eng_ecds (167 variables), then genetic data (31); the Questionnaire data table still needs its wrap-up, and the README, skip audit and coverage audit remain
+- 2026-09-20 · convert Linked health records data, table 11 (ECDS) · ED and inpatient confirmed (D119); nhse_eng_ecds converted (167 variables, 1,007 of 1,038 in all) with long NHS definitions split into a first-sentence title and the rest as description (D121); five slot proposals R205–R209 (D120), nineteen proposals open in all · all 11 linked health records tables are now converted · awaiting steward confirmation of ECDS and an answer to the numbered-slot question · next: genetic data (31 variables, needs a table plan, D013); then the package wrap-up: Questionnaire skip audit and coverage audit, README, pages, cleanup
+- 2026-09-20 · warnings layer · steward: yes, the numbered-slot rules as warnings (D122); 431 warning checks in tools/warnings for deaths, outpatient, ED, inpatient and ECDS, tools/warn.py to run them, warning fixtures per table; the 13 slot proposals R193 and R198–R209 closed as not-enforceable-with-warning; ECDS still awaits confirmation · next: steward confirms ECDS; genetic data (31 variables, D013); then the package wrap-up
+- 2026-09-20 · convert Genetic data · ECDS confirmed (D123); the sheet's 31 rows became seven tables, two for the genotype array files that carry participant rows, two VCF field tables, one kinship pair table, one variant summary table and one ancestry table (D124), with 94 inventory rows once PC1–PC40 and the 25 regions are expanded (1,101 variables in all, 0 pending); property names follow the file headers (D125); imputed sample QC values left unasserted (D126); seven range warnings added to the warnings layer (D127) · awaiting steward confirmation of the seven genetic tables · next: package wrap-up (Questionnaire skip audit and coverage audit, README, pages, cleanup)
+- 2026-09-20 · package wrap-up, skip audit · genetic tables confirmed (D128), so every category is confirmed; `routing` is green (169/209 encoded, 0 unregistered, no unfixtured rule; 6 proposals and 25 unrouted NA-labelled columns from D118 remain, plus the 16 sex-gate rows that name participant.DEMOG_SEX_2_1); stale open line D037 closed (R031 is encoded, D060) · awaiting the steward's answers on the six proposals and the open-item list · next: skips audit (close the six proposals), coverage audit, README, review
+- 2026-09-21 · package wrap-up, skip audit and README · steward closed the six proposals (D129): R190, R192, R197 as warnings, R194–R196 declined; the remaining open questions were moved to the README's open items (D007, D009, D022, D030, D045, D047, D089, D101, D125, D126); README.md written (ten sections, 26 tables, 1,101 variables); `summary` green (1,101/1,101 converted, 169/209 encoded, 0 proposed, 0 unregistered, 169/169 fixtured), pages current · awaiting the review walk of agent-decided calls and the cleanup choice · next: review (walk the agent-decided ledger lines by theme), then cleanup
+- 2026-09-21 · review · the ledger walked in six groups (package, what is not checked, versions and multi-selects, routing from the logic file, clinic and linked records, genetic); every agent-decided line accepted, D130 added (explicit -998 on genetic text columns), D039 closed; open items live in the README · awaiting the cleanup choice · next: cleanup (fold state files into the README and delete them, or keep them)
+- 2026-09-21 · cleanup · steward chose to keep PROGRESS.md, DECISIONS.md and SOURCES.md as the working record in version control; no files deleted · next: — (complete)

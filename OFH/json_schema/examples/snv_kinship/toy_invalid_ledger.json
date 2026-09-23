@@ -1,0 +1,30 @@
+{
+  "$comment": "Ground truth for toy_invalid.json. Row indexes are 0-based array positions. One seeded violation per row; tools/validate.py fixtures asserts each row FAILS with an error pointer on the named column. The table has no routing rules.",
+  "rowIndexBase": 0,
+  "violations": [
+    {
+      "row": 0,
+      "column": "HetHet",
+      "kind": "wrong-type",
+      "reason": "a number is not a string"
+    },
+    {
+      "row": 1,
+      "column": "ID1",
+      "kind": "wrong-type",
+      "reason": "a participant ID is a string"
+    },
+    {
+      "row": 2,
+      "column": "ID1",
+      "kind": "missing-column",
+      "reason": "column omitted; missingness must be in-band"
+    },
+    {
+      "row": 3,
+      "column": "SHOE_SIZE",
+      "kind": "undeclared-column",
+      "reason": "not in the dictionary; rejected by unevaluatedProperties"
+    }
+  ]
+}

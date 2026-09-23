@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/nhse_eng_canreg_pre1995/categories/nhse_eng_canreg_pre1995.json",
+  "title": "Linked health records data — Cancer registry data (1 January 1985 to 31 December 1994)",
+  "description": "Cancer registry data for tumours diagnosed 1 January 1985 to 31 December 1994.",
+  "type": "object",
+  "x-variable-group": "nhse_eng_canreg_pre1995",
+  "properties": {
+    "BASISOFDIAGNOSIS": {
+      "title": "Basis of diagnosis of the tumour according to all the data received by the registry.",
+      "oneOf": [
+        {
+          "const": "&",
+          "title": "Not known"
+        },
+        {
+          "const": "1",
+          "title": "Histology"
+        },
+        {
+          "const": "2",
+          "title": "Cytology"
+        },
+        {
+          "const": "3",
+          "title": "Other Special Tests"
+        },
+        {
+          "const": "4",
+          "title": "Clinical"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "DIAGNOSISDATEBEST": {
+      "title": "The date the diagnosis took place.",
+      "type": "string"
+    },
+    "DIAGNOSIS_SITE_CODE": {
+      "title": "4 digit ICD code.",
+      "description": "ICD code is dependent upon year of diagnosis.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:[0-9]{3}|[0-9]{4}|[0-9]{5}|[A-Z][0-9]{2}|[A-Z][0-9]{3}|[A-Z][0-9]{4}|[A-Z][0-9]{5})$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 13522 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "GRADE": {
+      "title": "Code to identify the extent of differentation of the tumour cells.",
+      "oneOf": [
+        {
+          "const": "&",
+          "title": "Not known"
+        },
+        {
+          "const": "1",
+          "title": "Well differentiated"
+        },
+        {
+          "const": "2",
+          "title": "Moderately differentiated"
+        },
+        {
+          "const": "3",
+          "title": "Poorly differentiated"
+        },
+        {
+          "const": "4",
+          "title": "Undifferentiated anaplastic"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "LATERALITY": {
+      "title": "Identifies the side of the body for a tumour relating to paired organs.",
+      "oneOf": [
+        {
+          "const": "&",
+          "title": "Not known (only for sites specified)"
+        },
+        {
+          "const": "1",
+          "title": "Left"
+        },
+        {
+          "const": "2",
+          "title": "Right"
+        },
+        {
+          "const": "3",
+          "title": "Bilateral"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "ROW_ID": {
+      "title": "OFH generated local key",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "SCREENINGSTATUS": {
+      "title": "Indicator to show whether the tumour was identified by a screening program.",
+      "oneOf": [
+        {
+          "const": "&",
+          "title": "Not known"
+        },
+        {
+          "const": "0",
+          "title": "No"
+        },
+        {
+          "const": "1",
+          "title": "Yes"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "STAGE": {
+      "title": "Stage of the tumour at time of diagnosis.",
+      "oneOf": [
+        {
+          "const": "&",
+          "title": "Not known"
+        },
+        {
+          "const": "0",
+          "title": "In situ"
+        },
+        {
+          "const": "1",
+          "title": "Local involvement only"
+        },
+        {
+          "const": "2",
+          "title": "Extenstion to adjacent tissues"
+        },
+        {
+          "const": "3",
+          "title": "Lymph node involvement"
+        },
+        {
+          "const": "4",
+          "title": "Metastases"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    }
+  },
+  "required": [
+    "BASISOFDIAGNOSIS",
+    "DIAGNOSISDATEBEST",
+    "DIAGNOSIS_SITE_CODE",
+    "GRADE",
+    "LATERALITY",
+    "PID",
+    "ROW_ID",
+    "SCREENINGSTATUS",
+    "STAGE"
+  ]
+}

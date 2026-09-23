@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/intermediate_zones/categories/intermediate_zones.json",
+  "title": "Participant geographies data — Intermediate zones (IZ)",
+  "description": "Intermediate Zones (IZ) for Scotland.",
+  "type": "object",
+  "x-variable-group": "intermediate_zones",
+  "properties": {
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "ID": {
+      "title": "Row ID",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D090). The source states no format, so no pattern is asserted (D043)."
+    },
+    "IZ_AT_REG": {
+      "title": "Intermediate Zones (IZ) of participants living in Scotland at the time of registration.",
+      "type": "string",
+      "pattern": "^S02[0-9]{6}$",
+      "$comment": "Format taken from the source's own 1334 codes, all of which match it; whether a code is one of them is not checked, because listing them would make the page and the schema unusably large (D098)."
+    }
+  },
+  "required": [
+    "PID",
+    "ID",
+    "IZ_AT_REG"
+  ]
+}

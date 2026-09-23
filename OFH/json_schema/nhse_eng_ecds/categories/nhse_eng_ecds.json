@@ -1,0 +1,2520 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/nhse_eng_ecds/categories/nhse_eng_ecds.json",
+  "title": "Linked health records data — Major A&E attendances (from 1 April 2020)",
+  "description": "Attendances of major A&E departments in England on and after 1 April 2020.",
+  "type": "object",
+  "x-variable-group": "nhse_eng_ecds",
+  "properties": {
+    "ACUITY": {
+      "title": "EMERGENCY CARE ACUITY (SNOMED CT) is the SNOMED CT® concept ID which is used to indicate the acuity of the PATIENT's condition on the EMERGENCY CARE Initial Assessment Timestamp.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "ARRIVAL_DATE": {
+      "title": "An Emergency Care Arrival Date may be either: • the Arrival Date At Emergency Care Department or • the Ambulatory Emergency Care Arrival Date.",
+      "description": "An Arrival Date At Emergency Care Department is the date the PATIENT self presented at the Emergency Care Department or arrived in an Ambulance at the Emergency Care Department. V4 - Mapped from EMERGENCY CARE ACTIVITY START DATE AND TIME.",
+      "type": "string"
+    },
+    "ARRIVAL_MODE": {
+      "title": "EMERGENCY CARE ARRIVAL MODE (SNOMED CT) is the SNOMED CT concept ID which is used to identify the transport mode by which the PATIENT arrived at the EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "ARRIVAL_TIME": {
+      "title": "The Emergency Care Arrival Time may be either: • the Arrival Time At Emergency Care Department or • the Ambulatory Emergency Care Arrival Time.",
+      "description": "An Arrival Time At Emergency Care Department is the time the PATIENT self presented at the Emergency Care Department or arrived in an Ambulance at the Emergency Care Department. V4 - Mapped from EMERGENCY CARE ACTIVITY START DATE AND TIME",
+      "type": "string"
+    },
+    "ASSESSMENT_DATE": {
+      "title": "An Emergency Care Initial Assessment Date is the date that the PATIENT is first assessed in the Emergency Care Department.",
+      "description": "An initial assessment would include: • the taking of a brief PATIENT medical history • pain assessment • early warning scores (including vital signs). The assessment should be conducted by a CARE PROFESSIONAL who has received appropriate training. Note that for piloting purposes only, an Emergency Care Initial Assessment Date may also be the Ambulatory Emergency Care Initial Assessment Date. V4 - Mapped from EMERGENCY CARE INITIAL ASSESSMENT TIMESTAMP",
+      "type": "string"
+    },
+    "ASSESSMENT_TIME": {
+      "title": "An Emergency Care Initial Assessment Time is the time that the PATIENT is first assessed in the Emergency Care Department.",
+      "description": "An initial assessment would include: • the taking of a brief PATIENT medical history • pain assessment • early warning scores (including vital signs). The assessment should be conducted by a CARE PROFESSIONAL who has received appropriate training. Note that for piloting purposes only, an Emergency Care Initial Assessment Time may also be the Ambulatory Emergency Care Initial Assessment Time. V4 - Mapped from EMERGENCY CARE INITIAL ASSESSMENT TIMESTAMP.",
+      "type": "string"
+    },
+    "ATTENDANCE_CATEGORY": {
+      "title": "The category of Emergency Care Attendance or Same Day Emergency Care Attendance",
+      "oneOf": [
+        {
+          "const": "1",
+          "title": "Unplanned First Emergency Care Attendance for a new clinical condition (or deterioration of a chronic condition)."
+        },
+        {
+          "const": "2",
+          "title": "Unplanned Follow-up Emergency Care Attendance for the same or a related clinical condition and within 7 days of the First Emergency Care Attendance at THIS Emergency Care Department"
+        },
+        {
+          "const": "3",
+          "title": "Unplanned Follow-up Emergency Care Attendance for the same or a related clinical condition and within 7 days of the First Emergency Care Attendance at ANOTHER Emergency Care Department"
+        },
+        {
+          "const": "4",
+          "title": "Planned Follow-up Emergency Care Attendance within 7 days of the First Emergency Care Attendance at THIS Emergency Care Department"
+        },
+        {
+          "const": "X",
+          "title": "Not Applicable (Patient dead on arrival at Emergency Care Department)"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "ATTENDANCE_SOURCE": {
+      "title": "EMERGENCY CARE ATTENDANCE SOURCE (SNOMED CT) is the SNOMED CT® concept ID which is used to indicate the source of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "CHIEF_COMPLAINT": {
+      "title": "EMERGENCY CARE CHIEF COMPLAINT (SNOMED CT) is the SNOMED CT concept ID which is used to indicate the nature of the PATIENT’s chief complaint as assessed by the CARE PROFESSIONAL first assessing the PATIENT.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "CODE_CLEANING_APPLIED": {
+      "title": "Signifies whether relevant clinical codes in the record have been cleaned before submission to grouping.",
+      "oneOf": [
+        {
+          "const": "0",
+          "title": "Unchecked"
+        },
+        {
+          "const": "1",
+          "title": "Checked"
+        },
+        {
+          "const": "False",
+          "title": " Unchecked"
+        },
+        {
+          "const": "True",
+          "title": " Checked"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ]
+    },
+    "COMORBIDITIES_1": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "COMORBIDITIES_10": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "COMORBIDITIES_2": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "COMORBIDITIES_3": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "COMORBIDITIES_4": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "COMORBIDITIES_5": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "COMORBIDITIES_6": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "COMORBIDITIES_7": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "COMORBIDITIES_8": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "COMORBIDITIES_9": {
+      "title": "COMORBIDITY (SNOMED CT) is the SNOMED CT concept ID which is used to identify comorbid conditions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "CONCLUSION_DATE": {
+      "title": "The Emergency Care Attendance Conclusion Date may be either: • the Accident and Emergency Attendance Conclusion Date or • the Ambulatory Emergency Care Attendance Conclusion Date.",
+      "description": "Where the PATIENT dies in the Emergency Care Department, the Emergency Care Attendance Conclusion Date is the same as the PERSON DEATH DATE. An Accident and Emergency Attendance Conclusion Date is the date that a PATIENT's Accident and Emergency Attendance concludes or when treatment in the Accident and Emergency Department is completed (whichever is the later). For those PATIENTS admitted into hospital, the ACCIDENT AND EMERGENCY ATTENDANCE CONCLUSION DATE is recorded as the date when the DECISION TO ADMIT was made.",
+      "type": "string"
+    },
+    "CONCLUSION_TIME": {
+      "title": "The Emergency Care Attendance Conclusion Time may be either: • the Accident and Emergency Attendance Conclusion Time or • the Ambulatory Emergency Care Attendance Conclusion Time.",
+      "description": "Where the PATIENT dies in the Emergency Care Department, the Emergency Care Attendance Conclusion Time is the same as the PERSON DEATH TIME. An Accident and Emergency Attendance Conclusion Time is the time, recorded using a 24 hour clock: • that a PATIENT's Accident and Emergency Attendance concludes or • when treatment in an Accident and Emergency Department is completed (whichever is the later). For those PATIENTS admitted into hospital, the A and E ATTENDANCE CONCLUSION TIME is recorded as the time when the DECISION TO ADMIT was made.",
+      "type": "string"
+    },
+    "CONVEYING_AMBULANCE_TRUST_OFH": {
+      "title": "ORGANISATION IDENTIFIER (CONVEYING AMBULANCE TRUST) is the ORGANISATION IDENTIFIER of an Ambulance Service which conveys a PATIENT on a PATIENT TRANSPORT JOURNEY.",
+      "description": "(Pseudonymised by OFH)",
+      "type": "string"
+    },
+    "DECIDED_TO_ADMIT_DATE": {
+      "title": "The date a DECISION TO ADMIT was made.",
+      "description": "V4 - Mapped from DECIDED TO ADMIT DATE AND TIME.",
+      "type": "string"
+    },
+    "DECIDED_TO_ADMIT_TIME": {
+      "title": "The time a DECISION TO ADMIT was made.",
+      "description": "V4 - Mapped from DECIDED TO ADMIT DATE AND TIME.",
+      "type": "string"
+    },
+    "DEPARTMENT_TYPE": {
+      "title": "The type of Emergency Care Department V4 - Mapped from EMERGENCY CARE ACTIVITY TYPE",
+      "anyOf": [
+        {
+          "const": "01",
+          "title": "Emergency Care Attendance at an EMERGENCY CARE DEPARTMENT TYPE 'Major Emergency Care Department' (From V4 2023-24)"
+        },
+        {
+          "const": "02",
+          "title": "Emergency Care Attendance at an EMERGENCY CARE DEPARTMENT TYPE 'Mono-specialty Emergency Care Department' (From V4 2023-24)"
+        },
+        {
+          "const": "03",
+          "title": "Emergency Care Attendance at an EMERGENCY CARE DEPARTMENT TYPE 'Urgent Treatment Centre’ (From V4 2023-24)"
+        },
+        {
+          "const": "04",
+          "title": "NHS walk in centres (Up to V3 2023-24) Retired from V4 2023-24"
+        },
+        {
+          "const": "05",
+          "title": "Same Day Emergency Care Attendance (From V4 2023-24)"
+        },
+        {
+          "const": "06",
+          "title": "EMERGENCY CARE Extended Care Episode. (From V4 2023-24)"
+        },
+        {
+          "const": "07",
+          "title": "Hot Clinic Attendance. Note this is only valid for piloting purposes. (From V4 2023-24)"
+        },
+        {
+          "const": "99",
+          "title": "Invalid"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "DEPARTURE_DATE": {
+      "title": "An Emergency Care Departure Date is the date that a PATIENT leaves an Emergency Care Department after an Emergency Care Attendance has concluded.",
+      "description": "Notes: • For PATIENTS who die in an Emergency Care Department the Emergency Care Departure Date is the date the body was removed from the Emergency Care Department. • The PATIENT may leave the Emergency Care Department temporarily during an Emergency Care Attendance, for example for an X-ray, but they remain under the care of an emergency care CONSULTANT. Note that for piloting purposes only, an Emergency Care Departure Date may also be the Ambulatory Emergency Care Departure Date. V4 - Mapped from EMERGENCY CARE ACTIVITY END TIMESTAMP.",
+      "type": "string"
+    },
+    "DEPARTURE_TIME": {
+      "title": "An Emergency Care Departure Time is the time recorded using a 24 hour clock that a PATIENT leaves an Emergency Care Department after an Emergency Care Attendance has concluded.",
+      "description": "Notes: • For PATIENTS who die in an Emergency Care Department the Emergency Care Departure Time is the time the body was removed from the Emergency Care Department. • The PATIENT may leave the Emergency Care Department temporarily during an Emergency Care Attendance, for example for an X-ray, but they remain under the care of an emergency care CONSULTANT. Note that for piloting purposes only, an Emergency Care Departure Time may also be the Ambulatory Emergency Care Departure Time. V4 - Mapped from EMERGENCY CARE ACTIVITY END TIMESTAMP.",
+      "type": "string"
+    },
+    "DIAGNOSIS_CODE_1": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_10": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_11": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_12": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_2": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_3": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_4": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_5": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_6": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_7": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_8": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_CODE_9": {
+      "title": "EMERGENCY CARE DIAGNOSIS (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "description": "SNOMED CT terminology is constantly being reviewed, and with the introduction of ECDS Diagnosis Max, in November 2023, having over 58,000 valid diagnosis codes, analysts need to consider changes in these codes when tracking activity over time, as results may not be reflective for whole reported period.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_1": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_10": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_11": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_12": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_2": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_3": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_4": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_5": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_6": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_7": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_8": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DIAGNOSIS_QUALIFIER_9": {
+      "title": "EMERGENCY CARE DIAGNOSIS QUALIFIER (SNOMED CT) is the SNOMED CT® concept ID which is used to express the level of certainty of a PATIENT DIAGNOSIS recorded during an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DISCHARGE_DESTINATION": {
+      "title": "EMERGENCY CARE DISCHARGE DESTINATION (SNOMED CT) is theSNOMED CT® concept ID which is used to identify the intended destination of the PATIENT following discharge from an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DISCHARGE_FOLLOW_UP": {
+      "title": "EMERGENCY CARE DISCHARGE FOLLOW UP (SNOMED CT) is the SNOMED CT® concept ID which is used to identify the SERVICE to which a PATIENT was referred for continuing care following an EMERGENCY CARE Activity.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "DISCHARGE_STATUS": {
+      "title": "The status of the PATIENT on discharge from an EMERGENCY CARE Service.",
+      "description": "Captures whether treatment took place within the EMERGENCY CARE Service, if the patient was streamed to another service or if the patient left before treatment was complete.",
+      "type": "string"
+    },
+    "EPIKEY": {
+      "title": "This field is present on A&E and APC linked records only.",
+      "description": "Linkage between these two datasets enables patient pathways to be followed and provides additional information beyond what is available from the standalone datasets. EPIKEY represents the record identifier of the APC episode that the A&E attendance has been linked to. The methodology used to link A&E and APC records is currently under review",
+      "type": "string"
+    },
+    "INJURY_ACTIVITY_STATUS": {
+      "title": "The status of activity being undertaken by the patient at the moment the injury occurred.",
+      "type": "string"
+    },
+    "INJURY_ACTIVITY_TYPE": {
+      "title": "The type of activity being undertaken by the person at the moment the injury occurred.",
+      "type": "string"
+    },
+    "INJURY_DATE": {
+      "title": "The date that the injury occurred.",
+      "description": "V4 - Mapped from INJURY DATE AND TIME.",
+      "type": "string"
+    },
+    "INJURY_TIME": {
+      "title": "The time that the injury occurred.",
+      "description": "V4 - Mapped from INJURY DATE AND TIME.",
+      "type": "string"
+    },
+    "INVESTIGATION_CODE_1": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_10": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_11": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_12": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_2": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_3": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_4": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_5": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_6": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_7": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_8": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_CODE_9": {
+      "title": "EMERGENCY CARE CLINICAL INVESTIGATION (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Clinical Investigation performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "INVESTIGATION_DATE_1": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_10": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_11": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_12": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_2": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_3": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_4": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_5": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_6": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_7": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_8": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_DATE_9": {
+      "title": "The date on which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_1": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_10": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_11": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_12": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_2": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_3": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_4": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_5": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_6": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_7": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_8": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "INVESTIGATION_TIME_9": {
+      "title": "The time at which investigations were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE CLINICAL INVESTIGATION).",
+      "type": "string"
+    },
+    "PERIOD_LENGTH": {
+      "title": "The total time of the subject referral to treatment period calculated by subtracting the Referral To Treatment Period Start Date from the Referral To Treatment Period End Date (in whole days).",
+      "description": "Both fields are submitted data.",
+      "anyOf": [
+        {
+          "const": "null",
+          "title": "Not applicable / not known"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "PID": {
+      "title": "Participant ID",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "RECORD_IDENTIFIER": {
+      "title": "The generated unique identifier for the episode.",
+      "type": "string"
+    },
+    "REFERRAL_ASSESSMENT_DATE_1": {
+      "title": "A Referred To Service Assessment Date is the date a PATIENT was assessed by a CARE PROFESSIONAL from a SERVICE which the PATIENT has been referred to.",
+      "description": "V4 - Mapped from REFERRED TO SERVICE ASSESSMENT TIMESTAMP.",
+      "type": "string"
+    },
+    "REFERRAL_ASSESSMENT_DATE_2": {
+      "title": "A Referred To Service Assessment Date is the date a PATIENT was assessed by a CARE PROFESSIONAL from a SERVICE which the PATIENT has been referred to.",
+      "description": "V4 - Mapped from REFERRED TO SERVICE ASSESSMENT TIMESTAMP.",
+      "type": "string"
+    },
+    "REFERRAL_ASSESSMENT_DATE_3": {
+      "title": "A Referred To Service Assessment Date is the date a PATIENT was assessed by a CARE PROFESSIONAL from a SERVICE which the PATIENT has been referred to.",
+      "description": "V4 - Mapped from REFERRED TO SERVICE ASSESSMENT TIMESTAMP.",
+      "type": "string"
+    },
+    "REFERRAL_ASSESSMENT_DATE_4": {
+      "title": "A Referred To Service Assessment Date is the date a PATIENT was assessed by a CARE PROFESSIONAL from a SERVICE which the PATIENT has been referred to.",
+      "description": "V4 - Mapped from REFERRED TO SERVICE ASSESSMENT TIMESTAMP.",
+      "type": "string"
+    },
+    "REFERRAL_ASSESSMENT_TIME_1": {
+      "title": "A Referred To Service Assessment Time is the Time a PATIENT was assessed by a CARE PROFESSIONAL from a SERVICE which the PATIENT has been referred to.",
+      "description": "V4 - Mapped from REFERRED TO SERVICE ASSESSMENT TIMESTAMP.",
+      "type": "string"
+    },
+    "REFERRAL_ASSESSMENT_TIME_2": {
+      "title": "A Referred To Service Assessment Time is the Time a PATIENT was assessed by a CARE PROFESSIONAL from a SERVICE which the PATIENT has been referred to.",
+      "description": "V4 - Mapped from REFERRED TO SERVICE ASSESSMENT TIMESTAMP.",
+      "type": "string"
+    },
+    "REFERRAL_ASSESSMENT_TIME_3": {
+      "title": "A Referred To Service Assessment Time is the Time a PATIENT was assessed by a CARE PROFESSIONAL from a SERVICE which the PATIENT has been referred to.",
+      "description": "V4 - Mapped from REFERRED TO SERVICE ASSESSMENT TIMESTAMP.",
+      "type": "string"
+    },
+    "REFERRAL_ASSESSMENT_TIME_4": {
+      "title": "A Referred To Service Assessment Time is the Time a PATIENT was assessed by a CARE PROFESSIONAL from a SERVICE which the PATIENT has been referred to.",
+      "description": "V4 - Mapped from REFERRED TO SERVICE ASSESSMENT TIMESTAMP.",
+      "type": "string"
+    },
+    "REFERRED_TO_SERVICE_1": {
+      "title": "An inpatient service to which the patient was referred for admission or opinion by the treating clinician.",
+      "type": "string"
+    },
+    "REFERRED_TO_SERVICE_2": {
+      "title": "An inpatient service to which the patient was referred for admission or opinion by the treating clinician.",
+      "type": "string"
+    },
+    "REFERRED_TO_SERVICE_3": {
+      "title": "An inpatient service to which the patient was referred for admission or opinion by the treating clinician.",
+      "type": "string"
+    },
+    "REFERRED_TO_SERVICE_4": {
+      "title": "An inpatient service to which the patient was referred for admission or opinion by the treating clinician.",
+      "type": "string"
+    },
+    "ROW_ID": {
+      "title": "OFH generated local key",
+      "type": "string",
+      "x-role": "primary key",
+      "$comment": "Local primary key: unique within this table (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "SEEN_DATE": {
+      "title": "Emergency Care Date Seen For Treatment is the date that the PATIENT is seen by a clinical decision maker (a CARE PROFESSIONAL who can define the management plan and discharge the PATIENT) to diagnose the problem and arrange or start definitive treatment as necessary.",
+      "description": "Note that for piloting purposes only, an Emergency Care Date Seen For Treatment may also be the Ambulatory Emergency Care Date Seen For Treatment. V4 - Mapped from EMERGENCY CARE TIMESTAMP SEEN FOR TREATMENT.",
+      "type": "string"
+    },
+    "SEEN_TIME": {
+      "title": "An Emergency Care Time Seen For Treatment is the time that the PATIENT is seen by a clinical decision maker (a CARE PROFESSIONAL who can define the management plan and discharge the PATIENT) to diagnose the problem and arrange or start definite treatment as necessary.",
+      "description": "Note that for piloting purposes only, an Emergency Care Time Seen For Treatment may also be the Ambulatory Emergency Care Time Seen For Treatment. V4 - Mapped from EMERGENCY CARE TIMESTAMP SEEN FOR TREATMENT.",
+      "type": "string"
+    },
+    "SEQUENCE_NUMBER_1": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_10": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_11": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_12": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_2": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_3": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_4": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_5": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_6": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_7": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_8": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SEQUENCE_NUMBER_9": {
+      "title": "The sequence number of a CODED CLINICAL ENTRY, recorded to enable correct sequential processing of data.",
+      "description": "Note: This is not cleaned, and users are advised to use the field D_DIAGNOSIS_ORDINAL instead.",
+      "anyOf": [
+        {
+          "type": "integer",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "SERVICE_REQUEST_DATE_1": {
+      "title": "The DATE that a PATIENT was referred to another SERVICE during an Emergency Care Attendance.",
+      "description": "V4 - Mapped from ACTIVITY SERVICE REQUEST TIMESTAMP (EMERGENCY CARE).",
+      "type": "string"
+    },
+    "SERVICE_REQUEST_DATE_2": {
+      "title": "The DATE that a PATIENT was referred to another SERVICE during an Emergency Care Attendance.",
+      "description": "V4 - Mapped from ACTIVITY SERVICE REQUEST TIMESTAMP (EMERGENCY CARE).",
+      "type": "string"
+    },
+    "SERVICE_REQUEST_DATE_3": {
+      "title": "The DATE that a PATIENT was referred to another SERVICE during an Emergency Care Attendance.",
+      "description": "V4 - Mapped from ACTIVITY SERVICE REQUEST TIMESTAMP (EMERGENCY CARE).",
+      "type": "string"
+    },
+    "SERVICE_REQUEST_DATE_4": {
+      "title": "The DATE that a PATIENT was referred to another SERVICE during an Emergency Care Attendance.",
+      "description": "V4 - Mapped from ACTIVITY SERVICE REQUEST TIMESTAMP (EMERGENCY CARE).",
+      "type": "string"
+    },
+    "TREATMENT_CODE_1": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_10": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_11": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_12": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_2": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_3": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_4": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_5": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_6": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_7": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_8": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_CODE_9": {
+      "title": "EMERGENCY CARE PROCEDURE (SNOMED CT) is the SNOMED CT® concept ID which is used to identify a Patient Procedure performed while a PATIENT is under the care of an EMERGENCY CARE Service.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{6,18}$"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Format taken from the source's own 61289 codes, all of which match it; whether a code is on the source's list is not checked, because listing them would make the page and the schema unusably large (D101)."
+    },
+    "TREATMENT_DATE_1": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_10": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_11": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_12": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_2": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_3": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_4": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_5": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_6": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_7": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_8": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_DATE_9": {
+      "title": "The date on which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_FUNCTION_CODE": {
+      "title": "ACTIVITY TREATMENT FUNCTION CODE (DECISION TO ADMIT) is the TREATMENT FUNCTION CODE of the SERVICE to which a PATIENT is to be admitted.",
+      "anyOf": [
+        {
+          "const": "100",
+          "title": "General Surgery Service"
+        },
+        {
+          "const": "101",
+          "title": "Urology Service"
+        },
+        {
+          "const": "102",
+          "title": "Transplant Surgery Service"
+        },
+        {
+          "const": "103",
+          "title": "Breast Surgery"
+        },
+        {
+          "const": "104",
+          "title": "Colorectical Surgery Service"
+        },
+        {
+          "const": "105",
+          "title": "Hepatobiliary and Pancreatic Surgery Service"
+        },
+        {
+          "const": "106",
+          "title": "Upper Gastrointestinal Surgery Service"
+        },
+        {
+          "const": "107",
+          "title": "Vascular Surgery Service"
+        },
+        {
+          "const": "108",
+          "title": "Spinal Surgery Service"
+        },
+        {
+          "const": "109",
+          "title": "Bariatric Surgery Servce"
+        },
+        {
+          "const": "110",
+          "title": "Trauma and Orthopaedic Service"
+        },
+        {
+          "const": "111",
+          "title": "Orthopaedic Service"
+        },
+        {
+          "const": "113",
+          "title": "Endocrine Surgery Service"
+        },
+        {
+          "const": "115",
+          "title": "Trauma Surgery Service"
+        },
+        {
+          "const": "120",
+          "title": "Ear Nose and Troat Service"
+        },
+        {
+          "const": "130",
+          "title": "Ophthalmology Service"
+        },
+        {
+          "const": "140",
+          "title": "Oral Surgery Service"
+        },
+        {
+          "const": "141",
+          "title": "Restorative Dental Service"
+        },
+        {
+          "const": "142",
+          "title": "Paediatric Dentistry Service"
+        },
+        {
+          "const": "143",
+          "title": "Orthodontic Service"
+        },
+        {
+          "const": "144",
+          "title": "Maxillofacial Surgery Service"
+        },
+        {
+          "const": "145",
+          "title": "Oral and Maxillofacial Surgery Service"
+        },
+        {
+          "const": "150",
+          "title": "Neurosurgical Service"
+        },
+        {
+          "const": "160",
+          "title": "Plastic Surgery Service"
+        },
+        {
+          "const": "161",
+          "title": "Burns Care Service"
+        },
+        {
+          "const": "170",
+          "title": "Cardiothoracic Surgery Service"
+        },
+        {
+          "const": "171",
+          "title": "Paediatric Surgery Service"
+        },
+        {
+          "const": "172",
+          "title": "Cardiac Surgery Service"
+        },
+        {
+          "const": "173",
+          "title": "Thoracic Surgery Service"
+        },
+        {
+          "const": "174",
+          "title": "Cardiaothoracic Transplantation Service"
+        },
+        {
+          "const": "180",
+          "title": "Emergency Medicine Service"
+        },
+        {
+          "const": "190",
+          "title": "Anaesthetic Service"
+        },
+        {
+          "const": "191",
+          "title": "Pain Management Service"
+        },
+        {
+          "const": "192",
+          "title": "Intensive Care Medicine Service"
+        },
+        {
+          "const": "200",
+          "title": "Aviation and Space Medicine Service"
+        },
+        {
+          "const": "211",
+          "title": "Paediatric Urology Service"
+        },
+        {
+          "const": "212",
+          "title": "Paediatric Transplantation Surgery Service"
+        },
+        {
+          "const": "213",
+          "title": "Paediatric Gastrointestinal Surgery Service"
+        },
+        {
+          "const": "214",
+          "title": "Paediatric Trauma and Orthopaedic Service"
+        },
+        {
+          "const": "215",
+          "title": "Paediatric Ear Nose and Throat Service"
+        },
+        {
+          "const": "216",
+          "title": "Paediatric Ophthalmology Service"
+        },
+        {
+          "const": "217",
+          "title": "Paediatric Oral and Maxillofacial Surgery Service"
+        },
+        {
+          "const": "218",
+          "title": "Paediatric Neurosurgery Service"
+        },
+        {
+          "const": "219",
+          "title": "Paediatric Plastic Surgery Service"
+        },
+        {
+          "const": "220",
+          "title": "Paediatric Burns Care Service"
+        },
+        {
+          "const": "221",
+          "title": "Paediatric Cardiac Surgery Service"
+        },
+        {
+          "const": "222",
+          "title": "Paediatric Thoracic Surgery Service"
+        },
+        {
+          "const": "223",
+          "title": "Paediatric Epilepsy Service"
+        },
+        {
+          "const": "240",
+          "title": "Paediatric Palliative Medicine Service"
+        },
+        {
+          "const": "241",
+          "title": "Paediatric Pain Management Service"
+        },
+        {
+          "const": "242",
+          "title": "Paediatric Intensive Care Service"
+        },
+        {
+          "const": "250",
+          "title": "Paediatric Hepatology Service"
+        },
+        {
+          "const": "251",
+          "title": "Paediatric Gastroenterology Service"
+        },
+        {
+          "const": "252",
+          "title": "Paediatric Endocrinology Service"
+        },
+        {
+          "const": "253",
+          "title": "Paediatric Clinical Haematology Service"
+        },
+        {
+          "const": "254",
+          "title": "Paediatric Audio Vestibular Medicine Service"
+        },
+        {
+          "const": "255",
+          "title": "Paediatric Clinical Immunology and Allergy Service"
+        },
+        {
+          "const": "256",
+          "title": "Paediatric Infestious Disease Service"
+        },
+        {
+          "const": "257",
+          "title": "Paediatric Nephrology Service"
+        },
+        {
+          "const": "258",
+          "title": "Paediatric Respiratory Medical Service"
+        },
+        {
+          "const": "259",
+          "title": "Paediatric Nephrology Service"
+        },
+        {
+          "const": "260",
+          "title": "Paediatric Medical Oncology Service"
+        },
+        {
+          "const": "261",
+          "title": "Paediatric Inherited Metabolic Medicine Service"
+        },
+        {
+          "const": "262",
+          "title": "Paediatric Rheumatology Service"
+        },
+        {
+          "const": "263",
+          "title": "Paediatric Diabetes Service"
+        },
+        {
+          "const": "264",
+          "title": "Paediatric Cystic Fibrosis Service"
+        },
+        {
+          "const": "270",
+          "title": "Paediatric Emergency Medicine Service"
+        },
+        {
+          "const": "280",
+          "title": "Paediatric Interventional Radiology Service"
+        },
+        {
+          "const": "290",
+          "title": "Community Paediatric Service"
+        },
+        {
+          "const": "291",
+          "title": "Paediatric Neurodisability Service"
+        },
+        {
+          "const": "300",
+          "title": "General Internal Medicine Service"
+        },
+        {
+          "const": "301",
+          "title": "Gastroenterology Service"
+        },
+        {
+          "const": "302",
+          "title": "Endocrinology Service"
+        },
+        {
+          "const": "303",
+          "title": "Clinical Haematology Service"
+        },
+        {
+          "const": "304",
+          "title": "Clinical Physiology Service"
+        },
+        {
+          "const": "305",
+          "title": "Clinical Pharmacology Service"
+        },
+        {
+          "const": "306",
+          "title": "Hepatology Service"
+        },
+        {
+          "const": "307",
+          "title": "Diabetes Service"
+        },
+        {
+          "const": "308",
+          "title": "Blood and Marrow Transplantation Service"
+        },
+        {
+          "const": "309",
+          "title": "Haemophilia Service"
+        },
+        {
+          "const": "310",
+          "title": "Audio Vestibular Medicine Service"
+        },
+        {
+          "const": "311",
+          "title": "Clinical Genetics Service"
+        },
+        {
+          "const": "313",
+          "title": "Clinical Immunology and Allergy Service"
+        },
+        {
+          "const": "314",
+          "title": "Rehabilitation Medicine Service"
+        },
+        {
+          "const": "315",
+          "title": "Palliative Medicine Service"
+        },
+        {
+          "const": "316",
+          "title": "Clinical Immunology Service"
+        },
+        {
+          "const": "317",
+          "title": "Allergy Service"
+        },
+        {
+          "const": "318",
+          "title": "Intermediate Care Service"
+        },
+        {
+          "const": "319",
+          "title": "Respite Care Service"
+        },
+        {
+          "const": "320",
+          "title": "Cardiology Service"
+        },
+        {
+          "const": "321",
+          "title": "Paediatric Cardiology Service"
+        },
+        {
+          "const": "322",
+          "title": "Clinical Microbiology Service"
+        },
+        {
+          "const": "323",
+          "title": "Spinal Injuries Service"
+        },
+        {
+          "const": "324",
+          "title": "Anticoagulant Service"
+        },
+        {
+          "const": "325",
+          "title": "Sport and Exercise Medicine Service"
+        },
+        {
+          "const": "326",
+          "title": "Acute Internal Medicine Service"
+        },
+        {
+          "const": "327",
+          "title": "Cardiac Rehabilitation Service"
+        },
+        {
+          "const": "328",
+          "title": "Stroke Medicine Service"
+        },
+        {
+          "const": "329",
+          "title": "Transient Ischaemic Attacks Service"
+        },
+        {
+          "const": "330",
+          "title": "Dermatology Service"
+        },
+        {
+          "const": "331",
+          "title": "Congenital Heart Disease Service"
+        },
+        {
+          "const": "333",
+          "title": "Rare Disease Service"
+        },
+        {
+          "const": "335",
+          "title": "Inherited Metabolic Medicine Service"
+        },
+        {
+          "const": "340",
+          "title": "Respiratory Medicine Service"
+        },
+        {
+          "const": "341",
+          "title": "Respiratory Physiology Service"
+        },
+        {
+          "const": "342",
+          "title": "Pulmonary Rehabilitation Service"
+        },
+        {
+          "const": "343",
+          "title": "Adult Cystic Fibrosis Service"
+        },
+        {
+          "const": "344",
+          "title": "complex Specialised Rehabilitation Service"
+        },
+        {
+          "const": "345",
+          "title": "Specialist Rehabilitation Service"
+        },
+        {
+          "const": "346",
+          "title": "Local Specialist Rehabilitation Service"
+        },
+        {
+          "const": "347",
+          "title": "Sleep Medicine Service"
+        },
+        {
+          "const": "348",
+          "title": "Post-Covid-19 Syndrome Service"
+        },
+        {
+          "const": "350",
+          "title": "Infectious Disease Service"
+        },
+        {
+          "const": "352",
+          "title": "Tropical Medicine Service"
+        },
+        {
+          "const": "360",
+          "title": "Genitourinary Medicine Service"
+        },
+        {
+          "const": "361",
+          "title": "Renal Medicine Service"
+        },
+        {
+          "const": "370",
+          "title": "Medical Oncology Service"
+        },
+        {
+          "const": "371",
+          "title": "Nuclear Medicine Service"
+        },
+        {
+          "const": "400",
+          "title": "Neurology Service"
+        },
+        {
+          "const": "401",
+          "title": "Clinical NeuroPhysiology Service"
+        },
+        {
+          "const": "410",
+          "title": "Rheumatology Service"
+        },
+        {
+          "const": "420",
+          "title": "Paediatric Service"
+        },
+        {
+          "const": "421",
+          "title": "Paediatric Neurology Service"
+        },
+        {
+          "const": "422",
+          "title": "Neonatal Critical Care Service"
+        },
+        {
+          "const": "424",
+          "title": "Well Baby Service"
+        },
+        {
+          "const": "430",
+          "title": "Elderly Medicine Service"
+        },
+        {
+          "const": "431",
+          "title": "Orthogeriatric Medicine Service"
+        },
+        {
+          "const": "450",
+          "title": "Dental Medicine Service"
+        },
+        {
+          "const": "451",
+          "title": "Special Care Dentistry Service"
+        },
+        {
+          "const": "460",
+          "title": "Medical Ophthalmology Service"
+        },
+        {
+          "const": "461",
+          "title": "Ophthalmic and Vision Science Sevice"
+        },
+        {
+          "const": "501",
+          "title": "Obstetrics Service"
+        },
+        {
+          "const": "502",
+          "title": "Gynaecology Service"
+        },
+        {
+          "const": "503",
+          "title": "Gynaecological Oncology Service"
+        },
+        {
+          "const": "504",
+          "title": "Community Sexual and Reproductive Health Service"
+        },
+        {
+          "const": "505",
+          "title": "Fetal Medicine Service"
+        },
+        {
+          "const": "510",
+          "title": "Retired but retained for historical purposes"
+        },
+        {
+          "const": "520",
+          "title": "Retired but retained for historical purposes"
+        },
+        {
+          "const": "560",
+          "title": "Midwifery Service"
+        },
+        {
+          "const": "610",
+          "title": "Retired but retained for historical purposes"
+        },
+        {
+          "const": "620",
+          "title": "Retired but retained for historical purposes"
+        },
+        {
+          "const": "650",
+          "title": "Physiotherapy Service"
+        },
+        {
+          "const": "651",
+          "title": "Occupational Therapy Service"
+        },
+        {
+          "const": "652",
+          "title": "Speech and Language Therapy Service"
+        },
+        {
+          "const": "653",
+          "title": "Podiatry Service"
+        },
+        {
+          "const": "654",
+          "title": "Dietetics Service"
+        },
+        {
+          "const": "655",
+          "title": "Orthoptics Service"
+        },
+        {
+          "const": "656",
+          "title": "Clinical Psychology Service"
+        },
+        {
+          "const": "657",
+          "title": "Prosthetics Service"
+        },
+        {
+          "const": "658",
+          "title": "Orthotics Service"
+        },
+        {
+          "const": "659",
+          "title": "Dramatherapy Service"
+        },
+        {
+          "const": "660",
+          "title": "Art Therapy Service"
+        },
+        {
+          "const": "661",
+          "title": "Music Therapy Service"
+        },
+        {
+          "const": "662",
+          "title": "Optometry Service"
+        },
+        {
+          "const": "663",
+          "title": "Podiatric Surgery Service"
+        },
+        {
+          "const": "670",
+          "title": "Urological Physiology Service"
+        },
+        {
+          "const": "673",
+          "title": "Vascular Physiology Service"
+        },
+        {
+          "const": "675",
+          "title": "Cardiac Physiology Service"
+        },
+        {
+          "const": "677",
+          "title": "Gastrointestinal Physiology Service"
+        },
+        {
+          "const": "700",
+          "title": "Learning Disability Service"
+        },
+        {
+          "const": "710",
+          "title": "Adult Mental Health Service"
+        },
+        {
+          "const": "711",
+          "title": "Child and Adolescent Psychiatry Service"
+        },
+        {
+          "const": "712",
+          "title": "Forensic Psychiatry Service"
+        },
+        {
+          "const": "713",
+          "title": "Medical Psychotherapy Service"
+        },
+        {
+          "const": "715",
+          "title": "Old Age Psychiatry Service"
+        },
+        {
+          "const": "720",
+          "title": "Eating Disorders Service"
+        },
+        {
+          "const": "721",
+          "title": "Addiction Service"
+        },
+        {
+          "const": "722",
+          "title": "Liaison Psychiatry Service"
+        },
+        {
+          "const": "723",
+          "title": "Psychiatric Intensive Care Service"
+        },
+        {
+          "const": "724",
+          "title": "Perinatal Mental Health Service"
+        },
+        {
+          "const": "726",
+          "title": "Mental Health Dual Diagnosis Service"
+        },
+        {
+          "const": "727",
+          "title": "Dementia Assessment Service"
+        },
+        {
+          "const": "730",
+          "title": "Neuropsychiatry Service"
+        },
+        {
+          "const": "800",
+          "title": "Clinical Oncology Service"
+        },
+        {
+          "const": "811",
+          "title": "Interventional Radiology Service"
+        },
+        {
+          "const": "812",
+          "title": "Diagnostic Imaging Service"
+        },
+        {
+          "const": "822",
+          "title": "Chemical Pathology Service"
+        },
+        {
+          "const": "832",
+          "title": "Retired but retained for historical purposes"
+        },
+        {
+          "const": "834",
+          "title": "Medical Virology Service"
+        },
+        {
+          "const": "840",
+          "title": "Audiology Service"
+        },
+        {
+          "const": "920",
+          "title": "Diabetic Education Service"
+        },
+        {
+          "const": "990",
+          "title": "Retired but retained for historical purposes"
+        },
+        {
+          "type": "string",
+          "title": "Any other value"
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded_text"
+        }
+      ],
+      "$comment": "Sparse coding in the dictionary: the listed codes carry labels and other values are allowed (D111)."
+    },
+    "TREATMENT_TIME_1": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_10": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_11": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_12": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_2": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_3": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_4": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_5": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_6": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_7": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_8": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    },
+    "TREATMENT_TIME_9": {
+      "title": "The time at which treatments were performed while the person was under the care of the Emergency Care facility.",
+      "description": "V4 - Mapped from CODED PROCEDURE TIMESTAMP (EMERGENCY CARE PROCEDURE).",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ACUITY",
+    "ARRIVAL_DATE",
+    "ARRIVAL_MODE",
+    "ARRIVAL_TIME",
+    "ASSESSMENT_DATE",
+    "ASSESSMENT_TIME",
+    "ATTENDANCE_CATEGORY",
+    "ATTENDANCE_SOURCE",
+    "CHIEF_COMPLAINT",
+    "CODE_CLEANING_APPLIED",
+    "COMORBIDITIES_1",
+    "COMORBIDITIES_10",
+    "COMORBIDITIES_2",
+    "COMORBIDITIES_3",
+    "COMORBIDITIES_4",
+    "COMORBIDITIES_5",
+    "COMORBIDITIES_6",
+    "COMORBIDITIES_7",
+    "COMORBIDITIES_8",
+    "COMORBIDITIES_9",
+    "CONCLUSION_DATE",
+    "CONCLUSION_TIME",
+    "CONVEYING_AMBULANCE_TRUST_OFH",
+    "DECIDED_TO_ADMIT_DATE",
+    "DECIDED_TO_ADMIT_TIME",
+    "DEPARTMENT_TYPE",
+    "DEPARTURE_DATE",
+    "DEPARTURE_TIME",
+    "DIAGNOSIS_CODE_1",
+    "DIAGNOSIS_CODE_10",
+    "DIAGNOSIS_CODE_11",
+    "DIAGNOSIS_CODE_12",
+    "DIAGNOSIS_CODE_2",
+    "DIAGNOSIS_CODE_3",
+    "DIAGNOSIS_CODE_4",
+    "DIAGNOSIS_CODE_5",
+    "DIAGNOSIS_CODE_6",
+    "DIAGNOSIS_CODE_7",
+    "DIAGNOSIS_CODE_8",
+    "DIAGNOSIS_CODE_9",
+    "DIAGNOSIS_QUALIFIER_1",
+    "DIAGNOSIS_QUALIFIER_10",
+    "DIAGNOSIS_QUALIFIER_11",
+    "DIAGNOSIS_QUALIFIER_12",
+    "DIAGNOSIS_QUALIFIER_2",
+    "DIAGNOSIS_QUALIFIER_3",
+    "DIAGNOSIS_QUALIFIER_4",
+    "DIAGNOSIS_QUALIFIER_5",
+    "DIAGNOSIS_QUALIFIER_6",
+    "DIAGNOSIS_QUALIFIER_7",
+    "DIAGNOSIS_QUALIFIER_8",
+    "DIAGNOSIS_QUALIFIER_9",
+    "DISCHARGE_DESTINATION",
+    "DISCHARGE_FOLLOW_UP",
+    "DISCHARGE_STATUS",
+    "EPIKEY",
+    "INJURY_ACTIVITY_STATUS",
+    "INJURY_ACTIVITY_TYPE",
+    "INJURY_DATE",
+    "INJURY_TIME",
+    "INVESTIGATION_CODE_1",
+    "INVESTIGATION_CODE_10",
+    "INVESTIGATION_CODE_11",
+    "INVESTIGATION_CODE_12",
+    "INVESTIGATION_CODE_2",
+    "INVESTIGATION_CODE_3",
+    "INVESTIGATION_CODE_4",
+    "INVESTIGATION_CODE_5",
+    "INVESTIGATION_CODE_6",
+    "INVESTIGATION_CODE_7",
+    "INVESTIGATION_CODE_8",
+    "INVESTIGATION_CODE_9",
+    "INVESTIGATION_DATE_1",
+    "INVESTIGATION_DATE_10",
+    "INVESTIGATION_DATE_11",
+    "INVESTIGATION_DATE_12",
+    "INVESTIGATION_DATE_2",
+    "INVESTIGATION_DATE_3",
+    "INVESTIGATION_DATE_4",
+    "INVESTIGATION_DATE_5",
+    "INVESTIGATION_DATE_6",
+    "INVESTIGATION_DATE_7",
+    "INVESTIGATION_DATE_8",
+    "INVESTIGATION_DATE_9",
+    "INVESTIGATION_TIME_1",
+    "INVESTIGATION_TIME_10",
+    "INVESTIGATION_TIME_11",
+    "INVESTIGATION_TIME_12",
+    "INVESTIGATION_TIME_2",
+    "INVESTIGATION_TIME_3",
+    "INVESTIGATION_TIME_4",
+    "INVESTIGATION_TIME_5",
+    "INVESTIGATION_TIME_6",
+    "INVESTIGATION_TIME_7",
+    "INVESTIGATION_TIME_8",
+    "INVESTIGATION_TIME_9",
+    "PERIOD_LENGTH",
+    "PID",
+    "RECORD_IDENTIFIER",
+    "REFERRAL_ASSESSMENT_DATE_1",
+    "REFERRAL_ASSESSMENT_DATE_2",
+    "REFERRAL_ASSESSMENT_DATE_3",
+    "REFERRAL_ASSESSMENT_DATE_4",
+    "REFERRAL_ASSESSMENT_TIME_1",
+    "REFERRAL_ASSESSMENT_TIME_2",
+    "REFERRAL_ASSESSMENT_TIME_3",
+    "REFERRAL_ASSESSMENT_TIME_4",
+    "REFERRED_TO_SERVICE_1",
+    "REFERRED_TO_SERVICE_2",
+    "REFERRED_TO_SERVICE_3",
+    "REFERRED_TO_SERVICE_4",
+    "ROW_ID",
+    "SEEN_DATE",
+    "SEEN_TIME",
+    "SEQUENCE_NUMBER_1",
+    "SEQUENCE_NUMBER_10",
+    "SEQUENCE_NUMBER_11",
+    "SEQUENCE_NUMBER_12",
+    "SEQUENCE_NUMBER_2",
+    "SEQUENCE_NUMBER_3",
+    "SEQUENCE_NUMBER_4",
+    "SEQUENCE_NUMBER_5",
+    "SEQUENCE_NUMBER_6",
+    "SEQUENCE_NUMBER_7",
+    "SEQUENCE_NUMBER_8",
+    "SEQUENCE_NUMBER_9",
+    "SERVICE_REQUEST_DATE_1",
+    "SERVICE_REQUEST_DATE_2",
+    "SERVICE_REQUEST_DATE_3",
+    "SERVICE_REQUEST_DATE_4",
+    "TREATMENT_CODE_1",
+    "TREATMENT_CODE_10",
+    "TREATMENT_CODE_11",
+    "TREATMENT_CODE_12",
+    "TREATMENT_CODE_2",
+    "TREATMENT_CODE_3",
+    "TREATMENT_CODE_4",
+    "TREATMENT_CODE_5",
+    "TREATMENT_CODE_6",
+    "TREATMENT_CODE_7",
+    "TREATMENT_CODE_8",
+    "TREATMENT_CODE_9",
+    "TREATMENT_DATE_1",
+    "TREATMENT_DATE_10",
+    "TREATMENT_DATE_11",
+    "TREATMENT_DATE_12",
+    "TREATMENT_DATE_2",
+    "TREATMENT_DATE_3",
+    "TREATMENT_DATE_4",
+    "TREATMENT_DATE_5",
+    "TREATMENT_DATE_6",
+    "TREATMENT_DATE_7",
+    "TREATMENT_DATE_8",
+    "TREATMENT_DATE_9",
+    "TREATMENT_FUNCTION_CODE",
+    "TREATMENT_TIME_1",
+    "TREATMENT_TIME_10",
+    "TREATMENT_TIME_11",
+    "TREATMENT_TIME_12",
+    "TREATMENT_TIME_2",
+    "TREATMENT_TIME_3",
+    "TREATMENT_TIME_4",
+    "TREATMENT_TIME_5",
+    "TREATMENT_TIME_6",
+    "TREATMENT_TIME_7",
+    "TREATMENT_TIME_8",
+    "TREATMENT_TIME_9"
+  ]
+}

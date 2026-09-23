@@ -1,0 +1,22 @@
+[
+  {
+    "PID": "TOY0002",
+    "ID": "TOYGLS0001",
+    "LSOA_AT_REG": "E01000001"
+  },
+  {
+    "PID": "TOY0003",
+    "ID": "TOYGLS0002",
+    "LSOA_AT_REG": "W01000001"
+  },
+  {
+    "PID": "TOY0004",
+    "ID": "TOYGLS0003",
+    "LSOA_AT_REG": "E01033000"
+  },
+  {
+    "PID": "TOY0005",
+    "ID": "TOYGLS0004",
+    "LSOA_AT_REG": "E01000001"
+  }
+]

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/snv_kinship/categories/snv_kinship.json",
+  "title": "Genotype array data — SNV kinship",
+  "description": "One element is one related pair of participants in the genotype array kinship file (ofh_snv_kinship.txt).",
+  "type": "object",
+  "x-variable-group": "snv_kinship",
+  "properties": {
+    "ID1": {
+      "title": "Participant ID for individual 1 in related pair",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "ID2": {
+      "title": "Participant ID for individual 2 in related pair",
+      "type": "string",
+      "x-role": "entity key",
+      "$comment": "Many-to-one link to participant.PID; that every PID exists there cannot be enforced across tables (D102). The source states no format, so no pattern is asserted (D043)."
+    },
+    "HetHet": {
+      "title": "HetHet proportion",
+      "description": "Fraction of markers for which the pair both have a heterozygous genotype (output from KING software).",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "IBS0": {
+      "title": "Identity by State proportion",
+      "description": "Fraction of markers for which the pair shares zero alleles (output from KING software).",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    },
+    "Kinship": {
+      "title": "Kinship coefficient",
+      "description": "Estimate of the kinship coefficient for this pair based on the set of markers used in the kinship inference (output from KING software).",
+      "anyOf": [
+        {
+          "type": "number",
+          "not": {
+            "enum": [
+              -998
+            ]
+          }
+        },
+        {
+          "$ref": "../../common/defs.json#/$defs/not_recorded"
+        }
+      ],
+      "$comment": "The source states no range, so none is asserted (D024)."
+    }
+  },
+  "required": [
+    "ID1",
+    "ID2",
+    "HetHet",
+    "IBS0",
+    "Kinship"
+  ]
+}

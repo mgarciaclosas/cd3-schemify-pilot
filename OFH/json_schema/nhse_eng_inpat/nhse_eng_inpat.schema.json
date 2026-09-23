@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/nhse_eng_inpat/nhse_eng_inpat.schema.json",
+  "title": "Our Future Health — Linked health records data — Inpatient",
+  "description": "Array of Our Future Health linked health records. One element is one episode of in-patient care in a hospital in England.",
+  "$comment": "Standard JSON Schema cannot enforce that ROW_ID is unique across rows, or that every PID exists in the participant table (D102). A value absent in the source is -998 (the string \"-998\" for text, dates and coded strings), D101; a text or date column accepts any string, so no format is asserted for it (D043).",
+  "type": "array",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "title": "Inpatient record",
+    "allOf": [
+      {
+        "$ref": "categories/nhse_eng_inpat.json"
+      }
+    ],
+    "unevaluatedProperties": false
+  }
+}

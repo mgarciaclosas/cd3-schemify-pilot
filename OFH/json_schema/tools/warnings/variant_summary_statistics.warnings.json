@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/tools/warnings/variant_summary_statistics.warnings.json",
+  "title": "Our Future Health — Imputed genotype data — Variant summary statistics — warning checks",
+  "description": "Non-blocking checks for the variant_summary_statistics table, from plausibility ranges the source does not state (D127). A finding is a warning for analysts and data providers: it never rejects a row and never changes data. Run tools/warn.py; the main schema and tools/validate.py are unaffected.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$comment": "Warning G01: AF is expected to be between 0 and 1 (it is an allele frequency); a value outside that range may point to a data problem.",
+        "properties": {
+          "AF": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G02: PROP_TYPED is expected to be between 0 and 1 (it is a proportion of groups); a value outside that range may point to a data problem.",
+        "properties": {
+          "PROP_TYPED": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "Warning G03: DR2 is expected to be at least 0 (an r-squared is not negative); a value outside that range may point to a data problem.",
+        "properties": {
+          "DR2": {
+            "anyOf": [
+              {
+                "const": -998
+              },
+              {
+                "type": "number",
+                "minimum": 0
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

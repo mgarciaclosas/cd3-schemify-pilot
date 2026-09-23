@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.example.org/cd3-ofh-pilot/imputed_pvcf/imputed_pvcf.schema.json",
+  "title": "Our Future Health — Imputed genotype data — Imputed VCF",
+  "description": "Array of Our Future Health genetic data records. One element is one record of the imputed VCF files (ofh_imputed.v6.chrZ-bXXXX.vcf.gz): the genotype and genotype probability of one sample at one variant.",
+  "$comment": "Describes the columns of the source file as a table of rows; the files themselves are TSV, text or VCF (D124). A value absent in the source is -998 (the string \"-998\" for text), D021. Cross-table links to participant.PID cannot be enforced (D102).",
+  "type": "array",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "type": "object",
+    "title": "Imputed VCF record",
+    "allOf": [
+      {
+        "$ref": "categories/imputed_pvcf.json"
+      }
+    ],
+    "unevaluatedProperties": false
+  }
+}
