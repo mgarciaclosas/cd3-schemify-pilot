@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schemas.example.org/cd3-mws-pilot/recruitment/recruitment.schema.json",
-  "title": "Million Women Study \u2014 Recruitment variables table (CD3 schemify pilot)",
-  "description": "Array of MWS recruitment records. One element is one participant's recruitment-questionnaire derived variables. Full pilot: all 38 properties from the 'Recruitment variables' sheet, across 7 categories.",
-  "$comment": "Standard JSON Schema cannot enforce uniqueness of a participant identifier across rows (the source sheet defines no explicit ID field for this table) nor cross-field routing like RSMOKE/RCIGSPD. See the README's 'Documented but not enforced' section.",
+  "title": "MWS — RECRUITMENT table",
+  "description": "Array of Million Women Study baseline records. One element is one participant's baseline recruitment-questionnaire data, spanning three source sheets: Basic information, Recruitment variables, Self-reported health at recruit. Later-wave resurvey sheets are out of scope for this package.",
+  "$comment": "This table has no participant-identifier field in the source dictionary at all (open item, see DECISIONS.md D007) -- uniqueItems is asserted as standing structural policy but cannot anchor to a real key here. Standard JSON Schema cannot enforce cross-row identifier uniqueness in any case; see the README's 'Documented but not enforced' section once written.",
   "type": "array",
   "minItems": 1,
   "uniqueItems": true,
@@ -11,26 +11,219 @@
     "type": "object",
     "title": "RECRUITMENT record",
     "allOf": [
+      { "$ref": "categories/demographics.json" },
+      { "$ref": "categories/socioeconomic.json" },
+      { "$ref": "categories/anthropometric.json" },
+      { "$ref": "categories/behavioral.json" },
+      { "$ref": "categories/reproductive_hormonal.json" },
+      { "$ref": "categories/breast_health.json" },
+      { "$ref": "categories/gynae_surgery.json" },
+      { "$ref": "categories/medical_history.json" },
+
       {
-        "$ref": "categories/body_lifestyle.json"
+        "$comment": "Skip pattern: never had children means number of full-term pregnancies, age at first/last birth, and the whole breastfeeding block are all structurally not applicable -- D041, steward-confirmed. This is the outer gate; RBFYN's own nested gate over RBFNUM/RBFDUR (below) still applies within the RANYCHLD=1 branch.",
+        "if": {
+          "required": ["RANYCHLD"],
+          "properties": { "RANYCHLD": { "const": 2 } }
+        },
+        "then": {
+          "properties": {
+            "RNUMFTP": { "const": -777 },
+            "RAGEFB": { "const": -777 },
+            "RAGELB": { "const": -777 },
+            "RBFYN": { "const": -777 },
+            "RBFNUM": { "const": -777 },
+            "RBFDUR": { "const": -777 }
+          }
+        }
       },
       {
-        "$ref": "categories/reproductive_pregnancy.json"
+        "$comment": "Applicability: a participant who has ever had children must have real values for RNUMFTP/RAGEFB/RAGELB/RBFYN, never the structural-NA code. RBFNUM/RBFDUR are deliberately excluded here -- their applicability is governed by the nested RBFYN=1 rule below, not directly by RANYCHLD (RANYCHLD=1 alone doesn't guarantee RBFYN=1) -- D041.",
+        "if": {
+          "required": ["RANYCHLD"],
+          "properties": { "RANYCHLD": { "const": 1 } }
+        },
+        "then": {
+          "properties": {
+            "RNUMFTP": { "not": { "const": -777 } },
+            "RAGEFB": { "not": { "const": -777 } },
+            "RAGELB": { "not": { "const": -777 } },
+            "RBFYN": { "not": { "const": -777 } }
+          }
+        }
       },
       {
-        "$ref": "categories/breast_health.json"
+        "$comment": "Skip pattern: not currently/never breastfed means breastfeeding count and duration are structurally not applicable -- D037, steward-confirmed.",
+        "if": {
+          "required": ["RBFYN"],
+          "properties": { "RBFYN": { "const": 2 } }
+        },
+        "then": {
+          "properties": { "RBFNUM": { "const": -777 }, "RBFDUR": { "const": -777 } }
+        }
       },
       {
-        "$ref": "categories/gynae_surgery.json"
+        "$comment": "Applicability: a participant who has ever breastfed must have a real value or an item-missing code for RBFNUM/RBFDUR, never the structural-NA code -- D037.",
+        "if": {
+          "required": ["RBFYN"],
+          "properties": { "RBFYN": { "const": 1 } }
+        },
+        "then": {
+          "properties": { "RBFNUM": { "not": { "const": -777 } }, "RBFDUR": { "not": { "const": -777 } } }
+        }
       },
       {
-        "$ref": "categories/contraceptive.json"
+        "$comment": "Skip pattern: never used oral contraceptives means start age, stop age, and duration are structurally not applicable -- D038, steward-confirmed (validated against the real questionnaire's own skip logic).",
+        "if": {
+          "required": ["ROC"],
+          "properties": { "ROC": { "const": 2 } }
+        },
+        "then": {
+          "properties": { "ROCSTART": { "const": -777 }, "ROCSTOP": { "const": -777 }, "ROCDUR": { "const": -777 } }
+        }
       },
       {
-        "$ref": "categories/hrt.json"
+        "$comment": "Applicability: a participant who has ever used oral contraceptives must have real values or item-missing codes for ROCSTART/ROCSTOP/ROCDUR, never the structural-NA code -- D038.",
+        "if": {
+          "required": ["ROC"],
+          "properties": { "ROC": { "const": 1 } }
+        },
+        "then": {
+          "properties": { "ROCSTART": { "not": { "const": -777 } }, "ROCSTOP": { "not": { "const": -777 } }, "ROCDUR": { "not": { "const": -777 } } }
+        }
       },
       {
-        "$ref": "categories/menstrual.json"
+        "$comment": "Skip pattern: never used HRT means start age, duration, last-used age, prior-periods-stopped flag, type, and time-since-last-used are all structurally not applicable -- D039, steward-confirmed.",
+        "if": {
+          "required": ["RHTNPC"],
+          "properties": { "RHTNPC": { "const": 1 } }
+        },
+        "then": {
+          "properties": {
+            "RHRTSTA": { "const": -777 },
+            "RHTDUR": { "const": -777 },
+            "RHRTSTO": { "const": -777 },
+            "RHRTMP": { "const": -777 },
+            "RHTTYPE": { "const": -777 },
+            "RHTLU": { "const": -777 }
+          }
+        }
+      },
+      {
+        "$comment": "Applicability: a participant who has ever used HRT (Past or Current) must have real values for start age, duration, prior-periods-stopped, and type, never the structural-NA code -- D039.",
+        "if": {
+          "required": ["RHTNPC"],
+          "properties": { "RHTNPC": { "enum": [2, 3] } }
+        },
+        "then": {
+          "properties": {
+            "RHRTSTA": { "not": { "const": -777 } },
+            "RHTDUR": { "not": { "const": -777 } },
+            "RHRTMP": { "not": { "const": -777 } },
+            "RHTTYPE": { "not": { "const": -777 } }
+          }
+        }
+      },
+      {
+        "$comment": "HRT routing: a participant currently using HRT has not stopped, so age-last-used and time-since-last-used are structurally not applicable -- D039, steward-confirmed via the real questionnaire wording ('are you using HRT? If no, how old were you when you last used it?').",
+        "if": {
+          "required": ["RHTNPC"],
+          "properties": { "RHTNPC": { "const": 3 } }
+        },
+        "then": {
+          "properties": { "RHRTSTO": { "const": -777 }, "RHTLU": { "const": -777 } }
+        }
+      },
+      {
+        "$comment": "Applicability: a participant who stopped using HRT in the past must have real values for age-last-used and time-since-last-used, never the structural-NA code -- D039.",
+        "if": {
+          "required": ["RHTNPC"],
+          "properties": { "RHTNPC": { "const": 2 } }
+        },
+        "then": {
+          "properties": { "RHRTSTO": { "not": { "const": -777 } }, "RHTLU": { "not": { "const": -777 } } }
+        }
+      },
+      {
+        "$comment": "Skip pattern: periods that have not stopped (or are irregular) mean age-periods-stopped is structurally not applicable -- D028, steward-confirmed.",
+        "if": {
+          "required": ["RPSTOPYN"],
+          "properties": { "RPSTOPYN": { "enum": [2, 3] } }
+        },
+        "then": {
+          "properties": { "RPSTOPAG": { "const": -777 } }
+        }
+      },
+      {
+        "$comment": "Applicability: a participant whose periods have stopped must have a real age or an item-missing code for RPSTOPAG, never the structural-NA code -- D028.",
+        "if": {
+          "required": ["RPSTOPYN"],
+          "properties": { "RPSTOPYN": { "const": 1 } }
+        },
+        "then": {
+          "properties": { "RPSTOPAG": { "not": { "const": -777 } } }
+        }
+      },
+
+      {
+        "$comment": "Skip pattern: no hysterectomy means age at hysterectomy is structurally not applicable -- D030, steward-confirmed.",
+        "if": {
+          "required": ["RHYST"],
+          "properties": { "RHYST": { "const": 2 } }
+        },
+        "then": {
+          "properties": { "RHYSTAG": { "const": -777 } }
+        }
+      },
+      {
+        "$comment": "Applicability: a participant who has had a hysterectomy must have a real age or an item-missing code for RHYSTAG, never the structural-NA code -- D030.",
+        "if": {
+          "required": ["RHYST"],
+          "properties": { "RHYST": { "const": 1 } }
+        },
+        "then": {
+          "properties": { "RHYSTAG": { "not": { "const": -777 } } }
+        }
+      },
+      {
+        "$comment": "Skip pattern: no bilateral oophorectomy means age at oophorectomy is structurally not applicable -- D030, steward-confirmed. Deliberately does NOT include ROOPH=3 (Not sure) -- steward confirmed this stays unconstrained.",
+        "if": {
+          "required": ["ROOPH"],
+          "properties": { "ROOPH": { "const": 2 } }
+        },
+        "then": {
+          "properties": { "ROOPHAGE": { "const": -777 } }
+        }
+      },
+      {
+        "$comment": "Applicability: a participant who has had a bilateral oophorectomy must have a real age or an item-missing code for ROOPHAGE, never the structural-NA code -- D030.",
+        "if": {
+          "required": ["ROOPH"],
+          "properties": { "ROOPH": { "const": 1 } }
+        },
+        "then": {
+          "properties": { "ROOPHAGE": { "not": { "const": -777 } } }
+        }
+      },
+      {
+        "$comment": "Skip pattern: not sterilised means age sterilised is structurally not applicable -- D030, steward-confirmed.",
+        "if": {
+          "required": ["RSTER"],
+          "properties": { "RSTER": { "const": 2 } }
+        },
+        "then": {
+          "properties": { "RSTERAGE": { "const": -777 } }
+        }
+      },
+      {
+        "$comment": "Applicability: a participant who has been sterilised must have a real age or an item-missing code for RSTERAGE, never the structural-NA code -- D030.",
+        "if": {
+          "required": ["RSTER"],
+          "properties": { "RSTER": { "const": 1 } }
+        },
+        "then": {
+          "properties": { "RSTERAGE": { "not": { "const": -777 } } }
+        }
       }
     ],
     "unevaluatedProperties": false
